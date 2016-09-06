@@ -17,6 +17,7 @@ public class InsertData {
             stmt = conn.createStatement();
             stmt.executeUpdate(sql);
             conn.commit();
+            conn.setAutoCommit(true);
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
