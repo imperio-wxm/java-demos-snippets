@@ -9,13 +9,13 @@ import java.sql.SQLException;
 /**
  * Created by weiximing.imperio on 2016/9/6.
  */
-public class SQLiteConnection {
+class SQLiteConnection {
 
     private final static Logger logger = Logger.getLogger(SQLiteConnection.class);
     private ThreadLocal<Connection> threadLocal = new ThreadLocal<Connection>();
     private static String propFile = System.getProperty("user.dir") + "/conf/";
 
-    public Connection getConnection() {
+    Connection getConnection() {
         Connection conn = threadLocal.get();
 
         try {
@@ -30,10 +30,6 @@ public class SQLiteConnection {
                     throw e;
                 }
             }
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
