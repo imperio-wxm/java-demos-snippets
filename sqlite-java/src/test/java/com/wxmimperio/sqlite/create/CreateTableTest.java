@@ -16,11 +16,11 @@ public class CreateTableTest {
         Connection conn = sqLiteConnection.getConnection();
 
         String sql = "CREATE TABLE IF NOT EXISTS kafka_delay (" +
-                "id INT PRIMARY KEY NOT NULL," +
-                "topic CHAR(50)," +
-                "partition INT," +
+                "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL," +
+                "topic TEXT," +
+                "partition INTEGER," +
                 "offset INTEGER," +
-                "timestamp TIMESTAMP);";
+                "timestamp TEXT);";
 
         boolean stmtClose = CreateTable.createTable(conn, sql);
         System.out.println(stmtClose);
