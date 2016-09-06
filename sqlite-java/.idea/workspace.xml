@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ba1bd4-f986-4a5e-9f43-87d2a80d265a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/select/SelectDataTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/select/SelectData.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/select/SelectData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/select/SelectDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/select/SelectDataTest.java" />
     </list>
     <ignored path="sqlite-java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,6 +27,20 @@
     <option name="SORT_POSITIONED" value="false" />
     <option name="SHOW_TABLE_DETAILS" value="true" />
     <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="Sqlite (Xerial) - Database.db" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="kafka_delay" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -76,9 +89,11 @@
       <file leaf-file-name="SelectDataTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/select/SelectDataTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="65">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-              <folding />
+            <state relative-caret-position="260">
+              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1087,7 +1102,7 @@
       <option name="presentableId" value="Default" />
       <updated>1473131208793</updated>
       <workItem from="1473131213425" duration="1301000" />
-      <workItem from="1473132550496" duration="7931000" />
+      <workItem from="1473132550496" duration="8013000" />
     </task>
     <task id="LOCAL-00001" summary="添加connection测试">
       <created>1473132824474</created>
@@ -1145,16 +1160,17 @@
       <option name="project" value="LOCAL" />
       <updated>1473143450653</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="添加select table">
+      <created>1473144567218</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1473144567218</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="InsertDataTest_insertData - 2016.09.06 at 13h 38m 41s.xml">
-      <configuration name="InsertDataTest.insertData" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="InsertDataTest_insertData - 2016.09.06 at 13h 39m 47s.xml">
-      <configuration name="InsertDataTest.insertData" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="InsertDataTest_insertData - 2016.09.06 at 13h 53m 28s.xml">
       <configuration name="InsertDataTest.insertData" configurationId="JUnit" />
     </history-entry>
@@ -1179,9 +1195,15 @@
     <history-entry file="SelectDataTest_selectDataTest - 2016.09.06 at 14h 48m 54s.xml">
       <configuration name="SelectDataTest.selectDataTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="SelectDataTest_selectDataTest - 2016.09.06 at 14h 50m 06s.xml">
+      <configuration name="SelectDataTest.selectDataTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SelectDataTest_selectDataTest - 2016.09.06 at 14h 50m 22s.xml">
+      <configuration name="SelectDataTest.selectDataTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9232000" />
+    <option name="totallyTimeSpent" value="9314000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1231,7 +1253,8 @@
     <MESSAGE value="添加connection测试" />
     <MESSAGE value="添加create table" />
     <MESSAGE value="添加insert table" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加insert table" />
+    <MESSAGE value="添加select table" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加select table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1330,19 +1353,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/2be2c53e/051b26c2-da60-4fc8-88ea-8030c52f963c/kafka_delay">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/insert/InsertData.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -1375,11 +1385,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="dbDummy://dbtable:/2be2c53e/051b26c2-da60-4fc8-88ea-8030c52f963c/kafka_delay">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/select/SelectDataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="260">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

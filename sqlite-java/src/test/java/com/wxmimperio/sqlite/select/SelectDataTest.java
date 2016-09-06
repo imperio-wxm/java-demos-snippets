@@ -17,7 +17,7 @@ public class SelectDataTest {
         SQLiteConnection sqLiteConnection = new SQLiteConnection();
         Connection conn = sqLiteConnection.getConnection();
 
-        String sql = "SELECT * FROM kafka_delay;";
+        String sql = "SELECT * FROM kafka_delay WHERE topic='topic_001' AND partition=0;";
 
         List<Map<String, Object>> rsList = SelectData.selectData(conn, sql);
         for (Map<String, Object> result : rsList) {
