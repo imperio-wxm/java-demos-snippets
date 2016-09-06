@@ -24,8 +24,9 @@ public class InsertDataTest {
         System.out.println("timestamp=" + timestamp);
 
         String sql = "INSERT INTO kafka_delay (topic,partition,offset,timestamp) " +
-                "VALUES('topic_001',0,1234567,'" + timestamp + "')";
+                "VALUES('topic_002',0,9874561230,'" + timestamp + "');";
         boolean stmtClose = InsertData.insertData(conn, sql);
+
         System.out.println(stmtClose);
     }
 }

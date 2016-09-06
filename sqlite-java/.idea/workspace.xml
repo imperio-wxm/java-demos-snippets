@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98ba1bd4-f986-4a5e-9f43-87d2a80d265a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/insert/InsertData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/insert/InsertDataTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/insert/InsertDataTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/insert/InsertDataTest.java" />
     </list>
     <ignored path="sqlite-java.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -51,55 +48,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SQLiteConnection.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/connection/SQLiteConnection.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="317">
-              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SQLiteConnectionTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/connection/SQLiteConnectionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateTable.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/create/CreateTable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateTableTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/create/CreateTableTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="InsertData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/insert/InsertData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+            <state relative-caret-position="159">
+              <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -107,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InsertDataTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="InsertDataTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/insert/InsertDataTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+            <state relative-caret-position="240">
+              <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -158,8 +111,8 @@
         <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/connection/SQLiteConnectionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/connection/SQLiteConnection.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/create/CreateTable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/insert/InsertData.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/create/CreateTableTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/insert/InsertData.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/insert/InsertDataTest.java" />
       </list>
     </option>
@@ -1033,7 +986,7 @@
       <option name="presentableId" value="Default" />
       <updated>1473131208793</updated>
       <workItem from="1473131213425" duration="1301000" />
-      <workItem from="1473132550496" duration="4119000" />
+      <workItem from="1473132550496" duration="6676000" />
     </task>
     <task id="LOCAL-00001" summary="添加connection测试">
       <created>1473132824474</created>
@@ -1070,21 +1023,19 @@
       <option name="project" value="LOCAL" />
       <updated>1473140456324</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="添加insert table">
+      <created>1473140471686</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1473140471686</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
     <history-entry file="CreateTableTest - 2016.09.06 at 13h 31m 58s.xml">
       <configuration name="CreateTableTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CreateTableTest_createTable - 2016.09.06 at 11h 56m 10s.xml">
-      <configuration name="CreateTableTest.createTable" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CreateTableTest_createTable - 2016.09.06 at 11h 56m 48s.xml">
-      <configuration name="CreateTableTest.createTable" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CreateTableTest_createTable - 2016.09.06 at 13h 29m 47s.xml">
-      <configuration name="CreateTableTest.createTable" configurationId="JUnit" />
     </history-entry>
     <history-entry file="CreateTableTest_createTable - 2016.09.06 at 13h 30m 59s.xml">
       <configuration name="CreateTableTest.createTable" configurationId="JUnit" />
@@ -1101,12 +1052,21 @@
     <history-entry file="InsertDataTest_insertData - 2016.09.06 at 13h 39m 47s.xml">
       <configuration name="InsertDataTest.insertData" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="InsertDataTest_insertData - 2016.09.06 at 13h 53m 28s.xml">
+      <configuration name="InsertDataTest.insertData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InsertDataTest_insertData - 2016.09.06 at 14h 23m 50s.xml">
+      <configuration name="InsertDataTest.insertData" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="InsertDataTest_insertData - 2016.09.06 at 14h 27m 46s.xml">
+      <configuration name="InsertDataTest.insertData" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="SQLiteConnectionTest_connectTest - 2016.09.06 at 13h 30m 18s.xml">
       <configuration name="SQLiteConnectionTest.connectTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5420000" />
+    <option name="totallyTimeSpent" value="7977000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1155,7 +1115,8 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="false" />
     <MESSAGE value="添加connection测试" />
     <MESSAGE value="添加create table" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加create table" />
+    <MESSAGE value="添加insert table" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加insert table" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1207,22 +1168,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/insert/InsertData.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/create/CreateTableTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="16" column="42" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+        <state relative-caret-position="357">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/create/CreateTable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1235,6 +1186,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/create/CreateTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/connection/SQLiteConnection.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="317">
@@ -1243,10 +1204,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/insert/InsertDataTest.java">
+    <entry file="jar://D:/maven_download/org/xerial/sqlite-jdbc/3.8.11.2/sqlite-jdbc-3.8.11.2.jar!/org/sqlite/jdbc3/JDBC3Statement.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="23" column="41" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="41" />
+        <state relative-caret-position="1269">
+          <caret line="293" column="54" selection-start-line="293" selection-start-column="50" selection-end-line="293" selection-end-column="54" />
+          <folding>
+            <element signature="e#7936#7937#0" expanded="true" />
+            <element signature="e#8016#8017#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/sqlite/insert/InsertData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="159">
+          <caret line="11" column="64" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1266,10 +1238,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/create/CreateTableTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/sqlite/insert/InsertDataTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
+        <state relative-caret-position="240">
+          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
