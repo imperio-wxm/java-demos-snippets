@@ -1,9 +1,6 @@
 package com.wxmimperio.cassandra.connection;
 
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Host;
-import com.datastax.driver.core.KeyspaceMetadata;
-import com.datastax.driver.core.Metadata;
+import com.datastax.driver.core.*;
 import org.junit.Test;
 
 /**
@@ -22,7 +19,12 @@ public class CassandraConnTest {
         }
 
         for (KeyspaceMetadata keyspaceMetadata : metadata.getKeyspaces()) {
+            System.out.println("==========KeySpace============");
             System.out.println("KeySpace:" + keyspaceMetadata.getName());
+            System.out.println("\t==========tables============");
+            for (TableMetadata tableMetadata : keyspaceMetadata.getTables()) {
+                System.out.println("\tTable:" + tableMetadata.getName());
+            }
         }
     }
 }
