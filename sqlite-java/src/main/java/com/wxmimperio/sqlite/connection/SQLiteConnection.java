@@ -23,7 +23,7 @@ public class SQLiteConnection {
             if (conn == null || conn.isClosed()) {
                 try {
                     Class.forName("org.sqlite.JDBC");
-                    conn = DriverManager.getConnection("jdbc:sqlite:" + propFile + "Database.db");
+                    conn = DriverManager.getConnection("jdbc:sqlite:" + propFile + "KafkaDelay.db");
                     threadLocal.set(conn);
                 } catch (Exception e) {
                     logger.error("获取JDBC连接出错", e);

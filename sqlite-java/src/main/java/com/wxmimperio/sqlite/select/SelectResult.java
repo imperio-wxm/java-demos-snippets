@@ -9,31 +9,29 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Created by weiximing.imperio on 2016/9/6.
  */
-public class SelectData {
+public class SelectResult {
 
-    public static List<Map<String, Object>> selectData(Connection connection, String sql) {
+
+    public static <E> E selectResult(Connection connection, String sql, Class resultClass) {
         Statement stmt = null;
-
-        List<Map<String, Object>> resultList = new ArrayList<Map<String, Object>>();
+        List<E> resultList = new ArrayList<>();
         try {
             stmt = connection.createStatement();
             connection.setAutoCommit(false);
 
             ResultSet rs = stmt.executeQuery(sql);
 
+            if (resultClass == Map.class) {
+                if (rs.next()) {
+                    resultList.add((E) getResultMap(rs));
+
+                    System.out.println("===========");
+                }
+            }
+
             connection.commit();
             connection.setAutoCommit(true);
 
-            while (rs.next()) {
-                System.out.println("===========");
-                Map<String, Object> result = getResultMap(rs);
-                /*result.put("id", rs.getInt("id"));
-                result.put("topic", rs.getString("topic"));
-                result.put("partition", rs.getInt("partition"));
-                result.put("offset", rs.getLong("offset"));
-                result.put("timestamp", rs.getTimestamp("timestamp"));*/
-                resultList.add(result);
-            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -52,7 +50,7 @@ public class SelectData {
                 }
             }
         }
-        return resultList;
+        return (E) resultList;
     }
 
     private static Map<String, Object> getResultMap(ResultSet rs) throws SQLException {

@@ -32,7 +32,7 @@ public class UpdateDataTest {
             System.out.println("id=" + (int) result.get("id"));
             System.out.println("topic=" + result.get("topic"));
             System.out.println("partition=" + (int) result.get("partition"));
-            System.out.println("offset=" + (long) result.get("offset"));
+            System.out.println("offset=" + (long) (int)result.get("offset"));
             System.out.println("timestamp=" + result.get("timestamp"));
             System.out.println();
         }
