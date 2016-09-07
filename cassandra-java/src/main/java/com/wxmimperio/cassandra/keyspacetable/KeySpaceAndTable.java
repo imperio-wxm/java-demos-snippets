@@ -23,7 +23,7 @@ public class KeySpaceAndTable {
         String createTableSQL = "CREATE TABLE IF NOT EXISTS kafka_crass.kafka_table (" +
                 "id int PRIMARY KEY," +
                 "topic text," +
-                "offset varint" +
+                "offset bigint" +
                 ") WITH comment='Kafka Table';";
 
         try {

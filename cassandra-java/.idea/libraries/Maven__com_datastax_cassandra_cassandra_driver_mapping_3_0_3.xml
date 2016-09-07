@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.datastax.cassandra:cassandra-driver-mapping:3.0.3">
+    <CLASSES>
+      <root url="jar://D:/maven_download/com/datastax/cassandra/cassandra-driver-mapping/3.0.3/cassandra-driver-mapping-3.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/maven_download/com/datastax/cassandra/cassandra-driver-mapping/3.0.3/cassandra-driver-mapping-3.0.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/maven_download/com/datastax/cassandra/cassandra-driver-mapping/3.0.3/cassandra-driver-mapping-3.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
