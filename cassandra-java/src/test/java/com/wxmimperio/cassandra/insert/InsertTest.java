@@ -19,4 +19,9 @@ public class InsertTest {
         SingleInsert.insert(insertSQL);
         SingleInsert.insert(jsonSQL);
     }
+
+    @Test
+    public void btchInsertTest() {
+        BatchInsert.batchInsert();
+    }
 }

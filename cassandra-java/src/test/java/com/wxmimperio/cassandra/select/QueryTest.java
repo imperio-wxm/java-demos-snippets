@@ -2,7 +2,6 @@ package com.wxmimperio.cassandra.select;
 
 import org.junit.Test;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -18,9 +17,11 @@ public class QueryTest {
         System.out.println(resultList.size());
 
         for (Map<String, Object> result : resultList) {
-            System.out.println((Integer) result.get("id"));
-            System.out.println(result.get("topic"));
-            System.out.println((Long) result.get("offset"));
+            System.out.println("===========================");
+            System.out.println("\tid=" + (Integer) result.get("id"));
+            System.out.println("\ttopic=" + result.get("topic"));
+            System.out.println("\toffset=" + (Long) result.get("offset"));
+            System.out.println("===========================");
         }
     }
 }
