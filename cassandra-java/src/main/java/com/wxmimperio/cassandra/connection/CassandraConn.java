@@ -10,7 +10,7 @@ public class CassandraConn {
     public static Cluster getCluster() {
         Cluster cluster = null;
         try {
-            cluster = Cluster.builder().addContactPoints("127.0.0.1").build();
+            cluster = Cluster.builder().addContactPoints("10.1.11.228").build();
         } catch (Exception e) {
             e.printStackTrace();
         }
