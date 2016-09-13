@@ -1,32 +1,30 @@
 package com.wxmimperio.zookeeper;
 
-
+import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.pool2.PooledObject;
 import org.apache.commons.pool2.PooledObjectFactory;
 import org.apache.commons.pool2.impl.DefaultPooledObject;
-import org.apache.zookeeper.ZooKeeper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * Created by weiximing.imperio on 2016/8/24.
  */
-public class ZookeeperFactory implements PooledObjectFactory<ZooKeeper> {
+public class ZookeeperFactory implements PooledObjectFactory<ZkClient> {
     private static final Logger LOG = LoggerFactory.getLogger(ZookeeperFactory.class);
 
     public ZookeeperFactory() {
     }
 
     @Override
-    public PooledObject<ZooKeeper> makeObject() throws Exception {
-        WatcherDefault watcherDefault = new WatcherDefault();
-        ZooKeeper zk = new ZooKeeper("", 1000, watcherDefault);
-        return new DefaultPooledObject<ZooKeeper>(zk);
+    public PooledObject<ZkClient> makeObject() throws Exception {
+        ZkClient zkClient = new ZkClient("zkHost:zkPort");
+        return new DefaultPooledObject<ZkClient>(zkClient);
     }
 
     @Override
-    public void destroyObject(PooledObject<ZooKeeper> pooledObject) throws Exception {
-        ZooKeeper zk = pooledObject.getObject();
+    public void destroyObject(PooledObject<ZkClient> pooledObject) throws Exception {
+        ZkClient zk = pooledObject.getObject();
         if (zk != null) {
             zk.close();
             zk = null;
@@ -34,18 +32,18 @@ public class ZookeeperFactory implements PooledObjectFactory<ZooKeeper> {
     }
 
     @Override
-    public boolean validateObject(PooledObject<ZooKeeper> pooledObject) {
-        ZooKeeper zk = pooledObject.getObject();
-        return zk.getState().isConnected() && zk.getState().isAlive();
+    public boolean validateObject(PooledObject<ZkClient> pooledObject) {
+        ZkClient zk = pooledObject.getObject();
+        return true;
     }
 
     @Override
-    public void activateObject(PooledObject<ZooKeeper> pooledObject) throws Exception {
+    public void activateObject(PooledObject<ZkClient> pooledObject) throws Exception {
 
     }
 
     @Override
-    public void passivateObject(PooledObject<ZooKeeper> pooledObject) throws Exception {
+    public void passivateObject(PooledObject<ZkClient> pooledObject) throws Exception {
 
     }
 }
