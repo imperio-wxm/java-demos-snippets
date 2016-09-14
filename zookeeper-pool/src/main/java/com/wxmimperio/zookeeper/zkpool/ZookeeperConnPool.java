@@ -1,8 +1,8 @@
-package com.wxmimperio.zookeeper;
+package com.wxmimperio.zookeeper.zkpool;
 
+import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.apache.zookeeper.ZooKeeper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ZookeeperConnPool {
     private static final Logger LOG = LoggerFactory.getLogger(ZookeeperConnPool.class);
-    private GenericObjectPool<ZooKeeper> pool;
+    private GenericObjectPool<ZkClient> pool;
     private static final int ZOOKEEPER_CONN_POOL_COUNT = 5;
 
     private static class SingletonHolder {
@@ -26,7 +26,7 @@ public class ZookeeperConnPool {
         GenericObjectPoolConfig conf = new GenericObjectPoolConfig();
         conf.setMaxTotal(ZOOKEEPER_CONN_POOL_COUNT);
         ZookeeperFactory zookeeperFactory = new ZookeeperFactory();
-        pool = new GenericObjectPool<ZooKeeper>(zookeeperFactory, conf);
+        pool = new GenericObjectPool<ZkClient>(zookeeperFactory, conf);
     }
 
     /**
@@ -35,44 +35,40 @@ public class ZookeeperConnPool {
      * @return
      * @throws Exception
      */
-    public ZooKeeper getConnection() {
-        ZooKeeper zk = null;
+    public ZkClient getConnection() {
+        ZkClient zkClient = null;
         try {
-            zk = pool.borrowObject();
+            zkClient = pool.borrowObject();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return zk;
+        return zkClient;
     }
 
     /**
      * zookeeper连接放回连接池
      *
-     * @param zk
+     * @param zkClient
      */
-    public void releaseConnection(ZooKeeper zk) {
+    public void releaseConnection(ZkClient zkClient) {
         try {
-            pool.returnObject(zk);
+            pool.returnObject(zkClient);
         } catch (Exception e) {
-            if (zk != null) {
-                try {
-                    zk.close();
-                    zk = null;
-                } catch (InterruptedException e1) {
-                    e1.printStackTrace();
-                }
+            if (zkClient != null) {
+                zkClient.close();
+                zkClient = null;
             }
         }
     }
 
     /**
-     * zookeeper 销毁连接
-     * @param zk
+     * zkpool 销毁连接
+     * @param zkClient
      */
-    public void closeConnection(ZooKeeper zk) {
+    public void closeConnection(ZkClient zkClient) {
         try {
-           if (zk != null) {
-               zk.close();
+           if (zkClient != null) {
+               zkClient.close();
            }
         } catch (Exception e) {
             e.printStackTrace();

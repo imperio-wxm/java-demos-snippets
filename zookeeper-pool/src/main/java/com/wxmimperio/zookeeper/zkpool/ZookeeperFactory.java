@@ -1,4 +1,4 @@
-package com.wxmimperio.zookeeper;
+package com.wxmimperio.zookeeper.zkpool;
 
 import org.I0Itec.zkclient.ZkClient;
 import org.apache.commons.pool2.PooledObject;
@@ -13,28 +13,28 @@ import org.slf4j.LoggerFactory;
 public class ZookeeperFactory implements PooledObjectFactory<ZkClient> {
     private static final Logger LOG = LoggerFactory.getLogger(ZookeeperFactory.class);
 
-    public ZookeeperFactory() {
+    ZookeeperFactory() {
     }
 
     @Override
     public PooledObject<ZkClient> makeObject() throws Exception {
-        ZkClient zkClient = new ZkClient("zkHost:zkPort");
+        ZkClient zkClient = new ZkClient("192.168.18.35:2181");
         return new DefaultPooledObject<ZkClient>(zkClient);
     }
 
     @Override
     public void destroyObject(PooledObject<ZkClient> pooledObject) throws Exception {
-        ZkClient zk = pooledObject.getObject();
-        if (zk != null) {
-            zk.close();
-            zk = null;
+        ZkClient zkClient = pooledObject.getObject();
+        if (zkClient != null) {
+            zkClient.close();
+            zkClient = null;
         }
     }
 
     @Override
     public boolean validateObject(PooledObject<ZkClient> pooledObject) {
-        ZkClient zk = pooledObject.getObject();
-        return true;
+        ZkClient zkClient = pooledObject.getObject();
+        return zkClient != null;
     }
 
     @Override
