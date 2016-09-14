@@ -1,28 +1,32 @@
 package com.wxmimperio.zookeeper.zkpool;
 
-import org.I0Itec.zkclient.ZkClient;
-import org.junit.Test;
-
-import java.util.List;
+import com.wxmimperio.zookeeper.quartz.QuartzUtil;
+import com.wxmimperio.zookeeper.quartz.QuartzZKGetTopics;
+import org.quartz.SchedulerException;
 
 /**
  * Created by weiximing.imperio on 2016/9/14.
  */
 public class ZookeeperCoonTest {
 
-    @Test
-    public void getChildren() {
-        ZookeeperConnPool zookeeperConnPool = ZookeeperConnPool.getInstance();
 
-        ZkClient zkClient = zookeeperConnPool.getConnection();
+    public static void main(String args[]) {
+        ZookeeperCoonTest zookeeperCoonTest = new ZookeeperCoonTest();
+        zookeeperCoonTest.getChildren();
+    }
 
-        List<String> newTopics = zkClient.getChildren("/brokers/topics");
-
-        System.out.println(newTopics.size());
-
-        for (String topic : newTopics) {
-            System.out.println(topic);
+    private void getChildren() {
+        QuartzUtil quartzUtil = QuartzUtil.getInstance("Job_Group", "Trigger_Group");
+        try {
+            quartzUtil.addJob(
+                    "get_topic_job",
+                    "get_topic_trigger",
+                    QuartzZKGetTopics.class,
+                    "*/5 * * * * ?",
+                    null
+            );
+        } catch (SchedulerException e) {
+            e.printStackTrace();
         }
-        zookeeperConnPool.releaseConnection(zkClient);
     }
 }
