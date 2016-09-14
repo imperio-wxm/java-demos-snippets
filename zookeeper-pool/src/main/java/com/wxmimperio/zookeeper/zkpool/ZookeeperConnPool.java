@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 public class ZookeeperConnPool {
     private static final Logger LOG = LoggerFactory.getLogger(ZookeeperConnPool.class);
     private GenericObjectPool<ZkClient> pool;
-    private static final int ZOOKEEPER_CONN_POOL_COUNT = 5;
+    private static final int ZOOKEEPER_CONN_POOL_COUNT = 1;
 
     private static class SingletonHolder {
         private static final ZookeeperConnPool INSTANCE = new ZookeeperConnPool();
@@ -72,5 +72,9 @@ public class ZookeeperConnPool {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public int getActive() {
+        return pool.getNumActive();
     }
 }

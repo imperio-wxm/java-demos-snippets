@@ -2,6 +2,8 @@ package com.wxmimperio.zookeeper.zkpool;
 
 import com.wxmimperio.zookeeper.quartz.QuartzUtil;
 import com.wxmimperio.zookeeper.quartz.QuartzZKGetTopics;
+import org.I0Itec.zkclient.ZkClient;
+import org.junit.Test;
 import org.quartz.JobDataMap;
 import org.quartz.SchedulerException;
 
@@ -43,6 +45,19 @@ public class ZookeeperCoonTest {
             );
         } catch (SchedulerException e) {
             e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void getObjNum() {
+        ZookeeperConnPool zookeeperConnPool = ZookeeperConnPool.getInstance();
+
+        for (int i = 0; i < 5; i++) {
+            ZkClient zkClient  = zookeeperConnPool.getConnection();
+            System.out.println("========" + zkClient.toString());
+            System.out.println("++++++" + zookeeperConnPool.getActive());
+            //zookeeperConnPool.closeConnection(zkClient);
+            zookeeperConnPool.releaseConnection(zkClient);
         }
     }
 }
