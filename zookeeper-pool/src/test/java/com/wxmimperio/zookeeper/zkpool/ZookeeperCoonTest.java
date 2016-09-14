@@ -2,6 +2,7 @@ package com.wxmimperio.zookeeper.zkpool;
 
 import com.wxmimperio.zookeeper.quartz.QuartzUtil;
 import com.wxmimperio.zookeeper.quartz.QuartzZKGetTopics;
+import org.quartz.JobDataMap;
 import org.quartz.SchedulerException;
 
 /**
@@ -17,13 +18,28 @@ public class ZookeeperCoonTest {
 
     private void getChildren() {
         QuartzUtil quartzUtil = QuartzUtil.getInstance("Job_Group", "Trigger_Group");
+
+        JobDataMap job1Map = new JobDataMap();
+        job1Map.put("name", "job1");
+
+        JobDataMap job2Map = new JobDataMap();
+        job2Map.put("name", "job2");
+
         try {
             quartzUtil.addJob(
                     "get_topic_job",
                     "get_topic_trigger",
                     QuartzZKGetTopics.class,
                     "*/5 * * * * ?",
-                    null
+                    job1Map
+            );
+
+            quartzUtil.addJob(
+                    "get_topic_job2",
+                    "get_topic_trigger2",
+                    QuartzZKGetTopics.class,
+                    "*/3 * * * * ?",
+                    job2Map
             );
         } catch (SchedulerException e) {
             e.printStackTrace();

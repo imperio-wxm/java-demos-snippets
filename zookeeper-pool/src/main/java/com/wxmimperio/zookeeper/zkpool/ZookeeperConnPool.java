@@ -56,7 +56,6 @@ public class ZookeeperConnPool {
         } catch (Exception e) {
             if (zkClient != null) {
                 zkClient.close();
-                zkClient = null;
             }
         }
     }

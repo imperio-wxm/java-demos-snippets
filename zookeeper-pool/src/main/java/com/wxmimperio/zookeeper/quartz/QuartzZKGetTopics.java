@@ -2,13 +2,13 @@ package com.wxmimperio.zookeeper.quartz;
 
 import com.wxmimperio.zookeeper.zkpool.ZookeeperConnPool;
 import org.I0Itec.zkclient.ZkClient;
-import org.apache.zookeeper.ZooKeeper;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.quartz.JobKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 /**
@@ -16,6 +16,8 @@ import java.util.List;
  */
 public class QuartzZKGetTopics implements Job {
     private static final Logger LOG = LoggerFactory.getLogger(QuartzZKGetTopics.class);
+
+    private String name;
 
     //提前创建文件
     @Override
@@ -28,11 +30,19 @@ public class QuartzZKGetTopics implements Job {
 
         List<String> newTopics = zkClient.getChildren("/brokers/topics");
 
-        System.out.println("=============");
+        System.out.println("=======" + name + "======");
         for (String topic : newTopics) {
             System.out.println("\t" + topic);
         }
-        System.out.println("=============");
+        System.out.println("=======" + name + "======");
         zookeeperConnPool.releaseConnection(zkClient);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -27,7 +27,6 @@ public class ZookeeperFactory implements PooledObjectFactory<ZkClient> {
         ZkClient zkClient = pooledObject.getObject();
         if (zkClient != null) {
             zkClient.close();
-            zkClient = null;
         }
     }
 
