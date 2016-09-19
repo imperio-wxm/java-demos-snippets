@@ -21,6 +21,7 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 /**
+ * Kafka Simple Consumer API
  * Created by weiximing.imperio on 2016/9/19.
  */
 public class SimpleConsumerAPI implements ISimpleConsumerAPI {
