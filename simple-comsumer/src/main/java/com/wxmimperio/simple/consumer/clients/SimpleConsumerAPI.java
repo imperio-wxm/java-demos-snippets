@@ -1,13 +1,20 @@
 package com.wxmimperio.simple.consumer.clients;
 
-import kafka.api.PartitionOffsetRequestInfo;
-import kafka.common.ErrorMapping;
-import kafka.common.NotCoordinatorForConsumerException;
-import kafka.common.OffsetMetadataAndError;
-import kafka.common.TopicAndPartition;
-import kafka.javaapi.*;
+import com.wxmimperio.simple.consumer.clients.commit.CommitOffset;
+import com.wxmimperio.simple.consumer.common.ParamsConst;
+import com.wxmimperio.simple.consumer.common.exception.OffsetCommitException;
+import kafka.api.*;
+import kafka.common.*;
+import kafka.javaapi.FetchResponse;
+import kafka.javaapi.OffsetCommitRequest;
+import kafka.javaapi.OffsetFetchRequest;
+import kafka.javaapi.OffsetFetchResponse;
+import kafka.javaapi.OffsetRequest;
+import kafka.javaapi.OffsetResponse;
+import kafka.javaapi.PartitionMetadata;
+import kafka.javaapi.TopicMetadata;
+import kafka.javaapi.TopicMetadataRequest;
 import kafka.javaapi.consumer.SimpleConsumer;
-import org.apache.kafka.common.errors.OffsetOutOfRangeException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,110 +24,211 @@ import java.util.*;
  * Created by weiximing.imperio on 2016/9/19.
  */
 public class SimpleConsumerAPI implements ISimpleConsumerAPI {
-    private static final Logger LOG = LoggerFactory.getLogger(SimpleConsumerAPI.class);
-    /**
-     * 所有的Kafka客户端地址
-     * Key是地址，Value是端口号
-     */
-    private Map<String, Integer> brokers;
 
+    private static final Logger LOG = LoggerFactory.getLogger(SimpleConsumerAPI.class);
+
+    //topic名称
     private String topic;
 
-    private String groupId;
-
+    //分区号
     private int partition;
 
-    /**
-     * 上次读取的位置
-     */
-    private long offset;
+    //所有的Kafka客户端地址,Key是地址，Value是端口号
+    private Map<String, Integer> brokers;
 
-    /**
-     * 低级API消费者对象
-     */
+    //low level api 消费者对象
     private SimpleConsumer consumer;
 
-    public SimpleConsumerAPI(Map<String, Integer> brokers, String topic, int partition, String groupId) {
-        this.brokers = brokers;
+    //上一次offset位置
+    private long offset;
+
+    //groupId
+    private String groupId;
+
+    public SimpleConsumerAPI(String topic, List<String> brokerAddress) {
+        this.topic = topic;
+        this.brokers = this.getBrokers(brokerAddress);
+    }
+
+    public SimpleConsumerAPI(String topic, int partition, String groupId, List<String> brokerAddress) {
         this.topic = topic;
         this.partition = partition;
         this.groupId = groupId;
+        this.brokers = this.getBrokers(brokerAddress);
+    }
+
+    public SimpleConsumerAPI(String topic, int partition, long offset, String groupId, List<String> brokerAddress) {
+        this.topic = topic;
+        this.partition = partition;
+        this.offset = offset;
+        this.groupId = groupId;
+        this.brokers = this.getBrokers(brokerAddress);
     }
 
     /**
-     * 取得broker的ip和port
+     * 获取broker信息
      *
      * @param brokerAddress
      * @return
      */
-    public Map<String, Integer> getBrokers(List<String> brokerAddress) {
+    private Map<String, Integer> getBrokers(List<String> brokerAddress) {
+        Map<String, Integer> brokerMap = new HashMap<String, Integer>();
         for (String address : brokerAddress) {
             String[] arr = address.split(":");
-            System.out.println(arr[0] + "=" + Integer.parseInt(arr[1]));
-            this.brokers.put(arr[0], Integer.parseInt(arr[1]));
+            brokerMap.put(arr[0], Integer.parseInt(arr[1]));
         }
-        return this.brokers;
+        return brokerMap;
     }
 
     /**
-     * 获得SimpleConsumer
+     * 获取SimpleConsumer
      *
      * @param broker
+     * @param port
      * @param clientId
      * @return
      */
-    public SimpleConsumer leaderSearcher(String broker, String clientId) {
-        return this.leaderSearcher(broker, this.brokers.get(broker), clientId);
-    }
-
-    public SimpleConsumer leaderSearcher(String broker, int port, String clientId) {
-        return this.leaderSearcher(broker, port, 100000, 64 * 1024, clientId);
-    }
-
-    private SimpleConsumer leaderSearcher(String broker, int port, int soTimeout, int bufferSize, String clientId) {
-        return new SimpleConsumer(broker, port, soTimeout, bufferSize, clientId);
+    private SimpleConsumer getSimpleConsumer(String broker, int port, String clientId) {
+        return new SimpleConsumer(broker, port, 100000, 64 * 1024, clientId);
     }
 
     /**
-     * 获取当前partition的offset
+     * 启动consumer
+     */
+    @Override
+    public void open() {
+        String leaderBrokerName = this.getLeaderBrokerName();
+        this.init(leaderBrokerName);
+    }
+
+    /**
+     * 关闭
+     */
+    @Override
+    public void close() {
+        if (this.consumer != null) {
+            this.consumer.close();
+            this.consumer = null;
+        }
+    }
+
+    /**
+     * 获取批量查询数据的Response对象
+     *
+     * @param curOffset
+     * @return
+     */
+    @Override
+    public FetchResponse getFetchResponse(long curOffset) {
+        kafka.api.FetchRequest req = new FetchRequestBuilder()
+                .clientId(ParamsConst.FETCH_RESPONSE_CLIENT)
+                .addFetch(this.topic, this.partition, curOffset, Integer.MAX_VALUE).build();
+        return this.consumer.fetch(req);
+    }
+
+    /**
+     * 获取分区列表
      *
      * @return
      */
-    public long fetchOffset() {
-        return this.fetchOffset(this.groupId);
-    }
+    @Override
+    public List<Integer> getPartitionList() {
+        List<String> topics = Collections.singletonList(this.topic);
+        List<Integer> partitionList = new ArrayList<Integer>();
 
-    public long fetchOffset(String groupId) {
-        return this.fetchOffset(this.topic, groupId);
-    }
-
-    private long fetchOffset(String topic, String groupId) {
-        List<TopicAndPartition> partitions = new ArrayList<TopicAndPartition>();
-        TopicAndPartition partition = new TopicAndPartition(topic, this.partition);
-
-        long retrievedOffset = 0;
         for (String broker : this.brokers.keySet()) {
-            SimpleConsumer leaderSearcher = leaderSearcher(broker, "fetchOffsetClient");
-            partitions.add(partition);
+            SimpleConsumer getPartitionMetadataClient = this.getSimpleConsumer(broker, this.brokers.get(broker), ParamsConst.GET_PARTITION_CLIENT);
+            try {
+                TopicMetadataRequest req = new TopicMetadataRequest(topics);
+                kafka.javaapi.TopicMetadataResponse resp = getPartitionMetadataClient.send(req);
+                List<TopicMetadata> metaData = resp.topicsMetadata();
+                for (TopicMetadata item : metaData) {
+                    for (PartitionMetadata part : item.partitionsMetadata()) {
+                        partitionList.add(part.partitionId());
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                getPartitionMetadataClient.close();
+            }
+        }
+        return partitionList;
+    }
 
-            //CurrentVersion为1，则metadata从kafka获取，为0表示从zookeeper获取
-            OffsetFetchRequest fetchRequest = new OffsetFetchRequest(groupId, partitions, kafka.api.OffsetRequest.CurrentVersion(), 0, "fetchOffsetClient");
-            OffsetFetchResponse fetchResponse = leaderSearcher.fetchOffsets(fetchRequest);
-            OffsetMetadataAndError result = fetchResponse.offsets().get(partition);
-            short offsetFetchErrorCode = result.error();
+    /**
+     * 发送commit请求
+     */
+    @Override
+    public boolean commitRequest(List<CommitOffset> offsetList) {
+        for (String broker : brokers.keySet()) {
+            SimpleConsumer leaderSearcher = this.getSimpleConsumer(broker, this.brokers.get(broker), ParamsConst.COMMIT_REQUEST_CLIENT);
+            kafka.javaapi.OffsetCommitRequest offsetCommitRequest = commitOffset(offsetList, topic, partition);
+            kafka.javaapi.OffsetCommitResponse offsetResp = leaderSearcher.commitOffsets(offsetCommitRequest);
 
-            if (offsetFetchErrorCode == ErrorMapping.NotCoordinatorForConsumerCode()) {
-                throw new NotCoordinatorForConsumerException("NotCoordinatorForConsumerCode:16");
-            } else if (offsetFetchErrorCode == ErrorMapping.OffsetMetadataTooLargeCode()) {
-                throw new OffsetOutOfRangeException("OffsetMetadataTooLargeCode:12");
-            } else if (offsetFetchErrorCode == ErrorMapping.OffsetOutOfRangeCode()) {
-
-            } else {
-                retrievedOffset = result.offset();
+            if (offsetResp.hasError()) {
+                for (Object partitionErrorCode : offsetResp.errors().values()) {
+                    if ((Short) partitionErrorCode == ErrorMapping.OffsetMetadataTooLargeCode()) {
+                        LOG.error("OffsetMetadataTooLargeCode");
+                        throw new OffsetMetadataTooLargeException("OffsetMetadataTooLargeCode:");
+                    } else if ((Short) partitionErrorCode == ErrorMapping.NotCoordinatorForConsumerCode() || (Short) partitionErrorCode == ErrorMapping.ConsumerCoordinatorNotAvailableCode()) {
+                        LOG.error("NotCoordinatorForConsumerCode");
+                    }
+                }
+                throw new OffsetCommitException("commit offset error");
             }
             leaderSearcher.close();
         }
-        return retrievedOffset;
+        return true;
+    }
+
+    /**
+     * 包装手动commit请求
+     *
+     * @param offsetList
+     * @param topic
+     * @param partition
+     * @return
+     */
+    private OffsetCommitRequest commitOffset(List<CommitOffset> offsetList, String topic, int partition) {
+        TopicAndPartition topicAndPartition = new TopicAndPartition(topic, partition);
+
+        Map<TopicAndPartition, OffsetAndMetadata> offsets = new LinkedHashMap<TopicAndPartition, OffsetAndMetadata>();
+
+        for (CommitOffset anOffsetList : offsetList) {
+            offsets.put(topicAndPartition, new OffsetAndMetadata(anOffsetList.getOffset(), "metadata" + anOffsetList.getOffset(), anOffsetList.getNow()));
+        }
+        return new OffsetCommitRequest(this.groupId, offsets, 0, ParamsConst.COMMIT_REQUEST_CLIENT);
+    }
+
+    /**
+     * 根据leader的地址初始化消费者
+     *
+     * @param leaderBrokerName
+     */
+    private void init(String leaderBrokerName) {
+        this.consumer = this.getSimpleConsumer(leaderBrokerName, this.brokers.get(leaderBrokerName), ParamsConst.INIT_CLIENT);
+        long fetchOffset = fetchOffset();
+        long logSize = this.getLogSize();
+
+        if (this.offset < 0) {
+            System.out.println("log size==========" + logSize);
+            System.out.println("fetch offset==========" + fetchOffset());
+
+            //1.如果fetch offset小于log size，表示第一次运行或者有消息丢失
+            if (fetchOffset < logSize) {
+                //2.第一次运行。默认offset为-1
+                if (fetchOffset() == -1) {
+                    this.offset = logSize;
+                } else {
+                    //3.表示缓冲部分有数据丢失，从丢失处开始读数据
+                    this.offset = fetchOffset;
+                }
+            } else {
+                //2.如果fetch offset不小于当前log size，则表示没有数据丢失，offset为最新
+                this.offset = logSize;
+            }
+        }
     }
 
     /**
@@ -129,12 +237,12 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
      *
      * @return
      */
-    public String getLeaderBrokerName() {
+    private String getLeaderBrokerName() {
         PartitionMetadata partitionMeta = null;
         int times = 0;
         while (partitionMeta == null || partitionMeta.leader() == null) {
             if (times == 5) {
-                throw new IllegalStateException("can not find leader at least 5 times!");
+                throw new IllegalStateException("试了5次也没有找到leader，退出了");
             } else if (times != 0) {
                 try {
                     Thread.sleep(100);
@@ -160,10 +268,10 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
 
         boolean find = false;
         for (String broker : this.brokers.keySet()) {
-            SimpleConsumer leaderSearcher = leaderSearcher(broker, "leaderLookup");
+            SimpleConsumer getPartitionMetadataClient = this.getSimpleConsumer(broker, this.brokers.get(broker), ParamsConst.GET_PARTITION_CLIENT);
             try {
                 TopicMetadataRequest req = new TopicMetadataRequest(topics);
-                TopicMetadataResponse resp = leaderSearcher.send(req);
+                kafka.javaapi.TopicMetadataResponse resp = getPartitionMetadataClient.send(req);
                 List<TopicMetadata> metaData = resp.topicsMetadata();
                 for (TopicMetadata item : metaData) {
                     for (PartitionMetadata part : item.partitionsMetadata()) {
@@ -180,7 +288,7 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
-                leaderSearcher.close();
+                getPartitionMetadataClient.close();
             }
             if (find) {
                 break;
@@ -190,73 +298,46 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
     }
 
     /**
-     * 获取partition列表
+     * 获取当前的offset
      *
      * @return
      */
-    public List<Integer> getPartitionList() {
-        return this.getPartitionList(this.topic, this.brokers);
-    }
+    private long fetchOffset() {
+        List<TopicAndPartition> partitions = new ArrayList<TopicAndPartition>();
+        TopicAndPartition partition = new TopicAndPartition(this.topic, this.partition);
+        long retrievedOffset = 0;
 
-    public List<Integer> getPartitionList(String topic, Map<String, Integer> brokers) {
-        List<String> topics = Collections.singletonList(topic);
-        List<Integer> partitionList = new ArrayList<Integer>();
+        for (String broker : this.brokers.keySet()) {
+            SimpleConsumer fetchOffsetClient = this.getSimpleConsumer(broker, this.brokers.get(broker), ParamsConst.FETCH_OFFSET_CLIENT);
+            partitions.add(partition);
+            //CurrentVersion为1，则metadata从kafka获取，为0表示从zookeeper获取
+            OffsetFetchRequest fetchRequest = new OffsetFetchRequest(this.groupId, partitions, kafka.api.OffsetRequest.CurrentVersion(), 0, ParamsConst.FETCH_OFFSET_CLIENT);
+            OffsetFetchResponse fetchResponse = fetchOffsetClient.fetchOffsets(fetchRequest);
+            OffsetMetadataAndError result = fetchResponse.offsets().get(partition);
 
-        for (String broker : brokers.keySet()) {
-            SimpleConsumer leaderSearcher = this.leaderSearcher(broker, "leaderLookup");
-            try {
-                TopicMetadataRequest req = new TopicMetadataRequest(topics);
-                TopicMetadataResponse resp = leaderSearcher.send(req);
-                List<TopicMetadata> metaData = resp.topicsMetadata();
-                for (TopicMetadata item : metaData) {
-                    for (PartitionMetadata part : item.partitionsMetadata()) {
-                        partitionList.add(part.partitionId());
-                    }
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                leaderSearcher.close();
+            short offsetFetchErrorCode = result.error();
+            if (offsetFetchErrorCode == ErrorMapping.NotCoordinatorForConsumerCode()) {
+                LOG.error("NotCoordinatorForConsumerCode");
+                throw new NotCoordinatorForConsumerException("NotCoordinatorForConsumerCode:16");
+            } else {
+                retrievedOffset = result.offset();
             }
+            fetchOffsetClient.close();
         }
-        return partitionList;
+        return retrievedOffset;
     }
 
     /**
-     * 根据leader的地址初始化消费者
+     * 获取log size（最新的offset）
      *
-     * @param leaderBrokerName
+     * @return
      */
-    private void init(String leaderBrokerName) {
-        this.consumer = this.leaderSearcher(leaderBrokerName, this.getPort(leaderBrokerName), "initClient");
-        long fetchOffset = fetchOffset();
-
-        if (this.offset < 0) {
-
-            System.out.println("log size==========" + this.getLastOffset());
-            System.out.println("fetch offset==========" + fetchOffset);
-
-            //1.如果fetch offset小于log size，表示第一次运行或者有消息丢失
-            if (fetchOffset < this.getLastOffset()) {
-                //2.第一次运行。默认offset为-1
-                if (fetchOffset(this.topic) == -1) {
-                    this.offset = this.getLastOffset();
-                } else {
-                    //3.表示缓冲部分有数据丢失，从丢失处开始读数据
-                    this.offset = fetchOffset;
-                }
-            } else {
-                //2.如果fetch offset不小于当前log size，则表示没有数据丢失，offset为最新
-                this.offset = this.getLastOffset();
-            }
-        }
-    }
-
-    public long getLastOffset() {
+    @Override
+    public long getLogSize() {
         TopicAndPartition topicAndPartition = new TopicAndPartition(this.topic, this.partition);
         Map<TopicAndPartition, PartitionOffsetRequestInfo> requestInfo = new HashMap<TopicAndPartition, PartitionOffsetRequestInfo>();
         requestInfo.put(topicAndPartition, new PartitionOffsetRequestInfo(kafka.api.OffsetRequest.LatestTime(), 1));
-        OffsetRequest request = new OffsetRequest(requestInfo, kafka.api.OffsetRequest.CurrentVersion(), "getLastOffsetClient");
+        OffsetRequest request = new OffsetRequest(requestInfo, kafka.api.OffsetRequest.CurrentVersion(), ParamsConst.GET_LOG_SIZE_CLIENT);
         OffsetResponse response = this.consumer.getOffsetsBefore(request);
         if (response.hasError()) {
             return 0;
@@ -265,7 +346,7 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
         return offsets[0];
     }
 
-    private int getPort(String broker) {
-        return this.brokers.get(broker);
+    public long getOffset() {
+        return offset;
     }
 }
