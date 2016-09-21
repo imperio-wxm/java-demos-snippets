@@ -13,17 +13,15 @@ import java.util.concurrent.Executors;
  * Created by weiximing.imperio on 2016/9/8.
  */
 public class CassandraMain {
-    public static void main(String args[]) {
+ /*   public static void main(String args[]) {
 
         Cluster cluster = CassandraConn.getCluster();
         int i = 0;
-        int batchSize = 4000;
+        int batchSize = 400;
 
         //获取session
         Session session = cluster.connect();
 
-        //SQL
-        //SQL
         String createKeySpaceSQL = "CREATE KEYSPACE IF NOT EXISTS kafka_crass WITH " +
                 "replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};";
 
@@ -32,60 +30,28 @@ public class CassandraMain {
                 "timestamp text," +
                 "topic text," +
                 "message text," +
-                "PRIMARY KEY ((id),timestamp,message)" +
+                "data text," +
+                "PRIMARY KEY (id,timestamp,data,message)" +
                 ") WITH comment='Kafka Table';";
-
-        //String countSQL = "SELECT * FROM kafka_crass.kafka_table;";
 
         session.execute(createKeySpaceSQL);
         session.execute(createTableSQL);
 
         BatchStatement batchStatement = new BatchStatement();
-        String insertSQL = "INSERT INTO kafka_crass.kafka_table (id,timestamp,topic,message) VALUES(?,?,?,?);";
+        String insertSQL = "INSERT INTO kafka_crass.kafka_table (id,timestamp,topic,message,data) VALUES(?,?,?,?,?);";
         PreparedStatement prepareBatch = session.prepare(insertSQL);
 
         Calendar cal = Calendar.getInstance();
 
         long startTime = cal.getTimeInMillis();
 
-        /*String countSQL = "SELECT * FROM kafka_crass.kafka_table where id='2016-09-13 15';";
-
-        try {
-            System.out.println("start = " + startTime);
-            ResultSet rs = session.execute(countSQL);
-            List<Row> rowList = rs.all();
-
-            System.out.println("size = " + rowList.size());
-
-            Calendar endcal = Calendar.getInstance();
-
-            long endTime = endcal.getTimeInMillis();
-            System.out.println("end = " + endTime);
-
-            long cost = (endTime - startTime) / 1000;
-            System.out.println("cost = " + cost);
-            *//*session.execute(createKeySpaceSQL);
-            session.execute(createTableSQL);*//*
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            session.close();
-            cluster.close();
-        }*/
-
-        //线程池
-        /*ExecutorService executor = Executors.newFixedThreadPool(10);
-        for (int j = 0; j < 5; j++) {
-            executor.submit(new CassHandle(session, batchStatement));
-        }
-*/
-
-        while (i < 1000000) {
+        while (i < 4000000) {
             Calendar endCal = Calendar.getInstance();
-            SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss SSS");
+            SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
             SimpleDateFormat year = new SimpleDateFormat("yyyy-MM-dd HH");
 
-            batchStatement.add(prepareBatch.bind(year.format(endCal.getTime()), time.format(endCal.getTime()), "topic_002", "hello kafka message this is topic_001 1110724 2016-09-12 16:12:17:245_" + i));
+            batchStatement.add(prepareBatch.bind(year.format(endCal.getTime()).substring(0,10), "16:" + time.format(endCal.getTime()).substring(3),
+                    "topic_002", "hello" + "16:" + time.format(endCal.getTime()).substring(3) + i, year.format(endCal.getTime()).substring(0, 10)));
 
             //batchStatement.add(prepareBatch.bind("2016-10-02 14", time.format(endCal.getTime()), "topic_002", "hello kafka message this is topic_001 1110724 2016-09-12 16:12:17:245_" + i));
 
@@ -115,6 +81,43 @@ public class CassandraMain {
         batchStatement.clear();
         session.close();
         cluster.close();
+    }*/
+
+    public static void main(String args[]) {
+
+        Cluster cluster = CassandraConn.getCluster();
+
+        //获取session
+        Session session = cluster.connect();
+
+        Calendar cal = Calendar.getInstance();
+
+        long startTime = cal.getTimeInMillis();
+
+        //String countSQL = "select message from kafka_crass.kafka_table where id='2016-09-21' and timestamp > '16:00:00' and timestamp < '16:59:59';";
+
+        String countSQL = "select message from kafka_crass.kafka_table where id='2016-09-21';";
+
+        try {
+            System.out.println("start = " + startTime);
+            ResultSet rs = session.execute(countSQL);
+            List<Row> rowList = rs.all();
+
+            System.out.println("size = " + rowList.size());
+
+            Calendar endcal = Calendar.getInstance();
+
+            long endTime = endcal.getTimeInMillis();
+            System.out.println("end = " + endTime);
+
+            long cost = endTime - startTime;
+            System.out.println("cost = " + cost);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+            cluster.close();
+        }
     }
 }
 

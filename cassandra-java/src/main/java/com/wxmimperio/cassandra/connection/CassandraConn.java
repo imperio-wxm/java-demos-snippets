@@ -18,12 +18,16 @@ public class CassandraConn {
                     .setMaxConnectionsPerHost(HostDistance.LOCAL, 10)
                     .setCoreConnectionsPerHost(HostDistance.REMOTE, 2)
                     .setMaxConnectionsPerHost(HostDistance.REMOTE, 4)
-                    .setHeartbeatIntervalSeconds(60);
+                    .setIdleTimeoutSeconds(900);
 
             cluster = Cluster.builder()
                     .addContactPoints("10.1.11.226")
                     .withPoolingOptions(poolingOptions)
                     .build();
+
+            /*cluster = Cluster.builder()
+                    .addContactPoint("10.1.11.226")
+                    .build();*/
 
         } catch (Exception e) {
             e.printStackTrace();
