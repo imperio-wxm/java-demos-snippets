@@ -136,6 +136,7 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
     public List<Integer> getPartitionList() {
         List<String> topics = Collections.singletonList(this.topic);
         List<Integer> partitionList = new ArrayList<Integer>();
+        boolean find = false;
 
         for (String broker : this.brokers.keySet()) {
             SimpleConsumer getPartitionMetadataClient = this.getSimpleConsumer(broker, this.brokers.get(broker), ParamsConst.GET_PARTITION_CLIENT);
@@ -147,11 +148,15 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
                     for (PartitionMetadata part : item.partitionsMetadata()) {
                         partitionList.add(part.partitionId());
                     }
+                    find = true;
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                 getPartitionMetadataClient.close();
+            }
+            if (find) {
+                break;
             }
         }
         return partitionList;

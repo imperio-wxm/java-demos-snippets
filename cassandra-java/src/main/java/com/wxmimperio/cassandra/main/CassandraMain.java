@@ -13,11 +13,11 @@ import java.util.concurrent.Executors;
  * Created by weiximing.imperio on 2016/9/8.
  */
 public class CassandraMain {
- /*   public static void main(String args[]) {
+    public static void main(String args[]) {
 
         Cluster cluster = CassandraConn.getCluster();
         int i = 0;
-        int batchSize = 400;
+        int batchSize = 2000;
 
         //获取session
         Session session = cluster.connect();
@@ -31,7 +31,7 @@ public class CassandraMain {
                 "topic text," +
                 "message text," +
                 "data text," +
-                "PRIMARY KEY (id,timestamp,data,message)" +
+                "PRIMARY KEY (id,data,timestamp,message)" +
                 ") WITH comment='Kafka Table';";
 
         session.execute(createKeySpaceSQL);
@@ -45,12 +45,12 @@ public class CassandraMain {
 
         long startTime = cal.getTimeInMillis();
 
-        while (i < 4000000) {
+        while (i < 5000000) {
             Calendar endCal = Calendar.getInstance();
             SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
             SimpleDateFormat year = new SimpleDateFormat("yyyy-MM-dd HH");
 
-            batchStatement.add(prepareBatch.bind(year.format(endCal.getTime()).substring(0,10), "16:" + time.format(endCal.getTime()).substring(3),
+            batchStatement.add(prepareBatch.bind(year.format(endCal.getTime()).substring(0,10) + " 16", "16:" + time.format(endCal.getTime()).substring(3),
                     "topic_002", "hello" + "16:" + time.format(endCal.getTime()).substring(3) + i, year.format(endCal.getTime()).substring(0, 10)));
 
             //batchStatement.add(prepareBatch.bind("2016-10-02 14", time.format(endCal.getTime()), "topic_002", "hello kafka message this is topic_001 1110724 2016-09-12 16:12:17:245_" + i));
@@ -66,7 +66,7 @@ public class CassandraMain {
                 long endTime = endCal.getTimeInMillis();
 
                 System.out.println("end = " + endTime);
-                long cost = (endTime - startTime) / 1000;
+                long cost = endTime - startTime;
                 System.out.println("cost = " + cost);
             }
             i++;
@@ -75,15 +75,15 @@ public class CassandraMain {
         long endTime = endCal.getTimeInMillis();
 
         System.out.println("end = " + endTime);
-        long cost = (endTime - startTime) / 1000;
+        long cost = endTime - startTime;
         System.out.println("cost = " + cost);
         session.execute(batchStatement);
         batchStatement.clear();
         session.close();
         cluster.close();
-    }*/
+    }
 
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
 
         Cluster cluster = CassandraConn.getCluster();
 
@@ -118,7 +118,7 @@ public class CassandraMain {
             session.close();
             cluster.close();
         }
-    }
+    }*/
 }
 
 class CassHandle implements Runnable {
