@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
  * Created by weiximing.imperio on 2016/9/8.
  */
 public class CassandraMain {
-    public static void main(String args[]) {
+/*    public static void main(String args[]) {
 
         Cluster cluster = CassandraConn.getCluster();
         int i = 0;
@@ -45,7 +45,7 @@ public class CassandraMain {
 
         long startTime = cal.getTimeInMillis();
 
-        while (i < 5000000) {
+        while (i < 4000000) {
             Calendar endCal = Calendar.getInstance();
             SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss");
             SimpleDateFormat year = new SimpleDateFormat("yyyy-MM-dd HH");
@@ -81,9 +81,9 @@ public class CassandraMain {
         batchStatement.clear();
         session.close();
         cluster.close();
-    }
+    }*/
 
-   /* public static void main(String args[]) {
+    public static void main(String args[]) {
 
         Cluster cluster = CassandraConn.getCluster();
 
@@ -96,7 +96,7 @@ public class CassandraMain {
 
         //String countSQL = "select message from kafka_crass.kafka_table where id='2016-09-21' and timestamp > '16:00:00' and timestamp < '16:59:59';";
 
-        String countSQL = "select message from kafka_crass.kafka_table where id='2016-09-21';";
+        String countSQL = "select message from kafka_crass.kafka_table where token(id) > token('2016-09-29 13') and token(id) < token('2016-09-29 17');";
 
         try {
             System.out.println("start = " + startTime);
@@ -118,7 +118,7 @@ public class CassandraMain {
             session.close();
             cluster.close();
         }
-    }*/
+    }
 }
 
 class CassHandle implements Runnable {

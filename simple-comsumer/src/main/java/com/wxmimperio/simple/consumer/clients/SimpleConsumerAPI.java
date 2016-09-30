@@ -223,11 +223,14 @@ public class SimpleConsumerAPI implements ISimpleConsumerAPI {
 
             //1.如果fetch offset小于log size，表示第一次运行或者有消息丢失
             if (fetchOffset < logSize) {
-                //2.第一次运行。默认offset为-1
-                if (fetchOffset() == -1) {
+                if (fetchOffset() == -2) {
+                    //2.程序第一次运行。默认offset为-2
                     this.offset = logSize;
+                } else if (fetchOffset() == -1) {
+                    //3.当前partition从未commit，默认值为-1，则要从0开始读取
+                    this.offset = 0;
                 } else {
-                    //3.表示缓冲部分有数据丢失，从丢失处开始读数据
+                    //4.表示缓冲部分有数据丢失，从丢失处开始读数据
                     this.offset = fetchOffset;
                 }
             } else {
