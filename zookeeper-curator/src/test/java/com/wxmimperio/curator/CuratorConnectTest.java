@@ -17,13 +17,5 @@ public class CuratorConnectTest {
         CuratorConnect curatorConnect = new CuratorConnect();
         CuratorFramework client = curatorConnect.getCuratorConnect();
         System.out.println(client.getChildren().forPath("/brokers/topics"));
-
-        List<String> topicList = client.getChildren().forPath("/brokers/topics");
-        for (String topic : topicList) {
-            System.out.println(topic);
-        }
-        byte[]  newOffset = client.getData().forPath("/consumers/group_1/offsets/fourth_test/0");
-        System.out.println("offset = " + new String(newOffset));
-        curatorConnect.closeCuratorConnect(client);
     }
 }
