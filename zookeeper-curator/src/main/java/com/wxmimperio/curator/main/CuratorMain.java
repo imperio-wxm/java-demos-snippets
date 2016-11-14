@@ -10,7 +10,9 @@ public class CuratorMain {
     public static void main(String[] args) {
         try {
             CuratorWatcher curatorWatcher = new CuratorWatcher();
-            curatorWatcher.addWatcher().start(PathChildrenCache.StartMode.BUILD_INITIAL_CACHE);
+            //curatorWatcher.addWatcher();
+            curatorWatcher.NodeCache();
+            //hread.sleep(Integer.MAX_VALUE);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -12,7 +12,8 @@ public class CuratorWatcherTest {
     @Test
     public void warcherTest() throws Exception {
         CuratorWatcher curatorWatcher = new CuratorWatcher();
-        curatorWatcher.addWatcher();
+        //curatorWatcher.addWatcher();
+        curatorWatcher.NodeCache();
         Thread.sleep(Integer.MAX_VALUE);
     }
 }
