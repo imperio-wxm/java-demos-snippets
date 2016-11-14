@@ -4,6 +4,9 @@ import com.wxmimperio.curator.connect.CuratorConnect;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.recipes.cache.*;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 
 /**
  * Created by weiximing.imperio on 2016/11/14.
@@ -45,9 +48,14 @@ public class CuratorWatcher {
     }
 
     //节点监听
-    public NodeCache NodeCache() throws Exception{
+    public NodeCache NodeCache() throws Exception {
+        /**
+         * 在注册监听器的时候，如果传入此参数，当事件触发时，逻辑由线程池处理
+         */
+        ExecutorService pool = Executors.newFixedThreadPool(5);
+
         //节点监听
-        final NodeCache cache = new NodeCache(this.client,"/consumers/group_1/offsets/fourth_test/0");
+        final NodeCache cache = new NodeCache(this.client, "/consumers/group_1/offsets/fourth_test/0");
         cache.start();
         cache.getListenable().addListener(new NodeCacheListener() {//监听对象
             @Override
@@ -55,7 +63,7 @@ public class CuratorWatcher {
                 byte[] newOffset = cache.getCurrentData().getData();
                 System.out.println(cache.getCurrentData().getPath() + "offset = " + new String(newOffset));
             }
-        });
+        }, pool);
         return cache;
     }
 }

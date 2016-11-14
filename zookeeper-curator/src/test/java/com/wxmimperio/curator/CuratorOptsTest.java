@@ -10,31 +10,30 @@ public class CuratorOptsTest {
 
     @Test
     public void OptsTest() throws Exception {
-        String path = "/consumers/group_2";
+        String path = "/brokers/topics/third_test/partitions/0/state";
         CuratorOpts curatorOpts = new CuratorOpts();
 
         //检查/consumers/group_1是否存在
         System.out.println(curatorOpts.isPathExist(path));
 
         //添加节点
-        curatorOpts.addNode(path, "test");
+        //curatorOpts.addNode(path, "test");
 
-        System.out.println(curatorOpts.isPathExist(path));
+        //System.out.println(curatorOpts.isPathExist(path));
 
-        //读取节点信息
         curatorOpts.readData(path);
 
         //更新节点
-        curatorOpts.updateNode(path,"test_update");
+        //curatorOpts.updateNode(path,"test_update");
 
         //读取更新后信息
-        curatorOpts.readData(path);
+        //curatorOpts.readData(path);
 
         //删除节点
-        curatorOpts.deleteNode(path);
+        //curatorOpts.deleteNode(path);
 
         //验证是否删除
-        System.out.println(curatorOpts.isPathExist(path));
+        //System.out.println(curatorOpts.isPathExist(path));
 
     }
 }
