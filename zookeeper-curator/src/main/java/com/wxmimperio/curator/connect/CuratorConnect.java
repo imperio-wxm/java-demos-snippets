@@ -7,6 +7,7 @@ import org.apache.curator.retry.RetryNTimes;
 /**
  * Created by weiximing.imperio on 2016/11/14.
  */
+
 public class CuratorConnect {
     private static final String ZK_ADDRESS = "192.168.18.74:2181";
     private CuratorFramework curatorClient;

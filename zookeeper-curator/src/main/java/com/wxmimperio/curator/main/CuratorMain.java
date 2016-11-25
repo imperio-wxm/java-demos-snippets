@@ -18,11 +18,15 @@ public class CuratorMain {
             //curatorWatcher.NodeCache();
             //hread.sleep(Integer.MAX_VALUE);
             CuratorConnect curatorClient = new CuratorConnect();
-            CuratorFramework client = curatorClient.getCuratorConnect();
+            System.out.println(curatorClient.hashCode());
+
+            CuratorConnect curatorClient1 = new CuratorConnect();
+            System.out.println(curatorClient1.hashCode());
+            /*CuratorFramework client = curatorClient.getCuratorConnect();
             List<String> topics = client.getChildren().forPath("/brokers/topics");
             for (String topic : topics) {
                 System.out.println(topic);
-            }
+            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }
