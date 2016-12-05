@@ -12,10 +12,10 @@ import java.util.concurrent.Executors;
  */
 public class KafkaNewConsumer {
 
-    private List<String> topicList;
+    private String topic;
 
-    public KafkaNewConsumer(List<String> topicList) {
-        this.topicList = topicList;
+    public KafkaNewConsumer(String topic) {
+        this.topic = topic;
     }
 
     //Init conf
@@ -31,15 +31,15 @@ public class KafkaNewConsumer {
         return props;
     }
 
-    public void execute() {
+    public void execute(int numThread) {
         //ThreadPool
         ExecutorService executor = Executors.newFixedThreadPool(20);
 
         //KafkaNewProducer Message
-        for (int i = 0; i < topicList.size(); i++) {
+        for (int i = 0; i < numThread; i++) {
             KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(createProducerConfig());
             //Send Message
-            executor.submit(new ConsumerHandle(consumer, topicList.get(i)));
+            executor.submit(new ConsumerHandle(consumer, topic));
         }
     }
 }

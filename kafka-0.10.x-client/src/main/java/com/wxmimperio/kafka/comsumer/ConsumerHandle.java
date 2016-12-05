@@ -27,7 +27,7 @@ public class ConsumerHandle implements Runnable {
     public void run() {
         List<ConsumerRecord<String, String>> buffer = new ArrayList<ConsumerRecord<String, String>>();
         while (true) {
-            ConsumerRecords<String, String> records = consumer.poll(200);
+            ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
             for (ConsumerRecord<String, String> record : records) {
                 buffer.add(record);
                 System.out.println("Thread=" + Thread.currentThread().getName() +

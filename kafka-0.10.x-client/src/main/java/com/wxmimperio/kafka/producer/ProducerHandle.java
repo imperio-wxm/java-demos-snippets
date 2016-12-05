@@ -34,11 +34,11 @@ public class ProducerHandle implements Runnable {
 
             producer.send(new ProducerRecord<String, String>(topic, Integer.toString(messageNo), data));
 
-            System.out.println("Thread " + threadNumber + " " + data);
+            System.out.println("Thread " + Thread.currentThread().getName() + " " + data);
             messageNo++;
 
             try {
-                sleep(2000);
+                sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
