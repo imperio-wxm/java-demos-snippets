@@ -8,7 +8,7 @@ public class ConsumerMain {
     public static void main(String args[]) {
         KafkaNewConsumer consumer = new KafkaNewConsumer("test_1");
         try {
-            consumer.execute(3);
+            consumer.execute(1);
         } catch (Exception e) {
             e.printStackTrace();
         }

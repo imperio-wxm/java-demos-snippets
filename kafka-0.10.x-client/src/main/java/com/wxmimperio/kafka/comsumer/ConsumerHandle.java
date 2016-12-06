@@ -21,6 +21,8 @@ public class ConsumerHandle implements Runnable {
     private String topic;
     private static final int minBatchSize = 20;
 
+    private List<ConsumerRecord<String, String>> buffer = new ArrayList<ConsumerRecord<String, String>>();
+
     private final ReentrantLock lock = new ReentrantLock();
 
     public ConsumerHandle(String topic) {
@@ -46,14 +48,16 @@ public class ConsumerHandle implements Runnable {
 
     @Override
     public void run() {
-        List<ConsumerRecord<String, String>> buffer = new ArrayList<ConsumerRecord<String, String>>();
         while (true) {
             ConsumerRecords<String, String> records;
             synchronized (this.consumer) {
-                records = consumer.poll(1000);
+                records = consumer.poll(100);
             }
             for (ConsumerRecord<String, String> record : records) {
                 buffer.add(record);
+
+                System.out.println(System.currentTimeMillis());
+
                 System.out.println("Thread=" + Thread.currentThread().getName() +
                         " value=" + record.value() + " partition=" + record.partition() +
                         " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp());
@@ -75,5 +79,9 @@ public class ConsumerHandle implements Runnable {
 
     public KafkaConsumer<String, String> getConsumer() {
         return consumer;
+    }
+
+    public List<ConsumerRecord<String, String>> getBuffer() {
+        return buffer;
     }
 }

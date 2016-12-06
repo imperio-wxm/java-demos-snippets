@@ -25,7 +25,8 @@ public class QuartzNewTopic implements Job {
         synchronized (consumerHandle.getConsumer()) {
             System.out.println(consumerHandle.getConsumer().toString());
             consumerHandle.getConsumer().commitSync();
-            System.out.println("================");
+            consumerHandle.getBuffer().clear();
+            System.out.println("================ " + System.currentTimeMillis());
         }
     }
 }
