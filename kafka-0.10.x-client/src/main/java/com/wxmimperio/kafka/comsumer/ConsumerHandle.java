@@ -19,7 +19,7 @@ public class ConsumerHandle implements Runnable {
 
     private final KafkaConsumer<String, String> consumer;
     private String topic;
-    private static final int minBatchSize = 10;
+    private static final int minBatchSize = 20;
 
     private final ReentrantLock lock = new ReentrantLock();
 
@@ -50,7 +50,7 @@ public class ConsumerHandle implements Runnable {
         while (true) {
             ConsumerRecords<String, String> records;
             synchronized (this.consumer) {
-                records = consumer.poll(2000);
+                records = consumer.poll(1000);
             }
             for (ConsumerRecord<String, String> record : records) {
                 buffer.add(record);
@@ -62,6 +62,7 @@ public class ConsumerHandle implements Runnable {
                 if (buffer.size() >= minBatchSize) {
                     consumer.commitAsync(); //批量完成写入后，手工sync offset
                     buffer.clear();
+                    System.out.println("commit!!!!!!");
                 }
                 try {
                     sleep(1000);

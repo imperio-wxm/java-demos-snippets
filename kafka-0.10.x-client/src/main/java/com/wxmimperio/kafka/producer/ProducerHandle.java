@@ -38,7 +38,7 @@ public class ProducerHandle implements Runnable {
             messageNo++;
 
             try {
-                sleep(1);
+                sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
