@@ -19,7 +19,7 @@ public class ConsumerHandle implements Runnable {
 
     private final KafkaConsumer<String, String> consumer;
     private String topic;
-    private static final int minBatchSize = 20;
+    private static final int minBatchSize = 3000;
 
     private List<ConsumerRecord<String, String>> buffer = new ArrayList<ConsumerRecord<String, String>>();
 
@@ -56,11 +56,11 @@ public class ConsumerHandle implements Runnable {
             for (ConsumerRecord<String, String> record : records) {
                 buffer.add(record);
 
-                System.out.println(System.currentTimeMillis());
+               /* System.out.println(System.currentTimeMillis());
 
                 System.out.println("Thread=" + Thread.currentThread().getName() +
                         " value=" + record.value() + " partition=" + record.partition() +
-                        " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp());
+                        " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp());*/
             }
             synchronized (consumer) {
                 if (buffer.size() >= minBatchSize) {
@@ -68,11 +68,11 @@ public class ConsumerHandle implements Runnable {
                     buffer.clear();
                     System.out.println("commit!!!!!!");
                 }
-                try {
+                /*try {
                     sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         }
     }
