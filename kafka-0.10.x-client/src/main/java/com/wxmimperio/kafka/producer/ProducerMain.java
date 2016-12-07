@@ -6,6 +6,6 @@ package com.wxmimperio.kafka.producer;
 public class ProducerMain {
     public static void main(String args[]) {
         KafkaNewProducer producer = new KafkaNewProducer("test_1");
-        producer.execute(3);
+        producer.execute(1);
     }
 }

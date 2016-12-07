@@ -1,6 +1,7 @@
 package com.wxmimperio.kafka.quartz;
 
 import com.wxmimperio.kafka.comsumer.ConsumerHandle;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
@@ -21,12 +22,22 @@ public class QuartzNewTopic implements Job {
         JobKey jobKey = jobExecutionContext.getJobDetail().getKey();
 
         final ConsumerHandle consumerHandle = (ConsumerHandle) jobExecutionContext.getJobDetail().getJobDataMap().get("consumerHandle");
+        synchronized (consumerHandle.getBuffer()) {
+            synchronized (consumerHandle.getConsumer()) {
 
-        synchronized (consumerHandle.getConsumer()) {
-            System.out.println(consumerHandle.getConsumer().toString());
-            consumerHandle.getConsumer().commitSync();
-            System.out.println("================ " + System.currentTimeMillis() + "size" + consumerHandle.getBuffer().size());
-            consumerHandle.getBuffer().clear();
+                System.out.println(Thread.currentThread().getState() + "topic");
+
+
+                System.out.println(consumerHandle.getConsumer().toString());
+                consumerHandle.getConsumer().commitSync();
+                System.out.println("================ " + System.currentTimeMillis() + "size" + consumerHandle.getBuffer().size());
+                for (ConsumerRecord<String, String> record : consumerHandle.getBuffer()) {
+                    LOG.error("Thread=" + Thread.currentThread().getName() +
+                            " value=" + record.value() + " partition=" + record.partition() +
+                            " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + "from topic");
+                }
+                consumerHandle.getBuffer().clear();
+            }
         }
     }
 }
