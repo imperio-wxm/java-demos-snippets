@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.locks.ReentrantLock;
 
-import static java.lang.Thread.sleep;
 
 /**
  * Created by wxmimperio on 2016/12/5.
@@ -48,44 +47,60 @@ public class ConsumerHandle implements Runnable {
         return props;
     }
 
+    synchronized public void addBuffer(ConsumerRecord<String, String> record) {
+        this.buffer.add(record);
+    }
+
+    synchronized public void clearBufferOver() {
+        if (this.buffer.size() >= 3000) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        this.buffer.clear();
+        notifyAll();
+    }
+
+    synchronized public void clearBufferLower() {
+        if (this.buffer.size() < 3000) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        this.buffer.clear();
+        notifyAll();
+    }
+
     @Override
     public void run() {
         while (true) {
             ConsumerRecords<String, String> records;
+
             synchronized (this.consumer) {
                 records = consumer.poll(100);
             }
-            synchronized (this.buffer) {
 
-                //System.out.println(Thread.currentThread().getState() + "consumer");
+            System.out.println(Thread.currentThread().getState() + "consumer");
 
-                for (ConsumerRecord<String, String> record : records) {
-                    buffer.add(record);
+            //System.out.println(Thread.currentThread().getState() + "consumer");
 
-                    synchronized (consumer) {
-                        if (buffer.size() % minBatchSize == 0) {
-                            for (ConsumerRecord<String, String> recordss : buffer) {
-                                LOG.error("Thread=" + Thread.currentThread().getName() +
-                                        " value=" + recordss.value() + " partition=" + recordss.partition() +
-                                        " topic" + recordss.topic() + " offset" + recordss.offset() + " time=" + recordss.timestamp() + "from consumer");
-                            }
-                            consumer.commitSync(); //批量完成写入后，手工sync offset
-                            buffer.clear();
-                            System.out.println("commit!!!!!!");
-                        }
-                /*try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
+            for (ConsumerRecord<String, String> record : records) {
+                addBuffer(record);
+                if (buffer.size() % minBatchSize == 0) {
+                    synchronized (this.consumer) {
+                        this.consumer.commitSync();
                     }
-
-               /* System.out.println(System.currentTimeMillis());
-
-                System.out.println("Thread=" + Thread.currentThread().getName() +
-                        " value=" + record.value() + " partition=" + record.partition() +
-                        " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp());*/
+                    this.buffer.clear();
+                    System.out.println("commit!!!!!!");
                 }
+
+                LOG.error("Thread=" + Thread.currentThread().getName() +
+                        " value=" + record.value() + " partition=" + record.partition() +
+                        " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + "from consumer");
             }
         }
     }

@@ -39,7 +39,7 @@ public class KafkaNewConsumer {
                     "get_topic_job" + consumerHandle.toString(),
                     "get_topic_trigger" + consumerHandle.toString(),
                     QuartzNewTopic.class,
-                    "1 * * * * ?",
+                    "*/1 * * * * ?",
                     job1Map
             );
         }

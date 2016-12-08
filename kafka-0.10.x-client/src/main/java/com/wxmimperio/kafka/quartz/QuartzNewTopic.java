@@ -22,20 +22,14 @@ public class QuartzNewTopic implements Job {
         JobKey jobKey = jobExecutionContext.getJobDetail().getKey();
 
         final ConsumerHandle consumerHandle = (ConsumerHandle) jobExecutionContext.getJobDetail().getJobDataMap().get("consumerHandle");
-        synchronized (consumerHandle.getBuffer()) {
+
+        System.out.println(Thread.currentThread().getState() + "topic");
+
+        System.out.println("================ " + System.currentTimeMillis() + "size" + consumerHandle.getBuffer().size());
+
+        synchronized (consumerHandle) {
             synchronized (consumerHandle.getConsumer()) {
-
-                System.out.println(Thread.currentThread().getState() + "topic");
-
-
-                System.out.println(consumerHandle.getConsumer().toString());
                 consumerHandle.getConsumer().commitSync();
-                System.out.println("================ " + System.currentTimeMillis() + "size" + consumerHandle.getBuffer().size());
-                for (ConsumerRecord<String, String> record : consumerHandle.getBuffer()) {
-                    LOG.error("Thread=" + Thread.currentThread().getName() +
-                            " value=" + record.value() + " partition=" + record.partition() +
-                            " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + "from topic");
-                }
                 consumerHandle.getBuffer().clear();
             }
         }
