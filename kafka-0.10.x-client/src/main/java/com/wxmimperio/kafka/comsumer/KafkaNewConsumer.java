@@ -32,16 +32,15 @@ public class KafkaNewConsumer {
             final ConsumerHandle consumerHandle = new ConsumerHandle(topic);
             //Send Message
             executor.submit(consumerHandle);
-
-            JobDataMap job1Map = new JobDataMap();
+            /*JobDataMap job1Map = new JobDataMap();
             job1Map.put("consumerHandle", consumerHandle);
             quartzUtil.addJob(
                     "get_topic_job" + consumerHandle.toString(),
                     "get_topic_trigger" + consumerHandle.toString(),
                     QuartzNewTopic.class,
-                    "*/1 * * * * ?",
+                    "*//*1 * * * * ?",
                     job1Map
-            );
+            );*/
         }
     }
 }

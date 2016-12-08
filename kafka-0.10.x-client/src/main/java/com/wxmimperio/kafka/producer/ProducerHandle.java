@@ -37,11 +37,11 @@ public class ProducerHandle implements Runnable {
             System.out.println("Thread " + Thread.currentThread().getName() + " " + data);
             messageNo++;
 
-            try {
-                sleep(2000);
+           /* try {
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
     }
 }

@@ -30,6 +30,11 @@ public class QuartzNewTopic implements Job {
         synchronized (consumerHandle) {
             synchronized (consumerHandle.getConsumer()) {
                 consumerHandle.getConsumer().commitSync();
+                for(ConsumerRecord<String,String> record : consumerHandle.getBuffer()) {
+                    LOG.error("Thread=" + Thread.currentThread().getName() +
+                            " value=" + record.value() + " partition=" + record.partition() +
+                            " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + "from consumer");
+                }
                 consumerHandle.getBuffer().clear();
             }
         }

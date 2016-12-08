@@ -78,29 +78,31 @@ public class ConsumerHandle implements Runnable {
     @Override
     public void run() {
         while (true) {
-            ConsumerRecords<String, String> records;
-
-            synchronized (this.consumer) {
-                records = consumer.poll(100);
-            }
-
-            System.out.println(Thread.currentThread().getState() + "consumer");
+            ConsumerRecords<String, String> records = consumer.poll(100);
 
             //System.out.println(Thread.currentThread().getState() + "consumer");
 
             for (ConsumerRecord<String, String> record : records) {
                 addBuffer(record);
                 if (buffer.size() % minBatchSize == 0) {
-                    synchronized (this.consumer) {
-                        this.consumer.commitSync();
-                    }
+                    LOG.error("Thread=" + Thread.currentThread().getName() +
+                            " value=" + record.value() + " partition=" + record.partition() +
+                            " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + "from consumer");
+                    this.consumer.commitSync();
                     this.buffer.clear();
                     System.out.println("commit!!!!!!");
                 }
+            }
 
-                LOG.error("Thread=" + Thread.currentThread().getName() +
-                        " value=" + record.value() + " partition=" + record.partition() +
-                        " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + "from consumer");
+            if (buffer.size() < minBatchSize && buffer.size() != 0) {
+                for (ConsumerRecord<String, String> record : this.getBuffer()) {
+                    LOG.error("Thread=" + Thread.currentThread().getName() +
+                            " value=" + record.value() + " partition=" + record.partition() +
+                            " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + "from consumer");
+                }
+                this.consumer.commitSync();
+                this.buffer.clear();
+                System.out.println("commit!!!!!!");
             }
         }
     }
