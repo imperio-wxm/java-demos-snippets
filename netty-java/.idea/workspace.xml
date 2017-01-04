@@ -57,8 +57,8 @@
       <file leaf-file-name="EchoClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="554">
-              <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+            <state relative-caret-position="611">
+              <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1149#1524#0" expanded="true" />
@@ -890,12 +890,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1483513814539</updated>
-      <workItem from="1483513849206" duration="6327000" />
+      <workItem from="1483513849206" duration="6355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6327000" />
+    <option name="totallyTimeSpent" value="6355000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
@@ -1004,8 +1004,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="554">
-          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+        <state relative-caret-position="611">
+          <caret line="65" column="1" selection-start-line="65" selection-start-column="1" selection-end-line="65" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1149#1524#0" expanded="true" />
