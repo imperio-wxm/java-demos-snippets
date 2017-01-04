@@ -35,18 +35,10 @@ public class EchoClient implements Runnable {
             b.group(group) // 注册线程池
                     .channel(NioSocketChannel.class) // 使用NioSocketChannel来作为连接用的channel类
                     .remoteAddress(new InetSocketAddress(this.host, this.port)) // 绑定连接端口和host信息
-                    .handler(new ChannelInitializer<SocketChannel>() { // 绑定连接初始化器
-                        @Override
-                        protected void initChannel(SocketChannel ch) throws Exception {
-                            System.out.println("connected...");
-                            ch.pipeline().addLast(new EchoClientHandler(this.message));
-                        }
-                    });
+                    .handler(new Channel(this.message));
             System.out.println("created..");
-
             ChannelFuture cf = b.connect().sync(); // 异步连接服务器
             System.out.println("connected..."); // 连接完成
-
             cf.channel().closeFuture().sync(); // 异步等待关闭连接channel
             System.out.println("closed.."); // 关闭完成
         } catch (Exception e) {
@@ -63,4 +55,18 @@ public class EchoClient implements Runnable {
 /*    public static void main(String[] args) throws Exception {
         new EchoClient("127.0.0.1", 65535).start(); // 连接127.0.0.1/65535，并启动
     }*/
+}
+
+class Channel extends ChannelInitializer<SocketChannel> { // 绑定连接初始化器
+
+    private String message;
+
+    public Channel(String message) {
+        this.message = message;
+    }
+    @Override
+    protected void initChannel(SocketChannel ch) throws Exception {
+        System.out.println("connected...");
+        ch.pipeline().addLast(new EchoClientHandler(this.message));
+    }
 }

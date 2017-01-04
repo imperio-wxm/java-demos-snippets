@@ -15,7 +15,11 @@ public class MThreadClientMain {
         ExecutorService executor = Executors.newCachedThreadPool();
 
         for (int i = 0; i < 10; i++) {
-            executor.submit(new EchoClient("127.0.0.1", 65535));
+            executor.submit(new EchoClient("127.0.0.1", 65535, "topic_" + i + "\tgroup" + i + "\t" + i));
+        }
+
+        for (int i = 0; i < 10; i++) {
+            executor.submit(new EchoClient("127.0.0.1", 65535, "topic_" + i + "\tgroup" + i + "\t" + i));
         }
     }
 }

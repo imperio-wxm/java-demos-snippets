@@ -19,6 +19,13 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
         buf.readBytes(req);
         String body = new String(req, "UTF-8");
         System.out.println(body);
+        String topicName = body.split("\t")[0];
+        String groupName = body.split("\t")[1];
+        String num = body.split("\t")[2];
+
+        if(topicName.equals("topic_2")) {
+            num += num;
+        }
         ctx.write(msg);
     }
 
