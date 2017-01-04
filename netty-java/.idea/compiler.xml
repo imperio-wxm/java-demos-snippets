@@ -22,11 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="kafka-0.10.x-client" />
+        <module name="netty-java" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
-      <module name="kafka-0.10.x-client" target="1.7" />
+      <module name="netty-java" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
