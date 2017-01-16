@@ -25,7 +25,7 @@ public class ProducerHandle implements Runnable {
     @Override
     public void run() {
         int messageNo = 0;
-        while (messageNo <= 50000) {
+        while (true) {
             Date nowTime = new Date();
             SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
 
@@ -38,7 +38,7 @@ public class ProducerHandle implements Runnable {
             messageNo++;
 
             try {
-                sleep(50);
+                sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

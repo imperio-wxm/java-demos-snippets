@@ -1,0 +1,26 @@
+2017-01-16 11:08:02  [ main:0 ] - [ WARN ]  session timeout [3000] is less than connection timeout [5000]
+2017-01-16 11:08:02  [ main:37 ] - [ INFO ]  Starting
+2017-01-16 11:08:02  [ main:53 ] - [ INFO ]  Client environment:zookeeper.version=3.4.6-1569965, built on 02/20/2014 09:09 GMT
+2017-01-16 11:08:02  [ main:53 ] - [ INFO ]  Client environment:host.name=sh-weiximing.SNDA.ROOT.CORP
+2017-01-16 11:08:02  [ main:53 ] - [ INFO ]  Client environment:java.version=1.7.0_80
+2017-01-16 11:08:02  [ main:53 ] - [ INFO ]  Client environment:java.vendor=Oracle Corporation
+2017-01-16 11:08:02  [ main:53 ] - [ INFO ]  Client environment:java.home=C:\Program Files\Java\jdk1.7.0_80\jre
+2017-01-16 11:08:02  [ main:53 ] - [ INFO ]  Client environment:java.class.path=C:\Program Files\Java\jdk1.7.0_80\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\jfxrt.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_80\jre\lib\rt.jar;D:\github目录\java-demos-segment\kafka010x-zk-directory\target\classes;D:\maven_download\org\slf4j\slf4j-log4j12\1.7.2\slf4j-log4j12-1.7.2.jar;D:\maven_download\org\slf4j\slf4j-api\1.7.2\slf4j-api-1.7.2.jar;D:\maven_download\log4j\log4j\1.2.17\log4j-1.2.17.jar;D:\maven_download\org\apache\curator\curator-recipes\2.9.1\curator-recipes-2.9.1.jar;D:\maven_download\org\apache\curator\curator-framework\2.9.1\curator-framework-2.9.1.jar;D:\maven_download\org\apache\curator\curator-client\2.9.1\curator-client-2.9.1.jar;D:\maven_download\org\apache\zookeeper\zookeeper\3.4.6\zookeeper-3.4.6.jar;D:\maven_download\jline\jline\0.9.94\jline-0.9.94.jar;D:\maven_download\io\netty\netty\3.7.0.Final\netty-3.7.0.Final.jar;D:\maven_download\com\google\guava\guava\16.0.1\guava-16.0.1.jar;D:\maven_download\org\apache\commons\commons-pool2\2.4.2\commons-pool2-2.4.2.jar;E:\Software\Idea\IntelliJ IDEA 2016.3.2\lib\idea_rt.jar
+2017-01-16 11:08:02  [ main:54 ] - [ INFO ]  Client environment:java.library.path=C:\Program Files\Java\jdk1.7.0_80\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\TortoiseGit\bin;E:\Software\apache-maven-3.3.9\bin;E:\Software\UE;E:\Software\NodeJS\;C:\Program Files\Java\jdk1.7.0_80\bin;C:\Program Files\Java\jdk1.7.0_80\jre\bin;E:\Software\NodeJS\node_global;E:\Software\Bandizip\Bandizip\7z;C:\Users\weiximing.imperio\AppData\Roaming\npm;.
+2017-01-16 11:08:02  [ main:54 ] - [ INFO ]  Client environment:java.io.tmpdir=C:\Users\WEIXIM~1.IMP\AppData\Local\Temp\
+2017-01-16 11:08:02  [ main:54 ] - [ INFO ]  Client environment:java.compiler=<NA>
+2017-01-16 11:08:02  [ main:54 ] - [ INFO ]  Client environment:os.name=Windows 7
+2017-01-16 11:08:02  [ main:54 ] - [ INFO ]  Client environment:os.arch=amd64
+2017-01-16 11:08:02  [ main:54 ] - [ INFO ]  Client environment:os.version=6.1
+2017-01-16 11:08:02  [ main:55 ] - [ INFO ]  Client environment:user.name=weiximing.imperio
+2017-01-16 11:08:02  [ main:55 ] - [ INFO ]  Client environment:user.home=C:\Users\weiximing.imperio
+2017-01-16 11:08:02  [ main:56 ] - [ INFO ]  Client environment:user.dir=D:\github目录\java-demos-segment\kafka010x-zk-directory
+2017-01-16 11:08:02  [ main:57 ] - [ INFO ]  Initiating client connection, connectString=192.168.18.74:2181 sessionTimeout=3000 watcher=org.apache.curator.ConnectionState@9cf0f2e
+2017-01-16 11:08:02  [ main-SendThread(192.168.18.74:2181):84 ] - [ INFO ]  Opening socket connection to server 192.168.18.74/192.168.18.74:2181. Will not attempt to authenticate using SASL (unknown error)
+2017-01-16 11:08:02  [ main-SendThread(192.168.18.74:2181):86 ] - [ INFO ]  Socket connection established to 192.168.18.74/192.168.18.74:2181, initiating session
+2017-01-16 11:08:02  [ main:88 ] - [ INFO ]  当前有1个活跃Curator连接在连接池中.
+2017-01-16 11:08:02  [ main:89 ] - [ INFO ]  当前有1个Curator连接在连接池中.
+2017-01-16 11:08:02  [ main:89 ] - [ INFO ]  当前有0个等待Curator连接在连接池中.
+2017-01-16 11:08:02  [ main:89 ] - [ INFO ]  当前有0个销毁Curator连接在连接池中.
+2017-01-16 11:08:02  [ main-SendThread(192.168.18.74:2181):266 ] - [ INFO ]  Session establishment complete on server 192.168.18.74/192.168.18.74:2181, sessionid = 0x15992398ee4000b, negotiated timeout = 4000
+2017-01-16 11:08:02  [ main-EventThread:271 ] - [ INFO ]  State change: CONNECTED

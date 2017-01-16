@@ -23,10 +23,16 @@ public class CuratorOpts {
         //创建节点
         this.client.create()
                 .creatingParentsIfNeeded()        //对节点路径上没有的节点进行创建
-                .withMode(CreateMode.EPHEMERAL)   //临时节点
+                .withMode(CreateMode.PERSISTENT)   //临时节点
                 .withACL((ZooDefs.Ids.OPEN_ACL_UNSAFE))   //递归创建
                 .forPath(path, value.getBytes());  //节点路径，节点的值
         System.out.println(path);
+    }
+
+    public void addVNode(String path, String value) throws Exception {
+        // 创建一个临时节点
+        this.client.create().withMode(CreateMode.EPHEMERAL_SEQUENTIAL)
+                .forPath(path, value.getBytes());
     }
 
     public void readData(String path) throws Exception {
