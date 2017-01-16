@@ -20,7 +20,7 @@ public class ConsumerHandle implements Runnable {
     public ConsumerHandle(KafkaConsumer<String, String> consumer, String topic) {
         this.consumer = consumer;
         this.topic = topic;
-        this.consumer.subscribe(Collections.singletonList(topic));
+        this.consumer.subscribe(Collections.singletonList(this.topic));
     }
 
     @Override
