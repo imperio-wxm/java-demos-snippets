@@ -2,58 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38030162-4efb-4214-998f-3b2ce90a6c6d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__c3p0_c3p0_0_9_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_datastax_cassandra_cassandra_driver_core_3_0_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_2_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_19_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sdo_dw_rtc_kafka_consumer_1_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_sdo_dw_rtc_metadata_1_0_SNAPSHOT.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_4.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_configuration_commons_configuration_1_10.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_dropwizard_metrics_metrics_core_3_1_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_buffer_4_0_37_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_codec_4_0_37_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_common_4_0_37_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_handler_4_0_37_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_transport_4_0_37_Final.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_17.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_18.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_commons_commons_pool2_2_4_2.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_curator_curator_client_2_9_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_curator_curator_framework_2_9_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_curator_curator_recipes_2_9_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_1_3.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_thrift_libthrift_0_9_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_3_0.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_quartz_scheduler_quartz_2_2_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_log4j12_1_7_2.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/producer/ProducerHandle.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/producer/ProducerHandle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/SimpleConsumerAPI.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/SimpleConsumerAPI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/common/CommitOffset.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/common/CommitOffset.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/common/ParamsConst.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/common/ParamsConst.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/common/exception/OffsetCommitException.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/simpleconsumer/common/exception/OffsetCommitException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/test-classes/com/wxmimperio/kafka/AppTest.class" afterPath="$PROJECT_DIR$/target/test-classes/com/wxmimperio/kafka/AppTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-0.10.x-client.iml" afterPath="$PROJECT_DIR$/kafka-0.10.x-client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../netty-java/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/workspace.xml" />
     </list>
     <ignored path="kafka-0.10.x-client.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -101,8 +51,8 @@
       <file leaf-file-name="log4j.properties" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="532">
+              <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -968,12 +918,12 @@
       <workItem from="1480943063018" duration="8405000" />
       <workItem from="1480995775786" duration="594000" />
       <workItem from="1481250347209" duration="87000" />
-      <workItem from="1484293651047" duration="4223000" />
+      <workItem from="1484293651047" duration="4668000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13309000" />
+    <option name="totallyTimeSpent" value="13754000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
@@ -994,7 +944,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25286534" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25286534" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1423,8 +1373,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="532">
+          <caret line="28" column="56" lean-forward="true" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
           <folding />
         </state>
       </provider>
