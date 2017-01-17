@@ -22,7 +22,7 @@ public class KafkaNewConsumer {
     private static Properties createProducerConfig() {
         Properties props = new Properties();
         props.put("bootstrap.servers", "192.168.18.74:9092");
-        props.put("group.id", "group_1");
+        props.put("group.id", "group_2");
         props.put("enable.auto.commit", "false"); //关闭自动commit
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");

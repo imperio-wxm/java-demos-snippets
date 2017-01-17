@@ -8,7 +8,7 @@ import java.util.List;
  */
 public class ConsumerMain {
     public static void main(String args[]) {
-        KafkaNewConsumer producer = new KafkaNewConsumer("test_1");
-        producer.execute(3);
+        KafkaNewConsumer producer = new KafkaNewConsumer("test_2");
+        producer.execute(10);
     }
 }
