@@ -795,3 +795,1216 @@
 2017-01-16 10:07:49  [ pool-1-thread-2:21485 ] - [ INFO ]  Setting newly assigned partitions [test_1-1] for group group_1
 2017-01-16 10:07:49  [ pool-1-thread-3:21485 ] - [ INFO ]  Setting newly assigned partitions [test_1-2] for group group_1
 2017-01-16 10:07:49  [ pool-1-thread-1:21485 ] - [ INFO ]  Setting newly assigned partitions [test_1-0] for group group_1
+2017-01-16 14:08:24  [ main:0 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:08:24  [ main:70 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-1
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:08:24  [ main:185 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 14:08:24  [ main:185 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 14:08:24  [ main:240 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:08:24  [ main:242 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-2
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:08:24  [ main:248 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 14:08:24  [ main:248 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 14:08:24  [ main:255 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:08:24  [ main:256 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-3
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:08:25  [ main:295 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 14:08:25  [ main:296 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 14:08:25  [ pool-1-thread-2:496 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 14:08:25  [ pool-1-thread-1:498 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 14:08:25  [ pool-1-thread-2:498 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 14:08:25  [ pool-1-thread-3:498 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 14:08:25  [ pool-1-thread-1:499 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 14:08:25  [ pool-1-thread-2:499 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:08:25  [ pool-1-thread-1:499 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:08:25  [ pool-1-thread-3:500 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 14:08:25  [ pool-1-thread-3:501 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:08:27  [ pool-1-thread-1:14459483 ] - [ INFO ]  Revoking previously assigned partitions [test_1-0] for group group_1
+2017-01-16 14:08:27  [ pool-1-thread-1:14459622 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:08:28  [ pool-1-thread-3:14460384 ] - [ INFO ]  Revoking previously assigned partitions [test_1-2] for group group_1
+2017-01-16 14:08:28  [ pool-1-thread-2:14460388 ] - [ INFO ]  Revoking previously assigned partitions [test_1-1] for group group_1
+2017-01-16 14:08:28  [ pool-1-thread-3:14460389 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:08:28  [ pool-1-thread-2:14460402 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:08:28  [ pool-1-thread-1:3721 ] - [ INFO ]  Successfully joined group group_1 with generation 4
+2017-01-16 14:08:28  [ pool-1-thread-2:3721 ] - [ INFO ]  Successfully joined group group_1 with generation 4
+2017-01-16 14:08:28  [ pool-1-thread-2:3722 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 14:08:28  [ pool-1-thread-1:3723 ] - [ INFO ]  Setting newly assigned partitions [test_1-0] for group group_1
+2017-01-16 14:08:28  [ pool-1-thread-3:3723 ] - [ INFO ]  Successfully joined group group_1 with generation 4
+2017-01-16 14:08:28  [ pool-1-thread-3:3724 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 14:08:28  [ pool-1-thread-1:14460657 ] - [ INFO ]  Successfully joined group group_1 with generation 4
+2017-01-16 14:08:28  [ pool-1-thread-3:14460657 ] - [ INFO ]  Successfully joined group group_1 with generation 4
+2017-01-16 14:08:28  [ pool-1-thread-2:14460657 ] - [ INFO ]  Successfully joined group group_1 with generation 4
+2017-01-16 14:08:28  [ pool-1-thread-3:14460661 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 14:08:28  [ pool-1-thread-2:14460662 ] - [ INFO ]  Setting newly assigned partitions [test_1-2] for group group_1
+2017-01-16 14:08:28  [ pool-1-thread-1:14460686 ] - [ INFO ]  Setting newly assigned partitions [test_1-1] for group group_1
+2017-01-16 14:08:37  [ main:0 ] - [ INFO ]  ProducerConfig values: 
+	acks = all
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [192.168.18.74:9092]
+	buffer.memory = 33554432
+	client.id = 
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 1
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+2017-01-16 14:08:37  [ main:74 ] - [ INFO ]  ProducerConfig values: 
+	acks = all
+	batch.size = 16384
+	block.on.buffer.full = false
+	bootstrap.servers = [192.168.18.74:9092]
+	buffer.memory = 33554432
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	interceptor.classes = null
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 1
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.fetch.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 0
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	timeout.ms = 30000
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+2017-01-16 14:08:37  [ main:126 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 14:08:37  [ main:127 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 14:12:31  [ pool-1-thread-2:14703864 ] - [ INFO ]  Revoking previously assigned partitions [test_1-2] for group group_1
+2017-01-16 14:12:31  [ pool-1-thread-2:14703865 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:12:31  [ pool-1-thread-1:14703890 ] - [ INFO ]  Revoking previously assigned partitions [test_1-1] for group group_1
+2017-01-16 14:12:31  [ pool-1-thread-1:14703890 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:12:31  [ pool-1-thread-3:14703942 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 14:12:31  [ pool-1-thread-3:14703942 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:12:31  [ pool-1-thread-1:14703947 ] - [ INFO ]  Successfully joined group group_1 with generation 5
+2017-01-16 14:12:31  [ pool-1-thread-2:14703947 ] - [ INFO ]  Successfully joined group group_1 with generation 5
+2017-01-16 14:12:31  [ pool-1-thread-3:14703947 ] - [ INFO ]  Successfully joined group group_1 with generation 5
+2017-01-16 14:12:31  [ pool-1-thread-2:14703949 ] - [ INFO ]  Setting newly assigned partitions [test_1-1] for group group_1
+2017-01-16 14:12:31  [ pool-1-thread-1:14703948 ] - [ INFO ]  Setting newly assigned partitions [test_1-0] for group group_1
+2017-01-16 14:12:31  [ pool-1-thread-3:14703950 ] - [ INFO ]  Setting newly assigned partitions [test_1-2] for group group_1
+2017-01-16 14:34:33  [ main:0 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:34:33  [ main:59 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-1
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:34:33  [ main:136 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 14:34:33  [ main:136 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 14:34:33  [ main:140 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:34:33  [ main:141 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-2
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:34:33  [ main:147 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 14:34:33  [ main:148 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 14:34:33  [ main:149 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:34:33  [ main:151 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-3
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 14:34:33  [ main:156 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 14:34:33  [ main:157 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 14:34:33  [ pool-1-thread-1:306 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 14:34:33  [ pool-1-thread-2:307 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 14:34:33  [ pool-1-thread-3:307 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 14:34:33  [ pool-1-thread-1:309 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-1:310 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:34:33  [ pool-1-thread-2:310 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-3:310 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-3:311 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:34:33  [ pool-1-thread-2:311 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:34:33  [ pool-1-thread-2:16025892 ] - [ INFO ]  Revoking previously assigned partitions [test_1-1] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-2:16025893 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:34:33  [ pool-1-thread-3:16025964 ] - [ INFO ]  Revoking previously assigned partitions [test_1-2] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-1:16025965 ] - [ INFO ]  Revoking previously assigned partitions [test_1-0] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-3:16025965 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:34:33  [ pool-1-thread-1:16025965 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 14:34:33  [ pool-1-thread-1:16025970 ] - [ INFO ]  Successfully joined group group_1 with generation 6
+2017-01-16 14:34:33  [ pool-1-thread-1:16025971 ] - [ INFO ]  Setting newly assigned partitions [test_1-1] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-3:479 ] - [ INFO ]  Successfully joined group group_1 with generation 6
+2017-01-16 14:34:33  [ pool-1-thread-3:480 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-1:482 ] - [ INFO ]  Successfully joined group group_1 with generation 6
+2017-01-16 14:34:33  [ pool-1-thread-2:16025975 ] - [ INFO ]  Successfully joined group group_1 with generation 6
+2017-01-16 14:34:33  [ pool-1-thread-2:16025975 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-2:482 ] - [ INFO ]  Successfully joined group group_1 with generation 6
+2017-01-16 14:34:33  [ pool-1-thread-3:16025976 ] - [ INFO ]  Successfully joined group group_1 with generation 6
+2017-01-16 14:34:33  [ pool-1-thread-2:484 ] - [ INFO ]  Setting newly assigned partitions [test_1-2] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-3:16025977 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 14:34:33  [ pool-1-thread-1:484 ] - [ INFO ]  Setting newly assigned partitions [test_1-0] for group group_1
+2017-01-16 16:40:58  [ pool-1-thread-3:23610245 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 16:40:58  [ pool-1-thread-3:23610402 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 16:40:59  [ pool-1-thread-2:23611543 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 16:40:59  [ pool-1-thread-2:23611548 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 16:40:59  [ pool-1-thread-1:23612002 ] - [ INFO ]  Revoking previously assigned partitions [test_1-1] for group group_1
+2017-01-16 16:40:59  [ pool-1-thread-1:23612016 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 16:40:59  [ pool-1-thread-3:23612128 ] - [ INFO ]  Successfully joined group group_1 with generation 7
+2017-01-16 16:40:59  [ pool-1-thread-2:23612128 ] - [ INFO ]  Successfully joined group group_1 with generation 7
+2017-01-16 16:40:59  [ pool-1-thread-1:23612128 ] - [ INFO ]  Successfully joined group group_1 with generation 7
+2017-01-16 16:40:59  [ pool-1-thread-2:23612172 ] - [ INFO ]  Setting newly assigned partitions [test_1-1] for group group_1
+2017-01-16 16:40:59  [ pool-1-thread-3:23612165 ] - [ INFO ]  Setting newly assigned partitions [test_1-2] for group group_1
+2017-01-16 16:40:59  [ pool-1-thread-1:23612172 ] - [ INFO ]  Setting newly assigned partitions [test_1-0] for group group_1
+2017-01-16 17:15:37  [ main:0 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 17:15:37  [ main:57 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-1
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 17:15:38  [ main:153 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 17:15:38  [ main:154 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 17:15:38  [ main:172 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 17:15:38  [ main:173 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-2
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 17:15:38  [ main:186 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 17:15:38  [ main:186 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 17:15:38  [ main:188 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = 
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 17:15:38  [ main:189 ] - [ INFO ]  ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [192.168.18.74:9092]
+	check.crcs = true
+	client.id = consumer-3
+	connections.max.idle.ms = 540000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = group_1
+	heartbeat.interval.ms = 3000
+	interceptor.classes = null
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 305000
+	retry.backoff.ms = 100
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 30000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2017-01-16 17:15:38  [ main:194 ] - [ INFO ]  Kafka version : 0.10.1.0
+2017-01-16 17:15:38  [ main:194 ] - [ INFO ]  Kafka commitId : 3402a74efb23d1d4
+2017-01-16 17:15:38  [ pool-1-thread-2:321 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 17:15:38  [ pool-1-thread-3:321 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 17:15:38  [ pool-1-thread-1:321 ] - [ INFO ]  Discovered coordinator 192.168.18.74:9092 (id: 2147483647 rack: null) for group group_1.
+2017-01-16 17:15:38  [ pool-1-thread-3:323 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 17:15:38  [ pool-1-thread-2:323 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 17:15:38  [ pool-1-thread-1:323 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 17:15:38  [ pool-1-thread-2:323 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:15:38  [ pool-1-thread-3:323 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:15:38  [ pool-1-thread-1:324 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:15:38  [ pool-1-thread-1:25690630 ] - [ INFO ]  Revoking previously assigned partitions [test_1-0] for group group_1
+2017-01-16 17:15:38  [ pool-1-thread-1:25690630 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:15:38  [ pool-1-thread-2:25690633 ] - [ INFO ]  Revoking previously assigned partitions [test_1-1] for group group_1
+2017-01-16 17:15:38  [ pool-1-thread-2:25690633 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:15:40  [ pool-1-thread-3:25692739 ] - [ INFO ]  Revoking previously assigned partitions [test_1-2] for group group_1
+2017-01-16 17:15:40  [ pool-1-thread-3:25692740 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:15:40  [ pool-1-thread-1:25692745 ] - [ INFO ]  Successfully joined group group_1 with generation 8
+2017-01-16 17:15:40  [ pool-1-thread-1:25692746 ] - [ INFO ]  Setting newly assigned partitions [test_1-1] for group group_1
+2017-01-16 17:15:40  [ pool-1-thread-3:25692747 ] - [ INFO ]  Successfully joined group group_1 with generation 8
+2017-01-16 17:15:40  [ pool-1-thread-3:2634 ] - [ INFO ]  Successfully joined group group_1 with generation 8
+2017-01-16 17:15:40  [ pool-1-thread-3:25692748 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 17:15:40  [ pool-1-thread-2:25692745 ] - [ INFO ]  Successfully joined group group_1 with generation 8
+2017-01-16 17:15:40  [ pool-1-thread-2:2634 ] - [ INFO ]  Successfully joined group group_1 with generation 8
+2017-01-16 17:15:40  [ pool-1-thread-3:2636 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 17:15:40  [ pool-1-thread-2:2637 ] - [ INFO ]  Setting newly assigned partitions [test_1-2] for group group_1
+2017-01-16 17:15:40  [ pool-1-thread-2:25692750 ] - [ INFO ]  Setting newly assigned partitions [] for group group_1
+2017-01-16 17:15:40  [ pool-1-thread-1:2638 ] - [ INFO ]  Successfully joined group group_1 with generation 8
+2017-01-16 17:15:40  [ pool-1-thread-1:2639 ] - [ INFO ]  Setting newly assigned partitions [test_1-0] for group group_1
+2017-01-16 17:17:49  [ pool-1-thread-1:25822007 ] - [ INFO ]  Revoking previously assigned partitions [test_1-1] for group group_1
+2017-01-16 17:17:49  [ pool-1-thread-1:25822008 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:17:49  [ pool-1-thread-2:25822038 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 17:17:49  [ pool-1-thread-3:25822038 ] - [ INFO ]  Revoking previously assigned partitions [] for group group_1
+2017-01-16 17:17:49  [ pool-1-thread-2:25822039 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:17:49  [ pool-1-thread-3:25822039 ] - [ INFO ]  (Re-)joining group group_1
+2017-01-16 17:17:49  [ pool-1-thread-1:25822181 ] - [ INFO ]  Successfully joined group group_1 with generation 9
+2017-01-16 17:17:49  [ pool-1-thread-3:25822181 ] - [ INFO ]  Successfully joined group group_1 with generation 9
+2017-01-16 17:17:49  [ pool-1-thread-2:25822181 ] - [ INFO ]  Successfully joined group group_1 with generation 9
+2017-01-16 17:17:49  [ pool-1-thread-3:25822183 ] - [ INFO ]  Setting newly assigned partitions [test_1-2] for group group_1
+2017-01-16 17:17:49  [ pool-1-thread-1:25822183 ] - [ INFO ]  Setting newly assigned partitions [test_1-0] for group group_1
+2017-01-16 17:17:49  [ pool-1-thread-2:25822184 ] - [ INFO ]  Setting newly assigned partitions [test_1-1] for group group_1
