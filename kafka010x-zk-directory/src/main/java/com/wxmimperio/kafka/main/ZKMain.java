@@ -149,20 +149,23 @@ public class ZKMain {
             }
         }*/
 
-       /* for (GroupOverview go : JavaConversions.asJavaCollection(adminClient.listAllGroupsFlattened())) {
+        for (GroupOverview go : JavaConversions.asJavaCollection(adminClient.listAllGroupsFlattened())) {
             System.out.println("group_id = " + go.groupId());
+
+            System.out.println("========" + Math.abs(go.groupId().hashCode()) % 50);
 
             List<scala.collection.immutable.List<AdminClient.ConsumerSummary>> consumerGroup = JavaConversions.seqAsJavaList(adminClient.describeConsumerGroup(go.groupId()).toList());
             for (scala.collection.immutable.List<AdminClient.ConsumerSummary> consumerSummaryList : consumerGroup) {
                 System.out.println(consumerSummaryList.size());
                 for (AdminClient.ConsumerSummary consumerSummary : JavaConversions.seqAsJavaList(consumerSummaryList.toList())) {
                     System.out.println(consumerSummary.memberId());
-                    for (TopicPartition topicPartition : JavaConversions.seqAsJavaList(consumerSummary.assignment().toList())) {
+                    /*for (TopicPartition topicPartition : JavaConversions.seqAsJavaList(consumerSummary.assignment().toList())) {
                         System.out.println(topicPartition);
-                    }
+                    }*/
                 }
             }
-        }*/
+        }
+
 
         List<String> brokers = new ArrayList<>();
         brokers.add("192.168.18.74:9092");

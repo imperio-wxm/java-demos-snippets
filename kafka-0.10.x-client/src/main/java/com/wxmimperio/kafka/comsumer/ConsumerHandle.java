@@ -14,20 +14,22 @@ import java.util.*;
 public class ConsumerHandle implements Runnable {
 
     private KafkaConsumer consumer;
-    private String topic;
+    private List<String> topicList;
     private static final int minBatchSize = 10;
+    private String group;
 
-    public ConsumerHandle(KafkaConsumer<String, String> consumer, String topic) {
+    public ConsumerHandle(KafkaConsumer<String, String> consumer, List<String> topicList, String group) {
         this.consumer = consumer;
-        this.topic = topic;
-        this.consumer.subscribe(Collections.singletonList(this.topic));
+        this.topicList = topicList;
+        this.consumer.subscribe(this.topicList);
+        this.group = group;
 
        /* TopicPartition topicPartition = new TopicPartition(this.topic, 1);
 
         long offset = this.consumer.position(topicPartition);
 
         System.out.println("=============" + offset);*/
-        List<String> partition = this.consumer.partitionsFor(this.topic);
+        List<String> partition = this.consumer.partitionsFor(this.topicList.get(0));
         System.out.println(partition);
     }
 
@@ -46,26 +48,27 @@ public class ConsumerHandle implements Runnable {
         Map<TopicPartition, Long> endOffsets = this.consumer.endOffsets(collection);
         System.out.println(endOffsets);*/
 
-        TopicPartition topicPartition = new TopicPartition(this.topic, 0);
+        List<ConsumerRecord<String, String>> buffer = new ArrayList<ConsumerRecord<String, String>>();
+        /*TopicPartition topicPartition = new TopicPartition(this.topic, 0);
 
         OffsetAndMetadata offsetAndMetadata = this.consumer.committed(topicPartition);
-        System.out.println(offsetAndMetadata.offset());
-        System.out.println(offsetAndMetadata.metadata());
+        System.out.println(offsetAndMetadata.offset());*/
 
-      /*  while (true) {
+
+        while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
             for (ConsumerRecord<String, String> record : records) {
                 buffer.add(record);
                 System.out.println("Thread=" + Thread.currentThread().getName() +
                         " value=" + record.value() + " partition=" + record.partition() +
-                        " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp());
+                        " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + " group=" + this.group);
             }
-           *//* if (buffer.size() % minBatchSize == 0) {
+            /*if (buffer.size() % minBatchSize == 0) {
                 consumer.commitSync(); //批量完成写入后，手工sync offset
                 buffer.clear();
             }
             consumer.commitSync(); //批量完成写入后，手工sync offset
-            buffer.clear();*//*
-        }*/
+            buffer.clear();*/
+        }
     }
 }

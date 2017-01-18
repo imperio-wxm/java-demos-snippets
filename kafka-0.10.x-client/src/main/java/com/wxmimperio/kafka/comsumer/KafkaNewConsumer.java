@@ -12,17 +12,19 @@ import java.util.concurrent.Executors;
  */
 public class KafkaNewConsumer {
 
-    private String topic;
+    private List<String> topicList;
+    private String group;
 
-    public KafkaNewConsumer(String topic) {
-        this.topic = topic;
+    public KafkaNewConsumer(List<String> topicList, String group) {
+        this.topicList = topicList;
+        this.group = group;
     }
 
     //Init conf
-    private static Properties createProducerConfig() {
+    private static Properties createProducerConfig(String group) {
         Properties props = new Properties();
         props.put("bootstrap.servers", "192.168.18.74:9092");
-        props.put("group.id", "group_1");
+        props.put("group.id", group);
         props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
@@ -38,9 +40,13 @@ public class KafkaNewConsumer {
 
         //KafkaNewProducer Message
         for (int i = 0; i < numThread; i++) {
-            KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(createProducerConfig());
+            KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(createProducerConfig(this.group));
             //Send Message
-            executor.submit(new ConsumerHandle(consumer, topic));
+            executor.submit(new ConsumerHandle(consumer, this.topicList, this.group));
         }
     }
 }
+
+/*
+kafka-simple-consumer-shell.sh --topic __consumer_offsets --partition 49 --broker-list 192.168.18.74:9092 --max-messages 1 --formatter "kafka.coordinator.GroupMetadataManager\$OffsetsMessageFormatter"
+*/

@@ -1,10 +1,6 @@
-2017-01-17 16:46:58  [ pool-1-thread-1:307 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:58  [ pool-1-thread-2:405 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:58  [ pool-1-thread-3:518 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:58  [ pool-1-thread-4:643 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:58  [ pool-1-thread-5:761 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:58  [ pool-1-thread-6:867 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:58  [ pool-1-thread-7:961 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:58  [ pool-1-thread-8:1071 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:59  [ pool-1-thread-9:1189 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
-2017-01-17 16:46:59  [ pool-1-thread-10:1300 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
+2017-01-18 15:26:33  [ pool-1-thread-1:332 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
+2017-01-18 15:26:33  [ pool-1-thread-1:456 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
+2017-01-18 15:26:33  [ pool-1-thread-1:581 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
+2017-01-18 15:26:33  [ pool-2-thread-1:706 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
+2017-01-18 15:26:33  [ pool-2-thread-1:831 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
+2017-01-18 15:26:34  [ pool-2-thread-1:940 ] - [ ERROR ]  Attempt to join group  failed due to fatal error: The configured groupId is invalid
