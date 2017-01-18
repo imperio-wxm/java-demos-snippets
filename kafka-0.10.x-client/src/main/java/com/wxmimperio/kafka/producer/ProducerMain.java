@@ -5,7 +5,7 @@ package com.wxmimperio.kafka.producer;
  */
 public class ProducerMain {
     public static void main(String args[]) {
-        KafkaNewProducer producer = new KafkaNewProducer("test_2");
+        KafkaNewProducer producer = new KafkaNewProducer("test_1");
         producer.execute(3);
     }
 }

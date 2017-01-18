@@ -22,8 +22,9 @@ public class KafkaNewConsumer {
     private static Properties createProducerConfig() {
         Properties props = new Properties();
         props.put("bootstrap.servers", "192.168.18.74:9092");
-        props.put("group.id", "group_2");
-        props.put("enable.auto.commit", "false"); //关闭自动commit
+        props.put("group.id", "group_1");
+        props.put("enable.auto.commit", "false");
+        props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
@@ -33,7 +34,7 @@ public class KafkaNewConsumer {
 
     public void execute(int numThread) {
         //ThreadPool
-        ExecutorService executor = Executors.newFixedThreadPool(20);
+        ExecutorService executor = Executors.newSingleThreadExecutor();
 
         //KafkaNewProducer Message
         for (int i = 0; i < numThread; i++) {

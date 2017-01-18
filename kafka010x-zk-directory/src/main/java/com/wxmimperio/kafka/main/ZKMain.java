@@ -149,7 +149,7 @@ public class ZKMain {
             }
         }*/
 
-        for (GroupOverview go : JavaConversions.asJavaCollection(adminClient.listAllGroupsFlattened())) {
+       /* for (GroupOverview go : JavaConversions.asJavaCollection(adminClient.listAllGroupsFlattened())) {
             System.out.println("group_id = " + go.groupId());
 
             List<scala.collection.immutable.List<AdminClient.ConsumerSummary>> consumerGroup = JavaConversions.seqAsJavaList(adminClient.describeConsumerGroup(go.groupId()).toList());
@@ -162,15 +162,15 @@ public class ZKMain {
                     }
                 }
             }
-        }
+        }*/
 
         List<String> brokers = new ArrayList<>();
         brokers.add("192.168.18.74:9092");
 
-        long logSize = getLastOffset("192.168.18.74", 9092, "test_1", 2, kafka.api.OffsetRequest.LatestTime());
-        System.out.println(logSize);
+        /*long logSize = getLastOffset("192.168.18.74", 9092, "test_1", 0, kafka.api.OffsetRequest.LatestTime());
+        System.out.println(logSize);*/
 
-        long offset = fetchOffset("192.168.18.74", 9092, "group_1", "test_1", 2);
+        long offset = fetchOffset("192.168.18.74", 9092, "group_1", "test_2", 0);
 
         System.out.println(offset);
 
@@ -178,6 +178,9 @@ public class ZKMain {
     }
 
     public static long getLastOffset(String leaderHost, int port, String topic, int partitionId, long time) {
+
+        System.out.println(kafka.api.OffsetRequest.CurrentVersion());
+
         SimpleConsumer consumer =
                 new SimpleConsumer(leaderHost, port, 100 * 1000, 64 * 1024, "findLastOffset" + topic + partitionId);
 
@@ -219,7 +222,7 @@ public class ZKMain {
         SimpleConsumer consumer =
                 new SimpleConsumer(leaderHost, port, 100 * 1000, 64 * 1024, "fetchOffset" + topic + partitionId);
 
-        long retrievedOffset = 0;
+        long retrievedOffset;
         partitions.add(partition);
         //CurrentVersion为1，则metadata从kafka获取，为0表示从zookeeper获取
         OffsetFetchRequest fetchRequest = new OffsetFetchRequest(group, partitions, (short) 1, 0, "getOffsetClient");
