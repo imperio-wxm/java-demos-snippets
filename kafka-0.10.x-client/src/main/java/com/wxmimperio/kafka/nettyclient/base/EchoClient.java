@@ -23,23 +23,21 @@ import java.util.Map;
 public class EchoClient {
     private final String host;
     private final int port;
-    private Map<String,Long> topicPartitionCount;
 
-    public EchoClient(String host, int port, Map<String,Long> topicPartitionCount) {
+    public EchoClient(String host, int port) {
         super();
         this.host = host;
         this.port = port;
-        this.topicPartitionCount = topicPartitionCount;
     }
 
-    public boolean send() {
+    public boolean send(Map<String,Long> topicPartitionCount) {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();
             b.group(group) // 注册线程池
                     .channel(NioSocketChannel.class) // 使用NioSocketChannel来作为连接用的channel类
                     .remoteAddress(new InetSocketAddress(this.host, this.port)) // 绑定连接端口和host信息
-                    .handler(new Channel(this.topicPartitionCount));
+                    .handler(new Channel(topicPartitionCount));
             System.out.println("created..");
             ChannelFuture cf = b.connect().sync(); // 异步连接服务器
             System.out.println("connected..."); // 连接完成

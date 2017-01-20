@@ -1,5 +1,6 @@
 package com.wxmimperio.kafka.comsumer;
 
+import com.wxmimperio.kafka.nettyclient.base.EchoClient;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.util.List;
@@ -41,8 +42,9 @@ public class KafkaNewConsumer {
         //KafkaNewProducer Message
         for (int i = 0; i < numThread; i++) {
             KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(createProducerConfig(this.group));
+            EchoClient echoClient = new EchoClient("127.0.0.1", 65535);
             //Send Message
-            executor.submit(new ConsumerHandle(consumer, this.topicList, this.group));
+            executor.submit(new ConsumerHandle(consumer, this.topicList, this.group,echoClient));
         }
     }
 }

@@ -19,17 +19,19 @@ public class ConsumerHandle implements Runnable {
     private List<String> topicList;
     private static final int minBatchSize = 10;
     private String group;
+    private EchoClient echoClient;
 
 
     private Long countNum = 0L;
 
     private Map<String, Long> topicCountNum = new ConcurrentHashMap<>();
 
-    public ConsumerHandle(KafkaConsumer<String, String> consumer, List<String> topicList, String group) {
+    public ConsumerHandle(KafkaConsumer<String, String> consumer, List<String> topicList, String group, EchoClient echoClient) {
         this.consumer = consumer;
         this.topicList = topicList;
         this.consumer.subscribe(this.topicList);
         this.group = group;
+        this.echoClient = echoClient;
 
        /* TopicPartition topicPartition = new TopicPartition(this.topic, 1);
 
@@ -70,7 +72,7 @@ public class ConsumerHandle implements Runnable {
                 List<ConsumerRecord<String, String>> topicPartitionRecords = records.records(new TopicPartition(topicPartition.topic(), topicPartition.partition()));
 
                 //System.out.println("topic = " + topicPartition.topic() + " partition = " + topicPartition.partition() + " size = " + topicPartitionRecords.size());
-                String key = this.group + "-" + topicPartition.topic() + "-" + topicPartition.partition();
+                String key = "cassandra-" + this.group + "-" + topicPartition.topic() + "-" + topicPartition.partition();
                 long oldCount = (topicCountNum.get(key) == null) ? 0L : topicCountNum.get(key);
                 topicCountNum.put(key, oldCount + topicPartitionRecords.size());
 
@@ -104,8 +106,7 @@ public class ConsumerHandle implements Runnable {
             Calendar nowCal = new GregorianCalendar();
             int nowSecond = nowCal.get(Calendar.SECOND);
             if (nowSecond % 10 == 0) {
-                EchoClient echoClient = new EchoClient("127.0.0.1", 65535, topicCountNum);
-                if (echoClient.send()) {
+                if (echoClient.send(topicCountNum)) {
                     countNum = 0L;
                     System.out.println(topicCountNum);
                     topicCountNum.clear();
