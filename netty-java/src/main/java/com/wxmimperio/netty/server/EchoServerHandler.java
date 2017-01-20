@@ -1,6 +1,6 @@
 package com.wxmimperio.netty.server;
 
-import com.wxmimperio.netty.pojo.TopicCount;
+import com.wxmimperio.kafka.pojo.TopicCount;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;

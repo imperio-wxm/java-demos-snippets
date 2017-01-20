@@ -2,54 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77c56cee-ff6a-4762-8296-0a388ab003b5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/TopicCount.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/target/classes/com/wxmimperio/kafka/main/JavaCmdMain.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/target/classes/com/wxmimperio/kafka/main/NewConsumerMain.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/target/classes/com/wxmimperio/kafka/main/SimpleConsumerMain.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/target/classes/com/wxmimperio/kafka/model/NewBrokerInfo.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/target/classes/com/wxmimperio/kafka/utils/ProcessBuilderUtils$ErrorIOThreadHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/target/classes/com/wxmimperio/kafka/utils/ProcessBuilderUtils$InputIOThreadHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/target/classes/com/wxmimperio/kafka/utils/ProcessBuilderUtils.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/pojo/TopicCount.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log_2017-01-17" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/TopicCount.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__com_101tec_zkclient_0_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__com_yammer_metrics_metrics_core_2_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__net_jpountz_lz4_lz4_1_3_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__net_sf_jopt_simple_jopt_simple_4_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__org_apache_kafka_kafka_2_10_0_10_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__org_apache_kafka_kafka_clients_0_10_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__org_apache_zookeeper_zookeeper_3_4_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__org_scala_lang_scala_library_2_10_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/libraries/Maven__org_xerial_snappy_snappy_java_1_1_2_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/logs/info.log_2017-01-16" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/logs/info.log_2017-01-17" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/pojo/TopicCount.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../websocket-java/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../websocket-java/.idea/dictionaries/weiximing_imperio.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../websocket-java/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientHander.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/MThread/MThreadClientHander.class" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/pojo/TopicCount.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/pojo/TopicCount.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/libraries/Maven__io_netty_netty_all_4_1_6_Final.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log_2017-01-19" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/TopicCount.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/TopicCount.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/MThread/MThreadClientMain.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/MThread/MThreadClientMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/base/Channel.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/base/Channel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/base/EchoClient.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/base/EchoClient.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/base/EchoClientHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/client/base/EchoClientHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/server/EchoServer$1.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/server/EchoServer$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/server/EchoServer.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/server/EchoServer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/server/EchoServerHandler.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/netty/server/EchoServerHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/kafka-0.10.x-client.iml" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/kafka-0.10.x-client.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/pom.xml" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka010x-zk-directory/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServer.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java" />
@@ -78,18 +57,18 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="627">
-              <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+            <state relative-caret-position="430">
+              <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="47" selection-end-column="21" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EchoServer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EchoServer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="41" column="41" lean-forward="false" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+            <state relative-caret-position="601">
+              <caret line="54" column="61" lean-forward="true" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -100,8 +79,8 @@
       <file leaf-file-name="EchoServerHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+            <state relative-caret-position="202">
+              <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -109,15 +88,23 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="TopicCount.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="EchoClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
-              <caret line="49" column="78" lean-forward="false" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
+            <state relative-caret-position="69">
+              <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2233#2234#0" expanded="true" />
-                <element signature="e#2277#2278#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,8 +113,8 @@
       <file leaf-file-name="MThreadClientMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+            <state relative-caret-position="335">
+              <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,8 +125,8 @@
       <file leaf-file-name="EchoClientHandler.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
+            <state relative-caret-position="378">
+              <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#579#580#0" expanded="true" />
@@ -152,30 +139,9 @@
       <file leaf-file-name="TopicCount.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/pojo/TopicCount.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
-              <folding>
-                <element signature="e#680#681#0" expanded="true" />
-                <element signature="e#708#709#0" expanded="true" />
-                <element signature="e#750#751#0" expanded="true" />
-                <element signature="e#784#785#0" expanded="true" />
-                <element signature="e#816#817#0" expanded="true" />
-                <element signature="e#844#845#0" expanded="true" />
-                <element signature="e#886#887#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#953#954#0" expanded="true" />
-                <element signature="e#984#985#0" expanded="true" />
-                <element signature="e#1030#1031#0" expanded="true" />
-                <element signature="e#1070#1071#0" expanded="true" />
-                <element signature="e#1105#1106#0" expanded="true" />
-                <element signature="e#1138#1139#0" expanded="true" />
-                <element signature="e#1188#1189#0" expanded="true" />
-                <element signature="e#1232#1233#0" expanded="true" />
-                <element signature="e#1266#1267#0" expanded="true" />
-                <element signature="e#1298#1299#0" expanded="true" />
-                <element signature="e#1346#1347#0" expanded="true" />
-                <element signature="e#1388#1389#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="-190">
+              <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -216,12 +182,13 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientHander.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/pojo/TopicCount.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java" />
       </list>
     </option>
   </component>
@@ -248,10 +215,8 @@
     <option name="vmOptions" value="-DarchetypeCatalog=local" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="886" />
+    <option name="width" value="1440" />
+    <option name="height" value="870" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -260,7 +225,7 @@
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages ProjectPane="false" />
+      <hideEmptyPackages ProjectPane="true" />
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
@@ -348,6 +313,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="wxmimperio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="netty" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -378,6 +347,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="wxmimperio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="netty" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -405,6 +378,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wxmimperio" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -442,6 +419,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="wxmimperio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="netty" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -476,20 +457,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="netty" />
+              <option name="myItemId" value="wxmimperio" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
+              <option name="myItemId" value="pojo" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="base" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="EchoClient.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -509,6 +482,9 @@
     <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.wxmimperio.kafka.pojo" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\github目录\java-demos-segment\netty-java\src\main" />
     </key>
@@ -962,8 +938,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.MThreadClientMain" />
-        <item index="1" class="java.lang.String" itemvalue="Application.EchoServer" />
+        <item index="0" class="java.lang.String" itemvalue="Application.EchoServer" />
+        <item index="1" class="java.lang.String" itemvalue="Application.MThreadClientMain" />
         <item index="2" class="java.lang.String" itemvalue="Application.EchoClient" />
       </list>
     </recent_temporary>
@@ -1003,32 +979,33 @@
       <workItem from="1483513849206" duration="11330000" />
       <workItem from="1484815126274" duration="30000" />
       <workItem from="1484816636417" duration="5849000" />
-      <workItem from="1484877403103" duration="127000" />
+      <workItem from="1484877403103" duration="7932000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17336000" />
+    <option name="totallyTimeSpent" value="25141000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="886" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1440" height="870" extended-state="0" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6366048" sideWeight="0.5028653" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6366048" sideWeight="0.49713466" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6350068" sideWeight="0.49713466" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2256447" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22826087" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1040,7 +1017,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1102,8 +1078,6 @@
           <caret line="49" column="78" lean-forward="false" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2233#2234#0" expanded="true" />
-            <element signature="e#2277#2278#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1134,28 +1108,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
-          <folding>
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#844#845#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#984#985#0" expanded="true" />
-            <element signature="e#1030#1031#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-            <element signature="e#1188#1189#0" expanded="true" />
-            <element signature="e#1232#1233#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="e#1298#1299#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,8 +1154,6 @@
           <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2233#2234#0" expanded="true" />
-            <element signature="e#2277#2278#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1272,8 +1223,6 @@
           <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2233#2234#0" expanded="true" />
-            <element signature="e#2277#2278#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1317,14 +1266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="33" column="31" lean-forward="false" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientHander.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/jre/lib/rt.jar!/sun/nio/ch/SocketChannelImpl.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1333,51 +1274,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/pojo/TopicCount.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="71" lean-forward="false" selection-start-line="9" selection-start-column="71" selection-end-line="9" selection-end-column="71" />
-          <folding>
-            <element signature="e#680#681#0" expanded="true" />
-            <element signature="e#708#709#0" expanded="true" />
-            <element signature="e#750#751#0" expanded="true" />
-            <element signature="e#784#785#0" expanded="true" />
-            <element signature="e#816#817#0" expanded="true" />
-            <element signature="e#844#845#0" expanded="true" />
-            <element signature="e#886#887#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
-            <element signature="e#953#954#0" expanded="true" />
-            <element signature="e#984#985#0" expanded="true" />
-            <element signature="e#1030#1031#0" expanded="true" />
-            <element signature="e#1070#1071#0" expanded="true" />
-            <element signature="e#1105#1106#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-            <element signature="e#1188#1189#0" expanded="true" />
-            <element signature="e#1232#1233#0" expanded="true" />
-            <element signature="e#1266#1267#0" expanded="true" />
-            <element signature="e#1298#1299#0" expanded="true" />
-            <element signature="e#1346#1347#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="430">
+          <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="47" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="16" column="29" lean-forward="false" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-            <element signature="e#623#624#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="17" column="49" lean-forward="false" selection-start-line="17" selection-start-column="49" selection-end-line="17" selection-end-column="49" />
+        <state relative-caret-position="335">
+          <caret line="21" column="38" lean-forward="false" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1386,33 +1294,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="49" column="78" lean-forward="false" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
+        <state relative-caret-position="69">
+          <caret line="33" column="13" lean-forward="true" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2233#2234#0" expanded="true" />
-            <element signature="e#2277#2278#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/pojo/TopicCount.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="23" column="32" lean-forward="false" selection-start-line="23" selection-start-column="32" selection-end-line="23" selection-end-column="32" />
+        <state relative-caret-position="-190">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.1.6.Final/netty-all-4.1.6.Final.jar!/io/netty/handler/codec/serialization/ClassLoaderClassResolver.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="81">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/netty/netty-all/4.1.6.Final/netty-all-4.1.6.Final.jar!/io/netty/channel/ChannelPipeline.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="38" column="20" lean-forward="false" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#579#580#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="41" column="41" lean-forward="false" selection-start-line="41" selection-start-column="41" selection-end-line="41" selection-end-column="41" />
+        <state relative-caret-position="601">
+          <caret line="54" column="61" lean-forward="true" selection-start-line="54" selection-start-column="61" selection-end-line="54" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="17" column="39" lean-forward="false" selection-start-line="17" selection-start-column="39" selection-end-line="17" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="49" column="0" lean-forward="true" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

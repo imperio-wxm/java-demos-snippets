@@ -1,5 +1,6 @@
 package com.wxmimperio.netty.server;
 
+import com.wxmimperio.netty.pojo.TopicCount;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -36,10 +37,11 @@ public class EchoServer {
                         protected void initChannel(SocketChannel ch) throws Exception {
                             System.out.println("connected...; Client:" + ch.remoteAddress());
                             ch.pipeline().addLast(
+                                    new ObjectDecoder(1024 * 1024, ClassResolvers.cacheDisabled(this.getClass().getClassLoader())),
                                     new ObjectEncoder(),
-                                    new ObjectDecoder(ClassResolvers.cacheDisabled(getClass().getClassLoader())),
                                     new EchoServerHandler()
                             ); // 客户端触发操作
+                            ch.pipeline().addLast(new ObjectEncoder());
                         }
                     });
             ChannelFuture cf = sb.bind().sync(); // 服务器异步创建绑定

@@ -1,14 +1,12 @@
-package com.wxmimperio.netty.client.base;
+package com.wxmimperio.kafka.nettyclient.base;
 
-import java.nio.charset.Charset;
-
-import com.wxmimperio.netty.pojo.TopicCount;
+import com.wxmimperio.kafka.pojo.TopicCount;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.CharsetUtil;
+
+import java.nio.charset.Charset;
 
 /**
  * Created by weiximing.imperio on 2017/1/4.

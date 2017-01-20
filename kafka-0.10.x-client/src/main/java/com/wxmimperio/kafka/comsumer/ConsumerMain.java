@@ -14,8 +14,8 @@ public class ConsumerMain {
         KafkaNewConsumer consumer = new KafkaNewConsumer(topicList, "group_1");
         consumer.execute(3);
 
-        KafkaNewConsumer consumer1 = new KafkaNewConsumer(topicList, "group_2");
-        consumer1.execute(3);
+        /*KafkaNewConsumer consumer1 = new KafkaNewConsumer(topicList, "group_2");
+        consumer1.execute(3);*/
 
     }
 }
