@@ -7,6 +7,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.nio.charset.Charset;
+import java.util.Map;
 
 /**
  * Created by weiximing.imperio on 2017/1/4.
@@ -14,17 +15,17 @@ import java.nio.charset.Charset;
 
 public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
-    private TopicCount topicCount;
+    private Map<String,Long> topicPartitionCount;
 
-    public EchoClientHandler(TopicCount topicCount) {
-        this.topicCount = topicCount;
+    public EchoClientHandler(Map<String,Long> topicPartitionCount) {
+        this.topicPartitionCount = topicPartitionCount;
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("client channelActive..");
-        System.out.println("Thread=" + Thread.currentThread() + " " + this.topicCount);
-        ctx.writeAndFlush(this.topicCount); // 必须有flush
+        System.out.println("Thread=" + Thread.currentThread() + " " + this.topicPartitionCount);
+        ctx.writeAndFlush(this.topicPartitionCount); // 必须有flush
     }
 
     @Override

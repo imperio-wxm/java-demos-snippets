@@ -7,6 +7,8 @@ import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
+import java.util.Map;
+
 /**
  * Created by weiximing.imperio on 2017/1/4.
  */
@@ -15,9 +17,9 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        TopicCount topicCount = (TopicCount) msg;
-        System.out.println(Thread.currentThread() + " " + topicCount.toString());
-        ctx.write(topicCount);
+        Map<String, Long> message = (Map<String, Long>) msg;
+        System.out.println(Thread.currentThread() + " " + message);
+        ctx.write(message);
     }
 
     @Override

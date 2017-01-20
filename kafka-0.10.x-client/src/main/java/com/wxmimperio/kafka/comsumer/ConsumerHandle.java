@@ -69,10 +69,9 @@ public class ConsumerHandle implements Runnable {
             for (TopicPartition topicPartition : records.partitions()) {
                 List<ConsumerRecord<String, String>> topicPartitionRecords = records.records(new TopicPartition(topicPartition.topic(), topicPartition.partition()));
 
-                System.out.println("topic = " + topicPartition.topic() + " partition = " + topicPartition.partition() + " size = " + topicPartitionRecords.size());
+                //System.out.println("topic = " + topicPartition.topic() + " partition = " + topicPartition.partition() + " size = " + topicPartitionRecords.size());
                 String key = this.group + "-" + topicPartition.topic() + "-" + topicPartition.partition();
-                System.out.println(topicCountNum.get(key));
-                long oldCount = topicCountNum.get(key);
+                long oldCount = (topicCountNum.get(key) == null) ? 0L : topicCountNum.get(key);
                 topicCountNum.put(key, oldCount + topicPartitionRecords.size());
 
                 for (ConsumerRecord<String, String> record : topicPartitionRecords) {
@@ -105,12 +104,11 @@ public class ConsumerHandle implements Runnable {
             Calendar nowCal = new GregorianCalendar();
             int nowSecond = nowCal.get(Calendar.SECOND);
             if (nowSecond % 10 == 0) {
-                TopicCount topicCount = new TopicCount(this.group, currentTopic, partition, Long.valueOf(countNum), lastOffset, System.currentTimeMillis());
-                EchoClient echoClient = new EchoClient("127.0.0.1", 65535, topicCount);
+                EchoClient echoClient = new EchoClient("127.0.0.1", 65535, topicCountNum);
                 if (echoClient.send()) {
                     countNum = 0L;
                     System.out.println(topicCountNum);
-                    //topicCountNum.clear();
+                    topicCountNum.clear();
                 }
                 System.out.println("插入发送count");
             }

@@ -3,6 +3,8 @@ package com.wxmimperio.netty.client.MThread;
 import com.wxmimperio.netty.client.base.EchoClient;
 import com.wxmimperio.netty.pojo.TopicCount;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,9 +19,9 @@ public class MThreadClientMain {
 
 
         for (int i = 0; i < 100000; i++) {
-            TopicCount topicCount = new TopicCount("group_" + i, "topic_" + i, Long.valueOf(i), Long.valueOf(i * 100), System.currentTimeMillis());
-
-            executor.submit(new EchoClient("127.0.0.1", 65535, topicCount));
+            Map<String, Long> test = new ConcurrentHashMap<String, Long>();
+            test.put("topic" + i + "-partition" + i, Long.valueOf(i));
+            executor.submit(new EchoClient("127.0.0.1", 65535, test));
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {

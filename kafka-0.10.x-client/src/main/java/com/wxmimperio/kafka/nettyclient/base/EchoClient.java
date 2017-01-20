@@ -13,6 +13,7 @@ import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 
 import java.net.InetSocketAddress;
+import java.util.Map;
 
 
 /**
@@ -22,13 +23,13 @@ import java.net.InetSocketAddress;
 public class EchoClient {
     private final String host;
     private final int port;
-    private TopicCount topicCount;
+    private Map<String,Long> topicPartitionCount;
 
-    public EchoClient(String host, int port, TopicCount topicCount) {
+    public EchoClient(String host, int port, Map<String,Long> topicPartitionCount) {
         super();
         this.host = host;
         this.port = port;
-        this.topicCount = topicCount;
+        this.topicPartitionCount = topicPartitionCount;
     }
 
     public boolean send() {
@@ -38,7 +39,7 @@ public class EchoClient {
             b.group(group) // 注册线程池
                     .channel(NioSocketChannel.class) // 使用NioSocketChannel来作为连接用的channel类
                     .remoteAddress(new InetSocketAddress(this.host, this.port)) // 绑定连接端口和host信息
-                    .handler(new Channel(this.topicCount));
+                    .handler(new Channel(this.topicPartitionCount));
             System.out.println("created..");
             ChannelFuture cf = b.connect().sync(); // 异步连接服务器
             System.out.println("connected..."); // 连接完成
@@ -61,10 +62,10 @@ public class EchoClient {
 
 class Channel extends ChannelInitializer<SocketChannel> { // 绑定连接初始化器
 
-    private TopicCount topicCount;
+    private Map<String,Long> topicPartitionCount;
 
-    public Channel(TopicCount topicCount) {
-        this.topicCount = topicCount;
+    public Channel(Map<String,Long> topicPartitionCount) {
+        this.topicPartitionCount = topicPartitionCount;
     }
 
     @Override
@@ -73,7 +74,7 @@ class Channel extends ChannelInitializer<SocketChannel> { // 绑定连接初始�
         ch.pipeline().addLast(
                 new ObjectDecoder(1024 * 1024, ClassResolvers.cacheDisabled(this.getClass().getClassLoader())),
                 new ObjectEncoder(),
-                new EchoClientHandler(this.topicCount)
+                new EchoClientHandler(this.topicPartitionCount)
         );
     }
 }

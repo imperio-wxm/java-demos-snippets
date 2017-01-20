@@ -2,35 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38030162-4efb-4214-998f-3b2ce90a6c6d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/pojo/TopicCount.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/kafka/pojo/TopicCount.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_netty_netty_all_4_1_6_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/logs/info.log_2017-01-19" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/TopicCount.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/TopicCount.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/MThread/MThreadClientMain.class" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/MThread/MThreadClientMain.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/base/Channel.class" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/base/Channel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/base/EchoClient.class" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/base/EchoClient.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/base/EchoClientHandler.class" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/client/base/EchoClientHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/server/EchoServer$1.class" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/server/EchoServer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/server/EchoServer.class" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/server/EchoServer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/server/EchoServerHandler.class" afterPath="$PROJECT_DIR$/../netty-java/target/classes/com/wxmimperio/netty/server/EchoServerHandler.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/kafka-0.10.x-client.iml" afterPath="$PROJECT_DIR$/kafka-0.10.x-client.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/info.log" afterPath="$PROJECT_DIR$/logs/info.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../netty-java/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java" afterPath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/client/MThread/MThreadClientMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java" afterPath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java" afterPath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/client/base/EchoClientHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/server/EchoServer.java" afterPath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/server/EchoServer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java" afterPath="$PROJECT_DIR$/../netty-java/src/main/java/com/wxmimperio/netty/server/EchoServerHandler.java" />
     </list>
     <ignored path="kafka-0.10.x-client.iws" />
@@ -79,8 +66,8 @@
       <file leaf-file-name="ConsumerHandle.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="73" column="57" lean-forward="false" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
+            <state relative-caret-position="533">
+              <caret line="117" column="52" lean-forward="true" selection-start-line="117" selection-start-column="52" selection-end-line="117" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1904#1936#0" expanded="true" />
@@ -89,15 +76,29 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="EchoClientHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#569#570#0" expanded="true" />
+                <element signature="e#631#632#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="EchoClient.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="51" column="17" lean-forward="true" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
+            <state relative-caret-position="509">
+              <caret line="76" column="33" lean-forward="false" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#2255#2256#0" expanded="true" />
-                <element signature="e#2299#2300#0" expanded="true" />
+                <element signature="e#2364#2365#0" expanded="true" />
+                <element signature="e#2426#2427#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,7 +108,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="433">
-              <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
+              <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -116,8 +117,8 @@
       <file leaf-file-name="KafkaNewProducer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="471">
+              <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -141,8 +142,8 @@
       <file leaf-file-name="ProducerMain.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="11" selection-end-column="29" />
+            <state relative-caret-position="152">
+              <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -182,13 +183,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/TopicCount.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/nettymain/MThreadClientMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
       </list>
     </option>
@@ -1004,7 +1005,7 @@
       <workItem from="1481250347209" duration="87000" />
       <workItem from="1484293651047" duration="4668000" />
       <workItem from="1484546761606" duration="53987000" />
-      <workItem from="1484877347771" duration="9291000" />
+      <workItem from="1484877347771" duration="11021000" />
     </task>
     <task id="LOCAL-00001" summary="&quot;get offset&quot;">
       <created>1484706514726</created>
@@ -1024,11 +1025,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77032000" />
+    <option name="totallyTimeSpent" value="78762000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="870" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1037,10 +1038,10 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8426052" sideWeight="0.5057971" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8426052" sideWeight="0.50869566" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.8426052" sideWeight="0.4942029" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.8426052" sideWeight="0.49130434" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1481,16 +1482,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="25" column="59" lean-forward="true" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/pojo/TopicCount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="658">
@@ -1504,26 +1495,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="51" column="17" lean-forward="true" selection-start-line="51" selection-start-column="17" selection-end-line="51" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2255#2256#0" expanded="true" />
-            <element signature="e#2299#2300#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="40" column="26" lean-forward="false" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/apache/kafka/kafka-clients/0.10.1.0/kafka-clients-0.10.1.0.jar!/org/apache/kafka/clients/consumer/ConsumerRecord.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -1532,22 +1503,6 @@
             <element signature="e#2147#2148#0" expanded="true" />
             <element signature="e#2183#2184#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="28" column="5" lean-forward="true" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="11" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1569,10 +1524,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="21" lean-forward="true" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="54" column="38" lean-forward="true" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="40" column="25" lean-forward="true" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="76" column="33" lean-forward="false" selection-start-line="76" selection-start-column="33" selection-end-line="76" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2364#2365#0" expanded="true" />
+            <element signature="e#2426#2427#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#569#570#0" expanded="true" />
+            <element signature="e#631#632#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="73" column="57" lean-forward="false" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
+        <state relative-caret-position="533">
+          <caret line="117" column="52" lean-forward="true" selection-start-line="117" selection-start-column="52" selection-end-line="117" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1904#1936#0" expanded="true" />
