@@ -23,14 +23,16 @@ import java.util.Map;
 public class EchoClient {
     private final String host;
     private final int port;
+    private Map<String,Long> topicPartitionCount;
 
-    public EchoClient(String host, int port) {
+    public EchoClient(String host, int port,Map<String,Long> topicPartitionCount) {
         super();
         this.host = host;
         this.port = port;
+        this.topicPartitionCount = topicPartitionCount;
     }
 
-    public boolean send(Map<String,Long> topicPartitionCount) {
+    public boolean send() {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();

@@ -19,19 +19,17 @@ public class ConsumerHandle implements Runnable {
     private List<String> topicList;
     private static final int minBatchSize = 10;
     private String group;
-    private EchoClient echoClient;
 
 
     private Long countNum = 0L;
 
     private Map<String, Long> topicCountNum = new ConcurrentHashMap<>();
 
-    public ConsumerHandle(KafkaConsumer<String, String> consumer, List<String> topicList, String group, EchoClient echoClient) {
+    public ConsumerHandle(KafkaConsumer<String, String> consumer, List<String> topicList, String group) {
         this.consumer = consumer;
         this.topicList = topicList;
         this.consumer.subscribe(this.topicList);
         this.group = group;
-        this.echoClient = echoClient;
 
        /* TopicPartition topicPartition = new TopicPartition(this.topic, 1);
 
@@ -105,8 +103,9 @@ public class ConsumerHandle implements Runnable {
 
             Calendar nowCal = new GregorianCalendar();
             int nowSecond = nowCal.get(Calendar.SECOND);
-            if (nowSecond % 10 == 0) {
-                if (echoClient.send(topicCountNum)) {
+            if (nowSecond % 5 == 0) {
+                EchoClient echoClient = new EchoClient("127.0.0.1", 65535,topicCountNum);
+                if (echoClient.send()) {
                     countNum = 0L;
                     System.out.println(topicCountNum);
                     topicCountNum.clear();
