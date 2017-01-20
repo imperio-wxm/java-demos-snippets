@@ -36,7 +36,7 @@ public class KafkaNewConsumer {
 
     public void execute(int numThread) {
         //ThreadPool
-        ExecutorService executor = Executors.newSingleThreadExecutor();
+        ExecutorService executor = Executors.newCachedThreadPool();
 
         //KafkaNewProducer Message
         for (int i = 0; i < numThread; i++) {

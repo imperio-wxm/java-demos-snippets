@@ -1,5 +1,6 @@
 package com.wxmimperio.netty.client.base;
 
+import com.wxmimperio.netty.pojo.TopicCount;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -7,6 +8,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 
 import java.net.InetSocketAddress;
 
@@ -18,13 +22,13 @@ import java.net.InetSocketAddress;
 public class EchoClient implements Runnable {
     private final String host;
     private final int port;
-    private String message;
+    private TopicCount topicCount;
 
-    public EchoClient(String host, int port, String message) {
+    public EchoClient(String host, int port, TopicCount topicCount) {
         super();
         this.host = host;
         this.port = port;
-        this.message = message;
+        this.topicCount = topicCount;
     }
 
     @Override
@@ -35,14 +39,15 @@ public class EchoClient implements Runnable {
             b.group(group) // 注册线程池
                     .channel(NioSocketChannel.class) // 使用NioSocketChannel来作为连接用的channel类
                     .remoteAddress(new InetSocketAddress(this.host, this.port)) // 绑定连接端口和host信息
-                    .handler(new Channel(this.message));
+                    .handler(new Channel(this.topicCount));
             System.out.println("created..");
             ChannelFuture cf = b.connect().sync(); // 异步连接服务器
             System.out.println("connected..."); // 连接完成
             cf.channel().closeFuture().sync(); // 异步等待关闭连接channel
             System.out.println("closed.."); // 关闭完成
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("无法连接=[" + this.host + ":" + this.port + "] " + e.getMessage());
         } finally {
             try {
                 group.shutdownGracefully().sync(); // 释放线程池资源
@@ -51,22 +56,23 @@ public class EchoClient implements Runnable {
             }
         }
     }
-
-/*    public static void main(String[] args) throws Exception {
-        new EchoClient("127.0.0.1", 65535).start(); // 连接127.0.0.1/65535，并启动
-    }*/
 }
 
 class Channel extends ChannelInitializer<SocketChannel> { // 绑定连接初始化器
 
-    private String message;
+    private TopicCount topicCount;
 
-    public Channel(String message) {
-        this.message = message;
+    public Channel(TopicCount topicCount) {
+        this.topicCount = topicCount;
     }
+
     @Override
     protected void initChannel(SocketChannel ch) throws Exception {
         System.out.println("connected...");
-        ch.pipeline().addLast(new EchoClientHandler(this.message));
+        ch.pipeline().addLast(
+                new ObjectEncoder(),
+                new ObjectDecoder(ClassResolvers.cacheDisabled(getClass().getClassLoader())),
+                new EchoClientHandler(this.topicCount)
+        );
     }
 }

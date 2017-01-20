@@ -2,6 +2,7 @@ package com.wxmimperio.netty.client.base;
 
 import java.nio.charset.Charset;
 
+import com.wxmimperio.netty.pojo.TopicCount;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.buffer.Unpooled;
@@ -15,20 +16,17 @@ import io.netty.util.CharsetUtil;
 
 public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
-    private String message;
+    private TopicCount topicCount;
 
-    public EchoClientHandler(String message) {
-        this.message = message;
+    public EchoClientHandler(TopicCount topicCount) {
+        this.topicCount = topicCount;
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("client channelActive..");
-        ctx.writeAndFlush(Unpooled.copiedBuffer(this.message, CharsetUtil.UTF_8)); // 必须有flush
-
-        // 必须存在flush
-        // ctx.write(Unpooled.copiedBuffer("Netty rocks!", CharsetUtil.UTF_8));
-        // ctx.flush();
+        System.out.println(this.topicCount);
+        ctx.writeAndFlush(this.topicCount); // 必须有flush
     }
 
     @Override

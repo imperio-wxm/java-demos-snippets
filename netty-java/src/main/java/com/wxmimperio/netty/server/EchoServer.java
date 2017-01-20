@@ -7,6 +7,9 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.serialization.ClassResolvers;
+import io.netty.handler.codec.serialization.ObjectDecoder;
+import io.netty.handler.codec.serialization.ObjectEncoder;
 
 /**
  * Created by weiximing.imperio on 2017/1/4.
@@ -32,7 +35,11 @@ public class EchoServer {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             System.out.println("connected...; Client:" + ch.remoteAddress());
-                            ch.pipeline().addLast(new EchoServerHandler()); // 客户端触发操作
+                            ch.pipeline().addLast(
+                                    new ObjectEncoder(),
+                                    new ObjectDecoder(ClassResolvers.cacheDisabled(getClass().getClassLoader())),
+                                    new EchoServerHandler()
+                            ); // 客户端触发操作
                         }
                     });
             ChannelFuture cf = sb.bind().sync(); // 服务器异步创建绑定
