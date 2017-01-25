@@ -8,7 +8,7 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.TopicPartition;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.*;
 
 /**
  * Created by wxmimperio on 2016/12/5.
@@ -62,6 +62,8 @@ public class ConsumerHandle implements Runnable {
         OffsetAndMetadata offsetAndMetadata = this.consumer.committed(topicPartition);
         System.out.println(offsetAndMetadata.offset());*/
 
+        ExecutorService threadPool = Executors.newSingleThreadExecutor();
+
 
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Integer.MAX_VALUE);
@@ -69,13 +71,19 @@ public class ConsumerHandle implements Runnable {
             for (TopicPartition topicPartition : records.partitions()) {
                 List<ConsumerRecord<String, String>> topicPartitionRecords = records.records(new TopicPartition(topicPartition.topic(), topicPartition.partition()));
 
+
                 //System.out.println("topic = " + topicPartition.topic() + " partition = " + topicPartition.partition() + " size = " + topicPartitionRecords.size());
                 String key = "cassandra-" + this.group + "-" + topicPartition.topic() + "-" + topicPartition.partition();
                 long oldCount = (topicCountNum.get(key) == null) ? 0L : topicCountNum.get(key);
                 topicCountNum.put(key, oldCount + topicPartitionRecords.size());
 
+
                 for (ConsumerRecord<String, String> record : topicPartitionRecords) {
                     buffer.add(record);
+                    record.key();
+                    //System.out.println(record.key());
+
+                    //System.out.println(record.serializedValueSize());
                     lastOffset = record.offset();
                     partition = record.partition();
                     currentTopic = record.topic();
@@ -103,23 +111,44 @@ public class ConsumerHandle implements Runnable {
 
             Calendar nowCal = new GregorianCalendar();
             int nowSecond = nowCal.get(Calendar.SECOND);
-            if (nowSecond % 5 == 0) {
-                EchoClient echoClient = new EchoClient("127.0.0.1", 65535,topicCountNum);
+            if (nowSecond == 00) {
+
+                Future<Boolean> future = threadPool.submit(new Callable<Boolean>() {
+                    public Boolean call() throws Exception {
+                        EchoClient echoClient = new EchoClient("127.0.0.1", 65535, topicCountNum);
+                        return echoClient.send();
+                    }
+                });
+
+                try {
+                    if(future.get().booleanValue()) {
+                        countNum = 0L;
+                        System.out.println(topicCountNum);
+                        topicCountNum.clear();
+                        System.out.println("插入发送count");
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+
+                /*EchoClient echoClient = new EchoClient("127.0.0.1", 65535, topicCountNum);
                 if (echoClient.send()) {
                     countNum = 0L;
                     System.out.println(topicCountNum);
                     topicCountNum.clear();
                 }
-                System.out.println("插入发送count");
+                System.out.println("插入发送count");*/
             }
 
             //System.out.println("Thread=" + Thread.currentThread().getName() + " " + countNum + " group = " + group + " topic" + topicList);
 
             if (buffer.size() % minBatchSize == 0) {
-                consumer.commitSync(); //批量完成写入后，手工sync offset
+                consumer.commitAsync(); //批量完成写入后，手工sync offset
                 buffer.clear();
             }
-            consumer.commitSync(); //批量完成写入后，手工sync offset
+            consumer.commitAsync(); //批量完成写入后，手工sync offset
             buffer.clear();
         }
     }

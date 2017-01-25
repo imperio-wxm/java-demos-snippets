@@ -3,15 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="77c56cee-ff6a-4762-8296-0a388ab003b5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerHandle.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="netty-java.iws" />
@@ -94,8 +88,8 @@
       <file leaf-file-name="EchoClient.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="392">
-              <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+            <state relative-caret-position="916">
+              <caret line="58" column="5" lean-forward="true" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2346#2347#0" expanded="true" />
@@ -517,7 +511,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="E:\Software\NodeJS\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/dw-项目目录/svn-project/rtc-util/rtc-cassandra-clean/trunk" />
     <property name="nodejs_interpreter_path" value="E:/Software/NodeJS/node" />
     <property name="js.eslint.eslintPackage" value="" />
   </component>
@@ -1019,12 +1013,12 @@
       <workItem from="1483513849206" duration="11330000" />
       <workItem from="1484815126274" duration="30000" />
       <workItem from="1484816636417" duration="5849000" />
-      <workItem from="1484877403103" duration="15037000" />
+      <workItem from="1484877403103" duration="16847000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32246000" />
+    <option name="totallyTimeSpent" value="34056000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
@@ -1424,8 +1418,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/netty/client/base/EchoClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="68" column="0" lean-forward="true" selection-start-line="68" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
+        <state relative-caret-position="916">
+          <caret line="58" column="5" lean-forward="true" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2346#2347#0" expanded="true" />
