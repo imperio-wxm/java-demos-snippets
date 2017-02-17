@@ -14,8 +14,8 @@ public class OptionsUtils {
         Map<String, String[]> path = new ConcurrentHashMap<>();
 
         Options options = new Options();
-        options.addOption(new Option("in", "inPath", true, "Input Files Path, Split by ','"));
-        options.addOption(new Option("out", "outPath", true, "Output Files Path, Split by ','"));
+        options.addOption(new Option("in", "inPath", true, "Input Files Path, Split by comma"));
+        options.addOption(new Option("out", "outPath", true, "Output Files Path, Split by comma"));
         options.addOption(new Option("h", "help", false, "help"));
 
         // print usage
@@ -23,12 +23,6 @@ public class OptionsUtils {
 
         CommandLine commandLine;
         CommandLineParser parser = new DefaultParser();
-
-        try {
-            Thread.sleep(20000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
         try {
             commandLine = parser.parse(options, args);

@@ -2,27 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b7107ba3-4a21-4ee7-8b36-02f86ba6c4b3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/target/test-classes/com/wxmimperio/file/md5/AppTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/file-md5-check.iml" afterPath="$PROJECT_DIR$/file-md5-check.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/file/cli/OptionsUtils.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/file/cli/OptionsUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/file/md5/MainCheck.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/file/md5/MainCheck.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/file-md5-check-1.0-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/file-md5-check-1.0-jar-with-dependencies.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/file-md5-check-1.0.jar" afterPath="$PROJECT_DIR$/target/file-md5-check-1.0.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle$1.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/cli/OptionsUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/cli/OptionsUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wxmimperio.file.md5.AppTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wxmimperio.file.md5.AppTest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.wxmimperio.file.md5.AppTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.wxmimperio.file.md5.AppTest.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -35,6 +42,14 @@
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DatabaseView">
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_TABLE_DETAILS" value="true" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -52,8 +67,8 @@
       <file leaf-file-name="OptionsUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/file/cli/OptionsUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+            <state relative-caret-position="247">
+              <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,7 +81,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="475">
               <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,8 +91,8 @@
       <file leaf-file-name="MainCheck.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state relative-caret-position="152">
+              <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -125,6 +142,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="E:/Software/apache-maven-3.3.9" />
+        <option name="workOffline" value="true" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -733,12 +751,12 @@
       <updated>1487124700375</updated>
       <workItem from="1487124703075" duration="1688000" />
       <workItem from="1487239921169" duration="2463000" />
-      <workItem from="1487242502287" duration="6000" />
+      <workItem from="1487242502287" duration="3895000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4157000" />
+    <option name="totallyTimeSpent" value="8046000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
@@ -759,7 +777,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25716332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -812,7 +830,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -838,7 +858,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -864,14 +886,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="475">
           <caret line="28" column="31" lean-forward="false" selection-start-line="28" selection-start-column="31" selection-end-line="28" selection-end-column="31" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/file/cli/OptionsUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="52" column="13" lean-forward="true" selection-start-line="52" selection-start-column="13" selection-end-line="52" selection-end-column="13" />
+        <state relative-caret-position="247">
+          <caret line="31" column="58" lean-forward="false" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -880,8 +904,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="16" lean-forward="true" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        <state relative-caret-position="152">
+          <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

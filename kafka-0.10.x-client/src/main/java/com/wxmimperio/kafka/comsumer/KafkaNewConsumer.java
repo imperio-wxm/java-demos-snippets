@@ -24,7 +24,7 @@ public class KafkaNewConsumer {
     //Init conf
     private static Properties createProducerConfig(String group) {
         Properties props = new Properties();
-        props.put("bootstrap.servers", "192.168.18.74:9092");
+        props.put("bootstrap.servers", "192.168.18.51:9092");
         props.put("group.id", group);
         props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "1000");

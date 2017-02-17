@@ -40,14 +40,11 @@ public class EchoClient {
                     .channel(NioSocketChannel.class) // 使用NioSocketChannel来作为连接用的channel类
                     .remoteAddress(new InetSocketAddress(this.host, this.port)) // 绑定连接端口和host信息
                     .handler(new Channel(topicPartitionCount));
-            System.out.println("created..");
             ChannelFuture cf = b.connect().sync(); // 异步连接服务器
-            System.out.println("connected..."); // 连接完成
             cf.channel().closeFuture().sync(); // 异步等待关闭连接channel
-            System.out.println("closed.."); // 关闭完成
         } catch (Exception e) {
             //e.printStackTrace();
-            System.out.println("无法连接=[" + this.host + ":" + this.port + "] " + e.getMessage());
+            System.out.println("无法连接=[" + this.host + ":" + this.port + "] 监控信息发送失败！" + e.getMessage());
             return false;
         } finally {
             try {

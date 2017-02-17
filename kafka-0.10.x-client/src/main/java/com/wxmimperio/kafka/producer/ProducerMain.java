@@ -10,5 +10,8 @@ public class ProducerMain {
 
         KafkaNewProducer producer1 = new KafkaNewProducer("test_2");
         producer1.execute(3);
+
+        KafkaNewProducer producer2 = new KafkaNewProducer("test_1");
+        producer2.execute(3);
     }
 }

@@ -87,7 +87,7 @@ public class ConsumerHandle implements Runnable {
                     lastOffset = record.offset();
                     partition = record.partition();
                     currentTopic = record.topic();
-                   /* System.out.println("Thread=" + Thread.currentThread().getName() +
+/*                    System.out.println("Thread=" + Thread.currentThread().getName() +
                             " value=" + record.value() + " partition=" + record.partition() +
                             " topic" + record.topic() + " offset" + record.offset() + " time=" + record.timestamp() + " group=" + this.group);*/
                 }

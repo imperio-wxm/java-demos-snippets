@@ -13,31 +13,28 @@ public class MainCheck {
     public static void main(String args[]) {
 
         Map<String, String[]> pathMap = OptionsUtils.getOptions(args);
+
         String[] inputPath = pathMap.get("inputPath");
         String[] outputPath = pathMap.get("outputPath");
 
-        if (pathMap.isEmpty()) {
-            System.out.println("超时，请重新运行");
-        } else {
+        if (!pathMap.isEmpty()) {
             if (inputPath.length != outputPath.length) {
                 System.out.println("输入、输出文件路径个数不同");
             } else if (inputPath.length == 0 || outputPath.length == 0) {
                 System.out.println("输入、输出文件路径为空");
             } else {
-                for (String inPath : inputPath) {
-                    for (String outPath : outputPath) {
-                        File inFile = new File(inPath);
-                        File outFile = new File(outPath);
+                for (int i = 0; i < inputPath.length; i++) {
+                    File inFile = new File(inputPath[i]);
+                    File outFile = new File(outputPath[i]);
 
-                        if (inFile.exists() || outFile.exists()) {
-                            if (FileMD5.getFileMD5(inFile).equals(FileMD5.getFileMD5(outFile))) {
-                                System.out.println("文件：" + inFile.getPath() + " 和文件：" + outFile.getPath() + " MD5相同");
-                            } else {
-                                System.out.println("文件：" + inFile.getPath() + " 和文件：" + outFile.getPath() + " MD5不相同");
-                            }
+                    if (inFile.exists() || outFile.exists()) {
+                        if (FileMD5.getFileMD5(inFile).equals(FileMD5.getFileMD5(outFile))) {
+                            System.out.println("文件：" + inFile.getPath() + " 和文件：" + outFile.getPath() + " MD5相同");
                         } else {
-                            System.out.println("文件：" + inFile.getPath() + " 或文件：" + outFile.getPath() + " 不存在");
+                            System.out.println("文件：" + inFile.getPath() + " 和文件：" + outFile.getPath() + " MD5不相同");
                         }
+                    } else {
+                        System.out.println("文件：" + inFile.getPath() + " 或文件：" + outFile.getPath() + " 不存在");
                     }
                 }
             }
