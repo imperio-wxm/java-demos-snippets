@@ -10,6 +10,7 @@ import org.apache.flume.source.AbstractSource;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.errors.WakeupException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +21,7 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by weiximing.imperio on 2017/2/21.
@@ -139,6 +141,8 @@ public class KafkaSourceFlume extends AbstractSource implements EventDrivenSourc
      * Real Consumer Thread.
      */
     private class ConsumerWorker implements Runnable {
+        private final AtomicBoolean closed = new AtomicBoolean(false);
+
         KafkaConsumer<String, String> consumer;
         private int threadNumber;
         private SourceCounter srcCount;
@@ -155,27 +159,45 @@ public class KafkaSourceFlume extends AbstractSource implements EventDrivenSourc
         @Override
         public void run() {
             List<Event> events = new ArrayList<>();
-            ConsumerRecords<String, String> records = this.consumer.poll(100);
+
+            //ConsumerRecords<String, String> records = this.consumer.poll(100);
+
             try {
-                for (ConsumerRecord<String, String> record : records) {
+                while (!closed.get()) {
+                    //Iterator<ConsumerRecord<String, String>> records = this.consumer.poll(100).iterator();
 
-                    String message = record.value().replace(",", "\t");
+                    ConsumerRecords<String, String> records = this.consumer.poll(100);
+                    for (ConsumerRecord<String, String> record : records) {
+                        //while (records.hasNext()) {
+                        String message = record.value().replace(",", "\t");
+                        int partition = record.partition();
 
-                    LOG.info("Receive Message [Thread " + this.threadNumber + ": " + message + "]");
-                    Event event = null;
-                    try {
-                        event = EventBuilder.withBody(message.getBytes("UTF-8"));
-                        events.add(event);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
+                        LOG.info("Receive Message [Thread " + this.threadNumber + ": partition=" + partition + " " + message + "]");
+                        Event event = null;
+                        try {
+                            event = EventBuilder.withBody(message.getBytes("UTF-8"));
+                            events.add(event);
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        this.srcCount.incrementEventAcceptedCount();
                     }
-                    this.srcCount.incrementEventAcceptedCount();
+                    //send event to channel
+                    getChannelProcessor().processEventBatch(events);
+                    events.clear();
                 }
-                //send event to channel
-                getChannelProcessor().processEventBatch(events);
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (WakeupException e) {
+                // Ignore exception if closing
+                if (!closed.get()) throw e;
+            } finally {
+                consumer.close();
             }
+        }
+
+        // Shutdown hook which can be called from a separate thread
+        public void shutdown() {
+            closed.set(true);
+            consumer.wakeup();
         }
     }
 }
