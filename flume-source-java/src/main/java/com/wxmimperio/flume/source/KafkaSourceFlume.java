@@ -72,18 +72,17 @@ public class KafkaSourceFlume extends AbstractSource implements EventDrivenSourc
 
         String topic = (String) this.parameters.get("topicName");
         String threadCount = (String) this.parameters.get("threadCount");
-
         List<String> topicList = new ArrayList<>();
         topicList.add(topic);
 
         // now launch all the threads
-        this.executorService = Executors.newFixedThreadPool(Integer.parseInt(threadCount) * 5);
+        this.executorService = Executors.newFixedThreadPool(Integer.parseInt(threadCount));
         this.consumer = new KafkaConsumer<>(createProducerConfig());
         this.consumer.subscribe(topicList);
 
         //多线程处理
-        for (int threadNum = 0; threadNum < Integer.parseInt(threadCount); threadNum++) {
-            this.executorService.submit(new ConsumerWorker(this.consumer, threadNum, this.sourceCounter));
+        for (int threadNum = 0; threadNum < Integer.valueOf(threadCount); threadNum++) {
+            this.executorService.submit(new ConsumerWorker(consumer, this.sourceCounter));
         }
     }
 
@@ -144,12 +143,10 @@ public class KafkaSourceFlume extends AbstractSource implements EventDrivenSourc
         private final AtomicBoolean closed = new AtomicBoolean(false);
 
         KafkaConsumer<String, String> consumer;
-        private int threadNumber;
         private SourceCounter srcCount;
 
-        public ConsumerWorker(KafkaConsumer<String, String> consumer, int threadNumber, SourceCounter srcCount) {
+        public ConsumerWorker(KafkaConsumer<String, String> consumer, SourceCounter srcCount) {
             this.consumer = consumer;
-            this.threadNumber = threadNumber;
             this.srcCount = srcCount;
         }
 
@@ -172,7 +169,7 @@ public class KafkaSourceFlume extends AbstractSource implements EventDrivenSourc
                         String message = record.value().replace(",", "\t");
                         int partition = record.partition();
 
-                        LOG.info("Receive Message [Thread " + this.threadNumber + ": partition=" + partition + " " + message + "]");
+                        LOG.info("Receive Message [Thread " + Thread.currentThread() + ": partition=" + partition + " " + message + "]");
                         Event event = null;
                         try {
                             event = EventBuilder.withBody(message.getBytes("UTF-8"));
@@ -182,6 +179,7 @@ public class KafkaSourceFlume extends AbstractSource implements EventDrivenSourc
                         }
                         this.srcCount.incrementEventAcceptedCount();
                     }
+                    System.out.println("records size = " + records.count());
                     //send event to channel
                     getChannelProcessor().processEventBatch(events);
                     events.clear();

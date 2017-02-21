@@ -6,30 +6,12 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/wxmimperio/file/md5/MainCheck.class" afterPath="$PROJECT_DIR$/target/classes/com/wxmimperio/file/md5/MainCheck.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/file-md5-check-1.0-jar-with-dependencies.jar" afterPath="$PROJECT_DIR$/target/file-md5-check-1.0-jar-with-dependencies.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/file-md5-check-1.0.jar" afterPath="$PROJECT_DIR$/target/file-md5-check-1.0.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle$1.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerHandle.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/ConsumerMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/Channel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/nettyclient/base/EchoClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/KafkaNewProducer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/cli/OptionsUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/cli/OptionsUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/file/md5/MainCheck.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wxmimperio.file.md5.AppTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wxmimperio.file.md5.AppTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/com.wxmimperio.file.md5.AppTest.txt" afterPath="$PROJECT_DIR$/target/surefire-reports/com.wxmimperio.file.md5.AppTest.txt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/logs/info.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerHandle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/ConsumerMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/comsumer/KafkaNewConsumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/nettyclient/base/EchoClient.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/KafkaNewProducer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/src/main/java/com/wxmimperio/kafka/producer/ProducerMain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -751,12 +733,20 @@
       <updated>1487124700375</updated>
       <workItem from="1487124703075" duration="1688000" />
       <workItem from="1487239921169" duration="2463000" />
-      <workItem from="1487242502287" duration="3895000" />
+      <workItem from="1487242502287" duration="4104000" />
     </task>
+    <task id="LOCAL-00001" summary="&quot;fix bug&quot;">
+      <created>1487313688719</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1487313688719</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8046000" />
+    <option name="totallyTimeSpent" value="8255000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
@@ -798,6 +788,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="&quot;fix bug&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="&quot;fix bug&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />

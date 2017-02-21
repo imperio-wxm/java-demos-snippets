@@ -15,8 +15,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" afterPath="$PROJECT_DIR$/../kafka-0.10.x-client/target/classes/com/wxmimperio/kafka/producer/ProducerMain.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../file-md5-check/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../file-md5-check/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flume-source-java.iml" afterPath="$PROJECT_DIR$/flume-source-java.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/flume/source/KafkaSourceFlume.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/flume/source/KafkaSourceFlume.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wxmimperio.flume.AppTest.xml" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.wxmimperio.flume.AppTest.xml" />
@@ -59,8 +57,8 @@
       <file leaf-file-name="KafkaSourceFlume.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/flume/source/KafkaSourceFlume.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="98" column="53" lean-forward="true" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+            <state relative-caret-position="494">
+              <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -697,12 +695,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1487644302461</updated>
-      <workItem from="1487644304724" duration="16158000" />
+      <workItem from="1487644304724" duration="20321000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16158000" />
+    <option name="totallyTimeSpent" value="20321000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
@@ -746,7 +744,9 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -816,8 +816,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/flume/source/KafkaSourceFlume.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="98" column="53" lean-forward="true" selection-start-line="98" selection-start-column="53" selection-end-line="98" selection-end-column="53" />
+        <state relative-caret-position="494">
+          <caret line="41" column="0" lean-forward="true" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
