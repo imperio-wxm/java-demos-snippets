@@ -1,7 +1,6 @@
 package com.wxmimperio.kafka.comsumer;
 
 import com.wxmimperio.kafka.nettyclient.base.EchoClient;
-import com.wxmimperio.kafka.pojo.TopicCount;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;

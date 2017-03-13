@@ -1,6 +1,5 @@
 package com.wxmimperio.kafka.nettyclient.base;
 
-import com.wxmimperio.kafka.pojo.TopicCount;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;

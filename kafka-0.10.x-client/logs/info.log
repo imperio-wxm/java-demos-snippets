@@ -1,26 +1,12 @@
-2017-02-13 13:56:21  [ kafka-coordinator-heartbeat-thread | group_4:241231472 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
-2017-02-13 13:56:32  [ kafka-coordinator-heartbeat-thread | group_2:241242193 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:32  [ kafka-coordinator-heartbeat-thread | group_1:241242446 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:32  [ kafka-coordinator-heartbeat-thread | group_4:241242446 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
-2017-02-13 13:56:32  [ kafka-coordinator-heartbeat-thread | group_2:241242446 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_1:241242622 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:32  [ kafka-coordinator-heartbeat-thread | group_4:241242474 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
-2017-02-13 13:56:32  [ kafka-coordinator-heartbeat-thread | group_2:241242473 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_4:241242666 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_1:241242666 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_2:241242665 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_2:241242667 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:33  [ pool-1-thread-3:241242809 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ pool-1-thread-3:241242884 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ pool-1-thread-3:241242884 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ pool-1-thread-3:241242885 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_1:241242807 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_4:241242805 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_2:241242752 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_4:241242928 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_1:241242928 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_2:241242897 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_2:241242929 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_1:241242928 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_4:241242928 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
-2017-02-13 13:56:33  [ kafka-coordinator-heartbeat-thread | group_2:241242929 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
+2017-03-08 13:25:52  [ kafka-coordinator-heartbeat-thread | group_1:2226601882 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
+2017-03-08 13:25:52  [ pool-6-thread-1:2226601937 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
+2017-03-08 13:25:55  [ pool-1-thread-2:2226605265 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
+2017-03-08 13:25:55  [ pool-1-thread-2:2226605266 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
+2017-03-08 13:25:55  [ pool-3-thread-3:2226605285 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
+2017-03-08 13:25:55  [ kafka-coordinator-heartbeat-thread | group_4:2226605299 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
+2017-03-08 13:25:55  [ pool-3-thread-1:2226605315 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
+2017-03-08 13:25:55  [ pool-3-thread-1:2226605316 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
+2017-03-08 13:25:56  [ pool-6-thread-2:2226605575 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_4
+2017-03-08 13:25:56  [ pool-3-thread-2:2226605579 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_2
+2017-03-08 13:25:56  [ pool-1-thread-1:2226606312 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1
+2017-03-08 13:25:56  [ pool-1-thread-1:2226606312 ] - [ INFO ]  Marking the coordinator 192.168.18.51:9092 (id: 2147483647 rack: null) dead for group group_1

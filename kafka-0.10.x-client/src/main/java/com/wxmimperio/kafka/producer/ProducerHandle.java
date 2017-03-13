@@ -30,7 +30,7 @@ public class ProducerHandle implements Runnable {
             SimpleDateFormat time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss SSS");
 
             String key = String.valueOf(threadNumber);
-            String data = "hello kafka message" + messageNo + " " + key + " " + time.format(nowTime);
+            String data = "hello,kafka,message" + messageNo + " " + key + "," + time.format(nowTime);
 
             producer.send(new ProducerRecord<String, String>(topic, Integer.toString(messageNo), data));
 

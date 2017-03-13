@@ -1,6 +1,5 @@
 package com.wxmimperio.kafka.nettyclient.base;
 
-import com.wxmimperio.kafka.pojo.TopicCount;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufUtil;
 import io.netty.channel.ChannelHandlerContext;
