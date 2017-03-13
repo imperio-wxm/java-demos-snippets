@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: EurekaClient
+
+server:
+  port: 9090
+
+
+eureka:
+  password: password
+  instance:
+    hostname: 192.168.1.112
+    preferIpAddress: true
+    metadataMap:
+      instanceId: ${vcap.application.instance_id:${spring.application.name}:${spring.application.instance_id:${server.port}}}
+  client:
+      leaseRenewalIntervalInSeconds: 10
+      serviceUrl:
+          defaultZone: http://${eureka.instance.hostname}:7070/eureka/
+
+
+endpoints:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
