@@ -1,7 +1,6 @@
-package com.wxmimperio.kafka.simpleconsumer;
+/*
+package com.wxmimperio.kafka.simpleconsumer.common;
 
-import com.wxmimperio.kafka.simpleconsumer.common.ParamsConst;
-import com.wxmimperio.kafka.simpleconsumer.common.exception.OffsetCommitException;
 import kafka.api.FetchRequestBuilder;
 import kafka.api.PartitionOffsetRequestInfo;
 import kafka.common.*;
@@ -13,9 +12,11 @@ import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
+*/
 /**
  * Created by wxmimperio on 2016/12/4.
- */
+ *//*
+
 public class SimpleConsumerAPI {
     private static final Logger LOG = LoggerFactory.getLogger(SimpleConsumerAPI.class);
 
@@ -45,12 +46,14 @@ public class SimpleConsumerAPI {
         this.brokers = this.getBrokers(brokerAddress);
     }
 
-    /**
+    */
+/**
      * 获取broker信息
      *
      * @param brokerAddress
      * @return
-     */
+     *//*
+
     private Map<String, Integer> getBrokers(List<String> brokerAddress) {
         Map<String, Integer> brokerMap = new HashMap<String, Integer>();
         for (String address : brokerAddress) {
@@ -60,29 +63,35 @@ public class SimpleConsumerAPI {
         return brokerMap;
     }
 
-    /**
+    */
+/**
      * 获取SimpleConsumer
      *
      * @param broker
      * @param port
      * @param clientId
      * @return
-     */
+     *//*
+
     private SimpleConsumer getSimpleConsumer(String broker, int port, String clientId) {
         return new SimpleConsumer(broker, port, 100000, 64 * 1024, clientId);
     }
 
-    /**
+    */
+/**
      * 启动consumer
-     */
+     *//*
+
     public void open() {
         String leaderBrokerName = this.getLeaderBrokerName();
         this.init(leaderBrokerName);
     }
 
-    /**
+    */
+/**
      * 关闭
-     */
+     *//*
+
     public void close() {
         if (this.consumer != null) {
             this.consumer.close();
@@ -90,12 +99,14 @@ public class SimpleConsumerAPI {
         }
     }
 
-    /**
+    */
+/**
      * 获取批量查询数据的Response对象
      *
      * @param curOffset
      * @return
-     */
+     *//*
+
     public FetchResponse getFetchResponse(long curOffset) {
         kafka.api.FetchRequest req = new FetchRequestBuilder()
                 .clientId(ParamsConst.FETCH_RESPONSE_CLIENT)
@@ -103,11 +114,13 @@ public class SimpleConsumerAPI {
         return this.consumer.fetch(req);
     }
 
-    /**
+    */
+/**
      * 获取分区列表
      *
      * @return
-     */
+     *//*
+
     public List<Integer> getPartitionList() {
         List<String> topics = Collections.singletonList(this.topic);
         List<Integer> partitionList = new ArrayList<Integer>();
@@ -137,9 +150,11 @@ public class SimpleConsumerAPI {
         return partitionList;
     }
 
-    /**
+    */
+/**
      * 发送commit请求
-     */
+     *//*
+
     public boolean commitRequest(List<OffsetMetadata> offsetList) {
         kafka.javaapi.OffsetCommitRequest offsetCommitRequest = commitOffset(offsetList, topic, partition);
         kafka.javaapi.OffsetCommitResponse offsetResp = this.consumer.commitOffsets(offsetCommitRequest);
@@ -158,14 +173,16 @@ public class SimpleConsumerAPI {
         return true;
     }
 
-    /**
+    */
+/**
      * 包装手动commit请求
      *
      * @param offsetList
      * @param topic
      * @param partition
      * @return
-     */
+     *//*
+
     private OffsetCommitRequest commitOffset(List<OffsetMetadata> offsetList, String topic, int partition) {
         TopicAndPartition topicAndPartition = new TopicAndPartition(topic, partition);
 
@@ -177,11 +194,13 @@ public class SimpleConsumerAPI {
         return new OffsetCommitRequest(this.groupId, offsets, 0, ParamsConst.COMMIT_REQUEST_CLIENT);
     }
 
-    /**
+    */
+/**
      * 根据leader的地址初始化消费者
      *
      * @param leaderBrokerName
-     */
+     *//*
+
     private void init(String leaderBrokerName) {
         this.consumer = this.getSimpleConsumer(leaderBrokerName, this.brokers.get(leaderBrokerName), ParamsConst.INIT_CLIENT);
         long fetchOffset = fetchOffset();
@@ -210,12 +229,14 @@ public class SimpleConsumerAPI {
         }
     }
 
-    /**
+    */
+/**
      * 获取leader的名字
      * 此时Kafka集群有可能在做leader选举，所以，没获取到的话就循环等待
      *
      * @return
-     */
+     *//*
+
     private String getLeaderBrokerName() {
         PartitionMetadata partitionMeta = null;
         int times = 0;
@@ -236,11 +257,13 @@ public class SimpleConsumerAPI {
         return partitionMeta.leader().host();
     }
 
-    /**
+    */
+/**
      * 获取分区元数据信息
      *
      * @return
-     */
+     *//*
+
     private PartitionMetadata getPartitionMetadata() {
         PartitionMetadata partitionMeta = null;
         List<String> topics = Collections.singletonList(this.topic);
@@ -276,11 +299,13 @@ public class SimpleConsumerAPI {
         return partitionMeta;
     }
 
-    /**
+    */
+/**
      * 获取当前的offset
      *
      * @return
-     */
+     *//*
+
     private long fetchOffset() {
         List<TopicAndPartition> partitions = new ArrayList<TopicAndPartition>();
         TopicAndPartition partition = new TopicAndPartition(this.topic, this.partition);
@@ -302,11 +327,13 @@ public class SimpleConsumerAPI {
         return retrievedOffset;
     }
 
-    /**
+    */
+/**
      * 获取log size（最新的offset）
      *
      * @return
-     */
+     *//*
+
     public long getLogSize() {
         TopicAndPartition topicAndPartition = new TopicAndPartition(this.topic, this.partition);
         Map<TopicAndPartition, PartitionOffsetRequestInfo> requestInfo = new HashMap<TopicAndPartition, PartitionOffsetRequestInfo>();
@@ -324,3 +351,4 @@ public class SimpleConsumerAPI {
         return offset;
     }
 }
+*/
