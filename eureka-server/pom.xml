@@ -82,7 +82,6 @@
     </dependencyManagement>
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -119,21 +118,21 @@
         </dependency>
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>nexus-public</id>
-            <url>http://nexus.dw.sdo.com/content/groups/public/</url>
-        </repository>
+    <!-- <repositories>
+         <repository>
+             <id>nexus-public</id>
+             <url>http://nexus.dw.sdo.com/content/groups/public/</url>
+         </repository>
 
-        <repository>
-            <id>dw-releases</id>
-            <url>http://nexus.dw.sdo.com/content/repositories/dw-releases/</url>
-        </repository>
+         <repository>
+             <id>dw-releases</id>
+             <url>http://nexus.dw.sdo.com/content/repositories/dw-releases/</url>
+         </repository>
 
-        <repository>
-            <id>dw-snapshots</id>
-            <url>http://nexus.dw.sdo.com/content/repositories/dw-snapshots/</url>
-        </repository>
+         <repository>
+             <id>dw-snapshots</id>
+             <url>http://nexus.dw.sdo.com/content/repositories/dw-snapshots/</url>
+         </repository>
 
-    </repositories>
+     </repositories>-->
 </project>
