@@ -15,25 +15,29 @@ import java.util.List;
 /**
  * Created by wxmimperio on 2017/3/26.
  */
-public class JsonInterceptor implements Interceptor, Interceptor.Builder {
+public class JsonInterceptor implements Interceptor {
     private static final Logger LOG = LoggerFactory.getLogger(JsonInterceptor.class);
 
     private final String header;
     private static final String HEADER_KEY = "topic";
-    private Context context;
 
-    private JsonInterceptor() {
+    private JsonInterceptor(Context context) {
         this.header = context.getString(HEADER_KEY);
     }
 
-    @Override
-    public Interceptor build() {
-        return new JsonInterceptor();
-    }
+    public static class Builder implements Interceptor.Builder {
+        private Context context;
 
-    @Override
-    public void configure(Context context) {
-        this.context = context;
+        //使用Builder初始化Interceptor
+        @Override
+        public Interceptor build() {
+            return new JsonInterceptor(context);
+        }
+
+        @Override
+        public void configure(Context context) {
+            this.context = context;
+        }
     }
 
     @Override
