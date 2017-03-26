@@ -256,3 +256,5 @@ eureka-server/target/maven-status/maven-compiler-plugin/testCompile/default-test
 eureka-server/target/surefire-reports/TEST-com.wxmimperio.spring.cloud.AppTest.xml
 eureka-server/target/surefire-reports/com.wxmimperio.spring.cloud.AppTest.txt
 eureka-server/target/test-classes/com/wxmimperio/spring/cloud/AppTest.class
+
+flume-interceptors/target/

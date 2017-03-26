@@ -15,14 +15,25 @@ import java.util.List;
 /**
  * Created by wxmimperio on 2017/3/26.
  */
-public class JsonInterceptor implements Interceptor {
+public class JsonInterceptor implements Interceptor, Interceptor.Builder {
     private static final Logger LOG = LoggerFactory.getLogger(JsonInterceptor.class);
 
     private final String header;
     private static final String HEADER_KEY = "topic";
+    private Context context;
 
-    private JsonInterceptor(Context context) {
+    private JsonInterceptor() {
         this.header = context.getString(HEADER_KEY);
+    }
+
+    @Override
+    public Interceptor build() {
+        return new JsonInterceptor();
+    }
+
+    @Override
+    public void configure(Context context) {
+        this.context = context;
     }
 
     @Override
