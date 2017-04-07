@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class ReadCSVFile {
     public static void main(String[] args) {
-        String csvPath1 = System.getProperty("user.dir") + "\\config\\add_consume_2.csv";
+        String csvPath1 = System.getProperty("user.dir") + "\\config\\test.csv";
 
         List<String[]> csvFile = CSVHelper.readCSVFile(csvPath1, '\t');
 
