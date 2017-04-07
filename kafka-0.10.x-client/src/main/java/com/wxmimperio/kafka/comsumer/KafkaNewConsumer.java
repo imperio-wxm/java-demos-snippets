@@ -2,6 +2,8 @@ package com.wxmimperio.kafka.comsumer;
 
 import com.wxmimperio.kafka.nettyclient.base.EchoClient;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.serialization.ByteArrayDeserializer;
+import org.apache.kafka.common.serialization.StringDeserializer;
 
 import java.util.List;
 import java.util.Properties;
@@ -29,8 +31,8 @@ public class KafkaNewConsumer {
         props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
-        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
-        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("key.deserializer", StringDeserializer.class.getName());
+        props.put("value.deserializer", ByteArrayDeserializer.class.getName());
 
         return props;
     }
@@ -41,7 +43,7 @@ public class KafkaNewConsumer {
 
         //KafkaNewProducer Message
         for (int i = 0; i < numThread; i++) {
-            KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(createProducerConfig(this.group));
+            KafkaConsumer<String, byte[]> consumer = new KafkaConsumer<String, byte[]>(createProducerConfig(this.group));
             //Send Message
             executor.submit(new ConsumerHandle(consumer, this.topicList,this.group));
         }

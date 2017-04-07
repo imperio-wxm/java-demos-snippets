@@ -14,7 +14,7 @@ public class ProducerMain {
         KafkaNewProducer producer2 = new KafkaNewProducer("test_1");
         producer2.execute(3);*/
 
-        KafkaNewProducer producer = new KafkaNewProducer("flume_001");
+        KafkaNewProducer producer = new KafkaNewProducer("sy_bpe_all");
         producer.execute(3);
 
     }
