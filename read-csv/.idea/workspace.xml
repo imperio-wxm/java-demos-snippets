@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b4b215e0-8e1a-45d6-b5e9-b8d44d381ded" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flume-interceptors/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../flume-interceptors/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,8 +40,8 @@
       <file leaf-file-name="CSVMain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="441">
+              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -133,9 +128,9 @@
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/MobileTest.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" />
       </list>
     </option>
   </component>
@@ -869,7 +864,7 @@
       <workItem from="1491802050911" duration="239000" />
       <workItem from="1491802364422" duration="3771000" />
       <workItem from="1491835732590" duration="311000" />
-      <workItem from="1491836085398" duration="2443000" />
+      <workItem from="1491836085398" duration="2822000" />
     </task>
     <servers />
   </component>
@@ -906,7 +901,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12441000" />
+    <option name="totallyTimeSpent" value="12820000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -1204,8 +1199,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="441">
+          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
