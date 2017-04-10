@@ -19,6 +19,32 @@ public class CSVHelper {
     public static final char DEFAULT_ESCAPE_CHARACTER = '\"';
 
     /**
+     * @param splitChar
+     * @return
+     */
+    public static List<String[]> readCSVFile(BufferedReader br, char splitChar) {
+        List<String[]> info = Lists.newArrayList();
+
+        CSVReader reader = null;
+        try {
+            reader = new CSVReader(br, splitChar, DEFAULT_ESCAPE_CHARACTER);
+            String[] values = null;
+            while ((values = reader.readNext()) != null) {
+                info.add(values);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            close(reader);
+        }
+        LOG.info("Read csv file "  + ", load " + info.size() + " lines.");
+        return info;
+    }
+
+    /**
+     *
      * @param filePath
      * @param splitChar
      * @return
@@ -41,9 +67,10 @@ public class CSVHelper {
         } finally {
             close(reader);
         }
-        LOG.info("Read csv file " + filePath + ", load " + info.size() + " lines.");
+        LOG.info("Read csv file "  + ", load " + info.size() + " lines.");
         return info;
     }
+
 
     /**
      * @param filePath
