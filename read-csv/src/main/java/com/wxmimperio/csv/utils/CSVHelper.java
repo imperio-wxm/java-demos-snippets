@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.List;
 
 /**
@@ -24,12 +25,11 @@ public class CSVHelper {
      */
     public static List<String[]> readCSVFile(String filePath, char splitChar) {
         List<String[]> info = Lists.newArrayList();
-        File file = new File(filePath);
 
         CSVReader reader = null;
-
         try {
-            reader = new CSVReader(new FileReader(file), splitChar, DEFAULT_ESCAPE_CHARACTER);
+            InputStreamReader input = new InputStreamReader(new FileInputStream(filePath), Charset.forName("GBK"));
+            reader = new CSVReader(input, splitChar, DEFAULT_ESCAPE_CHARACTER);
             String[] values = null;
             while ((values = reader.readNext()) != null) {
                 info.add(values);
@@ -53,10 +53,11 @@ public class CSVHelper {
      */
     public static boolean writeCSVFile(String filePath, List<String[]> content, char splitChar, boolean append) {
         boolean flags = false;
-        File file = new File(filePath);
+
         CSVWriter csvWriter = null;
         try {
-            csvWriter = new CSVWriter(new FileWriter(file, append), splitChar);
+            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(filePath, append), Charset.forName("GBK"));
+            csvWriter = new CSVWriter(out, splitChar);
             csvWriter.writeAll(content);
             flags = true;
         } catch (FileNotFoundException e) {
