@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b4b215e0-8e1a-45d6-b5e9-b8d44d381ded" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" afterPath="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" />
+    <list default="true" id="a2089607-9fef-4e2d-80de-19a974cf9782" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../flume-interceptors/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../flume-interceptors/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,73 +18,25 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DatabaseView">
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_TABLE_DETAILS" value="true" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+    <leaf>
+      <file leaf-file-name="PtTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/PtTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="456">
-              <caret line="39" column="12" lean-forward="true" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="1957">
+              <caret line="110" column="53" lean-forward="true" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-<<<<<<< HEAD
-      <file leaf-file-name="MobileTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/MobileTest.java">
+      <file leaf-file-name="CSVTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/CSVTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="146" column="31" lean-forward="true" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-=======
-      <file leaf-file-name="CSVMain.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReadCSVFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="722">
+              <caret line="58" column="46" lean-forward="true" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/AppTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#346#347#0" expanded="false" />
-                <element signature="e#379#380#0" expanded="false" />
-                <element signature="e#480#481#0" expanded="false" />
-                <element signature="e#533#534#0" expanded="false" />
-                <element signature="e#608#609#0" expanded="false" />
-                <element signature="e#642#643#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -90,61 +44,21 @@
       <file leaf-file-name="CSVHelper.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="327">
-              <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
-              <folding />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="PtTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/PtTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="96" column="34" lean-forward="false" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
+            <state relative-caret-position="303">
+              <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="79" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-=======
-      <file leaf-file-name="WriteCSVFile.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/WriteCSVFile.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="80" />
-              <folding />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-<<<<<<< HEAD
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>899</find>
-    </findStrings>
-=======
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
   </component>
   <component name="GradleLocalSettings">
-    <option name="modificationStamps">
-      <map>
-        <entry key="D:/dw-项目目录/dw-flume" value="1487587780453" />
-        <entry key="D:/dw-项目目录/leech-transformation-mr" value="1486974025470" />
-      </map>
-    </option>
     <option name="externalProjectsViewState">
       <projects_view />
     </option>
@@ -152,21 +66,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/WriteCSVFile.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/CSVTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-<<<<<<< HEAD
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java" />
-        <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/MobileTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/PtTest.java" />
-=======
-        <option value="$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/MobileTest.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
       </list>
     </option>
   </component>
@@ -175,14 +76,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="F:/software/apache-maven-3.3.9" />
-        <option name="userSettingsFile" value="F:\software\apache-maven-3.3.9\conf\settings.xml" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState>
@@ -198,22 +91,12 @@
       </PATH>
     </treeState>
   </component>
-  <component name="MavenRunner">
-    <option name="environmentProperties">
-      <map>
-        <entry key="-DarchetypeCatalog" value="local" />
-      </map>
-    </option>
-    <option name="jreName" value="1.8" />
-    <option name="vmOptions" value="-DarchetypeCatalog=local" />
-  </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="width" value="1456" />
+    <option name="height" value="886" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -229,6 +112,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -238,20 +123,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="read-csv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="read-csv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="read-csv" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -296,6 +167,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -355,139 +230,36 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="read-csv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="read-csv" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="nodejs_interpreter_path" value="E:/Software/NodeJS/node" />
-    <property name="js.eslint.eslintPackage" value="" />
-    <property name="js-jscs-nodeInterpreter" value="E:\Software\NodeJS\node.exe" />
-    <property name="last_opened_file_path" value="D:/SDG-Projects/RTC/rtc-eureka-clients/rtc-hdfsbridge" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\coding\github\java-demos-segment\read-csv\src\main\resources" />
       <recent name="D:\github目录\java-demos-segment\read-csv\src\main\resources" />
-      <recent name="D:\github目录\java-demos-segment\read-csv\config" />
     </key>
   </component>
-<<<<<<< HEAD
   <component name="RunManager" selected="JUnit.PtTest.consumeTest">
-    <configuration default="false" name="MobileTest.regTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-=======
-  <component name="RunManager" selected="Application.CSVMain">
-    <configuration default="false" name="ReadCSVFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.wxmimperio.csv.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="read-csv" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.wxmimperio.csv" />
-      <option name="MAIN_CLASS_NAME" value="com.wxmimperio.csv.MobileTest" />
-      <option name="METHOD_NAME" value="regTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MobileTest.loginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.wxmimperio.csv.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="read-csv" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.wxmimperio.csv" />
-      <option name="MAIN_CLASS_NAME" value="com.wxmimperio.csv.MobileTest" />
-      <option name="METHOD_NAME" value="loginTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="MobileTest.depositTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.wxmimperio.csv.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="read-csv" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.wxmimperio.csv" />
-      <option name="MAIN_CLASS_NAME" value="com.wxmimperio.csv.MobileTest" />
-      <option name="METHOD_NAME" value="depositTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="PtTest.loginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="com.wxmimperio.csv.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="read-csv" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.wxmimperio.csv" />
-      <option name="MAIN_CLASS_NAME" value="com.wxmimperio.csv.PtTest" />
-      <option name="METHOD_NAME" value="loginTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="false" name="PtTest.consumeTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -514,24 +286,30 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="CSVMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="CSVTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.wxmimperio.csv.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="com.wxmimperio.csv.CSVMain" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <module name="read-csv" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="PACKAGE_NAME" value="com.wxmimperio.csv" />
+      <option name="MAIN_CLASS_NAME" value="com.wxmimperio.csv.CSVTest" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="read-csv" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
       <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -771,7 +549,6 @@
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -850,28 +627,6 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list />
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -915,12 +670,6 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -936,35 +685,14 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-<<<<<<< HEAD
-    <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.MobileTest.regTest" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.MobileTest.loginTest" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.MobileTest.depositTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.PtTest.loginTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.PtTest.consumeTest" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="JUnit.PtTest.consumeTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.CSVTest.test" />
     </list>
     <recent_temporary>
-      <list size="5">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="JUnit.PtTest.consumeTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.PtTest.loginTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.MobileTest.depositTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.MobileTest.loginTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MobileTest.regTest" />
-=======
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Application.ReadCSVFile" />
-      <item index="1" class="java.lang.String" itemvalue="Application.WriteCSVFile" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.MobileTest.activeTest" />
-      <item index="3" class="java.lang.String" itemvalue="Application.CSVMain" />
-    </list>
-    <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Application.CSVMain" />
-        <item index="1" class="java.lang.String" itemvalue="Application.ReadCSVFile" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.MobileTest.activeTest" />
-        <item index="3" class="java.lang.String" itemvalue="Application.WriteCSVFile" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
+        <item index="1" class="java.lang.String" itemvalue="JUnit.CSVTest.test" />
       </list>
     </recent_temporary>
   </component>
@@ -973,111 +701,71 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b4b215e0-8e1a-45d6-b5e9-b8d44d381ded" name="Default" comment="" />
-      <created>1491553599034</created>
+      <changelist id="a2089607-9fef-4e2d-80de-19a974cf9782" name="Default" comment="" />
+      <created>1491889955155</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1491553599034</updated>
-      <workItem from="1491553607655" duration="5677000" />
-      <workItem from="1491802050911" duration="239000" />
-<<<<<<< HEAD
-      <workItem from="1491802364422" duration="22308000" />
-=======
-      <workItem from="1491802364422" duration="3771000" />
-      <workItem from="1491835732590" duration="311000" />
-      <workItem from="1491836085398" duration="2822000" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
+      <updated>1491889955155</updated>
+      <workItem from="1491889958192" duration="5698000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PtTest_consumeTest - 2017.04.10 at 18h 02m 57s.xml">
+    <history-entry file="CSVTest_test - 2017.04.11 at 14h 01m 54s.xml">
+      <configuration name="CSVTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CSVTest_test - 2017.04.11 at 14h 04m 27s.xml">
+      <configuration name="CSVTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CSVTest_test - 2017.04.11 at 14h 04m 47s.xml">
+      <configuration name="CSVTest.test" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PtTest_consumeTest - 2017.04.11 at 13h 53m 59s.xml">
       <configuration name="PtTest.consumeTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.10 at 18h 05m 41s.xml">
+    <history-entry file="PtTest_consumeTest - 2017.04.11 at 16h 46m 13s.xml">
       <configuration name="PtTest.consumeTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.11 at 10h 10m 51s.xml">
+    <history-entry file="PtTest_consumeTest - 2017.04.11 at 17h 33m 32s.xml">
       <configuration name="PtTest.consumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.11 at 10h 34m 18s.xml">
-      <configuration name="PtTest.consumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.11 at 10h 43m 24s.xml">
-      <configuration name="PtTest.consumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.11 at 11h 13m 46s.xml">
-      <configuration name="PtTest.consumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.11 at 11h 49m 14s.xml">
-      <configuration name="PtTest.consumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.11 at 12h 34m 18s.xml">
-      <configuration name="PtTest.consumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PtTest_consumeTest - 2017.04.11 at 13h 19m 02s.xml">
-      <configuration name="PtTest.consumeTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="PtTest_loginTest - 2017.04.11 at 12h 33m 55s.xml">
-      <configuration name="PtTest.loginTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="28224000" />
+    <option name="totallyTimeSpent" value="5698000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="886" extended-state="7" />
-    <editor active="false" />
-=======
-    <option name="totallyTimeSpent" value="12820000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <frame x="-8" y="-8" width="1456" height="886" extended-state="6" />
     <editor active="true" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.73333335" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32899022" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32852808" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52117264" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-<<<<<<< HEAD
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2413793" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-=======
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26403642" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928678" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32931727" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297414" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5046854" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1095,533 +783,115 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/config/add_consume_2.csv">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-=======
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/AppTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#346#347#0" expanded="false" />
-            <element signature="e#379#380#0" expanded="false" />
-            <element signature="e#480#481#0" expanded="false" />
-            <element signature="e#533#534#0" expanded="false" />
-            <element signature="e#608#609#0" expanded="false" />
-            <element signature="e#642#643#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/WriteCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="8" column="28" lean-forward="false" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        <state relative-caret-position="-38">
+          <caret line="22" column="53" lean-forward="true" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="33" column="58" lean-forward="false" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/WriteCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="361">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="1501">
-          <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="31" column="23" lean-forward="false" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/add_consume_2.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="19" lean-forward="false" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-=======
-        <state relative-caret-position="475">
-          <caret line="33" column="58" lean-forward="true" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/WriteCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/CSVTest.java" />
-    <entry file="file://$PROJECT_DIR$/config/add_consume_2.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1501">
-          <caret line="86" column="31" lean-forward="false" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="817">
-          <caret line="43" column="35" lean-forward="false" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/WriteCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="418">
-          <caret line="22" column="9" lean-forward="true" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/CSVTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-=======
-        <state relative-caret-position="475">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
-          <folding />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/CSVTest.java" />
-    <entry file="file://$PROJECT_DIR$/config/add_consume_2.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1501">
-          <caret line="86" column="31" lean-forward="true" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/test.csv" />
-    <entry file="file://$PROJECT_DIR$/config/add_consume_2.csv" />
-    <entry file="file://$PROJECT_DIR$/logs/error.log" />
-    <entry file="file://$PROJECT_DIR$/logs/info.log" />
-    <entry file="file://$PROJECT_DIR$/logs/info.log_2017-04-07-16" />
-    <entry file="file://$PROJECT_DIR$/config/meiyu_user_active_old_04-07.csv" />
-    <entry file="file://$PROJECT_DIR$/config/meiyu_user_active_new_04-07.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_active_old_04-07.csv" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/CSVTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/io/FileWriter.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/io/File.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/com/opencsv/opencsv/3.8/opencsv-3.8.jar!/com/opencsv/CSVWriter.class" />
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/io/OutputStreamWriter.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_80/src.zip!/java/io/FileOutputStream.java" />
-    <entry file="file://$PROJECT_DIR$/config/active_result_0407.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_active_old_04-08.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_active_new_04-08.csv" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_active_old_04-09.csv" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/MobileTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/AppTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="22" column="7" lean-forward="false" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#346#347#0" expanded="false" />
-            <element signature="e#379#380#0" expanded="false" />
-            <element signature="e#480#481#0" expanded="false" />
-            <element signature="e#533#534#0" expanded="false" />
-            <element signature="e#608#609#0" expanded="false" />
-            <element signature="e#642#643#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/test.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="39" column="12" lean-forward="true" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/WriteCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="80" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="18" column="9" lean-forward="true" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_reg_new_04-07.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="27" lean-forward="true" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_reg_new_04-08.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_reg_old_04-09.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="33" column="58" lean-forward="true" selection-start-line="33" selection-start-column="58" selection-end-line="33" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_login_old_04-07.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_login_new_04-08.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_login_old_04-09.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_deposit_new_04-07.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_deposit_old_04-07.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_deposit_old_04-08.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_deposit_new_04-08.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/meiyu_user_deposit_old_04-09.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_login_new_04-07.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_login_old_04-08.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_login_old_04-09.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_old_04-08.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_old_04-09.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="26" column="33" lean-forward="true" selection-start-line="26" selection-start-column="33" selection-end-line="26" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_old_04-10.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/MobileTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="146" column="31" lean-forward="true" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
+        <state relative-caret-position="303">
+          <caret line="16" column="38" lean-forward="true" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="79" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_old_04-11.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+    <entry file="uml://MAVEN/com.wxmimperio.csv:read-csv:1.0-SNAPSHOT">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>MAVEN</ID>
+          <OriginalElement>com.wxmimperio.csv:read-csv:1.0-SNAPSHOT</OriginalElement>
+          <nodes>
+            <node x="" y="">com.wxmimperio.csv:read-csv:1.0-SNAPSHOT</node>
+            <node x="" y="">com.google.guava:guava:jar:20.0</node>
+            <node x="" y="">com.opencsv:opencsv:jar:3.8</node>
+            <node x="" y="">com.opencsv:opencsv:jar:3.8/org.apache.commons:commons-lang3:jar:3.4</node>
+            <node x="" y="">com.opencsv:opencsv:jar:3.8/commons-beanutils:commons-beanutils:jar:1.9.2</node>
+            <node x="" y="">com.opencsv:opencsv:jar:3.8/commons-beanutils:commons-beanutils:jar:1.9.2/commons-logging:commons-logging:jar:1.1.1</node>
+            <node x="" y="">com.opencsv:opencsv:jar:3.8/commons-beanutils:commons-beanutils:jar:1.9.2/commons-collections:commons-collections:jar:3.2.1</node>
+            <node x="" y="">junit:junit:jar:4.12</node>
+            <node x="" y="">junit:junit:jar:4.12/org.hamcrest:hamcrest-core:jar:1.3</node>
+            <node x="" y="">org.slf4j:slf4j-log4j12:jar:1.7.2</node>
+            <node x="" y="">org.slf4j:slf4j-log4j12:jar:1.7.2/org.slf4j:slf4j-api:jar:1.7.2</node>
+            <node x="" y="">org.slf4j:slf4j-log4j12:jar:1.7.2/log4j:log4j:jar:1.2.17</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="0.7267080745341615" x="392.5" y="200.05555555555554" />
+          <SelectedNodes />
+          <Categories />
+          <VISIBILITY>All</VISIBILITY>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_old_04-11_1.csv">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_new_04-11_2.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_new_04-11_3.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_new_04-11_4.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_old_04-11_5.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/PtTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="96" column="34" lean-forward="false" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
-=======
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/utils/CSVHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="63" column="32" lean-forward="false" selection-start-line="63" selection-start-column="32" selection-end-line="63" selection-end-column="32" />
+        <state relative-caret-position="304">
+          <caret line="16" column="21" lean-forward="true" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/ReadCSVFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="133">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wxmimperio/csv/CSVMain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
->>>>>>> 275c7a58d114323bc06150ae4784551e4ead15d8
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="228">
+          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-  </component>
-  <component name="mavenExecuteGoalHistory">
-    <option value="$PROJECT_DIR$" />
-    <option value="clean package" />
-    <option value="clean:package" />
-    <option value="clean:clean" />
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/AppTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_new_04-11_6.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/pt_consume_new_04-11_7.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/CSVTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="58" column="46" lean-forward="true" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/wxmimperio/csv/PtTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1957">
+          <caret line="110" column="53" lean-forward="true" selection-start-line="110" selection-start-column="53" selection-end-line="110" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
