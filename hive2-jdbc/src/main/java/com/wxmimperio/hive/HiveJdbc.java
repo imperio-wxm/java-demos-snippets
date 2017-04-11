@@ -27,11 +27,9 @@ public class HiveJdbc {
             showTables(stmt, "");
 
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
             LOG.error(driverName + " not found!", e);
             System.exit(1);
         } catch (SQLException e) {
-            e.printStackTrace();
             LOG.error("Connection error!", e);
             System.exit(1);
         } finally {
