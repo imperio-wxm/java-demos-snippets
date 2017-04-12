@@ -11,10 +11,12 @@ import sun.misc.SignalHandler;
 public class KillSignal implements SignalHandler {
     private static final Logger LOG = LoggerFactory.getLogger(KillSignal.class);
 
+    boolean flags = true;
+
     public KillSignal() {
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         KillSignal killSignal = new KillSignal();
         // TERM（kill -15）、USR1（kill -10）、USR2（kill -12）、USR2（kill -9）
         //Signal.handle(new Signal("USR1"), killSignal);
@@ -32,17 +34,22 @@ public class KillSignal implements SignalHandler {
     }
 
     private void sleepTime() {
-        try {
-            Thread.sleep(50000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        while (flags) {
+            try {
+                Thread.sleep(1000);
+                LOG.info("While in!");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
+        LOG.info("While out!");
     }
 
     /**
      * 安全的关闭HttpServer监听服务
      */
     private void stopProject() {
+        flags = false;
         LOG.info("Stop!");
     }
 }
