@@ -12,7 +12,7 @@ public class HiveJdbc {
     private static final Logger LOG = LoggerFactory.getLogger(HiveJdbc.class);
 
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";
-    private static String url = "jdbc:hive2://127.0.0.1:10000";
+    private static String url = "jdbc:hive2://127.0.0.1:10020";
     private static String user = "hadoop";
     private static String password = "";
     private static String sql = "";
