@@ -1,0 +1,8 @@
+
+dom4j-xml/target/
+
+dom4j-xml/\.idea/
+
+dom4j-xml/dom4j-xml\.iml
+
+dom4j-xml/src/main/resources/pt_web_js_log\.xml
