@@ -1,9 +1,12 @@
 package com.wxmimperio.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by wxmimperio on 2017/4/20.
  */
-public class User {
+public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     private Long id;
     private String name;
     private Integer age;
