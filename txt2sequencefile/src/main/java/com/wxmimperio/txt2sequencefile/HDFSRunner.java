@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.lang.reflect.Method;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -45,9 +46,77 @@ public class HDFSRunner {
         conf.set(DEFAULTFS, hdfsUri);
         conf.set(DFS_FAILURE_POLICY, "NEVER");
         //conf.set(DFS_SESSION_TIMEOUT, "180000");
-        conf.set(DFS_TRANSFER_THREADS,"16000");
+        conf.set(DFS_TRANSFER_THREADS, "16000");
         return conf;
     }
+
+    public static synchronized boolean append2SequenceFile(String filePath, List<String> buffer) {
+        boolean flags = false;
+        FSDataOutputStream outStream = null;
+        FileSystem hdfs;
+        SequenceFile.Writer writer = null;
+        Method refHflushOrSync;
+        try {
+            Path path = new Path(filePath);
+            hdfs = FileSystem.get(URI.create(hdfsUri), config());
+            if (hdfs.isFile(path)) {
+                outStream = hdfs.append(path);
+            } else {
+                outStream = hdfs.create(path);
+            }
+            Text value = new Text();
+            BytesWritable key = new BytesWritable();
+            BytesWritable EMPTY_KEY = new BytesWritable();
+
+            writer = SequenceFile.createWriter(
+                    config(),
+                    outStream,
+                    key.getClass(),
+                    value.getClass(),
+                    SequenceFile.CompressionType.BLOCK,
+                    null);
+
+            int index = 0;
+            for (String str : buffer) {
+                value.set(str);
+                writer.append(EMPTY_KEY, value);
+                index++;
+            }
+            writer.sync();
+            refHflushOrSync = reflectHflushOrSync(outStream);
+            refHflushOrSync.invoke(outStream);
+
+            System.out.println("write size=" + index);
+            flags = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            IOUtils.closeStream(writer);
+            IOUtils.closeStream(outStream);
+        }
+        return flags;
+    }
+
+    private static Method reflectHflushOrSync(FSDataOutputStream os) {
+        Method m = null;
+        if (os != null) {
+            Class<?> fsDataOutputStreamClass = os.getClass();
+            try {
+                m = fsDataOutputStreamClass.getMethod("hflush");
+            } catch (NoSuchMethodException ex) {
+                ex.printStackTrace();
+                try {
+                    m = fsDataOutputStreamClass.getMethod("sync");
+                } catch (Exception ex1) {
+                    String msg = "Neither hflush not sync were found. That seems to be " +
+                            "a problem!";
+                    ex1.printStackTrace();
+                }
+            }
+        }
+        return m;
+    }
+
 
     /**
      * @param filePath
