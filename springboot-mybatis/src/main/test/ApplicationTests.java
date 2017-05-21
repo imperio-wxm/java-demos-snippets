@@ -5,14 +5,14 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
+@SpringBootTest(classes = Application.class)
 @Transactional
 public class ApplicationTests {
 
@@ -29,6 +29,8 @@ public class ApplicationTests {
         System.out.println(u.getId());
         System.out.println(u.getGender());
         Assert.assertEquals(20, u.getAge().intValue());
+
+        System.out.println(userMapper.findByName("测试姓名=1"));
     }
 
 }
