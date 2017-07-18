@@ -72,7 +72,6 @@ public class Main {
             consumer.seek(tp, offsets.get(tp).offset());
         }
 
-
         List<Event> events = new ArrayList<>();
         try {
             while (true) {
