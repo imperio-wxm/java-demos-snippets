@@ -39,38 +39,7 @@
             <artifactId>flume-ng-sdk</artifactId>
             <version>1.7.0</version>
         </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>4.5.2</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.5</version>
-        </dependency>
     </dependencies>
-
-    <repositories>
-        <repository>
-            <id>nexus-public</id>
-            <url>http://nexus.dw.sdo.com/content/groups/public/</url>
-        </repository>
-
-        <repository>
-            <id>dw-releases</id>
-            <url>http://nexus.dw.sdo.com/content/repositories/dw-releases/</url>
-        </repository>
-
-        <repository>
-            <id>dw-snapshots</id>
-            <url>http://nexus.dw.sdo.com/content/repositories/dw-snapshots/</url>
-        </repository>
-
-    </repositories>
 
     <build>
         <plugins>
