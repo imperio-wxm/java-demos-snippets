@@ -56,6 +56,8 @@ public class SimpleTopology implements Topology {
 
                 System.out.println(gr);
 
+                context.forward(key, gr.toString().getBytes());
+
                 Thread.sleep(1000);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -67,6 +69,7 @@ public class SimpleTopology implements Topology {
         @Override
         public void punctuate(long timestamp) {
             System.out.println("SimpleProcessor, Partition = " + context.partition() + " offset = " + context.offset());
+            //context.forward();
             context.commit();
         }
 
@@ -76,7 +79,7 @@ public class SimpleTopology implements Topology {
         }
 
         private Schema getSchemaFromRegistry(String name) throws IOException {
-            String subject = HttpClientUtil.doGet("http:///subjects/" + name + "/versions/latest", null);
+            String subject = HttpClientUtil.doGet("http://10.128.74.83:8081/subjects/" + name + "/versions/latest", null);
             String schema = new JsonParser().parse(subject).getAsJsonObject().get("schema").getAsString();
             return new Schema.Parser().parse(schema);
         }
