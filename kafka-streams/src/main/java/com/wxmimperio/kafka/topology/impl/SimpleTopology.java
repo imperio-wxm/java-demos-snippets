@@ -1,10 +1,10 @@
 package com.wxmimperio.kafka.topology.impl;
 
+import com.google.gson.JsonParser;
+import com.wxmimperio.kafka.HttpClientUtil;
 import com.wxmimperio.kafka.topology.Topology;
 import org.apache.avro.Schema;
-import org.apache.avro.io.DatumReader;
-import org.apache.avro.io.Decoder;
-import org.apache.avro.io.DecoderFactory;
+import org.apache.avro.io.*;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.kafka.streams.processor.Processor;
 import org.apache.kafka.streams.processor.ProcessorContext;
@@ -12,9 +12,7 @@ import org.apache.kafka.streams.processor.ProcessorSupplier;
 import org.apache.kafka.streams.processor.TopologyBuilder;
 
 import org.apache.avro.generic.GenericRecord;
-import org.apache.avro.io.BinaryDecoder;
 
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -49,16 +47,15 @@ public class SimpleTopology implements Topology {
         public void process(String key, byte[] line) {
             Schema schema = null;
             GenericRecord gr = null;
+
             try {
-                System.out.println("key = " + key + " , line = " + line.length);
-                schema = new Schema.Parser().parse(new File("src/main/resources/wooolh_item_glog.avsc"));
+                schema = getSchemaFromRegistry(context.topic());
                 BinaryDecoder binaryEncoder = DecoderFactory.get().binaryDecoder(line, null);
-                System.out.println(binaryEncoder.readString());
                 DatumReader<GenericRecord> datumReader = new SpecificDatumReader<GenericRecord>(schema);
                 gr = datumReader.read(gr, binaryEncoder);
-                for (Schema.Field field : gr.getSchema().getFields()) {
-                    System.out.println("field = " + field.name() + ", value = " + gr.get(field.name()));
-                }
+
+                System.out.println(gr);
+
                 Thread.sleep(1000);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -76,6 +73,12 @@ public class SimpleTopology implements Topology {
         @Override
         public void close() {
             System.out.println("metrics = " + context.metrics());
+        }
+
+        private Schema getSchemaFromRegistry(String name) throws IOException {
+            String subject = HttpClientUtil.doGet("http:///subjects/" + name + "/versions/latest", null);
+            String schema = new JsonParser().parse(subject).getAsJsonObject().get("schema").getAsString();
+            return new Schema.Parser().parse(schema);
         }
     }
 }

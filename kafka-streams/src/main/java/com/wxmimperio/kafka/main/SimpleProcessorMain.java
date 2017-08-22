@@ -1,8 +1,10 @@
 package com.wxmimperio.kafka.main;
 
+import com.wxmimperio.kafka.serializer.SpecificAvroSerde;
 import com.wxmimperio.kafka.topology.impl.SimpleTopology;
+import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
-import org.apache.kafka.common.serialization.*;
+import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.streams.processor.WallclockTimestampExtractor;
@@ -34,15 +36,11 @@ public class SimpleProcessorMain {
         settings.put(StreamsConfig.TIMESTAMP_EXTRACTOR_CLASS_CONFIG, WallclockTimestampExtractor.class);
         // consumer config
         settings.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 60000);
-        /*settings.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        settings.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class.getName());*/
 
         StreamsConfig config = new StreamsConfig(settings);
         SimpleTopology simpleTopology = new SimpleTopology();
-
         streams = new KafkaStreams(simpleTopology.get(sourceTopic, sinkTopic), config);
         streams.start();
     }
-
 
 }
