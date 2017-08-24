@@ -21,7 +21,7 @@ public class FileToHbase {
     private static final String HBASE_ZOOKEEPER_PROPERTY_CLIENTPORT = "2190";
     private static final String HBASE_TABLE_NAME = "dqx_deposit_detail_20170222_2";
     private static final int BATCH_SIZE = 100;
-    private static final String FILE_PATH =  System.getProperty("user.dir") + "/conf/dqx_deposit_detail.txt";
+    private static final String FILE_PATH = System.getProperty("user.dir") + "/file/data_00_13.txt";
     private HTable table;
 
     FileToHbase() throws IOException {
@@ -93,7 +93,7 @@ public class FileToHbase {
                 int lineNum = 0;
                 while ((lineTxt = bufferedReader.readLine()) != null) {
                     if (lineNum > 0) {
-                        String[] message = lineTxt.split("\t");
+                        String[] message = lineTxt.split("\t", -1);
                         Bslog bslog = new Bslog();
                         bslog.setPt_id(message[0]);
                         bslog.setOrder_id(message[1]);
@@ -107,8 +107,10 @@ public class FileToHbase {
                 bufferedReader.close();
                 read.close();
 
-                // insert
+                //insert
                 put(cache);
+
+                System.out.println(cache);
 
                 stop();
             } else {

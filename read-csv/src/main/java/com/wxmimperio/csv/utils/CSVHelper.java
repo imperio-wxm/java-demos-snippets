@@ -54,7 +54,7 @@ public class CSVHelper {
 
         CSVReader reader = null;
         try {
-            InputStreamReader input = new InputStreamReader(new FileInputStream(filePath), Charset.forName("GBK"));
+            InputStreamReader input = new InputStreamReader(new FileInputStream(filePath), Charset.forName("UTF-8"));
             reader = new CSVReader(input, splitChar, DEFAULT_ESCAPE_CHARACTER);
             String[] values = null;
             while ((values = reader.readNext()) != null) {

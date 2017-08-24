@@ -56,12 +56,19 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!--<hadoop.version>2.6.0-cdh5.11.1</hadoop.version>-->
         <hadoop.version>2.0.0-cdh4.7.0</hadoop.version>
         <maven.test.skip>true</maven.test.skip>
         <!-- <hadoop.version>2.6.0-cdh5.4.0</hadoop.version> -->
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.35</version>
+        </dependency>
+
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
@@ -79,6 +86,20 @@
             <artifactId>hadoop-client</artifactId>
             <version>${hadoop.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.hadoop.gplcompression/hadoop-lzo -->
+        <dependency>
+            <groupId>com.hadoop.gplcompression</groupId>
+            <artifactId>hadoop-lzo</artifactId>
+            <version>cdh4-0.4.15-gplextras</version>
+        </dependency>
+
+
+        <!--<dependency>
+            <groupId>com.snda.dw.hdfsfile</groupId>
+            <artifactId>hdfscommon</artifactId>
+            <version>2.6.0-cdh5.11.1-SNAPSHOT</version>
+        </dependency>-->
 
         <dependency>
             <groupId>commons-collections</groupId>
@@ -99,4 +120,21 @@
             <version>1.7.2</version>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>nexus-public</id>
+            <url>http://nexus.dw.sdo.com/content/groups/public/</url>
+        </repository>
+
+        <repository>
+            <id>dw-releases</id>
+            <url>http://nexus.dw.sdo.com/content/repositories/dw-releases/</url>
+        </repository>
+
+        <repository>
+            <id>dw-snapshots</id>
+            <url>http://nexus.dw.sdo.com/content/repositories/dw-snapshots/</url>
+        </repository>
+    </repositories>
 </project>

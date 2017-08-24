@@ -33,7 +33,7 @@ public class Main {
 
     private void initFlumeRpcClient() {
         rpcClient = new FlumeRpcClient();
-        rpcClient.initClient("");
+        rpcClient.initClient("10.128.113.53:50001");
     }
 
     private static List<TopicPartition> getTopicPartList(List<PartitionInfo> partInfoList) {
@@ -46,10 +46,10 @@ public class Main {
 
     private void initKafkaConsumer() {
         Properties props = new Properties();
-        props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "");
+        props.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, "10.128.113.104:9092");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.put(ConsumerConfig.GROUP_ID_CONFIG, "");
+        props.put(ConsumerConfig.GROUP_ID_CONFIG, "error_group");
         props.put(ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG, false);
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
         props.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, 30000);
@@ -60,9 +60,14 @@ public class Main {
         initFlumeRpcClient();
         initKafkaConsumer();
 
-        List<TopicPartition> tpList = getTopicPartList(consumer.partitionsFor(""));
+        String endTime = "2017-08-05 14:56:40";
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = sdf.parse(endTime);
+
+        List<TopicPartition> tpList = getTopicPartList(consumer.partitionsFor("error_topic_glog"));
         consumer.assign(tpList);
-        long timestamp = new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20170718 00:00:00").getTime();
+        long timestamp = new SimpleDateFormat("yyyyMMdd HH:mm:ss").parse("20170804 00:00:00").getTime();
         Map<TopicPartition, Long> map = new HashMap<>();
         for (TopicPartition tp : tpList) {
             map.put(tp, timestamp);
@@ -72,18 +77,27 @@ public class Main {
             consumer.seek(tp, offsets.get(tp).offset());
         }
 
-        List<Event> events = new ArrayList<>();
         try {
             while (true) {
                 for (ConsumerRecord<String, String> record : consumer.poll(1000)) {
-                    if (record.value().startsWith("")) {
-                        System.out.println(record.value());
+                    if (record.value().contains("swy_")) {
 
-                        Event event = EventBuilder.withBody(record.value().toString(), Charset.forName("UTF-8"));
-                        events.add(event);
+                        String event_time = record.value().split("\\|")[1];
+                        String topic = record.value().split("\\|")[0];
+
+                        if (sdf.parse(event_time).before(date)) {
+                            List<Event> events = new ArrayList<>();
+
+                            Event event = EventBuilder.withBody(record.value().toString(), Charset.forName("UTF-8"));
+                            Map<String, String> headerMap = new HashMap<>();
+                            headerMap.put("topic", topic);
+                            event.setHeaders(headerMap);
+                            events.add(event);
+                            rpcClient.sendDataToFlume(events);
+                            System.out.println(record.value());
+                        }
                     }
                 }
-                rpcClient.sendDataToFlume(events);
             }
         } finally {
             consumer.close();

@@ -1,5 +1,6 @@
 package com.wxmimperio.resources;
 
+import com.wxmimperio.resources.demo_two.XMLResourceBundleControl;
 import org.junit.Test;
 
 import java.util.ResourceBundle;
@@ -7,7 +8,7 @@ import java.util.ResourceBundle;
 /**
  * Created by weiximing.imperio on 2017/8/24.
  */
-public class XmlResourceTest {
+public class XmlResourceTestTwo {
 
     @Test
     public void resourceTest() {

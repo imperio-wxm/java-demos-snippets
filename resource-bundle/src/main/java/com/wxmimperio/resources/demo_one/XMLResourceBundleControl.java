@@ -1,8 +1,7 @@
-package com.wxmimperio.resources;
+package com.wxmimperio.resources.demo_one;
 
 import java.io.BufferedInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Collections;
@@ -45,12 +44,9 @@ public class XMLResourceBundleControl extends ResourceBundle.Control {
             urlconnection.setUseCaches(false);
         }
 
-        try (final InputStream stream = urlconnection.getInputStream();
-             final BufferedInputStream bis = new BufferedInputStream(stream);
-        ) {
-            final ResourceBundle bundle = new XMLResourceBundle(bis);
-            return bundle;
-        }
+        return new XMLResourceBundle(
+                new BufferedInputStream(urlconnection.getInputStream())
+        );
     }
 
     @Override
