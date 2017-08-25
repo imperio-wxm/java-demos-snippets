@@ -13,7 +13,7 @@ public class SimpleConnect {
 
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "com.facebook.presto.jdbc.PrestoDriver";
-    static final String DB_URL = "jdbc:presto://URL:PORT/cassandra/rtc";
+    static final String DB_URL = "jdbc:presto:///cassandra/rtc";
 
     //  Database credentials
     static final String USER = "presto";
