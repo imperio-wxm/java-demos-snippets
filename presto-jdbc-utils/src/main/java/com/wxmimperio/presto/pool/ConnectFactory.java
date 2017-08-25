@@ -31,25 +31,30 @@ public class ConnectFactory implements PooledObjectFactory<Connection> {
 
     @Override
     public void destroyObject(PooledObject<Connection> pooledObject) throws Exception {
-        Connection connection = pooledObject.getObject();
-        if (connection != null) {
-            connection.close();
+        if (pooledObject instanceof Connection) {
+            Connection connection = pooledObject.getObject();
+            if (connection != null) {
+                connection.close();
+            }
         }
     }
 
     @Override
     public boolean validateObject(PooledObject<Connection> pooledObject) {
-        Connection connection = pooledObject.getObject();
-        if (connection != null) {
-            try {
-                return connection.isClosed();
-            } catch (SQLException e) {
-                e.printStackTrace();
+        if (pooledObject instanceof Connection) {
+            Connection connection = pooledObject.getObject();
+            if (connection != null) {
+                try {
+                    return connection.isClosed();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            } else {
                 return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     @Override
@@ -58,9 +63,11 @@ public class ConnectFactory implements PooledObjectFactory<Connection> {
 
     @Override
     public void passivateObject(PooledObject<Connection> pooledObject) throws Exception {
-        Connection connection = pooledObject.getObject();
-        if (connection != null) {
-            connection.clearWarnings();
+        if (pooledObject instanceof Connection) {
+            Connection connection = pooledObject.getObject();
+            if (connection != null) {
+                connection.clearWarnings();
+            }
         }
     }
 }

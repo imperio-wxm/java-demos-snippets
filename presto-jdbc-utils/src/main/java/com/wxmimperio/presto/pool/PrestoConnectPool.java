@@ -14,7 +14,7 @@ import java.sql.SQLException;
 public class PrestoConnectPool {
     private final static Logger logger = LoggerFactory.getLogger(PrestoConnectPool.class);
     private GenericObjectPool<Connection> pool;
-    private static final int CONNECT_POOL_SIZE = 5;
+    private static final int CONNECT_POOL_SIZE = 3;
 
     private static class SingletonHolder {
         private static final PrestoConnectPool INSTANCE = new PrestoConnectPool();
@@ -27,6 +27,7 @@ public class PrestoConnectPool {
     private PrestoConnectPool() {
         GenericObjectPoolConfig conf = new GenericObjectPoolConfig();
         conf.setMaxTotal(CONNECT_POOL_SIZE);
+        conf.setTestOnReturn(true);
         ConnectFactory connectFactory = new ConnectFactory();
         pool = new GenericObjectPool<Connection>(connectFactory, conf);
     }
