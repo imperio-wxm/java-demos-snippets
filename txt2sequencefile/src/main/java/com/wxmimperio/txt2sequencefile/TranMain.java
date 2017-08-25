@@ -38,9 +38,9 @@ public class TranMain {
         String fileName[] = "lzzj_deposit_glog,lzzj_character_logout_glog,lzzj_character_login_glog,lzzj_character_glog".split(",", -1);
 
         String head = "/user/hive/warehouse/dw.db/";
-        String head1 = "/tmp/part_date=2017-08-22/";
+        String head1 = "/tmp/part_date=2017-08-23/";
 
-        String head3 = "/part_date=2017-08-22/";
+        String head3 = "/part_date=2017-08-23/";
 
         System.out.println(fileName.length);
         for (int i = 0; i < fileName.length; i++) {
