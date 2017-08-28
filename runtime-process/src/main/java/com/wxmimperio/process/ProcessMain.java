@@ -1,5 +1,6 @@
 package com.wxmimperio.process;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,6 +12,7 @@ import java.util.stream.Stream;
  * Created by weiximing.imperio on 2017/8/28.
  */
 public class ProcessMain {
+    private static final int BATCH_SIZE = 2;
 
     public static void main(String[] args) {
 
@@ -24,7 +26,8 @@ public class ProcessMain {
         System.out.println("size = " + supplier.get().count());
 
         while (strings.hasNext()) {
-            System.out.println(strings.next());
+            //System.out.println(strings.next());
+            strings.next();
         }
         supplier.get().close();
 
@@ -32,13 +35,16 @@ public class ProcessMain {
         System.out.println("======================================");
 
         Process process = ShellUtils.processShellWithoutReader(cmd);
-        BufferedReader br = null;
-
-        br = new BufferedReader(new InputStreamReader(process.getInputStream()));
         try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String output = null;
+            long i = 1L;
             while ((output = br.readLine()) != null) {
+                if (i % BATCH_SIZE == 0) {
+                    System.out.println("current size = " + i);
+                }
                 System.out.println(output);
+                i++;
             }
         } catch (Exception e) {
             e.printStackTrace();
