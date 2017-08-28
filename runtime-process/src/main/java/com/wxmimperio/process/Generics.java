@@ -9,38 +9,25 @@ import java.util.List;
 /**
  * Created by weiximing.imperio on 2017/8/28.
  */
-public abstract class Generics {
+public abstract class Generics<T> {
 
     public abstract <T> T getResult();
+
+    public abstract void exec(T param);
 
     public static void main(String[] args) {
         Generics genericsTest = new GenericsFactory().createGenerics("test1");
         List<String> list = (List<String>) genericsTest.getResult();
-        System.out.println(list);
+        genericsTest.exec(list);
 
         Generics genericsTest2 = new GenericsFactory().createGenerics("test2");
 
         Process process = (Process) genericsTest2.getResult();
-        if (process instanceof Process) {
-            System.out.println("This is a process");
-            try {
-                BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
-                String output = null;
-                while ((output = br.readLine()) != null) {
-                    System.out.println(output);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            } finally {
-                if (process.isAlive()) {
-                    process.destroyForcibly();
-                }
-            }
-        }
+        genericsTest2.exec(process);
 
     }
 
-    static class GenericsTest extends Generics {
+    static class GenericsTest<T> extends Generics<T> {
         @Override
         public <T> T getResult() {
             List<String> list = new ArrayList<>();
@@ -48,9 +35,14 @@ public abstract class Generics {
             list.add("54546");
             return (T) list;
         }
+
+        @Override
+        public void exec(T param) {
+            System.out.println((List) param);
+        }
     }
 
-    static class GenericsTest2 extends Generics {
+    static class GenericsTest2<T> extends Generics<T> {
         private String processCmd;
 
         public GenericsTest2(String processCmd) {
@@ -58,14 +50,35 @@ public abstract class Generics {
         }
 
         @Override
-        public <T> T getResult() {
+        public Process getResult() {
             Process process = null;
             try {
                 process = Runtime.getRuntime().exec(processCmd);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return (T) process;
+            return process;
+        }
+
+        @Override
+        public void exec(T processParam) {
+            if (processParam instanceof Process) {
+                Process process = (Process) processParam;
+                System.out.println("This is a process");
+                try {
+                    BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream(), "GBK"));
+                    String output = null;
+                    while ((output = br.readLine()) != null) {
+                        System.out.println(output);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    if (process.isAlive()) {
+                        process.destroyForcibly();
+                    }
+                }
+            }
         }
     }
 }
