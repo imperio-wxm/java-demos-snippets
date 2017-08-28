@@ -1,6 +1,7 @@
 package com.wxmimperio.process;
 
 import java.util.Iterator;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -9,9 +10,14 @@ import java.util.stream.Stream;
 public class ProcessMain {
 
     public static void main(String[] args) {
-        Stream streams = ShellUtils.processShell(args);
 
-        Iterator<String> strings = streams.iterator();
+        String[] cmd = {"hive", "-e", args[0]};
+
+        Supplier<Stream<String>> supplier = () -> ShellUtils.processShell(cmd);
+
+        Iterator<String> strings = supplier.get().iterator();
+
+        System.out.println("size = " + supplier.get().count());
 
         while (strings.hasNext()) {
             System.out.println(strings.next());
