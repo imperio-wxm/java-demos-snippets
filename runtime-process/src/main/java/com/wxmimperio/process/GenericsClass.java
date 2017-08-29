@@ -30,6 +30,10 @@ public abstract class GenericsClass<T> {
             List<String> list = new ArrayList<>();
             list.add("dsfasdfa");
             list.add("5464");
+            List<String> list2 = new ArrayList<>();
+            list2.add("wxmimperio");
+            list2.add("test_wxmimperio");
+            list.addAll(list2);
             return (List<T>) list;
         }
 
@@ -53,6 +57,8 @@ public abstract class GenericsClass<T> {
             try {
                 Process process = Runtime.getRuntime().exec(processCmd);
                 list.add(process);
+                Process process1 = Runtime.getRuntime().exec(processCmd);
+                list.add(process1);
             } catch (Exception e) {
                 e.printStackTrace();
             }

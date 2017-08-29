@@ -8,7 +8,7 @@ public class GenericsFactory {
         if (type.equalsIgnoreCase("test1"))
             return new GenericsMethod.GenericsTest();
         else if (type.equalsIgnoreCase("test2")) {
-            String params = "cmd ipconfig /all";
+            String params = "cmd /c dir";
             return new GenericsMethod.GenericsTest2(params);
         } else {
             return null;
@@ -20,7 +20,7 @@ public class GenericsFactory {
             case "list":
                 return new GenericsClass.GenericsClassList();
             case "process":
-                String params = "cmd ipconfig /all";
+                String params = "cmd /c dir";
                 return new GenericsClass.GenericsClassProcess(params);
             default:
                 return null;
