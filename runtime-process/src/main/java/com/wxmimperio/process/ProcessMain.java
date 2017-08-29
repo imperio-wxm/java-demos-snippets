@@ -1,8 +1,6 @@
 package com.wxmimperio.process;
 
-import javax.xml.bind.SchemaOutputResolver;
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.function.Supplier;
