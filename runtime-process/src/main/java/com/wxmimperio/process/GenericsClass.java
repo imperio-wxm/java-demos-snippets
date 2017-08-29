@@ -14,13 +14,25 @@ public abstract class GenericsClass<T> {
     public abstract void exec(T param);
 
     public static void main(String[] args) {
-        GenericsClass genericsClassList = new GenericsFactory().createGenericsClass("list");
+
+        /*GenericsClass genericsClassList = new GenericsFactory().createGenericsClass("list");
         List<String> list = genericsClassList.getResult();
         genericsClassList.exec(list);
 
         GenericsClass genericsClassProcess = new GenericsFactory().createGenericsClass("process");
         List<Process> processList = genericsClassProcess.getResult();
-        genericsClassProcess.exec(processList);
+        genericsClassProcess.exec(processList);*/
+
+        List list = new GenericsFactory().addAll();
+
+        for (int i = 0; i < list.size(); i++) {
+            if(list.get(i) instanceof String) {
+                System.out.println("This is a string!!!");
+            } else if(list.get(i) instanceof Process) {
+                System.out.println("This is process!!!");
+            }
+        }
+
     }
 
     static class GenericsClassList<T> extends GenericsClass<T> {

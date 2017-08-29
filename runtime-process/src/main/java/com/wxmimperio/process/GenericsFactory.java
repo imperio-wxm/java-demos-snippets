@@ -1,9 +1,12 @@
 package com.wxmimperio.process;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by weiximing.imperio on 2017/8/28.
  */
-public class GenericsFactory {
+public class GenericsFactory<T> {
     public GenericsMethod createGenerics(String type) {
         if (type.equalsIgnoreCase("test1"))
             return new GenericsMethod.GenericsTest();
@@ -25,5 +28,21 @@ public class GenericsFactory {
             default:
                 return null;
         }
+    }
+
+    public List<T> addAll() {
+        List<T> resultList = new ArrayList<T>();
+
+        GenericsClass genericsClassList = new GenericsFactory().createGenericsClass("list");
+        List<String> list = genericsClassList.getResult();
+        genericsClassList.exec(list);
+
+        GenericsClass genericsClassProcess = new GenericsFactory().createGenericsClass("process");
+        List<Process> processList = genericsClassProcess.getResult();
+        genericsClassProcess.exec(processList);
+
+        resultList.addAll((List<T>)list);
+        resultList.addAll((List<T>)processList);
+        return resultList;
     }
 }
