@@ -9,25 +9,25 @@ import java.util.List;
 /**
  * Created by weiximing.imperio on 2017/8/28.
  */
-public abstract class Generics<T> {
+public abstract class GenericsMethod<T> {
 
     public abstract <T> T getResult();
 
     public abstract void exec(T param);
 
     public static void main(String[] args) {
-        Generics genericsTest = new GenericsFactory().createGenerics("test1");
+        GenericsMethod genericsTest = new GenericsFactory().createGenerics("test1");
         List<String> list = (List<String>) genericsTest.getResult();
         genericsTest.exec(list);
 
-        Generics genericsTest2 = new GenericsFactory().createGenerics("test2");
+        GenericsMethod genericsTest2 = new GenericsFactory().createGenerics("test2");
 
         Process process = (Process) genericsTest2.getResult();
         genericsTest2.exec(process);
 
     }
 
-    static class GenericsTest<T> extends Generics<T> {
+    static class GenericsTest<T> extends GenericsMethod<T> {
         @Override
         public <T> T getResult() {
             List<String> list = new ArrayList<>();
@@ -42,7 +42,7 @@ public abstract class Generics<T> {
         }
     }
 
-    static class GenericsTest2<T> extends Generics<T> {
+    static class GenericsTest2<T> extends GenericsMethod<T> {
         private String processCmd;
 
         public GenericsTest2(String processCmd) {
