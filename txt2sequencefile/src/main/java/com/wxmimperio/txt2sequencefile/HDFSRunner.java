@@ -1,10 +1,9 @@
 package com.wxmimperio.txt2sequencefile;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataInputStream;
-import org.apache.hadoop.fs.FSDataOutputStream;
-import org.apache.hadoop.fs.FileSystem;
-import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.fs.*;
+import org.apache.hadoop.hdfs.DistributedFileSystem;
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.ipc.RemoteException;
 import org.apache.hadoop.util.ReflectionUtils;
@@ -12,10 +11,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by weiximing.imperio on 2016/7/25.
@@ -55,7 +54,6 @@ public class HDFSRunner {
         FSDataOutputStream outStream = null;
         FileSystem hdfs;
         SequenceFile.Writer writer = null;
-        Method refHflushOrSync;
         try {
             Path path = new Path(filePath);
             hdfs = FileSystem.get(URI.create(hdfsUri), config());
@@ -83,8 +81,7 @@ public class HDFSRunner {
                 index++;
             }
             writer.sync();
-            refHflushOrSync = reflectHflushOrSync(outStream);
-            refHflushOrSync.invoke(outStream);
+            hflushOrSync(outStream);
 
             System.out.println("write size=" + index);
             flags = true;
@@ -95,6 +92,24 @@ public class HDFSRunner {
             IOUtils.closeStream(outStream);
         }
         return flags;
+    }
+
+    protected static void hflushOrSync(FSDataOutputStream os) throws IOException {
+        try {
+            // At this point the refHflushOrSync cannot be null,
+            // since register method would have thrown if it was.
+            reflectHflushOrSync(os).invoke(os);
+        } catch (InvocationTargetException e) {
+            String msg = "Error while trying to hflushOrSync!";
+            e.printStackTrace();
+            Throwable cause = e.getCause();
+            if (cause != null && cause instanceof IOException) {
+                throw (IOException) cause;
+            }
+        } catch (Exception e) {
+            String msg = "Error while trying to hflushOrSync!";
+            e.printStackTrace();
+        }
     }
 
     private static Method reflectHflushOrSync(FSDataOutputStream os) {
@@ -165,6 +180,31 @@ public class HDFSRunner {
 
     /**
      * @param filePath
+     * @param fileSystem
+     */
+    private synchronized static void recoverLease(String filePath, FileSystem fileSystem) {
+        if (filePath != null && fileSystem instanceof DistributedFileSystem) {
+            try {
+                LOG.info("Starting lease recovery for {}", filePath);
+                ((DistributedFileSystem) fileSystem).recoverLease(new Path(filePath));
+            } catch (IOException ex) {
+                LOG.error("Lease recovery failed for {}", filePath, ex);
+            }
+        }
+    }
+
+    public static void recoverLease(String filePath) {
+        FileSystem fs = null;
+        try {
+            fs = FileSystem.get(URI.create(hdfsUri), config());
+            recoverLease(filePath, fs);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * @param filePath
      * @return
      */
     public static List<String> fileReader(String filePath) {
@@ -174,6 +214,13 @@ public class HDFSRunner {
         Path path = new Path(filePath);
         try {
             fs = FileSystem.get(URI.create(hdfsUri), config());
+
+            if (fs instanceof DistributedFileSystem) {
+                System.out.println("this is DistributedFileSystem");
+            } else {
+                System.out.println("this is not DistributedFileSystem");
+            }
+
             if (fs.exists(path)) {
                 FSDataInputStream inputStream = fs.open(path);
                 br = new BufferedReader(new InputStreamReader(inputStream));
@@ -181,6 +228,9 @@ public class HDFSRunner {
                 String line = null;
                 while (null != (line = br.readLine())) {
                     lines.add(line);
+
+                    //System.out.println(line);
+
                 }
             }
         } catch (IOException e) {
@@ -192,12 +242,7 @@ public class HDFSRunner {
         return lines;
     }
 
-    /**
-     * @param filePath
-     * @param data
-     * @return
-     */
-    public static synchronized void sequenceFileWrite(String filePath, List<String> data) {
+    /*public static synchronized void sequenceFileWrite(String filePath, List<String> data) {
         SequenceFile.Writer writer = null;
 
         try {
@@ -231,14 +276,217 @@ public class HDFSRunner {
         } finally {
             IOUtils.closeStream(writer);
         }
+    }*/
+
+    public static synchronized void sequenceFileWrite(String txtFilePath, String sequenceFilePath) {
+        SequenceFile.Writer writer = null;
+        BufferedReader br = null;
+        FileSystem fs = null;
+
+        try {
+            // sequenceFile
+            Path sequencePath = new Path(sequenceFilePath);
+            Text values = new Text();
+            Text key = new Text();
+            writer = SequenceFile.createWriter(
+                    config(),
+                    SequenceFile.Writer.file(sequencePath),
+                    SequenceFile.Writer.keyClass(key.getClass()),
+                    SequenceFile.Writer.valueClass(values.getClass()),
+                    //In hadoop-2.6.0-cdh5, it can use hadoop-common-2.6.5 with appendIfExists()
+                    //SequenceFile.Writer.appendIfExists(true),
+                    SequenceFile.Writer.compression(SequenceFile.CompressionType.BLOCK)
+            );
+
+            // txt
+            Path txtPath = new Path(txtFilePath);
+            fs = FileSystem.get(URI.create(hdfsUri), config());
+            if (fs.exists(txtPath)) {
+                FSDataInputStream inputStream = fs.open(txtPath);
+                br = new BufferedReader(new InputStreamReader(inputStream));
+
+                String line;
+                long index = 0L;
+                while (null != (line = br.readLine())) {
+                    Text msgValueText = new Text();
+                    Text msgKeyText = new Text();
+                    String[] message = line.split("\\t", -1);
+                    String msgKey;
+                    try {
+                        msgKey = message[message.length - 1];
+                    } catch (Exception e) {
+                        msgKey = String.valueOf(System.currentTimeMillis());
+                    }
+                    String[] messageCopy = Arrays.copyOf(message, message.length - 1);
+                    String msgValue = StringUtils.join(Arrays.asList(messageCopy), "\t").toString();
+
+                    //String msgKey = String.valueOf(System.currentTimeMillis()) + index;
+
+                    msgKeyText.set(msgKey);
+                    msgValueText.set(msgValue);
+                    writer.append(msgKeyText, msgValueText);
+                    index++;
+                }
+                LOG.info("file " + txtPath + " size=" + index);
+            }
+        } catch (RemoteException e) {
+            LOG.warn("RemoteException happened warn. File= " + sequenceFilePath, e);
+        } catch (IOException e) {
+            LOG.error("Create or Append SequenceFile happened error. File= " + sequenceFilePath, e);
+        } finally {
+            IOUtils.closeStream(writer);
+            IOUtils.closeStream(br);
+            IOUtils.closeStream(fs);
+        }
+    }
+
+    public static synchronized void sequenceFileReadAndWrite(String inputPath, String outputPath) {
+        SequenceFile.Writer writer = null;
+        SequenceFile.Reader reader = null;
+        BufferedReader br = null;
+        FileSystem fs = null;
+
+        List<String> areaId = new ArrayList<>();
+
+        for (int i = 0; i < 41; i++) {
+            areaId.add((i + 1) + "");
+        }
+
+        String count = "gm01\n" +
+                "gm02\n" +
+                "gm03\n" +
+                "gm04\n" +
+                "gm05\n" +
+                "gm06\n" +
+                "gm07\n" +
+                "gm08\n" +
+                "gm09\n" +
+                "dkm01\n" +
+                "dkm02\n" +
+                "dkm03\n" +
+                "dkm04\n" +
+                "dkm05\n" +
+                "dkm06\n" +
+                "dkm07\n" +
+                "dkm08\n" +
+                "dkm09\n" +
+                "ch01\n" +
+                "ch02\n" +
+                "ch03\n" +
+                "ch04\n" +
+                "ch05\n" +
+                "ch06\n" +
+                "ch07\n" +
+                "ch08\n" +
+                "ch09\n" +
+                "ms01\n" +
+                "ms02\n" +
+                "ms03\n" +
+                "ms04\n" +
+                "ms05\n" +
+                "ms06\n" +
+                "ms07\n" +
+                "ms08\n" +
+                "ms09\n" +
+                "cs01\n" +
+                "cs02\n" +
+                "cs03\n" +
+                "cs04\n" +
+                "cs05\n" +
+                "cs06\n" +
+                "cs07\n" +
+                "cs08\n" +
+                "cs09\n" +
+                "yw01\n" +
+                "yw02\n" +
+                "yw03\n" +
+                "yw04\n" +
+                "yw05\n" +
+                "yw06\n" +
+                "yw07\n" +
+                "yw08\n" +
+                "yw09\n" +
+                "test01\n" +
+                "test02\n" +
+                "test03\n" +
+                "test04\n" +
+                "cx01\n" +
+                "cx02\n" +
+                "cx03\n" +
+                "cx04\n" +
+                "cx05\n" +
+                "cx06\n" +
+                "cx07\n" +
+                "cx08\n" +
+                "cx09";
+
+        String[] counts = count.split("\\n", -1);
+
+        List<String> countList = Arrays.asList(counts);
+
+
+        try {
+            // output
+            Path sequencePath = new Path(outputPath);
+            Text value = new Text();
+            Text key = new Text();
+            writer = SequenceFile.createWriter(
+                    config(),
+                    SequenceFile.Writer.file(sequencePath),
+                    SequenceFile.Writer.keyClass(key.getClass()),
+                    SequenceFile.Writer.valueClass(value.getClass()),
+                    //In hadoop-2.6.0-cdh5, it can use hadoop-common-2.6.5 with appendIfExists()
+                    //SequenceFile.Writer.appendIfExists(true),
+                    SequenceFile.Writer.compression(SequenceFile.CompressionType.BLOCK)
+            );
+
+            //input
+
+            Path inPath = new Path(inputPath);
+
+            fs = FileSystem.get(URI.create(hdfsUri), config());
+            if (fs.exists(inPath)) {
+                reader = new SequenceFile.Reader(config(), SequenceFile.Reader.file(inPath));
+                Writable inKey = (Writable) ReflectionUtils.newInstance(
+                        reader.getKeyClass(), config());
+                Writable inValue = (Writable) ReflectionUtils.newInstance(
+                        reader.getValueClass(), config());
+                long index = 0L;
+                while (reader.next(inKey, inValue)) {
+                    Text msgKey = new Text();
+                    String[] msgs = inValue.toString().split("\\t", -1);
+
+                    if (areaId.contains(msgs[1]) &&
+                            msgs[2].equalsIgnoreCase("1") &&
+                            msgs[4].equalsIgnoreCase("")) {
+                        msgs[4] = "9187";
+                    }
+
+                    msgKey.set(inKey.toString());
+                    value.set(StringUtils.join(msgs, "\t"));
+                    writer.append(msgKey, value);
+                    index++;
+                }
+                LOG.info("file " + inPath + " size=" + index);
+            }
+        } catch (RemoteException e) {
+            LOG.warn("RemoteException happened warn. File= " + outputPath, e);
+        } catch (IOException e) {
+            LOG.error("Create or Append SequenceFile happened error. File= " + outputPath, e);
+        } finally {
+            IOUtils.closeStream(reader);
+            IOUtils.closeStream(writer);
+            IOUtils.closeStream(br);
+            IOUtils.closeStream(fs);
+        }
     }
 
     /**
      * @param filePath
      * @return
      */
-    public static List<String> sequenceFileReader(String filePath) {
-        List<String> messages = new ArrayList<>();
+    public static Map<String, String> sequenceFileReader(String filePath) {
+        Map<String, String> messages = new HashMap<>();
 
         Path path = new Path(filePath);
         SequenceFile.Reader reader = null;
@@ -252,7 +500,17 @@ public class HDFSRunner {
                 Writable value = (Writable) ReflectionUtils.newInstance(
                         reader.getValueClass(), config());
                 while (reader.next(key, value)) {
-                    messages.add(value.toString());
+                    String msgKey = key.toString();
+                    String msgValue = value.toString();
+
+                    String[] msgs = msgValue.split("\\t", -1);
+                    if (msgs[8].equalsIgnoreCase("")) {
+                        msgs[8] = "9187";
+                    }
+
+                    //System.out.println("key = " + msgKey + " message = " + StringUtils.join(msgs, "\\t"));
+                    //messages.add(value.toString());
+                    messages.put(msgKey, StringUtils.join(msgs, "\\t"));
                 }
             }
         } catch (Exception e) {
@@ -282,8 +540,12 @@ public class HDFSRunner {
      * @param sequencePath
      */
     public static void txtFile2SequenceFile(String txtPath, String sequencePath) {
-        sequenceFileWrite(sequencePath, fileReader(txtPath));
+        sequenceFileWrite(txtPath, sequencePath);
         //sequenceFileReader(sequencePath);
+    }
+
+    public static void sequenceFile2SequenceFile(String inputPath, String outputPath) {
+        sequenceFileReadAndWrite(inputPath, outputPath);
     }
 
     /**
@@ -360,6 +622,51 @@ public class HDFSRunner {
             }
         } catch (IOException e) {
             LOG.error("Close FSDataOutputStream happened error" + e);
+        }
+    }
+
+    public static List<String> getFileList(String dataPath) throws Exception {
+        List<String> fileList = new ArrayList<String>();
+        try {
+            Path path = new Path(dataPath);
+            FileSystem fs = FileSystem.get(URI.create(hdfsUri), config());
+            FileStatus[] fileStatusArray = fs.globStatus(path);
+            if (fileStatusArray != null) {
+                //System.out.println("fileStatusArray is not null");
+                for (FileStatus fileStatus : fileStatusArray) {
+                    if (fs.isFile(fileStatus.getPath())) {
+                        String fullPath = fileStatus.getPath().toString();
+                        fileList.add(fullPath);
+                        //System.out.println("readDataFile:" + fullPath);
+
+                    } else if (fs.isDirectory(fileStatus.getPath())) {
+                        //System.out.println("a dir");
+
+                        for (FileStatus fileStatus2 : fs.listStatus(fileStatus
+                                .getPath())) {
+                            if (fs.isFile(fileStatus2.getPath())) {
+                                String fullPath = fileStatus2.getPath()
+                                        .toString();
+                                //System.out.println("dir readDataFile:"
+                                //		+ fullPath);
+                                fileList.add(fullPath);
+                            } else {
+                                //System.out.println("file path error:");
+                                throw new Exception("file path error:");
+                            }
+                        }
+                    }
+                }
+            } else {
+                //System.out.println("fileStatusArray is null");
+            }
+            return fileList;
+
+        } catch (Exception e) {
+            // logger.error("check data file error:" + path.toString());
+            //System.out.println("check data file error:" + dataPath);
+
+            throw new Exception(e);
         }
     }
 }

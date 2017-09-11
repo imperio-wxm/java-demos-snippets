@@ -12,8 +12,8 @@ public class HiveJdbc {
     private static final Logger LOG = LoggerFactory.getLogger(HiveJdbc.class);
 
     private static String driverName = "org.apache.hive.jdbc.HiveDriver";
-    private static String url = "jdbc:hive2://127.0.0.1:10020";
-    private static String user = "hadoop";
+    private static String url = "jdbc:hive2://10.1.8.210:10020";
+    private static String user = "";
     private static String password = "";
     private static String sql = "";
 
@@ -24,7 +24,7 @@ public class HiveJdbc {
             conn = getConn();
             stmt = conn.createStatement();
 
-            showTables(stmt, "");
+            showTables(stmt, "mir2_consume_days_wk_sp_mid");
 
         } catch (ClassNotFoundException e) {
             LOG.error(driverName + " not found!", e);
@@ -38,12 +38,17 @@ public class HiveJdbc {
     }
 
     private static void showTables(Statement stmt, String tableName) throws SQLException {
-        sql = "show tables '" + tableName + "'";
+        sql = "SELECT * FROM " + tableName;
         System.out.println("Running:" + sql);
-        stmt.executeQuery("use dw");
+        stmt.execute("use test");
         ResultSet res = stmt.executeQuery(sql);
         System.out.println("执行 show tables 运行结果:");
-        if (res.next()) {
+        int i = 0;
+        while (res.next()) {
+            i++;
+            if (i >= 10) {
+                break;
+            }
             System.out.println(res.getString(1));
         }
     }
@@ -56,13 +61,13 @@ public class HiveJdbc {
 
     private static void close(Connection conn, Statement stmt) {
         try {
-            if (conn != null) {
-                conn.close();
-                conn = null;
-            }
             if (stmt != null) {
                 stmt.close();
                 stmt = null;
+            }
+            if (conn != null) {
+                conn.close();
+                conn = null;
             }
         } catch (SQLException e) {
             e.printStackTrace();

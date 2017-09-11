@@ -28,4 +28,8 @@ public class ParamsConst {
     public static final String HBASE_MASTER  = "hbase.master";
     public static final String HBASE_TABLENAME  = "hbase.tablename";
 
+
+    public static final String FILE_PATH  = "file.path";
+    public static final String READ_PATH  = "read.path";
+
 }
