@@ -5,6 +5,18 @@
     <groupId>com.wxmimperio.guava</groupId>
     <artifactId>guava-cache</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <packaging>jar</packaging>
 
     <name>guava-cache</name>
@@ -25,7 +37,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>23.0</version>
+            <version>18.0</version>
         </dependency>
     </dependencies>
 </project>
