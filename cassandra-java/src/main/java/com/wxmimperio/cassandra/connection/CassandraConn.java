@@ -25,7 +25,7 @@ public class CassandraConn {
             QueryOptions queryOptions = new QueryOptions();
 
             cluster = Cluster.builder()
-                    .addContactPoints("10.1.11.228")
+                    .addContactPoints("10.128.74.81")
                     //.addContactPoints("10.128.113.56")
                     .withPoolingOptions(poolingOptions)
                     .build();

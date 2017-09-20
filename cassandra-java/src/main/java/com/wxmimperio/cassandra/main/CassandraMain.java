@@ -2,10 +2,13 @@ package com.wxmimperio.cassandra.main;
 
 import com.datastax.driver.core.*;
 import com.wxmimperio.cassandra.connection.CassandraConn;
+import com.wxmimperio.cassandra.select.Query;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -249,7 +252,7 @@ public class CassandraMain {
         cluster.close();
     }*/
 
-    public static void main(String args[]) {
+   /* public static void main(String args[]) {
 
         Cluster cluster = CassandraConn.getCluster();
         int i = 1;
@@ -294,13 +297,13 @@ public class CassandraMain {
             }
 
             //05 10 15 20 25 30 35 40
-            /*batchStatement.add(prepareBatch.bind("2016-11-01 " + addZero(hour, 2) + "-" + addZero(min, 2), addZero(hour, 2), addZero(min, 2), "2016-10-31", String.valueOf(i), "2016-10-31 18:28:32", "114.80.132.125",
+            *//*batchStatement.add(prepareBatch.bind("2016-11-01 " + addZero(hour, 2) + "-" + addZero(min, 2), addZero(hour, 2), addZero(min, 2), "2016-10-31", String.valueOf(i), "2016-10-31 18:28:32", "114.80.132.125",
                     "2016-10-31 18:28:32", "991000801PP015161019112828000001", "1079331189", "991000801", "35", "公会福利礼包", "1", "27.43.177.144", "112",
-                    "G23", "0", "BAIDU", "5", "2016-10-31 18:28:32", 3000d));*/
+                    "G23", "0", "BAIDU", "5", "2016-10-31 18:28:32", 3000d));*//*
 
-            /*batchStatement.add(prepareBatch.bind(addZero(min, 2), "2016-11-01",addZero(hour, 2), String.valueOf(i), "2016-10-31 18:28:32", "114.80.132.125",
+            *//*batchStatement.add(prepareBatch.bind(addZero(min, 2), "2016-11-01",addZero(hour, 2), String.valueOf(i), "2016-10-31 18:28:32", "114.80.132.125",
                     "2016-10-31 18:28:32", "991000801PP015161019112828000001", "1079331189", "991000801", "35", "公会福利礼包", "1", "27.43.177.144", "112",
-                    "G23", "0", "BAIDU", "5", "2016-10-31 18:28:32", 3000d));*/
+                    "G23", "0", "BAIDU", "5", "2016-10-31 18:28:32", 3000d));*//*
 
             batchStatement.add(prepareBatch.bind(date.format(newData) + " " + addZero(hour, 2) + ":" + addZero(min, 2), date.format(newData) + " " + addZero(hour, 2), date.format(newData), String.valueOf(i), "2016-10-31 18:28:32", "114.80.132.125",
                     "2016-10-31 18:28:32", "991000801PP015161019112828000001", "1079331189", "991000801", "35", "公会福利礼包", "1", "27.43.177.144", "112",
@@ -330,6 +333,34 @@ public class CassandraMain {
         long cost = endTime - startTime;
         System.out.println("cost = " + cost);
         session.execute(batchStatement);
+        batchStatement.clear();
+        session.close();
+        cluster.close();
+    }*/
+
+    public static void main(String[] args) {
+        Cluster cluster = CassandraConn.getCluster();
+        Session session = cluster.connect();
+
+        BatchStatement batchStatement = new BatchStatement();
+        String insertSQL = "INSERT INTO rtc.wooolh_olnum_glog (cassandra_time,message_id,area_id,channel_id,event_time,game_id,group_id,online_num) VALUES(?,?,?,?,?,?,?,?) USING TTL 20;";
+        PreparedStatement prepareBatch = session.prepare(insertSQL);
+
+
+        for (int i = 0; i < 50; i++) {
+            Object[] data = {"2017-09-20 15:00", "message_id=" + i, 905, "9187", "2017-09-20 15:00:16", "791000317", 1, 20};
+            batchStatement.add(prepareBatch.bind(Arrays.asList(data).toArray()));
+
+        }
+
+        /*String sql = "SELECT * FROM rtc.wooolh_olnum_glog LIMIT 10;";
+
+        List<Map<String, Object>> resultMap = Query.query(sql, "wooolh_olnum_glog", "rtc");
+
+        System.out.println(resultMap);*/
+
+        session.execute(batchStatement);
+
         batchStatement.clear();
         session.close();
         cluster.close();
