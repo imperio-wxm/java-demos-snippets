@@ -12,3 +12,27 @@ springboot-mybatis/\.idea/
 springboot-mybatis/springboot-mybatis\.iml
 
 springboot-mybatis/target/
+
+springcloud-config-localfile/springcloud-config-localfile\.iml
+
+kafka-streams/target/
+
+kafka-streams/logs/
+
+kafka-streams/\.idea/
+
+kafka-streams/kafka-streams\.iml
+
+java8-demo/target/
+
+java8-demo/\.idea/
+
+java8-demo/java8-demo\.iml
+
+guava-cache/target/
+
+guava-cache/\.idea/
+
+guava-cache/guava-cache\.iml
+
+flume-interceptors/flume-interceptors\.iml
