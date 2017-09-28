@@ -19,11 +19,11 @@ public class TaskRunner {
         System.out.println("=======wait shut down task...");
         executorService.shutdown();
 
-        while (!executorService.awaitTermination(5, TimeUnit.SECONDS)) {
+        while (!executorService.awaitTermination(2, TimeUnit.SECONDS)) {
             System.out.println("task runner 线程池没有关闭");
         }
 
-        Thread.sleep(5 * 1000);
+        //Thread.sleep(5 * 1000);
 
         System.out.println("=======Task runner close.");
     }
