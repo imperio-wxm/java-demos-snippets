@@ -19,7 +19,7 @@ public class FileReaderOps {
     private static String[] tables = {"click_type", "appid", "ad_channel", "click_time", "extend", "extend_param", "mac",
             "idfa", "idfa_type", "imei", "androidid", "advertisingid", "ua", "ip", "result", "is_show"};
 
-    private static String checkDate = "2017-09-13";
+    private static String checkDate = "2017-09-23";
 
     public static void readFileByLines(String fileName) {
         List<String> buffer = new ArrayList<String>();
@@ -40,8 +40,8 @@ public class FileReaderOps {
                 index++;
             }
 
-            //String writeFileName = FileReaderOps.class.getResource("/").getPath() + "mobile_" + checkDate + ".txt";
-            String writeFileName = "" + checkDate + ".txt";
+            String writeFileName = FileReaderOps.class.getResource("/").getPath() + "mobile_" + checkDate + ".txt";
+            //String writeFileName = "" + checkDate + ".txt";
             FileWriterOps.appendFile(writeFileName, buffer);
             System.out.println("All size = " + index);
             reader.close();
