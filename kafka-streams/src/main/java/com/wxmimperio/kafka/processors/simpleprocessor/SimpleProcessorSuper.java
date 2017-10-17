@@ -1,4 +1,4 @@
-package com.wxmimperio.kafka.processors;
+package com.wxmimperio.kafka.processors.simpleprocessor;
 
 import org.apache.kafka.streams.processor.Processor;
 import org.apache.kafka.streams.processor.ProcessorSupplier;
