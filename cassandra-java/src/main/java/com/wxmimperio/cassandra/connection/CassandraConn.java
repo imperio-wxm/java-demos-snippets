@@ -4,7 +4,6 @@ import com.datastax.driver.core.Cluster;
 import com.datastax.driver.core.HostDistance;
 import com.datastax.driver.core.PoolingOptions;
 import com.datastax.driver.core.QueryOptions;
-import com.sun.deploy.util.SessionProperties;
 
 /**
  * Created by weiximing.imperio on 2016/9/7.

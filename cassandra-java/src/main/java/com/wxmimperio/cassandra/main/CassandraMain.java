@@ -343,14 +343,20 @@ public class CassandraMain {
         Session session = cluster.connect();
 
         BatchStatement batchStatement = new BatchStatement();
-        String insertSQL = "INSERT INTO rtc.wooolh_olnum_glog (cassandra_time,message_id,area_id,channel_id,event_time,game_id,group_id,online_num) VALUES(?,?,?,?,?,?,?,?) USING TTL 20;";
+        String insertSQL = "INSERT INTO rtc.wooolh_olnum_glog (cassandra_time,message_id,area_id,channel_id,event_time,game_id,group_id,online_num) VALUES(?,?,?,?,?,?,?,?) USING TTL 60;";
         PreparedStatement prepareBatch = session.prepare(insertSQL);
 
 
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 75535; i++) {
             Object[] data = {"2017-09-20 15:00", "message_id=" + i, 905, "9187", "2017-09-20 15:00:16", "791000317", 1, 20};
-            batchStatement.add(prepareBatch.bind(Arrays.asList(data).toArray()));
 
+            try {
+                batchStatement.add(prepareBatch.bind(Arrays.asList(data).toArray()));
+            } catch (Exception e) {
+                e.printStackTrace();
+                insertData(batchStatement);
+                batchStatement.add(prepareBatch.bind(Arrays.asList(data).toArray()));
+            }
         }
 
         /*String sql = "SELECT * FROM rtc.wooolh_olnum_glog LIMIT 10;";
@@ -359,11 +365,25 @@ public class CassandraMain {
 
         System.out.println(resultMap);*/
 
-        session.execute(batchStatement);
+        //session.execute(batchStatement);
 
-        batchStatement.clear();
+        insertData(batchStatement);
+
         session.close();
         cluster.close();
+    }
+
+
+    private static void insertData(BatchStatement statement) {
+        if (statement.size() > 0) {
+            if (statement.size() > 1000 && statement.size() <= 0xFFFF) {
+                System.out.println(statement.size());
+                statement.clear();
+            } else if (statement.size() % 500 != 0) {
+                System.out.println(statement.size());
+                statement.clear();
+            }
+        }
     }
 
 
