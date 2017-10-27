@@ -149,8 +149,9 @@
         </dependency>
     </dependencies>
 
+
     <repositories>
-        <repository>
+       <!-- <repository>
             <id>nexus-public</id>
             <url>http://nexus.dw.sdo.com/content/groups/public/</url>
         </repository>
@@ -164,6 +165,11 @@
             <id>dw-snapshots</id>
             <url>http://nexus.dw.sdo.com/content/repositories/dw-snapshots/</url>
         </repository>
+        <repository>
+            <id>confluent</id>
+            <url>http://packages.confluent.io/maven/</url>
+        </repository>-->
+
         <repository>
             <id>confluent</id>
             <url>http://packages.confluent.io/maven/</url>

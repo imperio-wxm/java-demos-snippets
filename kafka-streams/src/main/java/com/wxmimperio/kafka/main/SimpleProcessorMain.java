@@ -1,9 +1,6 @@
 package com.wxmimperio.kafka.main;
 
-import com.wxmimperio.kafka.serializer.SpecificAvroSerde;
-import com.wxmimperio.kafka.topology.impl.SimpleTopology;
-import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
+import com.wxmimperio.kafka.topology.simpleimpl.SimpleTopology;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
@@ -21,7 +18,6 @@ public class SimpleProcessorMain {
         String sourceTopic = "wooolh_olnum_glog";
         String sinkTopic = "test_stream";
         new SimpleProcessorMain().start(sourceTopic, sinkTopic);
-
     }
 
     private void start(String sourceTopic, String sinkTopic) {

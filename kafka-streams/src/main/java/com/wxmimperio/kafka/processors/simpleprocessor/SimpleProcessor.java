@@ -1,4 +1,4 @@
-package com.wxmimperio.kafka.processors;
+package com.wxmimperio.kafka.processors.simpleprocessor;
 
 import org.apache.avro.Schema;
 import org.apache.avro.generic.GenericRecord;
