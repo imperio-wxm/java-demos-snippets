@@ -35,7 +35,7 @@ public class CacheShutdownHook {
 
     private static Cache<String, TaskRunner> cache = CacheBuilder.newBuilder()
             .maximumSize(100)
-            .expireAfterAccess(5, TimeUnit.SECONDS)
+            .expireAfterAccess(20, TimeUnit.SECONDS)
             .removalListener(async)
             .recordStats()
             .build();
@@ -52,14 +52,13 @@ public class CacheShutdownHook {
                 //executorService.awaitTermination(5, TimeUnit.SECONDS);
 
                 executorService.shutdown();
-                while (!executorService.awaitTermination(1, TimeUnit.SECONDS)) {
+                while (!executorService.awaitTermination(2, TimeUnit.SECONDS)) {
                     System.out.println("线程池没有关闭");
-                    Thread.sleep(5 * 1000);//sleep 10s
                 }
                 System.out.println("Finish remove cache.");
 
                 //Thread.sleep(10 * 1000);//sleep 10s
-                Thread.sleep(5 * 1000);//sleep 10s
+                //Thread.sleep(5 * 1000);//sleep 10s
                 System.out.println("Close project!");
             } catch (InterruptedException e) {
                 e.printStackTrace();
