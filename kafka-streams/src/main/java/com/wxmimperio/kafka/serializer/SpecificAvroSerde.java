@@ -19,15 +19,15 @@ public class SpecificAvroSerde<T extends org.apache.avro.specific.SpecificRecord
      * Constructor used by Kafka Streams.
      */
     public SpecificAvroSerde() {
-        inner = Serdes.serdeFrom(new SpecificAvroSerializer<>(), new SpecificAvroDeserializer<>());
+        inner = (Serde<T>) Serdes.serdeFrom(new SpecificAvroSerializer<>(), new SpecificAvroDeserializer<>());
     }
 
     public SpecificAvroSerde(SchemaRegistryClient client) {
-        this(client, Collections.emptyMap());
+        this(client, Collections.<String, Object>emptyMap());
     }
 
     public SpecificAvroSerde(SchemaRegistryClient client, Map<String, ?> props) {
-        inner = Serdes.serdeFrom(new SpecificAvroSerializer<>(client, props), new SpecificAvroDeserializer<>(client, props));
+        inner = (Serde<T>) Serdes.serdeFrom(new SpecificAvroSerializer<>(client, props), new SpecificAvroDeserializer<>(client, props));
     }
 
     @Override

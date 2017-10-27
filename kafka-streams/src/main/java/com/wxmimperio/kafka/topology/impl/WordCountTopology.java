@@ -31,7 +31,7 @@ public class WordCountTopology implements Topology {
         @Override
         public void process(String key, String value) {
             System.out.println("key = " + key + ", value = " + value);
-            context.forward(key,value);
+            context.forward(key, value);
         }
 
         @Override
