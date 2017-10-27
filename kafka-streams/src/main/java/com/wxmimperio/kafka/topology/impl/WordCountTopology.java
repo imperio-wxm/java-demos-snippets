@@ -21,9 +21,11 @@ public class WordCountTopology implements TopologyList {
         TopologyBuilder builder = new TopologyBuilder();
         builder = builder.addSource("SOURCE", source);
 
+        // PROCESS1
         builder = builder.addProcessor("PROCESS1", new WordCountProcessor(), "SOURCE");
         builder = builder.addSink("SINK1", sink[0], "PROCESS1");
 
+        // PROCESS2
         builder = builder.addProcessor("PROCESS2", new SplitProcessor(), "SOURCE");
         builder = builder.addSink("SINK2", sink[1], "PROCESS2");
         return builder;

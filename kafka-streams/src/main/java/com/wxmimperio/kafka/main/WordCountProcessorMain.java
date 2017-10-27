@@ -12,7 +12,7 @@ import java.util.Properties;
  * Created by weiximing.imperio on 2017/10/27.
  */
 public class WordCountProcessorMain {
-    private KafkaStreams streams;
+    private static KafkaStreams streams;
 
 
     public static void main(String[] args) {
@@ -35,5 +35,21 @@ public class WordCountProcessorMain {
         WordCountTopology wordCountTopology = new WordCountTopology();
         streams = new KafkaStreams(wordCountTopology.get(sourceTopic, sinkTopics), config);
         streams.start();
+
+        Runtime.getRuntime().addShutdownHook(new CleanWorkThread());
+    }
+
+    static class CleanWorkThread extends Thread {
+        @Override
+        public void run() {
+            System.out.println("Stream closing.....");
+            streams.close();
+            try {
+                Thread.sleep(2 * 1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("Streams has closed.");
+        }
     }
 }
