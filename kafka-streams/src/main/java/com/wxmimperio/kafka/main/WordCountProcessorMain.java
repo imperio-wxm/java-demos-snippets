@@ -17,11 +17,11 @@ public class WordCountProcessorMain {
 
     public static void main(String[] args) {
         String sourceTopic = "streams-test1";
-        String sinkTopic = "streams-output_1";
+        String[] sinkTopic = "streams-output_1,streams-output_2".split(",", -1);
         new WordCountProcessorMain().start(sourceTopic, sinkTopic);
     }
 
-    private void start(String sourceTopic, String sinkTopic) {
+    private void start(String sourceTopic, String[] sinkTopics) {
         final Properties settings = new Properties();
         // stream config
         settings.put(StreamsConfig.APPLICATION_ID_CONFIG, "WordCountProcessor-v0.1");
@@ -33,7 +33,7 @@ public class WordCountProcessorMain {
 
         StreamsConfig config = new StreamsConfig(settings);
         WordCountTopology wordCountTopology = new WordCountTopology();
-        streams = new KafkaStreams(wordCountTopology.get(sourceTopic, sinkTopic), config);
+        streams = new KafkaStreams(wordCountTopology.get(sourceTopic, sinkTopics), config);
         streams.start();
     }
 }
