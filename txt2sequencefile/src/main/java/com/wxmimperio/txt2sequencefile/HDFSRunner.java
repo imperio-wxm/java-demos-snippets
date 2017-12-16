@@ -608,20 +608,24 @@ public class HDFSRunner {
 
                 while (reader.next(key, value)) {
                     JsonObject jsonObject = new JsonObject();
-                    String msgValue = value.toString();
+                    try {
+                        String msgValue = value.toString();
 
-                    String[] doneMsg = msgValue.split("\t", -1);
+                        String[] doneMsg = msgValue.split("\t", -1);
 
-                    int index = 0;
-                    for (Schema.Field field : schema.getFields()) {
-                        jsonObject.addProperty(field.name(), doneMsg[index]);
-                        index++;
+                        int index = 0;
+                        for (Schema.Field field : schema.getFields()) {
+                            jsonObject.addProperty(field.name(), doneMsg[index]);
+                            index++;
+                        }
+                        method2(writer, jsonObject.toString());
+                        if (dataSize % 1000 == 0) {
+                            System.out.println(jsonObject.toString());
+                        }
+                        dataSize++;
+                    } catch (Exception e) {
+                        LOG.error("Format data error! Data = " + value + ",json = " + jsonObject.toString(), e);
                     }
-                    method2(writer, jsonObject.toString());
-                    if (dataSize % 1000 == 0) {
-                        System.out.println(jsonObject.toString());
-                    }
-                    dataSize++;
                 }
             }
         } catch (Exception e) {
