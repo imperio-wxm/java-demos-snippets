@@ -1,10 +1,13 @@
 package com.wxmimperio.sqlparser.sqlparsing;
 
 import net.sf.jsqlparser.JSQLParserException;
+import net.sf.jsqlparser.expression.Expression;
 import net.sf.jsqlparser.parser.CCJSqlParserManager;
-import net.sf.jsqlparser.statement.select.PlainSelect;
-import net.sf.jsqlparser.statement.select.Select;
-import net.sf.jsqlparser.statement.select.SelectItem;
+import net.sf.jsqlparser.parser.CCJSqlParserUtil;
+import net.sf.jsqlparser.statement.Statement;
+import net.sf.jsqlparser.statement.select.*;
+import net.sf.jsqlparser.util.SelectUtils;
+import net.sf.jsqlparser.util.TablesNamesFinder;
 
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -33,5 +36,19 @@ public class ParserUtil {
             }
         }
         return params;
+    }
+
+    public static void getSelectWhereParams(String sql) throws JSQLParserException {
+        CCJSqlParserManager parserManager = new CCJSqlParserManager();
+        Select select = (Select) parserManager.parse(new StringReader(sql));
+        PlainSelect plain = (PlainSelect) select.getSelectBody();
+        Expression expression = plain.getWhere();
+        for (SelectItem selectItem : plain.getSelectItems()) {
+            System.out.println(selectItem);
+        }
+
+
+        System.out.println(expression);
+
     }
 }

@@ -1,5 +1,6 @@
 package com.wxmimperio.sqlparser.visitor;
 
+import com.wxmimperio.sqlparser.utils.ExpressionUtil;
 import net.sf.jsqlparser.expression.*;
 import net.sf.jsqlparser.expression.operators.arithmetic.*;
 import net.sf.jsqlparser.expression.operators.conditional.AndExpression;
@@ -148,41 +149,95 @@ public class SelectSqlVisitor implements SelectVisitor, FromItemVisitor, Express
 
     }
 
+    /**
+     * and 操作
+     * getLeftExpression() and 左边的key=value
+     * getLeftExpression() and 右边的key=value
+     * getStringExpression() AND 字符串
+     *
+     * @param andExpression
+     */
     public void visit(AndExpression andExpression) {
-        System.out.println(andExpression.getLeftExpression().toString());
-        System.out.println(andExpression.getStringExpression());
-        System.out.println(andExpression.getRightExpression().toString());
         andExpression.getLeftExpression().accept(this);
         andExpression.getRightExpression().accept(this);
     }
 
+    /**
+     * or 操作
+     *
+     * @param orExpression
+     */
     public void visit(OrExpression orExpression) {
-
+        orExpression.getLeftExpression().accept(this);
+        orExpression.getRightExpression().accept(this);
     }
 
+    /**
+     * between 操作
+     * between 'getBetweenExpressionStart' and 'getBetweenExpressionEnd'
+     *
+     * @param between
+     */
     public void visit(Between between) {
-
+        between.getBetweenExpressionEnd().accept(this);
+        between.getBetweenExpressionStart().accept(this);
     }
 
+    /**
+     * = 等于
+     * getLeftExpression() key
+     * getRightExpression() value
+     * 例如： name = 'wxmimperio'
+     *
+     * @param equalsTo
+     */
     public void visit(EqualsTo equalsTo) {
-        System.out.println(equalsTo.getLeftExpression().toString());
-        System.out.println(equalsTo.getRightExpression().toString());
+        String key = equalsTo.getLeftExpression().toString();
+        String value = equalsTo.getRightExpression().toString();
     }
 
+    /**
+     * > 大于
+     *
+     * @param greaterThan
+     */
     public void visit(GreaterThan greaterThan) {
-
+        String key = greaterThan.getLeftExpression().toString();
+        String value = greaterThan.getRightExpression().toString();
     }
 
+    /**
+     * >= 大于等于
+     *
+     * @param greaterThanEquals
+     */
     public void visit(GreaterThanEquals greaterThanEquals) {
-
+        String key = greaterThanEquals.getLeftExpression().toString();
+        String value = greaterThanEquals.getRightExpression().toString();
     }
 
+    /**
+     * in() 操作符
+     *
+     * @param inExpression
+     */
     public void visit(InExpression inExpression) {
-
+        String key = inExpression.getLeftExpression().toString();
+        ItemsList itemsList = inExpression.getRightItemsList();
+        List<String> values = ExpressionUtil.getStringList(itemsList);
+        for (String value : values) {
+            String inValue = value;
+        }
     }
 
+    /**
+     * is null / is not null 操作符
+     *
+     * @param isNullExpression
+     */
     public void visit(IsNullExpression isNullExpression) {
-
+        boolean isNot = isNullExpression.isNot();
+        String key = isNullExpression.getLeftExpression().toString();
     }
 
     public void visit(LikeExpression likeExpression) {
