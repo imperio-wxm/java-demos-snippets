@@ -184,7 +184,7 @@ public class SelectSqlVisitor implements SelectVisitor, FromItemVisitor, Express
     }
 
     /**
-     * = 等于
+     * = / ！= 等于
      * getLeftExpression() key
      * getRightExpression() value
      * 例如： name = 'wxmimperio'
@@ -192,6 +192,7 @@ public class SelectSqlVisitor implements SelectVisitor, FromItemVisitor, Express
      * @param equalsTo
      */
     public void visit(EqualsTo equalsTo) {
+        boolean isNot = equalsTo.isNot();
         String key = equalsTo.getLeftExpression().toString();
         String value = equalsTo.getRightExpression().toString();
     }
@@ -241,7 +242,7 @@ public class SelectSqlVisitor implements SelectVisitor, FromItemVisitor, Express
     }
 
     public void visit(LikeExpression likeExpression) {
-
+        System.out.println(likeExpression.getEscape());
     }
 
     public void visit(MinorThan minorThan) {
