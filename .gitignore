@@ -36,3 +36,9 @@ guava-cache/\.idea/
 guava-cache/guava-cache\.iml
 
 flume-interceptors/flume-interceptors\.iml
+
+syslog-client/target/
+
+syslog-client/\.idea/
+
+syslog-client/syslog-client\.iml
