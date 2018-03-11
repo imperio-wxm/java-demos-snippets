@@ -1,9 +1,6 @@
 package com.wxmimperio.java8.demo1;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by wxmimperio on 2017/7/16.
@@ -49,5 +46,12 @@ public class Java8Compare {
         //sort using java 8
         //Collections.sort(names, (s1, s2) ->  s1.compareTo(s2));
         Collections.sort(names, Comparator.naturalOrder());
+    }
+
+    private void compareWithJava8() {
+        //Comparator<Integer> comparator = Integer::compare;
+        //Comparator<Integer> comparator = Comparator.comparingInt(x -> x);
+        Comparator<Integer> comparator = (x, y) -> Integer.compare(x, y);
+        TreeSet<Integer> hashSet = new TreeSet<Integer>(comparator);
     }
 }

@@ -1,9 +1,24 @@
 package com.wxmimperio.java8.demo2;
 
+import com.wxmimperio.java8.pojo.Person;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by wxmimperio on 2017/7/16.
  */
 public class Java8Lambda {
+
+    private static List<Person> personList = Arrays.asList(
+            new Person("wxm1", 18, 1L, 001L),
+            new Person("wxm2", 19, 2L, 002L),
+            new Person("wxm3", 20, 3L, 003L),
+            new Person("wxm4", 21, 4L, 004L),
+            new Person("wxm5", 22, 5L, 005L)
+    );
+
     public static void main(String[] args) {
 
         Java8Lambda java8Lambda = new Java8Lambda();
@@ -34,6 +49,21 @@ public class Java8Lambda {
 
         greetService1.sayMessage("Runoob");
         greetService2.sayMessage("Google");
+
+        List<Person> people = filterPerson(personList, person -> person.getAge() > 20);
+        System.out.println(people);
+
+        System.out.println(filterPerson(personList, person -> person.getNumber() > 4));
+    }
+
+    private static List<Person> filterPerson(List<Person> oldList, FilterPerson<Person> filterPerson) {
+        List<Person> newList = new ArrayList<Person>();
+        for (Person person : oldList) {
+            if (filterPerson.filer(person)) {
+                newList.add(person);
+            }
+        }
+        return newList;
     }
 
     interface MathOperation {
