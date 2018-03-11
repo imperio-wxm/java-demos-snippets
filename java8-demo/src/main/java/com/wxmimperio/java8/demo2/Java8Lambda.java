@@ -54,6 +54,10 @@ public class Java8Lambda {
         System.out.println(people);
 
         System.out.println(filterPerson(personList, person -> person.getNumber() > 4));
+
+        personList.stream().filter(person -> person.getId() > 4).forEach(System.out::println);
+
+        personList.stream().map(Person::getName).forEach(System.out::println);
     }
 
     private static List<Person> filterPerson(List<Person> oldList, FilterPerson<Person> filterPerson) {
