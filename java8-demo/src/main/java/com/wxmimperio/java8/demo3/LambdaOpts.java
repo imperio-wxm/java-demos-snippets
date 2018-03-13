@@ -3,11 +3,9 @@ package com.wxmimperio.java8.demo3;
 import com.wxmimperio.java8.pojo.Person;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class LambdaOpts {
 
@@ -60,5 +58,19 @@ public class LambdaOpts {
 
     private void consume(double price, Consumer<Double> consumer) {
         consumer.accept(price);
+    }
+
+    //Supplier<T>
+    @Test
+    public void supplierInterFace() {
+        System.out.println(getNumber(5, () -> (int) (Math.random() * 100)));
+    }
+
+    private List<Integer> getNumber(int count, Supplier<Integer> supplier) {
+        List<Integer> list = new ArrayList<>(count);
+        for (int i = 0; i < count; i++) {
+            list.add(supplier.get());
+        }
+        return list;
     }
 }
