@@ -51,4 +51,14 @@ public class LambdaOpts {
 
         System.out.println(personList);
     }
+
+    // Consumer<T>
+    @Test
+    public void consumerInterFace() {
+        consume(100.0D, e -> System.out.println(e * 100));
+    }
+
+    private void consume(double price, Consumer<Double> consumer) {
+        consumer.accept(price);
+    }
 }
