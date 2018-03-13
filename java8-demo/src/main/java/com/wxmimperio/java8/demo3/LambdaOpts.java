@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class LambdaOpts {
@@ -83,5 +84,22 @@ public class LambdaOpts {
 
     private String getUpperCase(String oldStr, Function<String, String> function) {
         return function.apply(oldStr);
+    }
+
+    //Predicate<T>
+    @Test
+    public void predicateInterFace() {
+        List<String> list = Arrays.asList("dfasdfs", "5646", "1", "12", "123");
+        System.out.println(getStrByLength(list, e -> e.length() > 2));
+    }
+
+    private List<String> getStrByLength(List<String> list, Predicate<String> predicate) {
+        List<String> newList = new ArrayList<>();
+        for (String str : list) {
+            if (predicate.test(str)) {
+                newList.add(str);
+            }
+        }
+        return newList;
     }
 }
