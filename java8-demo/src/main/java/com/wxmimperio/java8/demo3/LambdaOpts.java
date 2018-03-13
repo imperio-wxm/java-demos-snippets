@@ -1,9 +1,23 @@
 package com.wxmimperio.java8.demo3;
 
+import com.wxmimperio.java8.pojo.Person;
+import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
 import java.util.function.Consumer;
 
 public class LambdaOpts {
+
+    private static List<Person> personList = Arrays.asList(
+            new Person("wxm1", 18, 1L, 001L),
+            new Person("wxm2", 19, 2L, 002L),
+            new Person("wxm3", 20, 3L, 003L),
+            new Person("wxm4", 21, 4L, 004L),
+            new Person("wxm5", 22, 5L, 005L)
+    );
 
     public static void main(String[] args) {
         // 无参无返回值
@@ -23,5 +37,18 @@ public class LambdaOpts {
 
         Comparator<Integer> comparator1 = Integer::compare;
         System.out.println(comparator1.compare(1, 2));
+    }
+
+    @Test
+    public void sort() {
+        Collections.sort(personList, (p1, p2) -> {
+            if (p1.getId() > p2.getId()) {
+                return p1.getName().compareTo(p2.getName());
+            } else {
+                return Long.compare(p1.getId(), p2.getId());
+            }
+        });
+
+        System.out.println(personList);
     }
 }
