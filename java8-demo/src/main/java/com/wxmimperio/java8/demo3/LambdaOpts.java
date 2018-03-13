@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class LambdaOpts {
@@ -72,5 +73,15 @@ public class LambdaOpts {
             list.add(supplier.get());
         }
         return list;
+    }
+
+    // Function<T, R>
+    @Test
+    public void functionInterFace() {
+        System.out.println(getUpperCase("dfasdfas", e -> e.toUpperCase()));
+    }
+
+    private String getUpperCase(String oldStr, Function<String, String> function) {
+        return function.apply(oldStr);
     }
 }
