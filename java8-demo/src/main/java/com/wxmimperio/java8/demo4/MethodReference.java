@@ -52,4 +52,12 @@ public class MethodReference {
         BiPredicate<String, String> biPredicate1 = String::equalsIgnoreCase;
         System.out.println(biPredicate1.test("abc", "123"));
     }
+
+    // ClassName::new
+    @Test
+    public void reference5() {
+        // 自动匹配对应的构造器
+        Supplier<Person> supplier = Person::new;
+        System.out.println(supplier.get());
+    }
 }
