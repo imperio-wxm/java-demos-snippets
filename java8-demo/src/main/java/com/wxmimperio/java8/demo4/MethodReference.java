@@ -3,9 +3,11 @@ package com.wxmimperio.java8.demo4;
 import com.wxmimperio.java8.pojo.Person;
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class MethodReference {
@@ -59,5 +61,15 @@ public class MethodReference {
         // 自动匹配对应的构造器
         Supplier<Person> supplier = Person::new;
         System.out.println(supplier.get());
+    }
+
+    // Type::new
+    @Test
+    public void reference6() {
+        Function<Integer, String[]> function = (x) -> new String[x];
+        System.out.println(function.apply(20).length);
+
+        Function<Integer, String[]> function1 = String[]::new;
+        System.out.println(function1.apply(50).length);
     }
 }
