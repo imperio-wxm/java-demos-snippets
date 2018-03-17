@@ -42,7 +42,7 @@ public class StreamOps {
         personList.stream().map(Person::getName).forEach(System.out::println);
         System.out.println("=========");
 
-        // flatmap
+        // flatmap 以一个函数作为参数，将流中的每个值应用于这个函数后转成新的流，最后将这些新流统一成一个
         List<String> names = Arrays.asList("wxm", "123");
         names.stream().flatMap(StreamOps::getCharacter).forEach(System.out::println);
         System.out.println("=========");
