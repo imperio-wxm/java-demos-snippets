@@ -3,8 +3,10 @@ package com.wxmimperio.java8.demo5;
 import com.wxmimperio.java8.pojo.Person;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamOps {
     private static List<Person> personList = Arrays.asList(
@@ -12,7 +14,6 @@ public class StreamOps {
             new Person("wxm2", 19, 2L, 002L),
             new Person("wxm3", 20, 3L, 003L),
             new Person("wxm4", 21, 4L, 004L),
-            new Person("wxm5", 22, 5L, 005L),
             new Person("wxm5", 22, 5L, 005L),
             new Person("wxm5", 22, 5L, 005L)
     );
@@ -32,5 +33,26 @@ public class StreamOps {
         System.out.println("======");
         // distinct
         personList.stream().distinct().forEach(System.out::println);
+    }
+
+    @Test
+    public void ops2() {
+        // map
+        personList.stream().map(e -> e.getNumber() * 10).forEach(System.out::println);
+        personList.stream().map(Person::getName).forEach(System.out::println);
+        System.out.println("=========");
+
+        // flatmap
+        List<String> names = Arrays.asList("wxm", "123");
+        names.stream().flatMap(StreamOps::getCharacter).forEach(System.out::println);
+        System.out.println("=========");
+    }
+
+    private static Stream<Character> getCharacter(String string) {
+        List<Character> list = new ArrayList<>();
+        for (Character ch : string.toCharArray()) {
+            list.add(ch);
+        }
+        return list.stream();
     }
 }
