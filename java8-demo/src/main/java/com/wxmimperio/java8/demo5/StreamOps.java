@@ -95,4 +95,16 @@ public class StreamOps {
         System.out.println(personList.parallelStream().max(Comparator.comparingInt(Person::getAge)));
         System.out.println(personList.parallelStream().min(Comparator.comparingLong(Person::getNumber)));
     }
+
+
+    @Test
+    public void ops5() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+
+        // reduce(T identity，BinaryOperator)
+        System.out.println(list.stream().reduce(0, (x, y) -> x + y));
+
+        Optional<Integer> sum = personList.stream().map(Person::getAge).reduce(Integer::sum);
+        System.out.println(sum);
+    }
 }
