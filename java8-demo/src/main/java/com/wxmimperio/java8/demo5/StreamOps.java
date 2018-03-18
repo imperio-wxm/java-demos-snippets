@@ -55,4 +55,18 @@ public class StreamOps {
         }
         return list.stream();
     }
+
+    @Test
+    public void ops3() {
+        List<String> list = Arrays.asList("dfasd","12545","456");
+        list.stream().sorted().forEach(System.out::println);
+
+        personList.stream().sorted((e1,e2) -> {
+           if(e1.getName().equals(e2.getName())) {
+               return e1.getAge().compareTo(e2.getAge());
+           } else {
+               return e1.getName().compareTo(e2.getName());
+           }
+        }).forEach(System.out::println);
+    }
 }

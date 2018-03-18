@@ -2,14 +2,14 @@ package com.wxmimperio.java8.pojo;
 
 public class Person {
     private String name;
-    private int age;
-    private long number;
-    private long id;
+    private Integer age;
+    private Long number;
+    private Long id;
 
     public Person() {
     }
 
-    public Person(String name, int age, long number, long id) {
+    public Person(String name, Integer age, Long number, Long id) {
         this.name = name;
         this.age = age;
         this.number = number;
@@ -34,27 +34,27 @@ public class Person {
         this.name = name;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
-    public long getNumber() {
+    public Long getNumber() {
         return number;
     }
 
-    public void setNumber(long number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }
