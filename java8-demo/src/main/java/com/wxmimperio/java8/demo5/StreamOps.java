@@ -3,9 +3,7 @@ package com.wxmimperio.java8.demo5;
 import com.wxmimperio.java8.pojo.Person;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class StreamOps {
@@ -58,15 +56,43 @@ public class StreamOps {
 
     @Test
     public void ops3() {
-        List<String> list = Arrays.asList("dfasd","12545","456");
+        // sorted
+        List<String> list = Arrays.asList("dfasd", "12545", "456");
         list.stream().sorted().forEach(System.out::println);
 
-        personList.stream().sorted((e1,e2) -> {
-           if(e1.getName().equals(e2.getName())) {
-               return e1.getAge().compareTo(e2.getAge());
-           } else {
-               return e1.getName().compareTo(e2.getName());
-           }
+        personList.stream().sorted((e1, e2) -> {
+            if (e1.getName().equals(e2.getName())) {
+                return e1.getAge().compareTo(e2.getAge());
+            } else {
+                return e1.getName().compareTo(e2.getName());
+            }
         }).forEach(System.out::println);
+    }
+
+    @Test
+    public void ops4() {
+        // allMatch
+        System.out.println(personList.stream().allMatch(e -> e.getAge() > 300));
+
+        //anyMatch
+        System.out.println(personList.stream().anyMatch(e -> e.getAge() == 18));
+
+        //noneMatch
+        System.out.println(personList.stream().noneMatch(e -> e.getName().equals("wxm")));
+
+        //findFirst
+        Optional<Person> person = personList.stream().findFirst();
+        person.orElse(new Person());//避免空指针，有可能为空，用一个新对象替代
+        System.out.println(person);
+
+        //findAny
+        System.out.println(personList.parallelStream().findAny());
+
+        //count
+        System.out.println(personList.parallelStream().count());
+
+        // max、min
+        System.out.println(personList.parallelStream().max(Comparator.comparingInt(Person::getAge)));
+        System.out.println(personList.parallelStream().min(Comparator.comparingLong(Person::getNumber)));
     }
 }
