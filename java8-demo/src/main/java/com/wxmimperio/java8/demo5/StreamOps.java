@@ -4,6 +4,7 @@ import com.wxmimperio.java8.pojo.Person;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamOps {
@@ -106,5 +107,23 @@ public class StreamOps {
 
         Optional<Integer> sum = personList.stream().map(Person::getAge).reduce(Integer::sum);
         System.out.println(sum);
+
+        // collect
+        System.out.println(personList.stream().map(Person::getName).collect(Collectors.toList()));
+
+        System.out.println(personList.stream().collect(Collectors.averagingDouble(Person::getNumber)));
+
+        //group by
+        Map<Integer, List<Person>> personMap = personList.stream().collect(Collectors.groupingBy(Person::getAge));
+        System.out.println(personMap);
+
+        // 多级分组
+        System.out.println(personList.stream().collect(Collectors.groupingBy(Person::getName,
+                Collectors.groupingBy(Person::getAge))));
+
+        DoubleSummaryStatistics doubleSummaryStatistics = personList.stream().collect(Collectors.summarizingDouble(Person::getNumber));
+        System.out.println(doubleSummaryStatistics.getAverage());
+
+        System.out.println(personList.stream().map(Person::getName).collect(Collectors.joining(",")));
     }
 }
