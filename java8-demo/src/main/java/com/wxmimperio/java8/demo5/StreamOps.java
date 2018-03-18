@@ -126,4 +126,16 @@ public class StreamOps {
 
         System.out.println(personList.stream().map(Person::getName).collect(Collectors.joining(",")));
     }
+
+    @Test
+    public void ops6() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6);
+
+        list.stream().map(e -> e * e).forEach(System.out::println);
+
+        System.out.println("=========");
+
+        Optional<Integer> sum = list.stream().map(e -> 1).reduce(Integer::sum);
+        System.out.println(sum.get());
+    }
 }
