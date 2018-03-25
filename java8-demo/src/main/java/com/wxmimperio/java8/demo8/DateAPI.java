@@ -6,6 +6,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Set;
 
 public class DateAPI {
 
@@ -84,5 +85,20 @@ public class DateAPI {
 
         LocalDateTime localDateTime1 = LocalDateTime.parse("2017-02-13 12:25:56", dateTimeFormatter1);
         System.out.println(localDateTime1);
+    }
+
+    @Test
+    public void date6() {
+        //ZonedTime、ZonedDate、ZonedDateTime
+        // 获取所有时区
+        Set<String> all = ZoneId.getAvailableZoneIds();
+        all.forEach(System.out::println);
+
+        LocalDateTime localDateTime = LocalDateTime.now(ZoneId.of("Africa/Mbabane"));
+        System.out.println(localDateTime);
+
+        // 带时区的时间日期
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneId.of("US/Pacific"));
+        System.out.println(zonedDateTime);
     }
 }
