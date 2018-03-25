@@ -3,6 +3,7 @@ package com.wxmimperio.java8.demo8;
 import org.junit.Test;
 
 import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjuster;
 import java.time.temporal.TemporalAdjusters;
 
@@ -68,5 +69,20 @@ public class DateAPI {
 
         System.out.println(localDateTime);
         System.out.println(newLocal);
+    }
+
+    @Test
+    public void date5() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ISO_DATE_TIME;
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime.format(dateTimeFormatter));
+
+        System.out.println("=============");
+
+        DateTimeFormatter dateTimeFormatter1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println(localDateTime.format(dateTimeFormatter1));
+
+        LocalDateTime localDateTime1 = LocalDateTime.parse("2017-02-13 12:25:56", dateTimeFormatter1);
+        System.out.println(localDateTime1);
     }
 }
