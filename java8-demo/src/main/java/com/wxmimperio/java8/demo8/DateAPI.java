@@ -3,6 +3,8 @@ package com.wxmimperio.java8.demo8;
 import org.junit.Test;
 
 import java.time.*;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 
 public class DateAPI {
 
@@ -57,5 +59,14 @@ public class DateAPI {
         LocalDate localDate = LocalDate.now();
         LocalDate localDate1 = LocalDate.of(2018, 4, 13);
         System.out.println(Period.between(localDate, localDate1).getDays());
+    }
+
+    @Test
+    public void date4() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        LocalDateTime newLocal = localDateTime.with(TemporalAdjusters.next(DayOfWeek.SUNDAY));
+
+        System.out.println(localDateTime);
+        System.out.println(newLocal);
     }
 }
