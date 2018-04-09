@@ -6,10 +6,14 @@ import java.io.*;
 
 public class SerializableMain {
 
+    private static String STREAM_CHARSET = "ISO-8859-1";
+    private static String ENCODER_CHARSET = "UTF-8";
+
     public static void main(String[] args) throws Exception {
         Person person = new Person("wxm", 25);
-        System.out.println(writeToStr(person));
-        Person person1 = (Person)deserializeFromStr(writeToStr(person));
+        String personStr = writeToStr(person);
+        System.out.println(personStr);
+        Person person1 = (Person) deserializeFromStr(personStr);
         System.out.println(person1.getNameAge());
     }
 
@@ -18,37 +22,17 @@ public class SerializableMain {
         // 缓冲区会随着数据的不断写入而自动增长。可使用 toByteArray() 和 toString() 获取数据。
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         // 专用于java对象序列化，将对象进行序列化
-        ObjectOutputStream objectOutputStream = null;
-        String serStr = null;
-        try {
-            objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
             objectOutputStream.writeObject(obj);
-            serStr = byteArrayOutputStream.toString("ISO-8859-1");
-            serStr = java.net.URLEncoder.encode(serStr, "UTF-8");
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            objectOutputStream.close();
+            return java.net.URLEncoder.encode(byteArrayOutputStream.toString(STREAM_CHARSET), ENCODER_CHARSET);
         }
-        return serStr;
     }
 
-    public static Object deserializeFromStr(String serStr) throws IOException {
-        ByteArrayInputStream byteArrayInputStream = null;
-        ObjectInputStream objectInputStream = null;
-        try {
-            String deserStr = java.net.URLDecoder.decode(serStr, "ISO-8859-1");
-            byteArrayInputStream = new ByteArrayInputStream(deserStr.getBytes("UTF-8"));
-            objectInputStream = new ObjectInputStream(byteArrayInputStream);
+    public static Object deserializeFromStr(String serStr) throws Exception {
+        String deserStr = java.net.URLDecoder.decode(serStr, ENCODER_CHARSET);
+        try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(deserStr.getBytes(STREAM_CHARSET));
+             ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)) {
             return objectInputStream.readObject();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            objectInputStream.close();
-            byteArrayInputStream.close();
         }
-        return null;
     }
 }
