@@ -3,6 +3,8 @@ package com.wxmimperio.serializable;
 import com.wxmimperio.serializable.pojo.Person;
 
 import java.io.*;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 
 public class SerializableMain {
 
@@ -10,27 +12,32 @@ public class SerializableMain {
     private static String ENCODER_CHARSET = "UTF-8";
 
     public static void main(String[] args) throws Exception {
-        Person person = new Person("wxm", 25);
-        String personStr = writeToStr(person);
+        Person personToStr = new Person("wxm", 25);
+        String personStr = writeToStr(personToStr);
         System.out.println(personStr);
-        Person person1 = (Person) deserializeFromStr(personStr);
-        System.out.println(person1.getNameAge());
+        Person strToPerson = (Person) deserializeFromStr(personStr);
+        System.out.println(strToPerson.getNameAge());
+
+        MySqlOps mySqlOps = new MySqlOps();
+        String mysqlStr = writeToStr(mySqlOps);
+        String sql = "select * from user";
+        MySqlOps newMySqlOps = (MySqlOps) deserializeFromStr(mysqlStr);
+        newMySqlOps.initConnection();
+        newMySqlOps.selectSql(sql);
+        newMySqlOps.close();
     }
 
     public static String writeToStr(Object obj) throws IOException {
-        // 此类实现了一个输出流，其中的数据被写入一个 byte 数组。
-        // 缓冲区会随着数据的不断写入而自动增长。可使用 toByteArray() 和 toString() 获取数据。
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        // 专用于java对象序列化，将对象进行序列化
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
+        try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+             ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream)) {
             objectOutputStream.writeObject(obj);
-            return java.net.URLEncoder.encode(byteArrayOutputStream.toString(STREAM_CHARSET), ENCODER_CHARSET);
+            return URLEncoder.encode(byteArrayOutputStream.toString(STREAM_CHARSET), ENCODER_CHARSET);
         }
     }
 
-    public static Object deserializeFromStr(String serStr) throws Exception {
-        String deserStr = java.net.URLDecoder.decode(serStr, ENCODER_CHARSET);
-        try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(deserStr.getBytes(STREAM_CHARSET));
+    public static Object deserializeFromStr(String serStr) throws IOException, ClassNotFoundException {
+        String deserializeStr = URLDecoder.decode(serStr, ENCODER_CHARSET);
+        try (ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(deserializeStr.getBytes(STREAM_CHARSET));
              ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream)) {
             return objectInputStream.readObject();
         }
