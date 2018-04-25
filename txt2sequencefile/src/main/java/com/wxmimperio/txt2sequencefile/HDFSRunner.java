@@ -1,8 +1,5 @@
 package com.wxmimperio.txt2sequencefile;
 
-import com.google.gson.JsonObject;
-import org.apache.avro.Schema;
-import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.hdfs.DistributedFileSystem;
@@ -23,7 +20,7 @@ import java.util.*;
  */
 public class HDFSRunner {
     private static final Logger LOG = LoggerFactory.getLogger(HDFSRunner.class);
-    private static final String hdfsUri = PropManager.getInstance().getPropertyByString("hdfs.uri");
+    private static final String hdfsUri = "";
     private static final String DEFAULTFS = "fs.defaultFS";
     private static final String DFS_FAILURE_ENABLE = "dfs.client.block.write.replace-datanode-on-failure.enable";
     private static final String DFS_FAILURE_POLICY = "dfs.client.block.write.replace-datanode-on-failure.policy";

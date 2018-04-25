@@ -127,7 +127,7 @@
         </dependency>
     </dependencies>
 
-    <repositories>
+   <!-- <repositories>
         <repository>
             <id>nexus-public</id>
             <url>http://nexus.dw.sdo.com/content/groups/public/</url>
@@ -142,5 +142,5 @@
             <id>dw-snapshots</id>
             <url>http://nexus.dw.sdo.com/content/repositories/dw-snapshots/</url>
         </repository>
-    </repositories>
+    </repositories>-->
 </project>
