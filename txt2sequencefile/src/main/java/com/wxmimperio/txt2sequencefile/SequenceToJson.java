@@ -2,7 +2,7 @@ package com.wxmimperio.txt2sequencefile;
 
 public class SequenceToJson {
 
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         String inputPath = args[0];
         String outputPath = args[1];
         String topic = args[2];
@@ -12,5 +12,5 @@ public class SequenceToJson {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    }*/
 }
