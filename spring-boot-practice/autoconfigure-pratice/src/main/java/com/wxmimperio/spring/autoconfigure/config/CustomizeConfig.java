@@ -2,7 +2,7 @@ package com.wxmimperio.spring.autoconfigure.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "custom")
+@ConfigurationProperties(prefix = "auto")
 public class CustomizeConfig {
 
     private String userName;
