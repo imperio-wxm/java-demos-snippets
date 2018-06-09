@@ -1,5 +1,10 @@
 package com.wxmimperio.txt2sequencefile;
 
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Lists;
+import com.google.gson.JsonObject;
+import org.apache.avro.Schema;
+import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.hdfs.DistributedFileSystem;
@@ -12,8 +17,14 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.Socket;
 import java.net.URI;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.Date;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * Created by weiximing.imperio on 2016/7/25.
@@ -21,6 +32,7 @@ import java.util.*;
 public class HDFSRunner {
     private static final Logger LOG = LoggerFactory.getLogger(HDFSRunner.class);
     private static final String hdfsUri = "";
+
     private static final String DEFAULTFS = "fs.defaultFS";
     private static final String DFS_FAILURE_ENABLE = "dfs.client.block.write.replace-datanode-on-failure.enable";
     private static final String DFS_FAILURE_POLICY = "dfs.client.block.write.replace-datanode-on-failure.policy";
@@ -37,15 +49,10 @@ public class HDFSRunner {
         Configuration conf = new Configuration();
         conf.addResource(CORE_SITE_XML);
         conf.addResource(HDFS_SITE_XML);
-        conf.addResource(MAPRED_SITE_XML);
-        conf.addResource(YARN_SITE_XML);
         conf.setBoolean(DFS_SUPPORT_APPEND, true);
         conf.setBoolean(DFS_FAILURE_ENABLE, true);
-        conf.set(DEFAULTFS, hdfsUri);
         conf.set(DFS_FAILURE_POLICY, "NEVER");
         conf.set("fs.hdfs.impl", "org.apache.hadoop.hdfs.DistributedFileSystem");
-        //conf.set(DFS_SESSION_TIMEOUT, "180000");
-        conf.set(DFS_TRANSFER_THREADS, "16000");
         return conf;
     }
 
@@ -278,6 +285,203 @@ public class HDFSRunner {
         }
     }*/
 
+    public static void sequenceFileWriterSocket(String inputSeqPath, String ip) {
+        SequenceFile.Reader reader = null;
+        FileSystem fs = null;
+        List<String> outputPaths = getFileList(inputSeqPath);
+        List<String[]> datas = Lists.newArrayList();
+        try {
+            PrintWriter pw = getWriter(ip);
+            long index = 0L;
+            for (String path : outputPaths) {
+                //input
+                Path inPath = new Path(path);
+                fs = FileSystem.get(URI.create(hdfsUri), config());
+                if (fs.exists(inPath)) {
+                    reader = new SequenceFile.Reader(config(), SequenceFile.Reader.file(inPath));
+                    Writable inKey = (Writable) ReflectionUtils.newInstance(
+                            reader.getKeyClass(), config());
+                    Writable inValue = (Writable) ReflectionUtils.newInstance(
+                            reader.getValueClass(), config());
+                    while (reader.next(inKey, inValue)) {
+                        String[] messages = inValue.toString()
+                                .replaceAll("null", "0")
+                                .replaceAll("\\\\N", "0").split("\t", -1);
+
+                        if (messages.length == 22) {
+                            datas.add(messages);
+                            index++;
+                            if (datas.size() == 500) {
+                                String message = getData(datas);
+                                if (!StringUtils.isEmpty(message)) {
+                                    pw.write(message);
+                                    pw.flush();
+                                    LOG.info("put size = " + datas.size());
+                                }
+                                datas = Lists.newArrayList();
+                            }
+                        }
+                    }
+
+                }
+                LOG.info("finish file = " + path);
+            }
+            LOG.info("all file " + inputSeqPath + " size=" + index);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            IOUtils.closeStream(reader);
+            IOUtils.closeStream(fs);
+        }
+    }
+
+    private static PrintWriter getWriter(String ip) throws Exception {
+        final Socket s = new Socket(ip, 5240);
+        final PrintWriter pw = new PrintWriter(s.getOutputStream());
+        return pw;
+    }
+
+    private static String getData(List<String[]> datas) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        StringBuilder sb = new StringBuilder();
+        for (String[] msg : datas) {
+            String[] newMsg = new String[24];
+            newMsg[0] = "pt_consume_test";
+            newMsg[1] = simpleDateFormat.format(new Date());
+            for (int i = 2; i < msg.length + 2; i++) {
+                newMsg[i] = msg[i - 2];
+            }
+            String data = String.join("|", newMsg);
+            sb.append(data).append("\n");
+        }
+        return sb.toString();
+    }
+
+    public static void sequenceFileWritePhoenix(String inputSeqPath, String url, Properties props, String insertSql) {
+        SequenceFile.Reader reader = null;
+        FileSystem fs = null;
+        List<String> outputPaths = getFileList(inputSeqPath);
+        PreparedStatement pst = null;
+        List<String[]> datas = Lists.newArrayList();
+        try {
+            long index = 0L;
+            for (String path : outputPaths) {
+                //input
+                Path inPath = new Path(path);
+                fs = FileSystem.get(URI.create(hdfsUri), config());
+                if (fs.exists(inPath)) {
+                    reader = new SequenceFile.Reader(config(), SequenceFile.Reader.file(inPath));
+                    Writable inKey = (Writable) ReflectionUtils.newInstance(
+                            reader.getKeyClass(), config());
+                    Writable inValue = (Writable) ReflectionUtils.newInstance(
+                            reader.getValueClass(), config());
+                    while (reader.next(inKey, inValue)) {
+                        String[] messages = inValue.toString().replaceAll("\\\\N", "0").split("\t", -1);
+                        if (messages.length == 15) {
+                            datas.add(messages);
+                            index++;
+                            if (datas.size() == 10) {
+                                insert(url, props, insertSql, datas, pst);
+                                datas = Lists.newArrayList();
+                            }
+                        }
+                    }
+                }
+                LOG.info("finish file = " + path);
+            }
+            LOG.info("all file " + inputSeqPath + " size=" + index);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            IOUtils.closeStream(reader);
+            IOUtils.closeStream(fs);
+        }
+    }
+
+    /*static class Task implements Runnable {
+
+        private String url;
+        private Properties props;
+        private String insertSql;
+        private List<String[]> datas;
+        private PreparedStatement pst;
+
+        public Task(String url, Properties props, String insertSql, List<String[]> datas, PreparedStatement pst) {
+            this.url = url;
+            this.props = props;
+            this.insertSql = insertSql;
+            this.datas = datas;
+            this.pst = pst;
+        }
+
+        @Override
+        public void run() {
+            try {
+                insert(url, props, insertSql, datas, pst);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }*/
+
+    private static void insert(String url, Properties props, String insertSql, List<String[]> datas, PreparedStatement pst) throws Exception {
+        try (Connection connection = DriverManager.getConnection(url, props)) {
+            pst = connection.prepareStatement(insertSql);
+            connection.setAutoCommit(false);
+            for (String[] messages : datas) {
+                try {
+                   /* pst.setInt(1, Integer.parseInt(StringUtils.isEmpty(messages[1]) ? "0" : messages[1]));//ACCOUNT_ID
+                    pst.setString(2, messages[0]);//DATA_DATE
+                    pst.setString(3, messages[2]);//MOBILE
+                    pst.setInt(4, Integer.parseInt(StringUtils.isEmpty(messages[3]) ? "0" : messages[3]));//VIP_LEVEL
+                    pst.setString(5, messages[4]);//SNDA_ID
+                    pst.setString(6, messages[5]);//PT_ID
+                    pst.setDouble(7, Double.parseDouble(StringUtils.isEmpty(messages[6]) ? "0.0" : messages[6]));//CON_MOBILE
+                    pst.setInt(8, Integer.parseInt(StringUtils.isEmpty(messages[7]) ? "0" : messages[7]));//GAME_ID
+                    pst.setString(9, messages[8]);//LAST_LOGIN_TIME_PT
+                    pst.setDouble(10, Double.parseDouble(StringUtils.isEmpty(messages[9]) ? "0.0" : messages[9]));//LAST_CONSUME_6M_PT
+                    pst.setInt(11, Integer.parseInt(StringUtils.isEmpty(messages[10]) ? "0" : messages[10]));//LAST_GAME_ID_PT
+                    pst.setInt(12, Integer.parseInt(StringUtils.isEmpty(messages[11]) ? "0" : messages[11]));//VIRTUAL_FLAG
+                    pst.setString(13, messages[12]);//LAST_CONSUME_TIME_MOBILE
+                    pst.setInt(14, Integer.parseInt(StringUtils.isEmpty(messages[13]) ? "0" : messages[13]));//LAST_CONSUME_GAME_MOBILE
+                    pst.setInt(15, Integer.parseInt(StringUtils.isEmpty(messages[14]) ? "0" : messages[14]));//STUDIO_ID
+                    pst.setDouble(16, Double.parseDouble(StringUtils.isEmpty(messages[15]) ? "0.0" : messages[15]));//CONSUME_180D
+                    pst.setDouble(17, Double.parseDouble(StringUtils.isEmpty(messages[16]) ? "0.0" : messages[16]));//CONSUME_GAME_180D
+                    pst.setDouble(18, Double.parseDouble(StringUtils.isEmpty(messages[17]) ? "0.0" : messages[17]));//G_SCORE
+                    pst.setDouble(19, Double.parseDouble(StringUtils.isEmpty(messages[18]) ? "0.0" : messages[18]));//LAST_CON180D_GAME_AMOUNT_PT
+                    pst.setDouble(20, Double.parseDouble(StringUtils.isEmpty(messages[19]) ? "0.0" : messages[19]));//LAST_CON180D_GAME_AMOUNT
+                    pst.setString(21, messages[20]);//VIP_LEVEL_NAME
+                    pst.addBatch();*/
+
+                    pst.setString(1, UUID.randomUUID().toString());
+                    pst.setString(2, messages[0]);
+                    pst.setString(3, messages[1]);
+                    pst.setInt(4, Integer.parseInt(messages[2]));
+                    pst.setInt(5, Integer.parseInt(messages[3]));
+                    pst.setString(6, messages[4]);
+                    pst.setString(7, messages[5]);
+                    pst.setString(8, messages[6]);
+                    pst.setString(9, messages[7]);
+                    pst.setInt(10, Integer.parseInt(messages[8]));
+                    pst.setString(11, messages[9]);
+                    pst.setString(12, messages[10]);
+                    pst.setString(13, messages[11]);
+                    pst.setString(14, messages[12]);
+                    pst.setString(15, messages[13]);
+                    pst.setString(16, messages[14]);
+                    pst.addBatch();
+                } catch (Exception e) {
+                    LOG.info("messages = " + StringUtils.join(messages, ","));
+                }
+            }
+            pst.executeBatch();
+            connection.commit();
+        } finally {
+            pst.close();
+            LOG.info("Insert data size = " + datas.size());
+        }
+    }
+
     public static synchronized void sequenceFileWriteIndex(String txtFilePath, String sequenceFilePath) {
         SequenceFile.Writer writer = null;
         BufferedReader br = null;
@@ -338,11 +542,112 @@ public class HDFSRunner {
         }
     }
 
-    public static synchronized void sequenceFileWrite(String txtFilePath, String sequenceFilePath) {
+    public static List<String> getFileList(String dataPath) {
+        List<String> fileList = new ArrayList<String>();
+        try {
+            Path path = new Path(dataPath);
+            FileSystem fs = FileSystem.get(URI.create(hdfsUri), config());
+            FileStatus[] fileStatusArray = fs.globStatus(path);
+            if (fileStatusArray != null) {
+                for (FileStatus fileStatus : fileStatusArray) {
+                    if (fs.isFile(fileStatus.getPath())) {
+                        String fullPath = fileStatus.getPath().toString();
+                        fileList.add(fullPath);
+                    } else if (fs.isDirectory(fileStatus.getPath())) {
+                        for (FileStatus fileStatus2 : fs.listStatus(fileStatus
+                                .getPath())) {
+                            if (fs.isFile(fileStatus2.getPath())) {
+                                String fullPath = fileStatus2.getPath()
+                                        .toString();
+                                fileList.add(fullPath);
+                            } else {
+                                throw new Exception("file path error:");
+                            }
+                        }
+                    }
+                }
+            } else {
+            }
+            return fileList;
+        } catch (Exception e) {
+            LOG.error("Get file list error." + dataPath, e);
+        }
+        return Lists.newArrayList();
+    }
+
+
+    public static synchronized void sequenceFileWriteTosql(String inputSeqPath, String outputSeqPath, String tableName) {
+        SequenceFile.Writer writer = null;
+        SequenceFile.Reader reader = null;
+        BufferedReader br = null;
+        FileSystem fs = null;
+        try {
+            // output
+            Path sequencePath = new Path(outputSeqPath);
+            Text value = new Text();
+            Text key = new Text();
+            writer = SequenceFile.createWriter(
+                    config(),
+                    SequenceFile.Writer.file(sequencePath),
+                    SequenceFile.Writer.keyClass(key.getClass()),
+                    SequenceFile.Writer.valueClass(value.getClass()),
+                    //In hadoop-2.6.0-cdh5, it can use hadoop-common-2.6.5 with appendIfExists()
+                    //SequenceFile.Writer.appendIfExists(true),
+                    SequenceFile.Writer.compression(SequenceFile.CompressionType.BLOCK)
+            );
+
+            List<String> outputPaths = getFileList(inputSeqPath);
+            long index = 0L;
+            for (String path : outputPaths) {
+                //input
+
+                if (!path.contains(tableName + "_00") && !path.contains(tableName + "_01")
+                        && !path.contains(tableName + "_02") && !path.contains(tableName + "_03")
+                        && !path.contains(tableName + "_04") && !path.contains(tableName + "_05")
+                        && !path.contains(tableName + "_16") && !path.contains(tableName + "_17")
+                        && !path.contains(tableName + "_18") && !path.contains(tableName + "_19")
+                        && !path.contains(tableName + "_20") && !path.contains(tableName + "_21")
+                        && !path.contains(tableName + "_22") && !path.contains(tableName + "_23")) {
+
+                    Path inPath = new Path(path);
+                    fs = FileSystem.get(URI.create(hdfsUri), config());
+                    if (fs.exists(inPath)) {
+                        reader = new SequenceFile.Reader(config(), SequenceFile.Reader.file(inPath));
+                        Writable inKey = (Writable) ReflectionUtils.newInstance(
+                                reader.getKeyClass(), config());
+                        Writable inValue = (Writable) ReflectionUtils.newInstance(
+                                reader.getValueClass(), config());
+                        while (reader.next(inKey, inValue)) {
+                            Text msgKey = new Text();
+                            String[] msgs = inValue.toString().split("\\t", -1);
+                            if (!msgs[1].equalsIgnoreCase("791000352")) {
+                                msgKey.set(inKey.toString());
+                                value.set(inValue.toString());
+                                writer.append(msgKey, value);
+                                index++;
+                            }
+                        }
+                    }
+                    LOG.info("finish file = " + path);
+                    LOG.info("all file " + inputSeqPath + " size=" + index);
+                }
+            }
+        } catch (RemoteException e) {
+            LOG.warn("RemoteException happened warn. File= " + outputSeqPath, e);
+        } catch (IOException e) {
+            LOG.error("Create or Append SequenceFile happened error. File= " + outputSeqPath, e);
+        } finally {
+            IOUtils.closeStream(reader);
+            IOUtils.closeStream(writer);
+            IOUtils.closeStream(br);
+            IOUtils.closeStream(fs);
+        }
+    }
+
+    public static synchronized void sequenceFileWrite(String txtFilePath, String sequenceFilePath) throws Exception {
         SequenceFile.Writer writer = null;
         BufferedReader br = null;
         FileSystem fs = null;
-
         try {
             // sequenceFile
             Path sequencePath = new Path(sequenceFilePath);
@@ -370,18 +675,15 @@ public class HDFSRunner {
                 while (null != (line = br.readLine())) {
                     Text msgValueText = new Text();
                     Text msgKeyText = new Text();
-                    String[] message = line.split("\\t", -1);
-                    String msgKey;
-                    try {
-                        msgKey = message[message.length - 1];
-                    } catch (Exception e) {
-                        msgKey = String.valueOf(System.currentTimeMillis());
-                    }
-                    String[] messageCopy = Arrays.copyOf(message, message.length - 1);
-                    String msgValue = StringUtils.join(Arrays.asList(messageCopy), "\t").toString();
+                    String[] message = line.split("\\|", -1);
 
-                    msgKeyText.set(msgKey);
-                    msgValueText.set(msgValue);
+                    StringBuffer stringBuffer = new StringBuffer();
+                    for (int i = 1; i < message.length; i++) {
+                        stringBuffer.append(message[i]).append("\t");
+                    }
+                    stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+                    msgKeyText.set(UUID.randomUUID().toString());
+                    msgValueText.set(stringBuffer.toString());
                     writer.append(msgKeyText, msgValueText);
                     index++;
                 }
@@ -579,14 +881,13 @@ public class HDFSRunner {
      * @param filePath
      * @return
      */
-    public static Map<String, String> sequenceFileReader2Json(String filePath, String outputFile, String topic) throws Exception {
+/*    public static Map<String, String> sequenceFileReader2Json(String filePath, String outputFile, String topic) throws Exception {
         Map<String, String> messages = new HashMap<>();
 
         Schema schema = SchemaHelper.getSchema(topic);
 
         LOG.info("schema = " + schema);
 
-        // 打开一个写文件器，构造函数中的第二个参数true表示以追加形式写文件
         FileWriter writer = new FileWriter(outputFile, true);
 
         Path path = new Path(filePath);
@@ -633,7 +934,7 @@ public class HDFSRunner {
             LOG.info("Data size = " + dataSize);
         }
         return messages;
-    }
+    }*/
 
     /**
      * 追加文件：使用FileWriter
@@ -751,11 +1052,7 @@ public class HDFSRunner {
         }
     }
 
-    /**
-     * 关闭Fds流
-     *
-     * @param fsos
-     */
+
     private static void closeFSDataOutputStream(FSDataOutputStream fsos) {
         try {
             if (fsos != null) {
@@ -765,39 +1062,6 @@ public class HDFSRunner {
             LOG.error("Close FSDataOutputStream happened error" + e);
         }
     }
-
-    public static List<String> getFileList(String dataPath) throws Exception {
-        List<String> fileList = new ArrayList<String>();
-        try {
-            Path path = new Path(dataPath);
-            FileSystem fs = FileSystem.get(URI.create(hdfsUri), config());
-            FileStatus[] fileStatusArray = fs.globStatus(path);
-            if (fileStatusArray != null) {
-                for (FileStatus fileStatus : fileStatusArray) {
-                    if (fs.isFile(fileStatus.getPath())) {
-                        String fullPath = fileStatus.getPath().toString();
-                        fileList.add(fullPath);
-                    } else if (fs.isDirectory(fileStatus.getPath())) {
-                        for (FileStatus fileStatus2 : fs.listStatus(fileStatus
-                                .getPath())) {
-                            if (fs.isFile(fileStatus2.getPath())) {
-                                String fullPath = fileStatus2.getPath()
-                                        .toString();
-                                fileList.add(fullPath);
-                            } else {
-                                throw new Exception("file path error:");
-                            }
-                        }
-                    }
-                }
-            } else {
-            }
-            return fileList;
-        } catch (Exception e) {
-            throw new Exception(e);
-        }
-    }
-
 
     public static void renameFile(String oldFile, String newFile) {
         try {

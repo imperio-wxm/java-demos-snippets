@@ -13,6 +13,7 @@
                 <configuration>
                     <source>1.7</source>
                     <target>1.7</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -26,7 +27,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <finalName>${project.artifactId}-test-${project.version}</finalName>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
                             <filters>
                                 <filter>
                                     <artifact>*:*</artifact>
@@ -40,12 +41,20 @@
                             <transformers>
                                 <transformer
                                         implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>com.wxmimperio.txt2sequencefile.SequenceToJson</mainClass>
+                                    <mainClass>com.wxmimperio.txt2sequencefile.SeqenceFileToPhoenix</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
             </plugin>
         </plugins>
     </build>
@@ -63,6 +72,12 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-client</artifactId>
+            <version>4.13.0-cdh5.11.1-sdg-1.0.0-RELEASE</version>
+            <classifier>client</classifier>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
