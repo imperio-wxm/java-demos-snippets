@@ -15,7 +15,6 @@ public class DateAPI {
     public void date1() {
         LocalDate localDate = LocalDate.now();
         System.out.println(localDate);
-
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println(localDateTime);
 

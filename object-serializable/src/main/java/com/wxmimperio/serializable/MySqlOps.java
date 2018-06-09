@@ -14,6 +14,7 @@ public class MySqlOps implements Serializable {
     private Connection connection;
 
     public MySqlOps() {
+
     }
 
     public void initConnection() throws ClassNotFoundException, SQLException {
