@@ -280,3 +280,15 @@ spring-file-stream/target/classes/com/wxmimperio/springfile/controller/FileContr
 spring-file-stream/target/classes/com/wxmimperio/springfile/FileMainApplication\.class
 
 spring-file-stream/target/test-classes/com/wxmimperio/springfile/AppTest\.class
+
+spring-boot-practice/\.idea/
+
+spring-boot-practice/spring-boot-practice\.iml
+
+spring-boot-practice/spring-boot-test/target/
+
+spring-boot-practice/spring-boot-test/spring-boot-test\.iml
+
+spring-boot-practice/autoconfigure-pratice/target/
+
+spring-boot-practice/autoconfigure-pratice/autoconfigure-pratice\.iml
