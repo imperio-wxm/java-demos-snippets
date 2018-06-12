@@ -7,6 +7,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class StreamOps {
     private static List<Person> personList = Arrays.asList(
             new Person("wxm1", 18, 1L, 001L),
@@ -137,5 +139,95 @@ public class StreamOps {
 
         Optional<Integer> sum = list.stream().map(e -> 1).reduce(Integer::sum);
         System.out.println(sum.get());
+    }
+
+    @Test
+    public void ops7() {
+       /* Map<String, String> map = new HashMap<>();
+        for (int i = 0; i < 600; i++) {
+            map.put("wxm" + i, "value" + 1);
+        }
+
+        long start = System.currentTimeMillis();
+        for (Map.Entry<String, String> value : map.entrySet()) {
+            value.getKey();
+            value.getValue();
+            UUID.randomUUID().toString();
+            UUID.randomUUID().toString();
+            System.out.print(UUID.randomUUID().toString());
+            System.out.print(UUID.randomUUID().toString());
+        }
+        System.out.println("Cost = " + (System.currentTimeMillis() - start) + " ms");
+
+        long startSteam = System.currentTimeMillis();
+        map.entrySet().stream().forEach(entry -> {
+            entry.getKey();
+            entry.getValue();
+            UUID.randomUUID().toString();
+            UUID.randomUUID().toString();
+            System.out.print(UUID.randomUUID().toString());
+            System.out.print(UUID.randomUUID().toString());
+        });
+        System.out.println("Cost = " + (System.currentTimeMillis() - startSteam) + " ms");*/
+
+        System.out.println("==========================");
+
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < 1000; i++) {
+            list.add(String.valueOf(i));
+        }
+
+        long startList = System.currentTimeMillis();
+        int i = 0;
+        for (String str : list) {
+            if (Integer.parseInt(str) % 2 == 0) {
+                Integer.parseInt(str);
+                i++;
+            }
+            //str = getRecoverFilePath("dfasdfa","dfasdfasdfasdfasdfasdf","fdsfadsf");
+        }
+        System.out.println("Cost = " + (System.currentTimeMillis() - startList) + " ms i =" + i);
+
+        long startStreamList = System.currentTimeMillis();
+        int j = 0;
+        list.stream().filter(str -> Integer.parseInt(str) % 2 == 0).forEach(str -> {
+            Integer.parseInt(str);
+            //str = getRecoverFilePath("dfasdfa","dfasdfasdfasdfasdfasdf","fdsfadsf");
+        });
+        System.out.println("Cost = " + (System.currentTimeMillis() - startStreamList) + " ms j = " + j);
+    }
+
+    public static String getRecoverFilePath(String topic, String date, String type) {
+        String filePrefix = "/user/hive/warehouse/dw.db";
+        String[] pathList = {
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
+                "part_date" + "=" + date.substring(0, 10),
+        };
+        String[] pathList2 = {
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
+                UUID.randomUUID().toString(),
+                "part_date" + "=" + date.substring(0, 10),
+        };
+        return StringUtils.join(pathList, "/");
+    }
+
+    @Test
+    public void ops8() {
+        Object[] str = "的发送的发送的,发的所发生的,佛挡杀佛几个好,dfsdfs,5,6".split(",", -1);
+
+        for (int i = 0; i < 10; i++) {
+            try {
+                System.out.println(String.valueOf(str[i]));
+            } catch (ArrayIndexOutOfBoundsException e) {
+                str = new ArrayList<Object>(Arrays.asList(str)) {{
+                    add("");
+                }}.toArray();
+            }
+        }
+        System.out.println(str.length);
+        System.out.println(Arrays.asList(str));
     }
 }
