@@ -19,7 +19,7 @@ public class RedisConnection {
     RedisConnection() {
         ResourceBundle rb = ResourceBundle.getBundle("application", Locale.getDefault());
         String url = rb.getString("redis.url");
-        String password = null;
+        String password = rb.getString("redis.password").equalsIgnoreCase("") ? null : rb.getString("redis.password");
         Set<HostAndPort> nodes = new HashSet<>();
         for (String from : url.split(",")) {
             nodes.add(HostAndPort.parseString(from));

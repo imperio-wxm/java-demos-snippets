@@ -14,7 +14,7 @@ public class MainOps {
     public static void main(String[] args) throws IOException {
         JedisCluster jedisCluster = RedisConnection.getInstance().getRedis();
 
-        String alias = "test_table";
+        String alias = "";
         String table = alias + "_" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyMMdd_HHmmss"));
         String key = REDIS_NAMESPACE_HBASE_ALIAS + ":" + alias;
         //set(jedisCluster, key, table);
