@@ -1,0 +1,2 @@
+- spring boot 1.5.13.RELEASE
+- spring cloud Edgware.SR3
