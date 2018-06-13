@@ -448,3 +448,14 @@ springcloud-learning/eureka-server/target/surefire-reports/TEST-com.wxmimperio.s
 springcloud-learning/eureka-server/target/test-classes/com/wxmimperio/springcloud/AppTest.class
 springcloud-learning/eureka-server/target/eureka-server-1.0-SNAPSHOT.jar
 springcloud-learning/eureka-server/eureka-server.iml
+springcloud-learning/.idea/libraries/Maven__com_ecwid_consul_consul_api_1_3_0.xml
+springcloud-learning/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_consul_core_1_3_3_RELEASE.xml
+springcloud-learning/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_consul_discovery_1_3_3_RELEASE.xml
+springcloud-learning/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_consul_1_3_3_RELEASE.xml
+springcloud-learning/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_consul_discovery_1_3_3_RELEASE.xml
+springcloud-learning/.idea/libraries/Maven__org_springframework_cloud_spring_cloud_starter_ribbon_1_4_4_RELEASE.xml
+springcloud-learning/eureka-consumer/target/classes/com/wxmimperio/springcloud/controller/DcController.class
+springcloud-learning/eureka-consumer/target/classes/com/wxmimperio/springcloud/ConsumerApplication.class
+springcloud-learning/eureka-consumer/target/classes/application.yml
+springcloud-learning/eureka-consumer/target/test-classes/com/wxmimperio/springcloud/AppTest.class
+springcloud-learning/eureka-consumer/eureka-consumer.iml
