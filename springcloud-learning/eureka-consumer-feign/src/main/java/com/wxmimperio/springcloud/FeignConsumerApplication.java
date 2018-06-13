@@ -1,11 +1,14 @@
 package com.wxmimperio.springcloud;
 
+import feign.Client;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 
-@EnableFeignClients
+@ConditionalOnClass(Client.class)
+@EnableFeignClients("com.wxmimperio.springcloud")
 @EnableDiscoveryClient
 @SpringBootApplication
 public class FeignConsumerApplication {
