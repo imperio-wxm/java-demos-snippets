@@ -12,6 +12,9 @@
         <module>eureka-server</module>
         <module>eureka-client</module>
         <module>eureka-consumer</module>
+        <module>eureka-consumer-ribbon</module>
+        <module>eureka-consumer-feign</module>
+        <module>api-gateway</module>
     </modules>
 
     <name>springcloud-learning</name>
@@ -25,6 +28,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring.boot.version>1.5.13.RELEASE</spring.boot.version>
         <spring.cloud.version>Edgware.SR3</spring.cloud.version>
+        <open.feign.form.version>3.0.3</open.feign.form.version>
     </properties>
 
     <dependencyManagement>
@@ -35,6 +39,18 @@
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.openfeign.form</groupId>
+                <artifactId>feign-form</artifactId>
+                <version>${open.feign.form.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.openfeign.form</groupId>
+                <artifactId>feign-form-spring</artifactId>
+                <version>${open.feign.form.version}</version>
             </dependency>
 
 
