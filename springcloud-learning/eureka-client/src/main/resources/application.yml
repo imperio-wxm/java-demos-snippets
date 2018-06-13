@@ -7,3 +7,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:1001/eureka/
+
+
+#spring: # open consul
+#  cloud:
+#    consul:
+#      host: localhost
+#      port: 8500
