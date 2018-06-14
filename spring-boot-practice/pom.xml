@@ -12,6 +12,7 @@
         <module>autoconfigure-pratice</module>
         <module>spring-boot-test</module>
         <module>websocket-pratice</module>
+        <module>springboot-data-jpa</module>
     </modules>
 
     <name>spring-boot-practice</name>
