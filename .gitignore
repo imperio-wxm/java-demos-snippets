@@ -496,3 +496,7 @@ springcloud-learning/api-gateway/target/classes/com/wxmimperio/springcloud/ApiGa
 springcloud-learning/api-gateway/target/classes/application.yml
 springcloud-learning/api-gateway/target/test-classes/com/wxmimperio/springcloud/AppTest.class
 springcloud-learning/api-gateway/api-gateway.iml
+
+spring-boot-practice/springboot-data-jpa/target/
+
+spring-boot-practice/springboot-data-jpa/springboot-data-jpa\.iml
