@@ -2,14 +2,12 @@ package com.wxmimperio.spring.controller;
 
 import com.wxmimperio.spring.bean.User;
 import com.wxmimperio.spring.repository.UserRepository;
+import com.wxmimperio.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,10 +15,12 @@ import java.util.List;
 public class UserController {
 
     private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
+    public UserController(UserRepository userRepository, UserService userService) {
         this.userRepository = userRepository;
+        this.userService = userService;
     }
 
     @RequestMapping("/save")
@@ -47,6 +47,7 @@ public class UserController {
 
     /**
      * 测试排序
+     *
      * @return
      */
     @GetMapping("/sortByAge")
@@ -56,10 +57,21 @@ public class UserController {
 
     /**
      * 测试分页
+     *
      * @return
      */
     @GetMapping("/page")
     public Page<User> page() {
-        return userRepository.findAll(new PageRequest(1,2));
+        return userRepository.findAll(new PageRequest(1, 2));
+    }
+
+    @PostMapping("/rollBack")
+    public User rollBack(@RequestBody  User user) {
+        return userService.saveUserWithRollBack(user);
+    }
+
+    @PostMapping("/noRollBack")
+    public User noRollBack(@RequestBody  User user) {
+        return userService.saveUserWithoutRollBack(user);
     }
 }
