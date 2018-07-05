@@ -1,13 +1,12 @@
 package com.wxmimperio.spring.bean;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
 public class User {
-    @Id
-    @GeneratedValue
+
     private Integer id;
     private String name;
     private Integer age;
@@ -22,6 +21,18 @@ public class User {
         this.gender = gender;
     }
 
+    public User(Integer id, String name, Integer age, String gender) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
+
+    @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "existOrGenerate",strategy = "com.wxmimperio.spring.GenerateUsingIdentity")
+    @GeneratedValue(generator = "existOrGenerate")
+    @Column(name = "`id`")
     public Integer getId() {
         return id;
     }
@@ -52,5 +63,15 @@ public class User {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                '}';
     }
 }

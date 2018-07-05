@@ -24,8 +24,12 @@ public class UserController {
     }
 
     @RequestMapping("/save")
-    public User save(String name, Integer age, String gender) {
-        return userRepository.save(new User(name, age, gender));
+    public User save(String name, Integer age, String gender, Integer id) {
+        User user = new User(id, name, age, gender);
+        if (null != user.getId() && null != userRepository.findOne(user.getId())) {
+            throw new RuntimeException("exits");
+        }
+        return userRepository.save(new User(id, name, age, gender));
     }
 
     @GetMapping("findByName/{name}")
@@ -66,12 +70,12 @@ public class UserController {
     }
 
     @PostMapping("/rollBack")
-    public User rollBack(@RequestBody  User user) {
+    public User rollBack(@RequestBody User user) {
         return userService.saveUserWithRollBack(user);
     }
 
     @PostMapping("/noRollBack")
-    public User noRollBack(@RequestBody  User user) {
+    public User noRollBack(@RequestBody User user) {
         return userService.saveUserWithoutRollBack(user);
     }
 }
