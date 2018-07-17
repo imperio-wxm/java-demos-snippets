@@ -13,6 +13,7 @@
         <module>spring-boot-test</module>
         <module>websocket-pratice</module>
         <module>springboot-data-jpa</module>
+        <module>springboot-hikaricp</module>
     </modules>
 
     <name>spring-boot-practice</name>

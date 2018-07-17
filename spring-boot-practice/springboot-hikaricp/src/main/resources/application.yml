@@ -1,0 +1,21 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    dataSourceClassName: com.mysql.jdbc.Driver
+    jdbcUrl: jdbc:mysql://127.0.0.1:3309/meta_manager?useSSL=true
+    username: meta_manager
+    password: ix23uYd9WsdT86D
+    idleTimeout: 600000
+    maxLifetime: 1800000
+    connectionTestQuery: SELECT 1
+    minimumIdle: 3
+    maximumPoolSize: 10
+    connectionInitSql: SELECT 1
+    validationTimeout: 5000
+    leakDetectionThreshold: 2000
+
+logging:
+  level:
+    root: DEBUG
