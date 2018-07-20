@@ -69,5 +69,43 @@
             <artifactId>HikariCP</artifactId>
             <version>3.1.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>3.1.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-healthchecks</artifactId>
+            <version>4.0.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-client</artifactId>
+            <version>4.13.0-cdh5.11.1-sdg-1.0.1-RELEASE</version>
+            <classifier>client</classifier>
+        </dependency>
+
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>nexus-public</id>
+            <url>http://nexus.dw.sdo.com/content/groups/public/</url>
+        </repository>
+
+        <repository>
+            <id>dw-releases</id>
+            <url>http://nexus.dw.sdo.com/content/repositories/dw-releases/</url>
+        </repository>
+
+        <repository>
+            <id>dw-snapshots</id>
+            <url>http://nexus.dw.sdo.com/content/repositories/dw-snapshots/</url>
+        </repository>
+
+    </repositories>
 </project>

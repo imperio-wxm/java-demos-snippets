@@ -52,6 +52,15 @@ public class HikaricpConfig {
     // This property controls the amount of time that a connection can be out of the pool before a message is logged indicating a possible connection leak.
     private Long leakDetectionThreshold;
 
+    private String poolName;
+
+    public String getPoolName() {
+        return poolName;
+    }
+
+    public void setPoolName(String poolName) {
+        this.poolName = poolName;
+    }
 
     public String getDataSourceClassName() {
         return dataSourceClassName;
@@ -164,6 +173,7 @@ public class HikaricpConfig {
                 ", connectionInitSql='" + connectionInitSql + '\'' +
                 ", validationTimeout=" + validationTimeout +
                 ", leakDetectionThreshold=" + leakDetectionThreshold +
+                ", poolName='" + poolName + '\'' +
                 '}';
     }
 }
