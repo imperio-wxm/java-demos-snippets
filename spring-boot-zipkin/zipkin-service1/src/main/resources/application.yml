@@ -1,0 +1,5 @@
+application:
+  name: service1
+
+server:
+  port: 8081

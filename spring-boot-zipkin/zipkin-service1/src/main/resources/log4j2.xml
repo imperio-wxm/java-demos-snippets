@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration status="info">
+    <Properties>
+        <Property name="log.path">${sys:user.home}</Property>
+        <Property name="log.level">info</Property>
+        <Property name="log.project">brave-springboot-example</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="info" onMatch="ACCEPT"
+                             onMismatch="DENY" />
+            <PatternLayout pattern="[%d{ISO8601}] | %p | %l | %t | %X{type} | %X{userId} | %X{phone} | %X{field1} | %X{field2} | %X{field3} | %X{field4} | %X{field5} | %X{field6} | %X{field7} | %X{field8} | %X{field9} | %X{field10} | %X{field11} | %X{field12} | %X{field13} | %X{field14} | %X{field15} | %X{field16} | %X{field17} | %X{field18} | %m%n" />
+            <!--<JsonLayout complete="false" compact="true" eventEol="true" properties="true" locationInfo="true">-->
+            <!--<KeyValuePair key="requestTime" value="$${date:yyyy-MM-dd HH:mm:ss:SSS}"/>-->
+            <!--</JsonLayout>-->
+        </Console>
+
+        <RollingFile name="RollingFileLog"
+                     fileName="${sys:log.path}/logs/${log.project}.log"
+                     filePattern="${sys:log.path}/logs/${date:yyyy-MM}/${log.project}_%d{yyyy-MM-dd}-%i.log.gz">
+            <!--<PatternLayout pattern="[%d{ISO8601}] | %p | %l | %t | %X{type} | %X{userId} | %X{phone} | %X{field1} | %X{field2} | %X{field3} | %X{field4} | %X{field5} | %X{field6} | %X{field7} | %X{field8} | %X{field9} | %X{field10} | %X{field11} | %X{field12} | %X{field13} | %X{field14} | %X{field15} | %X{field16} | %X{field17} | %X{field18} | %m%n" />-->
+            <JsonLayout complete="false" compact="true" eventEol="true" properties="true" locationInfo="true">
+                <KeyValuePair key="requestTime" value="$${date:yyyy-MM-dd HH:mm:ss:SSS}"/>
+            </JsonLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="50MB" />
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="RollingFileError"
+                     fileName="${sys:log.path}/logs/${log.project}-error.log"
+                     filePattern="${sys:log.path}/logs/${date:yyyy-MM}/${log.project}-error_%d{yyyy-MM-dd}-%i.log.gz">
+            <ThresholdFilter level="error" onMatch="ACCEPT"
+                             onMismatch="DENY" />
+            <!--<PatternLayout pattern="[%d{ISO8601}] | %p | %l | %t | %X{type} | %X{userId} | %X{phone} | %X{field1} | %X{field2} | %X{field3} | %X{field4} | %X{field5} | %X{field6} | %X{field7} | %X{field8} | %X{field9} | %X{field10} | %X{field11} | %X{field12} | %X{field13} | %X{field14} | %X{field15} | %X{field16} | %X{field17} | %X{field18} | %m%n" />-->
+            <JsonLayout complete="false" compact="true" eventEol="true" properties="true" locationInfo="true">
+                <KeyValuePair key="requestTime" value="$${date:yyyy-MM-dd HH:mm:ss:SSS}"/>
+            </JsonLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="50MB" />
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="RollingFileALL"
+                     fileName="${sys:log.path}/logs/${log.project}-all.log"
+                     filePattern="${sys:log.path}/logs/${date:yyyy-MM}/${log.project}-all_%d{yyyy-MM-dd}-%i.log.gz">
+            <!--<PatternLayout-->
+            <!--pattern="[%d{ISO8601}] | %p | %l | %t | %X{type} | %X{userId} | %X{phone} | %X{field1} | %X{field2} | %X{field3} | %X{field4} | %X{field5} | %X{field6} | %X{field7} | %X{field8} | %X{field9} | %X{field10} | %X{field11} | %X{field12} | %X{field13} | %X{field14} | %X{field15} | %X{field16} | %X{field17} | %X{field18} | %m%n"/>-->
+            <JsonLayout complete="false" compact="true" eventEol="true" properties="true" locationInfo="true">
+                <KeyValuePair key="requestTime" value="$${date:yyyy-MM-dd HH:mm:ss:SSS}"/>
+            </JsonLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy/>
+                <SizeBasedTriggeringPolicy size="50MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <loggers>
+
+        <root level="info">
+            <Appender-ref ref="Console" />
+            <Appender-ref ref="RollingFileLog" />
+            <Appender-ref ref="RollingFileError" />
+            <Appender-ref ref="RollingFileALL"/>
+        </root>
+
+        <Logger name="brave.springboot" level="debug" additivity="false">
+            <Appender-ref ref="Console" />
+            <Appender-ref ref="RollingFileLog" />
+            <Appender-ref ref="RollingFileError" />
+            <Appender-ref ref="RollingFileALL"/>
+        </Logger>
+
+        <!--jdbc.sqlonly : 仅记录 SQL-->
+        <!--jdbc.sqltiming ：记录 SQL 以及耗时信息-->
+        <!--jdbc.audit ：记录除了 ResultSet 之外的所有 JDBC 调用信息，会产生大量的记录，有利于调试跟踪具体的 JDBC 问题-->
+        <!--jdbc.resultset ：会产生更多的记录信息，因为记录了 ResultSet 的信息-->
+        <!--jdbc.connection ：记录连接打开、关闭等信息，有利于调试数据库连接相关问题-->
+        <!--<logger name="jdbc.connection" level="FATAL" additivity="false">-->
+        <!--<Appender-ref ref="RollingFileALL"/>-->
+        <!--</logger>-->
+        <!--<logger name="jdbc.resultsettable" level="FATAL" additivity="false">-->
+        <!--<Appender-ref ref="Console" />-->
+        <!--<Appender-ref ref="RollingFileLog" />-->
+        <!--<Appender-ref ref="RollingFileError" />-->
+        <!--</logger>-->
+        <!--<logger name="jdbc.resultset" level="FATAL" additivity="false">-->
+        <!--<Appender-ref ref="RollingFileALL"/>-->
+        <!--</logger>-->
+        <!--<logger name="jdbc.audit" level="FATAL" additivity="false">-->
+        <!--<Appender-ref ref="RollingFileALL"/>-->
+        <!--</logger>-->
+        <!--<logger name="jdbc.sqlonly" level="FATAL" additivity="false">-->
+        <!--<Appender-ref ref="RollingFileALL"/>-->
+        <!--</logger>-->
+        <!--<logger name="jdbc.sqltiming" level="INFO" additivity="false">-->
+        <!--<Appender-ref ref="Console" />-->
+        <!--<Appender-ref ref="RollingFileALL"/>-->
+        <!--</logger>-->
+
+    </loggers>
+</Configuration>
