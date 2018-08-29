@@ -41,7 +41,7 @@ public class EsTransportClient {
         String path = classLoader.getResource("elastic-certificates.p12").getPath();
         path = path.substring(1, path.length());
         Settings settings = Settings.builder().put("client.transport.ignore_cluster_name", true)
-                .put("xpack.security.user", bundle.getString("es.cluster.password") + ":" + bundle.getString("es.cluster.password"))
+                .put("xpack.security.user", bundle.getString("es.cluster.username") + ":" + bundle.getString("es.cluster.password"))
                 .put("xpack.ssl.verification_mode", "certificate")
                 .put("xpack.ssl.keystore.path", path)
                 .put("xpack.ssl.truststore.path", path)
