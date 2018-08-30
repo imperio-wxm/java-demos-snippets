@@ -27,6 +27,7 @@ import org.elasticsearch.index.IndexNotFoundException;
 import org.elasticsearch.xpack.client.PreBuiltXPackTransportClient;
 
 import java.net.InetAddress;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -35,10 +36,14 @@ public class EsTransportClient {
     private static Client client;
 
     public static void main(String[] args) throws Exception {
+        new EsTransportClient().EsClientMain();
+    }
+
+    private void EsClientMain() throws Exception {
         ResourceBundle bundle = ResourceBundle.getBundle("application");
         String esClusterIp = bundle.getString("es.cluster.ip");
-        ClassLoader classLoader = EsTransportClient.class.getClassLoader();
-        String path = classLoader.getResource("elastic-certificates.p12").getPath();
+
+        String path = this.getClass().getClassLoader().getResource("elastic-certificates.p12").getPath();
         path = path.substring(1, path.length());
         Settings settings = Settings.builder().put("client.transport.ignore_cluster_name", true)
                 .put("xpack.security.user", bundle.getString("es.cluster.username") + ":" + bundle.getString("es.cluster.password"))
@@ -46,8 +51,6 @@ public class EsTransportClient {
                 .put("xpack.ssl.keystore.path", path)
                 .put("xpack.ssl.truststore.path", path)
                 .put("xpack.security.transport.ssl.enabled", "true").build();
-
-
         List<TransportAddress> addresses = new ArrayList<>();
         for (String broker : esClusterIp.split(",")) {
             TransportAddress address = new TransportAddress(
