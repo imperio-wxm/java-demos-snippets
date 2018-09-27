@@ -22,5 +22,11 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/io.zipkin.brave/brave-core -->
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-core</artifactId>
+            <version>4.13.6</version>
+        </dependency>
     </dependencies>
 </project>

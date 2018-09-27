@@ -5,6 +5,7 @@ import brave.context.log4j2.ThreadContextCurrentTraceContext;
 import brave.http.HttpTracing;
 import brave.propagation.B3Propagation;
 import brave.propagation.ExtraFieldPropagation;
+import brave.sampler.Sampler;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,12 +35,14 @@ public class ZipkinConfig extends WebMvcConfigurerAdapter {
         return AsyncReporter.create(sender(serverName));
     }
 
+
     /**
      * Controls aspects of tracing such as the name that shows up in the UI
      */
     @Bean
     Tracing tracing(@Value("zipkin-service1") String serviceName, @Value("http://127.0.0.1:9411/api/v2/spans") String serverName) {
         return Tracing.newBuilder()
+                .sampler(Sampler.create(1))// 采用率
                 .localServiceName(serviceName)
                 .propagationFactory(ExtraFieldPropagation.newFactory(B3Propagation.FACTORY, "user-name"))
                 .currentTraceContext(ThreadContextCurrentTraceContext.create()) // puts trace IDs into logs
