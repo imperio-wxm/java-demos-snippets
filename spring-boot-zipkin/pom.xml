@@ -64,6 +64,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.servicecomb</groupId>
+            <artifactId>tracing-zipkin</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>io.zipkin.brave</groupId>
             <artifactId>brave</artifactId>
         </dependency>
