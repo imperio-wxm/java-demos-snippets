@@ -6,9 +6,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import zipkin2.Span;
-import zipkin2.reporter.AsyncReporter;
-import zipkin2.reporter.Sender;
 
 import java.util.Date;
 
@@ -28,8 +25,6 @@ public class BackendController {
         System.out.println(username);
 
         brave.Span span = tracing.tracer().newChild(tracing.tracer().currentSpan().context());
-        //brave.Span span = tracing.tracer().newTrace();
-        //System.out.println(System.currentTimeMillis());
         span.name("test-span").start();
         span.tag("test-key", "test-value");
         span.tag("name", username);
@@ -47,6 +42,7 @@ public class BackendController {
         span.tag("mvc.controller.method", "printlnTest");
         span.annotate("Method In");
         printlnTest();
+        span.annotate("Method Out");
         span.finish();
 
         brave.Span span2 = tracing.tracer().newChild(span.context());
@@ -55,6 +51,8 @@ public class BackendController {
         span2.annotate("Method In");
 
         printlnTest();
+
+        span2.annotate("Method Out");
 
         span2.finish();
 

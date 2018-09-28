@@ -12,6 +12,7 @@
     <modules>
         <module>zipkin-service1</module>
         <module>zipkin-service2</module>
+        <module>zipkin-stand-alone</module>
     </modules>
 
     <name>spring-boot-zipkin</name>
