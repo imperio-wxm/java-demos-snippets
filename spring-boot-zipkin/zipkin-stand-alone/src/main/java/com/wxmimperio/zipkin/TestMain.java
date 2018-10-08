@@ -49,21 +49,22 @@ public class TestMain {
 
         span.finish();
 
-        /*brave.Span span2 = tracing.tracer().newChild(span.context()).name("get").kind(CLIENT).start();
+        brave.Span span2 = tracing.tracer().newChild(span.context()).name("get").kind(CLIENT).start();
         span2.tag("clnt/finagle.version", "6.36.0");
         span2.remoteEndpoint(Endpoint.newBuilder()
                 .serviceName("backend")
                 .ip("localhost")
                 .port(8082).build());
 
-   *//*     span2.annotate(Constants.WIRE_SEND);
-        span2.annotate(Constants.WIRE_RECV);*//*
+        /*span2.annotate(Constants.WIRE_SEND);
+        span2.annotate(Constants.WIRE_RECV);*/
 
-        span2.finish();*/
+        span2.finish();
 
         tracing.close();
         spanReporter.close();
         sender.close();
+
     }
 
     private static void okHttpTest(HttpTracing httpTracing) {
