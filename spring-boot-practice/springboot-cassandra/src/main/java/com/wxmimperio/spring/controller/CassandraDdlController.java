@@ -28,4 +28,16 @@ public class CassandraDdlController {
     public String dropTable(@PathVariable String keyspace, @PathVariable String tableName) {
         return cassandraDdlService.dropTable(keyspace, tableName);
     }
+
+    @PostMapping("/createKeyspace/{keyspace}")
+    public String createKeyspace(@RequestParam String keyspace) {
+        cassandraDdlService.createKeyspace(keyspace);
+        return keyspace;
+    }
+
+    @DeleteMapping("/deleteKeyspace/{keyspace}")
+    public String deleteKeyspace(@RequestParam String keyspace) {
+        cassandraDdlService.dropKeyspace(keyspace);
+        return keyspace;
+    }
 }
