@@ -1,5 +1,7 @@
 package com.wxmimperio.spring.controller;
 
+import com.datastax.driver.core.DataType;
+import com.wxmimperio.spring.common.CassandraDataType;
 import com.wxmimperio.spring.service.CassandraDdlService;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,14 +32,27 @@ public class CassandraDdlController {
     }
 
     @PostMapping("/createKeyspace/{keyspace}")
-    public String createKeyspace(@RequestParam String keyspace) {
-        cassandraDdlService.createKeyspace(keyspace);
-        return keyspace;
+    public String createKeyspace(@PathVariable String keyspace) {
+        return cassandraDdlService.createKeyspace(keyspace);
     }
 
-    @DeleteMapping("/deleteKeyspace/{keyspace}")
-    public String deleteKeyspace(@RequestParam String keyspace) {
-        cassandraDdlService.dropKeyspace(keyspace);
-        return keyspace;
+    @DeleteMapping("/dropKeyspace/{keyspace}")
+    public String dropKeyspace(@PathVariable String keyspace) {
+        return cassandraDdlService.dropKeyspace(keyspace);
+    }
+
+    @PostMapping("/truncateTable/{keyspace}/{tableName}")
+    public String truncateTable(@PathVariable String keyspace, @PathVariable String tableName) {
+        return cassandraDdlService.truncateTable(keyspace, tableName);
+    }
+
+    @PostMapping("/renameColumn/{keyspace}/{tableName}/{oldName}/{newName}")
+    public String renameColumn(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String oldName, @PathVariable String newName) {
+        return cassandraDdlService.renameColumn(keyspace, tableName, oldName, newName);
+    }
+
+    @PostMapping("/addColumn/{keyspace}/{tableName}/{colName}")
+    public String addColumn(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String colName, @RequestParam CassandraDataType cassandraDataType) {
+        return cassandraDdlService.addColumn(keyspace, tableName, colName, cassandraDataType);
     }
 }
