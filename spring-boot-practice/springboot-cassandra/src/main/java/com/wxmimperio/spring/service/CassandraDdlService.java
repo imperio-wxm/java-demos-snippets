@@ -1,8 +1,5 @@
 package com.wxmimperio.spring.service;
 
-import com.datastax.driver.core.BatchStatement;
-import com.datastax.driver.core.BoundStatement;
-import com.datastax.driver.core.DataType;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.wxmimperio.spring.common.CassandraDataType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +12,6 @@ import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.beans.Statement;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class CassandraDdlService {
@@ -37,32 +30,29 @@ public class CassandraDdlService {
 
     @Transactional(rollbackFor = Throwable.class)
     public void dropDefaultKeyspaceTable(String tableName) {
-        DropTableSpecification dropTableSpecification = new DropTableSpecification();
-        dropTableSpecification.name(tableName);
-        cassandraTemplate.execute(dropTableSpecification);
+        cassandraTemplate.execute(new DropTableSpecification().name(tableName));
     }
 
     @Transactional(rollbackFor = Throwable.class)
     public String dropTable(String keySpace, String tableName) {
-        StringBuilder cql = new StringBuilder();
-        cql.append("DROP TABLE ").append(keySpace).append(".").append(tableName);
-        cassandraTemplate.execute(cql.toString());
-        return cql.toString();
+        String useCql = "USE " + keySpace;
+        cassandraTemplate.execute(useCql);
+        cassandraTemplate.execute(new DropTableSpecification().name(tableName));
+        return keySpace;
     }
 
     @Transactional(rollbackFor = Throwable.class)
     public String createKeyspace(String keySpace) {
-        CreateKeyspaceSpecification keyspaceSpecification = new CreateKeyspaceSpecification();
-        keyspaceSpecification.name(keySpace).withNetworkReplication(DataCenterReplication.dcr("dc1", 2));
-        cassandraTemplate.execute(keyspaceSpecification);
+        cassandraTemplate.execute(new CreateKeyspaceSpecification()
+                .name(keySpace)
+                .withNetworkReplication(DataCenterReplication.dcr("dc1", 2))
+        );
         return keySpace;
     }
 
     @Transactional(rollbackFor = Throwable.class)
     public String dropKeyspace(String keySpace) {
-        DropKeyspaceSpecification dropKeyspaceSpecification = new DropKeyspaceSpecification();
-        dropKeyspaceSpecification.name(keySpace);
-        cassandraTemplate.execute(dropKeyspaceSpecification);
+        cassandraTemplate.execute(new DropKeyspaceSpecification().name(keySpace));
         return keySpace;
     }
 
@@ -85,9 +75,7 @@ public class CassandraDdlService {
     public String renameColumn(String keyspace, String tableName, String oldName, String newName) {
         String useCql = "USE " + keyspace;
         cassandraTemplate.execute(useCql);
-        AlterTableSpecification alterTableSpecification = new AlterTableSpecification();
-        alterTableSpecification.name(tableName).rename(oldName, newName);
-        cassandraTemplate.execute(alterTableSpecification);
+        cassandraTemplate.execute(new AlterTableSpecification().name(tableName).rename(oldName, newName));
         return newName;
     }
 
@@ -95,56 +83,62 @@ public class CassandraDdlService {
     public String addColumn(String keyspace, String tableName, String colName, CassandraDataType cassandraDataType) {
         String useCql = "USE " + keyspace;
         cassandraTemplate.execute(useCql);
-        AlterTableSpecification alterTableSpecification = new AlterTableSpecification();
-        alterTableSpecification.name(tableName).add(colName, getDataTypeByName(cassandraDataType));
-        cassandraTemplate.execute(alterTableSpecification);
+        cassandraTemplate.execute(new AlterTableSpecification().name(tableName).add(colName, CassandraDataType.getDataTypeByName(cassandraDataType)));
         return colName;
     }
 
-    private DataType getDataTypeByName(CassandraDataType cassandraDataType) {
-        switch (cassandraDataType) {
-            case DATE:
-                return DataType.date();
-            case TIMESTAMP:
-                return DataType.timestamp();
-            case BOOLEAN:
-                return DataType.cboolean();
-            case DOUBLE:
-                return DataType.cdouble();
-            case FLOAT:
-                return DataType.cfloat();
-            case INT:
-                return DataType.cint();
-            case BIGINT:
-                return DataType.bigint();
-            case TEXT:
-                return DataType.text();
-            case TIME:
-                return DataType.time();
-            case UUID:
-                return DataType.uuid();
-            case INET:
-                return DataType.inet();
-            case ASCII:
-                return DataType.ascii();
-            case DECIMAL:
-                return DataType.decimal();
-            case VARCHAR:
-                return DataType.varchar();
-            case VARINT:
-                return DataType.varint();
-            case TIMEUUID:
-                return DataType.timeuuid();
-            case TINYINT:
-                return DataType.tinyint();
-            case SMALLINT:
-                return DataType.smallint();
-            case COUNTER:
-                return DataType.counter();
-            default:
-                throw new RuntimeException("Can not get this type = " + cassandraDataType);
-        }
+    /**
+     * CQL data types have strict requirements for conversion compatibility. The following table shows the allowed alterations for data types:
+     * ======================================================
+     * Data type may be altered to                | Data type
+     * ------------------------------------------------------
+     * ascii, bigint, boolean, decimal,           |
+     * double, float, inet, int, timestamp,       | blob
+     * timeuuid, uuid, varchar, varint	           |
+     * ------------------------------------------------------
+     * int	                                       | varint
+     * ------------------------------------------------------
+     * text	                                   | varchar
+     * ------------------------------------------------------
+     * timeuuid	                               | uuid
+     * ------------------------------------------------------
+     * varchar	                                   | text
+     * ======================================================
+     * <p>
+     * Clustering columns have even stricter requirements, because clustering columns mandate the order in which data is written to disk.
+     * The following table shows the allow alterations for data types used in clustering columns:
+     * ===========================================
+     * Data type may be altered to   | Data type
+     * -------------------------------------------
+     * int	                          | varint
+     * -------------------------------------------
+     * text	                      | varchar
+     * -------------------------------------------
+     * varchar	                      | text
+     * ===========================================
+     *
+     * @param keyspace
+     * @param tableName
+     * @param colName
+     * @param newType
+     * @return
+     */
+    @Transactional(rollbackFor = Throwable.class)
+    public String changeColumnType(String keyspace, String tableName, String colName, CassandraDataType newType) {
+        String useCql = "USE " + keyspace;
+        cassandraTemplate.execute(useCql);
+        cassandraTemplate.execute(new AlterTableSpecification().name(tableName).alter(colName, CassandraDataType.getDataTypeByName(newType)));
+        return colName;
     }
+
+    @Transactional(rollbackFor = Throwable.class)
+    public String dropColumn(String keyspace, String tableName, String colName) {
+        String useCql = "USE " + keyspace;
+        cassandraTemplate.execute(useCql);
+        cassandraTemplate.execute(new AlterTableSpecification().name(tableName).drop(colName));
+        return colName;
+    }
+
 
    /*private static ExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
 

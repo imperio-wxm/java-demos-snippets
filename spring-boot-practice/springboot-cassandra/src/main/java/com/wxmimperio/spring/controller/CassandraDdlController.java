@@ -55,4 +55,14 @@ public class CassandraDdlController {
     public String addColumn(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String colName, @RequestParam CassandraDataType cassandraDataType) {
         return cassandraDdlService.addColumn(keyspace, tableName, colName, cassandraDataType);
     }
+
+    @PostMapping("/changeColumnType/{keyspace}/{tableName}/{colName}")
+    public String changeColumnType(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String colName, @RequestParam CassandraDataType newType) {
+        return cassandraDdlService.changeColumnType(keyspace, tableName, colName, newType);
+    }
+
+    @DeleteMapping("/dropColumn/{keyspace}/{tableName}/{colName}")
+    public String dropColumn(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String colName) {
+        return cassandraDdlService.dropColumn(keyspace, tableName, colName);
+    }
 }
