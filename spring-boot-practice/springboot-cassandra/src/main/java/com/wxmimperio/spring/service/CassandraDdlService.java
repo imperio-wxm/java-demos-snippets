@@ -1,16 +1,22 @@
 package com.wxmimperio.spring.service;
 
+import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.wxmimperio.spring.common.CassandraDataType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cassandra.config.DataCenterReplication;
+import org.springframework.cassandra.core.SessionCallback;
 import org.springframework.cassandra.core.keyspace.AlterTableSpecification;
 import org.springframework.cassandra.core.keyspace.CreateKeyspaceSpecification;
 import org.springframework.cassandra.core.keyspace.DropKeyspaceSpecification;
 import org.springframework.cassandra.core.keyspace.DropTableSpecification;
+import org.springframework.dao.DataAccessException;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Iterator;
+import java.util.List;
 
 
 @Service
@@ -137,6 +143,25 @@ public class CassandraDdlService {
         cassandraTemplate.execute(useCql);
         cassandraTemplate.execute(new AlterTableSpecification().name(tableName).drop(colName));
         return colName;
+    }
+
+    @Transactional(rollbackFor = Throwable.class)
+    public String getTableDetails(String keyspace, String tableName) {
+        String descCql = "select * from system_schema.columns where keyspace_name='" + keyspace +
+                "' and table_name='" + tableName + "'";
+        ResultSet resultSet = cassandraTemplate.query(descCql);
+        resultSet.forEach(row -> {
+            ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
+            columnDefinitions.forEach(definition -> {
+                String colName = definition.getName();
+                Object colValue = row.getObject(colName);
+                System.out.println(colName + "=" + colValue + " index = " + columnDefinitions.getIndexOf(colName));
+            });
+            System.out.println("================");
+        });
+        System.out.println(resultSet.toString());
+        System.out.println("================");
+        return null;
     }
 
 

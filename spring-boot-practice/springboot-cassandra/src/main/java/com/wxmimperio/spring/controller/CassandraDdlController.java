@@ -65,4 +65,9 @@ public class CassandraDdlController {
     public String dropColumn(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String colName) {
         return cassandraDdlService.dropColumn(keyspace, tableName, colName);
     }
+
+    @GetMapping("/dropColumn/{keyspace}/{tableName}")
+    public void getTableDetails(@PathVariable String keyspace, @PathVariable String tableName) {
+        cassandraDdlService.getTableDetails(keyspace, tableName);
+    }
 }
