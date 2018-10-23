@@ -1,5 +1,7 @@
 package com.wxmimperio.spring.config;
 
+import com.datastax.driver.core.ConsistencyLevel;
+import com.datastax.driver.core.QueryOptions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cassandra.config.CassandraCqlClusterFactoryBean;
 import org.springframework.context.annotation.Bean;
@@ -24,10 +26,13 @@ public class CassandraConfiguration extends AbstractCassandraConfiguration {
     @Override
     public CassandraCqlClusterFactoryBean cluster() {
         CassandraClusterFactoryBean cluster = new CassandraClusterFactoryBean();
+        QueryOptions options = new QueryOptions();
+        options.setConsistencyLevel(ConsistencyLevel.QUORUM);
         cluster.setContactPoints(cassandraConfig.getContactPoints());
         cluster.setPort(cassandraConfig.getPort());
         cluster.setJmxReportingEnabled(true);
         cluster.setMetricsEnabled(true);
+        cluster.setQueryOptions(options);
         return cluster;
     }
 

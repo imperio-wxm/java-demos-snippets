@@ -1,6 +1,5 @@
 package com.wxmimperio.spring.controller;
 
-import com.datastax.driver.core.DataType;
 import com.wxmimperio.spring.common.CassandraDataType;
 import com.wxmimperio.spring.service.CassandraDdlService;
 import org.springframework.web.bind.annotation.*;
@@ -41,12 +40,12 @@ public class CassandraDdlController {
         return cassandraDdlService.dropKeyspace(keyspace);
     }
 
-    @PostMapping("/truncateTable/{keyspace}/{tableName}")
+    @DeleteMapping("/truncateTable/{keyspace}/{tableName}")
     public String truncateTable(@PathVariable String keyspace, @PathVariable String tableName) {
         return cassandraDdlService.truncateTable(keyspace, tableName);
     }
 
-    @PostMapping("/renameColumn/{keyspace}/{tableName}/{oldName}/{newName}")
+    @PutMapping("/renameColumn/{keyspace}/{tableName}/{oldName}/{newName}")
     public String renameColumn(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String oldName, @PathVariable String newName) {
         return cassandraDdlService.renameColumn(keyspace, tableName, oldName, newName);
     }
@@ -56,7 +55,7 @@ public class CassandraDdlController {
         return cassandraDdlService.addColumn(keyspace, tableName, colName, cassandraDataType);
     }
 
-    @PostMapping("/changeColumnType/{keyspace}/{tableName}/{colName}")
+    @PutMapping("/changeColumnType/{keyspace}/{tableName}/{colName}")
     public String changeColumnType(@PathVariable String keyspace, @PathVariable String tableName, @PathVariable String colName, @RequestParam CassandraDataType newType) {
         return cassandraDdlService.changeColumnType(keyspace, tableName, colName, newType);
     }
@@ -69,5 +68,10 @@ public class CassandraDdlController {
     @GetMapping("/dropColumn/{keyspace}/{tableName}")
     public void getTableDetails(@PathVariable String keyspace, @PathVariable String tableName) {
         cassandraDdlService.getTableDetails(keyspace, tableName);
+    }
+
+    @PutMapping("/alterTableOptions/{keyspace}/{tableName}")
+    public void alterTableOptions(@PathVariable String keyspace, @PathVariable String tableName) {
+        cassandraDdlService.alterTableOptions(keyspace, tableName);
     }
 }

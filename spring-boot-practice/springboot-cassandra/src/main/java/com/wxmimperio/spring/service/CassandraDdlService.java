@@ -5,18 +5,13 @@ import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.wxmimperio.spring.common.CassandraDataType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cassandra.config.DataCenterReplication;
-import org.springframework.cassandra.core.SessionCallback;
-import org.springframework.cassandra.core.keyspace.AlterTableSpecification;
-import org.springframework.cassandra.core.keyspace.CreateKeyspaceSpecification;
-import org.springframework.cassandra.core.keyspace.DropKeyspaceSpecification;
-import org.springframework.cassandra.core.keyspace.DropTableSpecification;
-import org.springframework.dao.DataAccessException;
+import org.springframework.cassandra.core.keyspace.*;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Iterator;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Service
@@ -31,6 +26,7 @@ public class CassandraDdlService {
 
     @Transactional(rollbackFor = Throwable.class)
     public void createTable(String cql) {
+        CreateTableSpecification createTableSpecification = new CreateTableSpecification();
         cassandraTemplate.execute(cql);
     }
 
@@ -146,7 +142,7 @@ public class CassandraDdlService {
     }
 
     @Transactional(rollbackFor = Throwable.class)
-    public String getTableDetails(String keyspace, String tableName) {
+    public void getTableDetails(String keyspace, String tableName) {
         String descCql = "select * from system_schema.columns where keyspace_name='" + keyspace +
                 "' and table_name='" + tableName + "'";
         ResultSet resultSet = cassandraTemplate.query(descCql);
@@ -161,27 +157,23 @@ public class CassandraDdlService {
         });
         System.out.println(resultSet.toString());
         System.out.println("================");
-        return null;
     }
 
-
-   /*private static ExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
-
-    public static void main(String[] args) throws Exception {
-        Runtime.getRuntime().addShutdownHook(new CleanWork());
+    /**
+     * Lots of configs in https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateTable.html#cqlCreateTable
+     *
+     * @param keyspace
+     * @param tableName
+     */
+    @Transactional(rollbackFor = Throwable.class)
+    public void alterTableOptions(String keyspace, String tableName) {
+        String useCql = "USE " + keyspace;
+        cassandraTemplate.execute(useCql);
+        AlterTableSpecification alterTableSpecification = new AlterTableSpecification().name(tableName);
+        alterTableSpecification.with(TableOption.COMMENT, "测试表");
+        Map<Option, Object> map = new HashMap<>(1);
+        map.put(TableOption.CompressionOption.SSTABLE_COMPRESSION, "org.apache.cassandra.io.compress.LZ4Compressor");
+        alterTableSpecification.with(TableOption.COMPRESSION, map);
+        cassandraTemplate.execute(alterTableSpecification);
     }
-
-    static class CleanWork extends Thread {
-        @Override
-        public void run() {
-            executorService.shutdown();
-            try {
-                while (!executorService.awaitTermination(5, TimeUnit.SECONDS)) {
-
-                }
-            } catch (Exception e) {
-
-            }
-        }
-    }*/
 }
