@@ -10,7 +10,9 @@ import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -41,6 +43,26 @@ public class CassandraDdlService {
         cassandraTemplate.execute(useCql);
         cassandraTemplate.execute(new DropTableSpecification().name(tableName));
         return keySpace;
+    }
+
+    @Transactional(rollbackFor = Throwable.class)
+    public List<String> listKeyspaces() {
+        List<String> keyspaces = new ArrayList<>();
+        String dbCql = "select * from system_schema.keyspaces";
+        ResultSet resultSet = cassandraTemplate.query(dbCql);
+        resultSet.forEach(row -> {
+            keyspaces.add(row.getString("keyspace_name"));
+        });
+        return keyspaces;
+    }
+
+    @Transactional(rollbackFor = Throwable.class)
+    public List<String> listKeyspaceTables(String keyspace) {
+        List<String> tables = new ArrayList<>();
+        String cql = "select * from system_schema.tables where keyspace_name = '" + keyspace + "'";
+        ResultSet resultSet = cassandraTemplate.query(cql);
+        resultSet.forEach(row -> tables.add(row.getString("table_name")));
+        return tables;
     }
 
     @Transactional(rollbackFor = Throwable.class)

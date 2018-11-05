@@ -4,6 +4,8 @@ import com.wxmimperio.spring.common.CassandraDataType;
 import com.wxmimperio.spring.service.CassandraDdlService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class CassandraDdlController {
 
@@ -23,6 +25,16 @@ public class CassandraDdlController {
     public String dropDefaultKeyspaceTable(@PathVariable String tableName) {
         cassandraDdlService.dropDefaultKeyspaceTable(tableName);
         return tableName;
+    }
+
+    @GetMapping("/listKeyspace")
+    public List<String> listKeyspace() {
+        return cassandraDdlService.listKeyspaces();
+    }
+
+    @GetMapping("/tables/{keyspace}")
+    public List<String> listKeyspaceTables(@PathVariable String keyspace) {
+        return cassandraDdlService.listKeyspaceTables(keyspace);
     }
 
     @DeleteMapping("/dropTable/{keyspace}/{tableName}")
