@@ -77,13 +77,18 @@ public class CassandraDdlController {
         return cassandraDdlService.dropColumn(keyspace, tableName, colName);
     }
 
-    @GetMapping("/dropColumn/{keyspace}/{tableName}")
-    public void getTableDetails(@PathVariable String keyspace, @PathVariable String tableName) {
-        cassandraDdlService.getTableDetails(keyspace, tableName);
+    @GetMapping("/getTableColumns/{keyspace}/{tableName}")
+    public void getTableColumns(@PathVariable String keyspace, @PathVariable String tableName) {
+        cassandraDdlService.getTableColumns(keyspace, tableName);
     }
 
     @PutMapping("/alterTableOptions/{keyspace}/{tableName}")
     public void alterTableOptions(@PathVariable String keyspace, @PathVariable String tableName) {
         cassandraDdlService.alterTableOptions(keyspace, tableName);
+    }
+
+    @GetMapping("/getTableDetails/{keyspace}/{tableName}")
+    public String getTableDetails(@PathVariable String keyspace, @PathVariable String tableName) {
+        return cassandraDdlService.getTableDetails(keyspace, tableName);
     }
 }

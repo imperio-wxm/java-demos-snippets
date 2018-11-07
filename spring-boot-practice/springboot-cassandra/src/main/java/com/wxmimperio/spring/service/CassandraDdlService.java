@@ -1,5 +1,7 @@
 package com.wxmimperio.spring.service;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.JSONPObject;
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.wxmimperio.spring.common.CassandraDataType;
@@ -28,7 +30,6 @@ public class CassandraDdlService {
 
     @Transactional(rollbackFor = Throwable.class)
     public void createTable(String cql) {
-        CreateTableSpecification createTableSpecification = new CreateTableSpecification();
         cassandraTemplate.execute(cql);
     }
 
@@ -164,7 +165,7 @@ public class CassandraDdlService {
     }
 
     @Transactional(rollbackFor = Throwable.class)
-    public void getTableDetails(String keyspace, String tableName) {
+    public void getTableColumns(String keyspace, String tableName) {
         String descCql = "select * from system_schema.columns where keyspace_name='" + keyspace +
                 "' and table_name='" + tableName + "'";
         ResultSet resultSet = cassandraTemplate.query(descCql);
@@ -197,5 +198,23 @@ public class CassandraDdlService {
         map.put(TableOption.CompressionOption.SSTABLE_COMPRESSION, "org.apache.cassandra.io.compress.LZ4Compressor");
         alterTableSpecification.with(TableOption.COMPRESSION, map);
         cassandraTemplate.execute(alterTableSpecification);
+    }
+
+    public String getTableDetails(String keyspace, String tableName) {
+        String cql = "select bloom_filter_fp_chance,caching,compaction,compression,default_time_to_live,gc_grace_seconds,id,max_index_interval,min_index_interval" +
+                " from system_schema.tables where keyspace_name='" + keyspace +
+                "' and table_name='" + tableName + "'";
+        JSONObject jsonObject = new JSONObject(true);
+        ResultSet resultSet = cassandraTemplate.query(cql);
+        resultSet.forEach(row -> {
+            ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
+            columnDefinitions.forEach(definition -> {
+                String colName = definition.getName();
+                Object colValue = row.getObject(colName);
+                jsonObject.put(colName, colValue);
+            });
+        });
+        System.out.println(jsonObject.toJSONString());
+        return jsonObject.toJSONString();
     }
 }
