@@ -5,14 +5,14 @@ import java.util.regex.Pattern;
 
 public class StringUtil {
 
-    private static Pattern pattern = Pattern.compile("([A-Za-z\\d]+)(_)?");
+    private static Pattern underline2CamelPattern = Pattern.compile("([A-Za-z\\d]+)(_)?");
 
     public static String underline2Camel(String line, boolean smallCamel) {
         if (line == null || "".equals(line)) {
             return "";
         }
         StringBuilder sb = new StringBuilder();
-        Matcher matcher = pattern.matcher(line);
+        Matcher matcher = underline2CamelPattern.matcher(line);
         while (matcher.find()) {
             String word = matcher.group();
             sb.append(smallCamel && matcher.start() == 0 ? Character.toLowerCase(word.charAt(0)) : Character.toUpperCase(word.charAt(0)));

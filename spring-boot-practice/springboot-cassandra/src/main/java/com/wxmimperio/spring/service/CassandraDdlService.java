@@ -4,6 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONPObject;
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import com.wxmimperio.spring.common.CassandraDataType;
 import com.wxmimperio.spring.common.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +14,9 @@ import org.springframework.cassandra.core.keyspace.*;
 import org.springframework.data.cassandra.core.CassandraOperations;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Service
@@ -166,22 +166,50 @@ public class CassandraDdlService {
     }
 
     @Transactional(rollbackFor = Throwable.class)
-    public void getTableColumns(String keyspace, String tableName) {
+    public String getTableColumns(String keyspace, String tableName) {
         String descCql = "select * from system_schema.columns where keyspace_name='" + keyspace +
                 "' and table_name='" + tableName + "'";
         ResultSet resultSet = cassandraTemplate.query(descCql);
+        Map<Integer, JSONObject> partitionKeys = Maps.newHashMap();
+        Map<Integer, JSONObject> clusterKeys = Maps.newHashMap();
+        List<JSONObject> columns = Lists.newArrayList();
+        List<JSONObject> partitionColumns = Lists.newArrayList();
+        List<JSONObject> clusterColumns = Lists.newArrayList();
         resultSet.forEach(row -> {
-            ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
-            columnDefinitions.forEach(definition -> {
-                String colName = definition.getName();
-                Object colValue = row.getObject(colName);
-                System.out.println(colName + "=" + colValue + " index = " + columnDefinitions.getIndexOf(colName));
-            });
-            System.out.println("================");
+            JSONObject col = new JSONObject();
+            col.put("colName", row.getString("column_name"));
+            col.put("type", row.getString("type"));
+            col.put("position", row.getInt("position"));
+            switch (row.getString("kind")) {
+                case "partition_key":
+                    partitionKeys.put(row.getInt("position"), col);
+                    break;
+                case "clustering":
+                    clusterKeys.put(row.getInt("position"), col);
+                    break;
+                default:
+                    columns.add(col);
+            }
         });
-        System.out.println(resultSet.toString());
-        System.out.println("================");
+        sortMap(partitionKeys);
+        sortMap(clusterKeys);
+        partitionKeys.forEach((key, value) -> partitionColumns.add(value));
+        clusterKeys.forEach((key, value) -> clusterColumns.add(value));
+        JSONObject result = new JSONObject();
+        result.put("tableName", tableName);
+        result.put("keySpace", keyspace);
+        result.put("columns", columns);
+        result.put("partitionKeys", partitionColumns);
+        result.put("clusterKeys", clusterColumns);
+        return result.toJSONString();
     }
+
+    private List<Map.Entry<Integer, JSONObject>> sortMap(Map<Integer, JSONObject> map) {
+        List<Map.Entry<Integer, JSONObject>> list = new ArrayList<>(map.entrySet());
+        list.sort(Comparator.comparing(Map.Entry::getKey));
+        return list;
+    }
+
 
     /**
      * Lots of configs in https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateTable.html#cqlCreateTable

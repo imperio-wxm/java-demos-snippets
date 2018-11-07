@@ -78,8 +78,8 @@ public class CassandraDdlController {
     }
 
     @GetMapping("/getTableColumns/{keyspace}/{tableName}")
-    public void getTableColumns(@PathVariable String keyspace, @PathVariable String tableName) {
-        cassandraDdlService.getTableColumns(keyspace, tableName);
+    public String getTableColumns(@PathVariable String keyspace, @PathVariable String tableName) {
+        return cassandraDdlService.getTableColumns(keyspace, tableName);
     }
 
     @PutMapping("/alterTableOptions/{keyspace}/{tableName}")
