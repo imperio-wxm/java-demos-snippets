@@ -191,10 +191,8 @@ public class CassandraDdlService {
                     columns.add(col);
             }
         });
-        sortMap(partitionKeys);
-        sortMap(clusterKeys);
-        partitionKeys.forEach((key, value) -> partitionColumns.add(value));
-        clusterKeys.forEach((key, value) -> clusterColumns.add(value));
+        sortMap(partitionKeys).forEach(pk -> partitionColumns.add(pk.getValue()));
+        sortMap(clusterKeys).forEach(ck -> clusterColumns.add(ck.getValue()));
         JSONObject result = new JSONObject();
         result.put("tableName", tableName);
         result.put("keySpace", keyspace);
@@ -205,7 +203,7 @@ public class CassandraDdlService {
     }
 
     private List<Map.Entry<Integer, JSONObject>> sortMap(Map<Integer, JSONObject> map) {
-        List<Map.Entry<Integer, JSONObject>> list = new ArrayList<>(map.entrySet());
+        List<Map.Entry<Integer, JSONObject>> list = Lists.newArrayList(map.entrySet());
         list.sort(Comparator.comparing(Map.Entry::getKey));
         return list;
     }
