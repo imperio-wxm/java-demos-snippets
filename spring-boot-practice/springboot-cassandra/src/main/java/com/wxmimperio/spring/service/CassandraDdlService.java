@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONPObject;
 import com.datastax.driver.core.*;
 import com.datastax.driver.core.querybuilder.QueryBuilder;
 import com.wxmimperio.spring.common.CassandraDataType;
+import com.wxmimperio.spring.common.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cassandra.config.DataCenterReplication;
 import org.springframework.cassandra.core.keyspace.*;
@@ -201,17 +202,17 @@ public class CassandraDdlService {
     }
 
     public String getTableDetails(String keyspace, String tableName) {
-        String cql = "select bloom_filter_fp_chance,caching,compaction,compression,default_time_to_live,gc_grace_seconds,id,max_index_interval,min_index_interval" +
+        String tableDetailCql = "select bloom_filter_fp_chance,caching,compaction,compression,default_time_to_live,gc_grace_seconds,id,max_index_interval,min_index_interval" +
                 " from system_schema.tables where keyspace_name='" + keyspace +
                 "' and table_name='" + tableName + "'";
         JSONObject jsonObject = new JSONObject(true);
-        ResultSet resultSet = cassandraTemplate.query(cql);
+        ResultSet resultSet = cassandraTemplate.query(tableDetailCql);
         resultSet.forEach(row -> {
             ColumnDefinitions columnDefinitions = row.getColumnDefinitions();
             columnDefinitions.forEach(definition -> {
                 String colName = definition.getName();
                 Object colValue = row.getObject(colName);
-                jsonObject.put(colName, colValue);
+                jsonObject.put(StringUtil.underline2Camel(colName, true), colValue);
             });
         });
         System.out.println(jsonObject.toJSONString());
