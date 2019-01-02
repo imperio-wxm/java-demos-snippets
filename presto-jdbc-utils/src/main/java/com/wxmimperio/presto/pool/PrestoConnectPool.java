@@ -32,12 +32,6 @@ public class PrestoConnectPool {
         pool = new GenericObjectPool<Connection>(connectFactory, conf);
     }
 
-    /**
-     * 获取jdbc连接
-     *
-     * @return
-     * @throws Exception
-     */
     public Connection getConnection() {
         Connection connection = null;
         try {
@@ -48,11 +42,6 @@ public class PrestoConnectPool {
         return connection;
     }
 
-    /**
-     * connect连接放回连接池
-     *
-     * @param connection
-     */
     public void releaseConnection(Connection connection) {
         try {
             pool.returnObject(connection);
@@ -67,11 +56,6 @@ public class PrestoConnectPool {
         }
     }
 
-    /**
-     * connect 销毁连接
-     *
-     * @param connection
-     */
     public void closeConnection(Connection connection) {
         try {
             if (connection != null) {

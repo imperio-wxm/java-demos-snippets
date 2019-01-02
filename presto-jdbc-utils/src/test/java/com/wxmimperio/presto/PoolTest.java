@@ -7,7 +7,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 
@@ -76,5 +79,22 @@ public class PoolTest {
 
             //connectPool.releaseConnection(connection);
         }
+    }
+
+    @Test
+    public void test() throws ParseException {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2018-11-25 23:59:59"));
+
+        SimpleDateFormat cassandraTime = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        StringBuilder stringBuilder = new StringBuilder("(");
+        for (int i = 0; i < 1440; i++) {
+            calendar.add(Calendar.MINUTE, 1);
+            stringBuilder.append("'").append(cassandraTime.format(calendar.getTime())).append("',");
+        }
+        stringBuilder.delete(stringBuilder.length() - 1, stringBuilder.length());
+        stringBuilder.append(")");
+
+        System.out.println(stringBuilder.toString());
     }
 }
