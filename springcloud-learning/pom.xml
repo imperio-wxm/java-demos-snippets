@@ -15,6 +15,7 @@
         <module>eureka-consumer-ribbon</module>
         <module>eureka-consumer-feign</module>
         <module>api-gateway</module>
+        <module>spring-oauth2</module>
     </modules>
 
     <name>springcloud-learning</name>
