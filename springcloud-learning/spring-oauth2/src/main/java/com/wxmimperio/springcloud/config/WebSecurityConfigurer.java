@@ -1,5 +1,6 @@
 package com.wxmimperio.springcloud.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,15 +20,17 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .and()
                 .withUser("wxm")
                 .password("wxm")
-                .roles("ADMIN");
+                .roles("ADMIN", "USER");
     }
 
     @Override
+    @Bean
     protected AuthenticationManager authenticationManager() throws Exception {
         return super.authenticationManager();
     }
 
     @Override
+    @Bean
     public UserDetailsService userDetailsServiceBean() throws Exception {
         return super.userDetailsServiceBean();
     }
