@@ -16,6 +16,7 @@
         <module>eureka-consumer-feign</module>
         <module>api-gateway</module>
         <module>spring-oauth2</module>
+        <module>springcloud-stream-kafka</module>
     </modules>
 
     <name>springcloud-learning</name>
