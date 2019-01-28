@@ -15,8 +15,7 @@ public class SimpleSourceBean {
         this.source = source;
     }
 
-    public void publishChange(String actionn, String messageId) {
-        Message message = new Message("test", "测试信息");
-        source.output().send(MessageBuilder.withPayload(message).build());
+    public void publishChange(String action, String messageId) {
+        source.output().send(MessageBuilder.withPayload(new Message(action, messageId)).build());
     }
 }
