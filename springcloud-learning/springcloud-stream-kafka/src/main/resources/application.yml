@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: stream-kafka
+    stream:
+      bindingns:
+        output:
+        destination: stream-kafka-1
+        content-type: application/json
+        kafka:
+          binder:
+            zkNodes: 192.168.1.110:2181
+            brokers: 192.168.1.110:9092
