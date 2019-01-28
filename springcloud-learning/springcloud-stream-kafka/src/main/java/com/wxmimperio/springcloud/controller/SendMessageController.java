@@ -19,7 +19,7 @@ public class SendMessageController {
         this.sendMessageService = sendMessageService;
     }
 
-    @PostMapping("send/{actionName}")
+    @GetMapping("send/{actionName}")
     public void sendMessage(@PathVariable String actionName) {
         sendMessageService.sendMessage(actionName, UUID.randomUUID().toString());
     }
