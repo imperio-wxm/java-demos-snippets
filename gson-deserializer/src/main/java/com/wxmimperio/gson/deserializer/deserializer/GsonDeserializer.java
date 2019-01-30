@@ -15,6 +15,8 @@ public class GsonDeserializer {
 
         OrderColumn orderColumn = gson.fromJson(jsonStr, OrderColumn.class);
 
+        System.out.println(gson.toJsonTree(orderColumn));
+
         System.out.println(orderColumn);
         System.out.println("name = " + orderColumn.getName());
         System.out.println("comment = " + orderColumn.getComment());
