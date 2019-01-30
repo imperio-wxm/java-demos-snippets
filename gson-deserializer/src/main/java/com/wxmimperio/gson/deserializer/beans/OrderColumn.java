@@ -23,9 +23,10 @@ public class OrderColumn extends BaseColumn {
     public void setOrderType(OrderType orderType) {
         this.orderType = orderType;
     }
+
     @Override
     public String toString() {
-        return "BaseColumn{" +
+        return "OrderColumn{" +
                 "name='" + super.getName() + '\'' +
                 ", dataType=" + super.getDataType() +
                 ", comment='" + super.getComment() + '\'' +
