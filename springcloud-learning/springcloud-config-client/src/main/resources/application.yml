@@ -1,5 +1,15 @@
 spring:
     application:
         name: config-client
+    cloud:
+        stream:
+            kafka:
+              binder:
+                zkNodes: 10.174.20.33
+                brokers: 10.174.20.33
 server:
     port: 8002
+
+management:
+  security:
+    enabled: false
