@@ -31,8 +31,8 @@
         <java.version>1.8</java.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.boot.version>1.5.13.RELEASE</spring.boot.version>
-        <spring.cloud.version>Edgware.SR3</spring.cloud.version>
+        <spring.boot.version>1.5.16.RELEASE</spring.boot.version>
+        <spring.cloud.version>Edgware.SR5</spring.cloud.version>
         <open.feign.form.version>3.0.3</open.feign.form.version>
     </properties>
 

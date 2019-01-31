@@ -1,0 +1,16 @@
+spring:
+    application:
+        name: event-bus
+    cloud:
+        stream:
+            kafka:
+              binder:
+                zkNodes: 10.174.20.33
+                brokers: 10.174.20.33
+server:
+    port: 8003
+
+
+management:
+  security:
+    enabled: false
