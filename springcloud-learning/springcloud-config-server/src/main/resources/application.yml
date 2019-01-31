@@ -4,7 +4,7 @@ spring:
     config:
       server:
         native:
-          # 不能放在classpath下，否则 config-server /bus/refresh不会刷新
+          # 不能放在classpath:/xxxx下，否则 config-server /bus/refresh不会刷新，因为实际从target/classes读取...==! 脑残了
           search-locations: D:/d_backup/github/java-demos-segment/springcloud-learning/springcloud-config-server/properties
     stream:
       kafka:
