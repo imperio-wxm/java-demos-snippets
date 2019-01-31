@@ -1,0 +1,16 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+  instance:
+        prefer-ip-address: true
+        instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+spring:
+    profiles:
+        active: native
+    cloud:
+        config:
+          server:
+            native:
+              search-locations: classpath:properties/
