@@ -18,6 +18,8 @@
         <module>spring-oauth2</module>
         <module>springcloud-stream-kafka</module>
         <module>springcloud-config-server</module>
+        <module>springcloud-event-bus</module>
+        <module>springcloud-config-client</module>
     </modules>
 
     <name>springcloud-learning</name>
