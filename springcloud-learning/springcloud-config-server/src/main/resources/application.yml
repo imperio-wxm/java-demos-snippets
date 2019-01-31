@@ -4,7 +4,8 @@ spring:
     config:
       server:
         native:
-          search-locations: classpath:properties/
+          # 不能放在classpath下，否则 config-server /bus/refresh不会刷新
+          search-locations: D:/d_backup/github/java-demos-segment/springcloud-learning/springcloud-config-server/properties
     stream:
       kafka:
         binder:
