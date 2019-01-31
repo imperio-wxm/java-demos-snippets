@@ -1,0 +1,18 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1001/eureka/
+  # 不使用服务名，而是ip：port
+  instance:
+      prefer-ip-address: true
+      instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+
+
+spring:
+    cloud:
+      config:
+        name: config-server
+        profile: dev
+        discovery:
+          enabled: true
+          service-id: config-server
