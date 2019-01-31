@@ -1,5 +1,18 @@
 spring:
   application.name: config-server
-
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:properties/
+    stream:
+      kafka:
+        binder:
+          zkNodes: 10.174.20.33
+          brokers: 10.174.20.33
 server:
   port: 9001
+
+management:
+  security:
+    enabled: false
