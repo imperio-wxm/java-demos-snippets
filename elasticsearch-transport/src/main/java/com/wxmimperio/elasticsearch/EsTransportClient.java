@@ -28,6 +28,12 @@ public class EsTransportClient {
 
         //EsOps.getFieldMappings(client, indexName);
 
-        EsOps.getTemplates(client, indexName);
+        //EsOps.getTemplates(client, indexName);
+
+        //EsOps.analyze(client, indexName);
+
+        //EsOps.closeIndex(client, indexName);
+
+        EsOps.openIndex(client, indexName);
     }
 }

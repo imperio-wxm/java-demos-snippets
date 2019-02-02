@@ -7,6 +7,10 @@ import org.elasticsearch.action.admin.indices.alias.IndicesAliasesRequest;
 import org.elasticsearch.action.admin.indices.alias.IndicesAliasesResponse;
 import org.elasticsearch.action.admin.indices.alias.get.GetAliasesRequest;
 import org.elasticsearch.action.admin.indices.alias.get.GetAliasesResponse;
+import org.elasticsearch.action.admin.indices.analyze.AnalyzeRequest;
+import org.elasticsearch.action.admin.indices.analyze.AnalyzeResponse;
+import org.elasticsearch.action.admin.indices.close.CloseIndexRequest;
+import org.elasticsearch.action.admin.indices.close.CloseIndexResponse;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
@@ -18,6 +22,8 @@ import org.elasticsearch.action.admin.indices.mapping.get.GetFieldMappingsReques
 import org.elasticsearch.action.admin.indices.mapping.get.GetFieldMappingsResponse;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsRequest;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsResponse;
+import org.elasticsearch.action.admin.indices.open.OpenIndexRequest;
+import org.elasticsearch.action.admin.indices.open.OpenIndexResponse;
 import org.elasticsearch.action.admin.indices.settings.get.GetSettingsRequest;
 import org.elasticsearch.action.admin.indices.settings.get.GetSettingsResponse;
 import org.elasticsearch.action.admin.indices.template.get.GetIndexTemplatesRequest;
@@ -145,6 +151,9 @@ public class EsOps {
                 indexRoutingLists.add(aliasMetaData.getIndexRouting());
                 searchRoutingLists.add(aliasMetaData.getSearchRouting());
             }
+            System.out.println(String.format("aliasLists = %s", aliasLists));
+            System.out.println(String.format("indexRoutingLists = %s", indexRoutingLists));
+            System.out.println(String.format("searchRoutingLists = %s", searchRoutingLists));
 
             // This class will be removed in v7.0
             Iterator<IndexMetaData.Custom> customIterator = indexTemplateMetaData.getCustoms().valuesIt();
@@ -164,6 +173,31 @@ public class EsOps {
                 System.out.println("key = " + key + ", value = " + settings.get(key));
             });
         });
+    }
+
+    public static void analyze(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        AnalyzeResponse analyzeResponse = indicesAdminClient.analyze(new AnalyzeRequest().text(indexName).index(indexName)).get();
+        //analyzeResponse.detail().analyzer().getName();
+        analyzeResponse.getTokens().forEach(analyzeToken -> {
+            System.out.println(analyzeToken.getAttributes());
+        });
+    }
+
+    public static void closeIndex(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        CloseIndexResponse closeIndexResponse = indicesAdminClient.close(new CloseIndexRequest().indices(indexName)).get();
+        if (!closeIndexResponse.isAcknowledged()) {
+            throw new RuntimeException(String.format("Close %s index error.", indexName));
+        }
+    }
+
+    public static void openIndex(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        OpenIndexResponse openIndexResponse = indicesAdminClient.open(new OpenIndexRequest().indices(indexName)).get();
+        if (!openIndexResponse.isAcknowledged()) {
+            throw new RuntimeException(String.format("Open %s index error.", indexName));
+        }
     }
 
     public static void getAliases(Client client, String indexName) throws Exception {
