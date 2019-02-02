@@ -18,6 +18,8 @@ public class EsTransportClient {
     private void esClientMain(Client client, String indexName) throws Exception {
         //EsOps.getIndexDetail(client, indexName);
 
-        EsOps.getMappingsResponse(client,indexName);
+        //EsOps.getMappingsResponse(client,indexName);
+
+        EsOps.getIndex(client, indexName);
     }
 }

@@ -11,12 +11,14 @@ import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsRequest;
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.elasticsearch.action.admin.indices.get.GetIndexRequest;
+import org.elasticsearch.action.admin.indices.get.GetIndexResponse;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsRequest;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsResponse;
 import org.elasticsearch.action.admin.indices.settings.get.GetSettingsRequest;
 import org.elasticsearch.action.admin.indices.settings.get.GetSettingsResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.IndicesAdminClient;
+import org.elasticsearch.cluster.metadata.AliasMetaData;
 import org.elasticsearch.cluster.metadata.MappingMetaData;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
 import org.elasticsearch.common.settings.Settings;
@@ -24,10 +26,7 @@ import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.IndexNotFoundException;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ExecutionException;
 
 public class EsOps {
@@ -50,7 +49,33 @@ public class EsOps {
                 });
             }
         }
+    }
 
+    public static void getIndex(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        GetIndexResponse getIndexResponse = indicesAdminClient.getIndex(new GetIndexRequest().indices(indexName)).get();
+        // indices
+        String[] indices = getIndexResponse.getIndices();
+        System.out.println("indices = " + Arrays.asList(indices));
+
+        List<String> aliasLists = new ArrayList<>();
+        List<String> indexRoutingLists = new ArrayList<>();
+        List<String> searchRoutingLists = new ArrayList<>();
+
+        // aliases
+        ImmutableOpenMap<String, List<AliasMetaData>> aliases = getIndexResponse.getAliases();
+        Iterator<List<AliasMetaData>> aliasesIterator = aliases.valuesIt();
+        while (aliasesIterator.hasNext()) {
+            List<AliasMetaData> aliasMetaDataList = aliasesIterator.next();
+            aliasMetaDataList.forEach(aliasMetaData -> {
+                aliasLists.add(aliasMetaData.getAlias());
+                indexRoutingLists.add(aliasMetaData.getIndexRouting());
+                searchRoutingLists.add(aliasMetaData.getSearchRouting());
+            });
+        }
+        System.out.println(String.format("aliasLists = %s", aliasLists));
+        System.out.println(String.format("indexRoutingLists = %s", indexRoutingLists));
+        System.out.println(String.format("searchRoutingLists = %s", searchRoutingLists));
     }
 
     public static void getIndexDetail(Client client, String indexName) {
