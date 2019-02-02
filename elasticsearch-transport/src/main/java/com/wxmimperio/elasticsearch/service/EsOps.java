@@ -5,6 +5,8 @@ import com.carrotsearch.hppc.cursors.ObjectCursor;
 import com.carrotsearch.hppc.cursors.ObjectObjectCursor;
 import org.elasticsearch.action.admin.indices.alias.IndicesAliasesRequest;
 import org.elasticsearch.action.admin.indices.alias.IndicesAliasesResponse;
+import org.elasticsearch.action.admin.indices.alias.get.GetAliasesRequest;
+import org.elasticsearch.action.admin.indices.alias.get.GetAliasesResponse;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
 import org.elasticsearch.action.admin.indices.create.CreateIndexResponse;
 import org.elasticsearch.action.admin.indices.delete.DeleteIndexResponse;
@@ -12,15 +14,23 @@ import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsReques
 import org.elasticsearch.action.admin.indices.exists.indices.IndicesExistsResponse;
 import org.elasticsearch.action.admin.indices.get.GetIndexRequest;
 import org.elasticsearch.action.admin.indices.get.GetIndexResponse;
+import org.elasticsearch.action.admin.indices.mapping.get.GetFieldMappingsRequest;
+import org.elasticsearch.action.admin.indices.mapping.get.GetFieldMappingsResponse;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsRequest;
 import org.elasticsearch.action.admin.indices.mapping.get.GetMappingsResponse;
 import org.elasticsearch.action.admin.indices.settings.get.GetSettingsRequest;
 import org.elasticsearch.action.admin.indices.settings.get.GetSettingsResponse;
+import org.elasticsearch.action.admin.indices.template.get.GetIndexTemplatesRequest;
+import org.elasticsearch.action.admin.indices.template.get.GetIndexTemplatesResponse;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.IndicesAdminClient;
 import org.elasticsearch.cluster.metadata.AliasMetaData;
+import org.elasticsearch.cluster.metadata.IndexMetaData;
 import org.elasticsearch.cluster.metadata.MappingMetaData;
+import org.elasticsearch.cluster.metadata.MetaData;
 import org.elasticsearch.common.collect.ImmutableOpenMap;
+import org.elasticsearch.common.compress.CompressedXContent;
+import org.elasticsearch.common.settings.Setting;
 import org.elasticsearch.common.settings.Settings;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.index.IndexNotFoundException;
@@ -64,6 +74,107 @@ public class EsOps {
 
         // aliases
         ImmutableOpenMap<String, List<AliasMetaData>> aliases = getIndexResponse.getAliases();
+        Iterator<List<AliasMetaData>> aliasesIterator = aliases.valuesIt();
+        while (aliasesIterator.hasNext()) {
+            List<AliasMetaData> aliasMetaDataList = aliasesIterator.next();
+            aliasMetaDataList.forEach(aliasMetaData -> {
+                aliasLists.add(aliasMetaData.getAlias());
+                indexRoutingLists.add(aliasMetaData.getIndexRouting());
+                searchRoutingLists.add(aliasMetaData.getSearchRouting());
+            });
+        }
+        System.out.println(String.format("aliasLists = %s", aliasLists));
+        System.out.println(String.format("indexRoutingLists = %s", indexRoutingLists));
+        System.out.println(String.format("searchRoutingLists = %s", searchRoutingLists));
+    }
+
+    public static void getSettingsResponse(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        GetSettingsResponse getSettingsResponse = indicesAdminClient.getSettings(new GetSettingsRequest().indices(indexName)).get();
+        ImmutableOpenMap<String, Settings> settings = getSettingsResponse.getIndexToSettings();
+        Iterator<Settings> settingIterator = settings.valuesIt();
+        while (settingIterator.hasNext()) {
+            Settings setting = settingIterator.next();
+            setting.keySet().forEach(key -> {
+                System.out.println(String.format("key = %s, value = %s", key, setting.get(key)));
+            });
+        }
+    }
+
+    public static void getFieldMappings(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        GetFieldMappingsResponse getFieldMappingsResponse = indicesAdminClient.getFieldMappings(new GetFieldMappingsRequest().indices(indexName)).get();
+        Map<String, Map<String, Map<String, GetFieldMappingsResponse.FieldMappingMetaData>>> fieldMap = getFieldMappingsResponse.mappings();
+        fieldMap.forEach((key1, value1) -> {
+            System.out.println(String.format("key1 = %s ======== ", key1));
+            value1.forEach((key2, value2) -> {
+                System.out.println(String.format("key2 = %s ======== ", key2));
+                value2.forEach((key3, value3) -> {
+                    boolean isNull = value3.isNull();
+                    String fullName = value3.fullName();
+                    Map<String, Object> source = value3.sourceAsMap();
+
+                    System.out.println(String.format("isNull = %s ", isNull));
+                    System.out.println(String.format("fullName = %s ", fullName));
+                    System.out.println(String.format("source = %s ", source));
+                });
+            });
+        });
+    }
+
+    public static void getTemplates(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        GetIndexTemplatesResponse getIndexTemplatesResponse = indicesAdminClient.getTemplates(new GetIndexTemplatesRequest().names(indexName)).get();
+
+        List<String> aliasLists = new ArrayList<>();
+        List<String> indexRoutingLists = new ArrayList<>();
+        List<String> searchRoutingLists = new ArrayList<>();
+
+        getIndexTemplatesResponse.getIndexTemplates().forEach(indexTemplateMetaData -> {
+            int version = indexTemplateMetaData.getVersion();
+            System.out.println("version = " + version);
+            String name = indexTemplateMetaData.getName();
+            System.out.println("name = " + name);
+            List<String> patterns = indexTemplateMetaData.getPatterns();
+            System.out.println("patterns = " + patterns);
+
+            Iterator<AliasMetaData> aliases = indexTemplateMetaData.getAliases().valuesIt();
+            while (aliases.hasNext()) {
+                AliasMetaData aliasMetaData = aliases.next();
+                aliasLists.add(aliasMetaData.getAlias());
+                indexRoutingLists.add(aliasMetaData.getIndexRouting());
+                searchRoutingLists.add(aliasMetaData.getSearchRouting());
+            }
+
+            // This class will be removed in v7.0
+            Iterator<IndexMetaData.Custom> customIterator = indexTemplateMetaData.getCustoms().valuesIt();
+            while (customIterator.hasNext()) {
+                IndexMetaData.Custom custom = customIterator.next();
+                String type = custom.type();
+                System.out.println("type = " + type);
+            }
+
+            Iterator<CompressedXContent> mappingsIterator = indexTemplateMetaData.getMappings().valuesIt();
+            while (mappingsIterator.hasNext()) {
+                CompressedXContent compressedXContent = mappingsIterator.next();
+            }
+
+            Settings settings = indexTemplateMetaData.getSettings();
+            settings.keySet().forEach(key -> {
+                System.out.println("key = " + key + ", value = " + settings.get(key));
+            });
+        });
+    }
+
+    public static void getAliases(Client client, String indexName) throws Exception {
+        IndicesAdminClient indicesAdminClient = client.admin().indices();
+        GetAliasesResponse getAliasesResponse = indicesAdminClient.getAliases(new GetAliasesRequest().aliases(indexName)).get();
+        ImmutableOpenMap<String, List<AliasMetaData>> aliases = getAliasesResponse.getAliases();
+
+        List<String> aliasLists = new ArrayList<>();
+        List<String> indexRoutingLists = new ArrayList<>();
+        List<String> searchRoutingLists = new ArrayList<>();
+
         Iterator<List<AliasMetaData>> aliasesIterator = aliases.valuesIt();
         while (aliasesIterator.hasNext()) {
             List<AliasMetaData> aliasMetaDataList = aliasesIterator.next();

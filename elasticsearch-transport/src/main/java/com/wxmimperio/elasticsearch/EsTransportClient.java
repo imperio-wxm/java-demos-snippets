@@ -20,6 +20,14 @@ public class EsTransportClient {
 
         //EsOps.getMappingsResponse(client,indexName);
 
-        EsOps.getIndex(client, indexName);
+        //EsOps.getIndex(client, indexName);
+
+        //EsOps.getAliases(client, indexName);
+
+        //EsOps.getSettingsResponse(client,indexName);
+
+        //EsOps.getFieldMappings(client, indexName);
+
+        EsOps.getTemplates(client, indexName);
     }
 }
