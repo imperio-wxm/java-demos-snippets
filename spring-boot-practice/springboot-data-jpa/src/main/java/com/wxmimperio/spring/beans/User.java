@@ -1,4 +1,4 @@
-package com.wxmimperio.spring.bean;
+package com.wxmimperio.spring.beans;
 
 import org.hibernate.annotations.GenericGenerator;
 

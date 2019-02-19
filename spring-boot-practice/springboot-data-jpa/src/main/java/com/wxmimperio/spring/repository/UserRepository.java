@@ -1,6 +1,6 @@
 package com.wxmimperio.spring.repository;
 
-import com.wxmimperio.spring.bean.User;
+import com.wxmimperio.spring.beans.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

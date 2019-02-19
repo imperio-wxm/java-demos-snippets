@@ -1,6 +1,6 @@
 package com.wxmimperio.spring.controller;
 
-import com.wxmimperio.spring.bean.User;
+import com.wxmimperio.spring.beans.User;
 import com.wxmimperio.spring.service.CacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

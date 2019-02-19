@@ -1,6 +1,6 @@
 package com.wxmimperio.spring.service.impl;
 
-import com.wxmimperio.spring.bean.User;
+import com.wxmimperio.spring.beans.User;
 import com.wxmimperio.spring.repository.UserRepository;
 import com.wxmimperio.spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

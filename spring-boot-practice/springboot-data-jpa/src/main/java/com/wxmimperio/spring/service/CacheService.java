@@ -1,6 +1,6 @@
 package com.wxmimperio.spring.service;
 
-import com.wxmimperio.spring.bean.User;
+import com.wxmimperio.spring.beans.User;
 
 public interface CacheService {
 
