@@ -20,7 +20,15 @@ import java.util.List;
 public class OracleService {
 
     private DataSource phoenixDataSource;
-    private static final List<String> filter = Lists.newArrayList("SYS_EXPORT_SCHEMA_01");
+    /**
+     * V_MOBILE_APP_DEPOSIT_CHANNEL、V_PT_ACTIVITY_HOURLY_REPORT UNDEFINED
+     */
+    private static final List<String> FILTER = Lists.newArrayList("SYS_EXPORT_SCHEMA_01", "SYS_EXPORT_SCHEMA_02",
+            "SYS_EXPORT_SCHEMA_03", "SYS_EXPORT_SCHEMA_04", "SYS_EXPORT_SCHEMA_05", "SYS_EXPORT_SCHEMA_06",
+            "SYS_EXPORT_SCHEMA_08", "SYS_EXPORT_SCHEMA_07", "SYS_EXPORT_SCHEMA_09", "SYS_EXPORT_SCHEMA_10",
+            "T1", "SYS_TEMP_FBT", "V_MOBILE_APP_DEPOSIT_CHANNEL", "V_PT_ACTIVITY_HOURLY_REPORT");
+
+    private static final List<DataType> FILTER_DATA_TYPE = Lists.newArrayList(DataType.CHAR, DataType.CLOB, DataType.NVARCHAR2, DataType.NCHAR);
 
     @Autowired
     public OracleService(DataSource phoenixDataSource) {
@@ -33,7 +41,7 @@ public class OracleService {
              Statement statement = connection.createStatement();
              Statement colStatement = connection.createStatement()) {
             String sql = "select t1.TABLE_NAME,t2.TABLE_TYPE,T2.COMMENTS from \n" +
-                    "(select table_name TABLE_NAME from user_tables\n" +
+                    "(select table_name TABLE_NAME from user_tables where TABLE_NAME NOT LIKE '%$%'\n" +
                     "union all\n" +
                     "select view_name from user_views) t1 left join user_tab_comments t2 on t1.TABLE_NAME = t2.TABLE_NAME";
 
@@ -44,7 +52,7 @@ public class OracleService {
             while (resultSet.next()) {
                 String tableName = resultSet.getString("TABLE_NAME");
 
-                if (!filter.contains(tableName)) {
+                if (!FILTER.contains(tableName)) {
                     String tableType = resultSet.getString("TABLE_TYPE");
                     String tableComment = resultSet.getString("COMMENTS");
 
@@ -78,6 +86,7 @@ public class OracleService {
                             }
 
                             if (realDataType == null) {
+                                DataType.valueOf(dataType);
                                 System.exit(1);
                             }
 
@@ -86,6 +95,11 @@ public class OracleService {
                                     realDataType = DataType.INTEGER;
                                 }
                             }
+
+                            if (FILTER_DATA_TYPE.contains(realDataType)) {
+                                System.out.println(String.format("Table name = %s, col type = %s", tableName, realDataType));
+                            }
+
                         } catch (IllegalArgumentException e) {
                             e.printStackTrace();
                             System.out.println("error table = " + tableName);
@@ -95,7 +109,10 @@ public class OracleService {
                     schema.setColumns(columns);
                     tables.add(schema);
                     count++;
-                    System.out.println("table count = " + count);
+
+                    if (count % 200 == 0) {
+                        System.out.println("table count = " + count);
+                    }
                 }
             }
         } catch (SQLException e) {
