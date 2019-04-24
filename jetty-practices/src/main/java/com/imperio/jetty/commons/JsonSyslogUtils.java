@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayOutputStream;
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -151,6 +153,38 @@ public class JsonSyslogUtils {
         return body;
     }
 
+    public static String getIP(SocketAddress socketAddress) {
+        try {
+            InetSocketAddress inetSocketAddress = (InetSocketAddress) socketAddress;
+            String ip = inetSocketAddress.getAddress().getHostAddress();
+            if (ip != null) {
+                return ip;
+            } else {
+                throw new NullPointerException("The returned IP is null");
+            }
+        } catch (Exception e) {
+            logger.warn("Unable to retrieve client IP address", e);
+        }
+        // return a safe value instead of null
+        return "";
+    }
+
+    public static String getHostname(SocketAddress socketAddress) {
+        try {
+            InetSocketAddress inetSocketAddress = (InetSocketAddress) socketAddress;
+            String hostname = inetSocketAddress.getHostName();
+            if (hostname != null) {
+                return hostname;
+            } else {
+                throw new NullPointerException("The returned hostname is null");
+            }
+        } catch (Exception e) {
+            logger.warn("Unable to retrieve client hostname", e);
+        }
+        // return a safe value instead of null
+        return "";
+    }
+
     public JsonSyslogUtils() {
         this(false);
     }
@@ -276,7 +310,7 @@ public class JsonSyslogUtils {
                 headers.put("host", hostName);
             }
             if (isBadEvent) {
-                logger.warn("Event created from Invalid Syslog data.");
+                logger.debug("Event created from Invalid Syslog data.");
                 headers.put(EVENT_STATUS, SyslogStatus.INVALID.getSyslogStatus());
             } else if (isIncompleteEvent) {
                 logger.warn("Event size larger than specified event size: {}. You should " +
