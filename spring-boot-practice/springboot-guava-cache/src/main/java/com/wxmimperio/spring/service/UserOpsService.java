@@ -1,6 +1,5 @@
 package com.wxmimperio.spring.service;
 
-import com.google.common.collect.Lists;
 import com.wxmimperio.spring.bean.User;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
@@ -8,6 +7,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 
 @Component
 public class UserOpsService {
@@ -18,10 +18,10 @@ public class UserOpsService {
         return new User();
     }
 
-    @CachePut(value = "userCache", key = "#user.name")
-    public User putUserInCache(User user) {
-        System.out.println(String.format("User = %s， 加入到缓存", user));
-        return user;
+    @CachePut(value = "userCache", keyGenerator = "userCacheKeyGenerator")
+    public List<User> putUserInCache(List<User> users) {
+        System.out.println(String.format("User = %s， 加入到缓存", users));
+        return users;
     }
 
     @CacheEvict(value = "userCache", key = "#userName")
