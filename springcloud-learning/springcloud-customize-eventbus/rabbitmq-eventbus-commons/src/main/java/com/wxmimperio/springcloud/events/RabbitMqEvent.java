@@ -9,6 +9,9 @@ public class RabbitMqEvent extends RemoteApplicationEvent {
     private static final long serialVersionUID = 7743257560365940687L;
     private SchemaInfo schemaInfo;
 
+    public RabbitMqEvent() {
+    }
+
     public RabbitMqEvent(Object source, String originService, String destinationService, SchemaInfo schemaInfo) {
         super(source, originService, destinationService);
         this.schemaInfo = schemaInfo;

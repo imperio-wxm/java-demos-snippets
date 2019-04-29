@@ -26,8 +26,9 @@ public class EventController {
     public void publishSchemaEvent(@RequestParam(value = "destination", required = false, defaultValue = "**") String destination,
                                    @RequestBody SchemaInfo schemaInfo) {
         final RabbitMqEvent rabbitMqEvent = new RabbitMqEvent(this, context.getId(), destination, schemaInfo);
-        //context.publishEvent(rabbitMqEvent);
+        context.publishEvent(rabbitMqEvent);
+        System.out.println(schemaInfo);
 
-        rabbitMqProducer.sendMsg(schemaInfo);
+        //rabbitMqProducer.sendMsg(schemaInfo);
     }
 }
