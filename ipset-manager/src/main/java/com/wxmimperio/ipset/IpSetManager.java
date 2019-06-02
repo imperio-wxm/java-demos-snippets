@@ -83,12 +83,20 @@ public class IpSetManager {
         for (int i = 0; i < 10; i++) {
             memberList.add(new IpSet.Member("127.0.1." + i, Protocol.TCP, i));
         }
-        //IpSetOps.addBatchToIpSetWithProtocol(host, ipSetNameProtocol, memberList);
+        IpSetOps.batchAddToIpSet(host, ipSetNameProtocol, memberList);
 
-        IpSetOps.batchDeleteFromIpSet(host, ipSetNameProtocol, memberList);
+        //IpSetOps.addToIpSet(host, ipSetNameProtocol, new IpSet.Member("127.0.1.10", Protocol.TCP, 10));
 
         // list ipset
         IpSet ipSet = IpSetOps.listIpSet(host, ipSetNameProtocol);
         System.out.println(ipSet.getMembers());
+
+        // save ipset
+        String path = "/home/wxmimperio/ipset.txt";
+        //System.out.println(IpSetOps.saveIpsetToFile(host, ipSetNameProtocol, path));
+
+        //IpSetOps.destoryIpset(host, ipSetNameProtocol);
+
+        //IpSetOps.restoreIpsetFromFile(host, path);
     }
 }

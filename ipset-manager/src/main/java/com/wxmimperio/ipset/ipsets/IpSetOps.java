@@ -56,7 +56,6 @@ public class IpSetOps {
         if (CollectionUtils.isNotEmpty(alreadyExist)) {
             logger.warn(String.format("IP = %s has been added", alreadyExist));
         }
-        members.removeAll(oldMembers);
         StringBuilder batchCommand = new StringBuilder();
         members.forEach(member -> {
             String command;
@@ -80,7 +79,6 @@ public class IpSetOps {
         if (CollectionUtils.isNotEmpty(notExist)) {
             logger.warn(String.format("IP = %s not exists", notExist));
         }
-        members.retainAll(oldMembers);
         StringBuilder batchCommand = new StringBuilder();
         members.forEach(member -> {
             String command;
@@ -115,5 +113,20 @@ public class IpSetOps {
     public static boolean checkIpExist(Host host, String ipSetName, IpSet.Member member) {
         IpSet ipSet = listIpSet(host, ipSetName);
         return ipSet.getMembers().contains(member);
+    }
+
+    public static String saveIpsetToFile(Host host, String ipSetName, String path) {
+        String command = String.format(IpSetCommandSegment.SAVE_IPSET, ipSetName, path);
+        return SshUtils.exeSshCommand(host, command);
+    }
+
+    public static void restoreIpsetFromFile(Host host, String path) {
+        String command = String.format(IpSetCommandSegment.RESTORE_IPSET, path);
+        SshUtils.exeSshCommand(host, command);
+    }
+
+    public static void destoryIpset(Host host, String ipSetName) {
+        String command = String.format(IpSetCommandSegment.DESTROY_IPSET, ipSetName);
+        SshUtils.exeSshCommand(host, command);
     }
 }
