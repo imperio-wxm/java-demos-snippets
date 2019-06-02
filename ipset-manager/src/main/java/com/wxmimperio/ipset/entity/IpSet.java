@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class IpSet {
     private String name;
@@ -22,7 +23,6 @@ public class IpSet {
     private void make(String info) {
         List<String> infoList = Arrays.asList(info.split("\n", -1));
         infoList.forEach(line -> {
-            System.out.println(line);
             if (line.startsWith("Name")) {
                 this.name = line.split(": ")[1].trim();
             }
@@ -176,6 +176,25 @@ public class IpSet {
                     ", protocol=" + protocol +
                     ", port=" + port +
                     '}';
+        }
+
+        public boolean withProtocol() {
+            return null != protocol && null != port;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Member member = (Member) o;
+            return Objects.equals(ip, member.ip) &&
+                    protocol == member.protocol &&
+                    Objects.equals(port, member.port);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(ip, protocol, port);
         }
     }
 }

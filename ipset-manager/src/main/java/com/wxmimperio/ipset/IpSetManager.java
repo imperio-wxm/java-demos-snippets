@@ -76,7 +76,17 @@ public class IpSetManager {
 
 
         // deleteFromIpSetWithProtocol
-        IpSetOps.deleteFromIpSetWithProtocol(host, ipSetNameProtocol, new IpSet.Member("111.0.0.1", Protocol.TCP, 5240));
+        //IpSetOps.deleteFromIpSetWithProtocol(host, ipSetNameProtocol, new IpSet.Member("111.0.0.1", Protocol.TCP, 5240));
+
+        // addBatchToIpSetWithProtocol
+        List<IpSet.Member> memberList = Lists.newArrayList();
+        for (int i = 0; i < 10; i++) {
+            memberList.add(new IpSet.Member("127.0.1." + i, Protocol.TCP, i));
+        }
+        //IpSetOps.addBatchToIpSetWithProtocol(host, ipSetNameProtocol, memberList);
+
+        IpSetOps.batchDeleteFromIpSet(host, ipSetNameProtocol, memberList);
+
         // list ipset
         IpSet ipSet = IpSetOps.listIpSet(host, ipSetNameProtocol);
         System.out.println(ipSet.getMembers());
