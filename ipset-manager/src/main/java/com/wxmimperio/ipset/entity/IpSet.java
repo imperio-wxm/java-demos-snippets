@@ -1,8 +1,8 @@
 package com.wxmimperio.ipset.entity;
 
+import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -22,6 +22,7 @@ public class IpSet {
     private void make(String info) {
         List<String> infoList = Arrays.asList(info.split("\n", -1));
         infoList.forEach(line -> {
+            System.out.println(line);
             if (line.startsWith("Name")) {
                 this.name = line.split(": ")[1].trim();
             }
@@ -41,11 +42,19 @@ public class IpSet {
                 this.references = line.split(": ")[1].trim();
             }
             if (line.startsWith("Members")) {
-                members = new ArrayList<>();
+                members = Lists.newArrayList();
                 int start = infoList.indexOf("Members:") + 1;
                 for (; start < infoList.size(); start++) {
                     if (StringUtils.isNotEmpty(infoList.get(start))) {
-                        members.add(new Member(infoList.get(start).trim()));
+                        String ipInfo = infoList.get(start).trim();
+                        if (Protocol.check(ipInfo)) {
+                            // 111.0.0.1,tcp:5240
+                            String[] lineInfo = ipInfo.split(",", -1);
+                            String[] protocolInfo = lineInfo[1].split(":", -1);
+                            members.add(new Member(lineInfo[0], Protocol.valueOf(protocolInfo[0].toUpperCase()), Integer.parseInt(protocolInfo[1])));
+                        } else {
+                            members.add(new Member(ipInfo));
+                        }
                     }
                 }
             }

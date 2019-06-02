@@ -27,20 +27,42 @@ public class IpSetOps {
         SshUtils.exeSshCommand(host, command);
     }
 
+    public static void createIpSetWithProtocol(Host host, String name, Long maxSize) {
+        Optional<Long> size = Optional.ofNullable(maxSize);
+        String command;
+        if (size.isPresent()) {
+            command = String.format(IpSetCommandSegment.CREATE_IPSET_WITH_PROTOCAL_MAXZISE, name, size.get());
+        } else {
+            command = String.format(IpSetCommandSegment.CREATE_IPSET_WITH_PROTOCAL, name);
+        }
+        SshUtils.exeSshCommand(host, command);
+    }
+
+    public static void createIpSetWithProtocol(Host host, String name) {
+        createIpSetWithProtocol(host, name, null);
+    }
+
     public static void createIpSet(Host host, String name) {
         createIpSet(host, name, null);
     }
 
-    public static void addToIpSet(Host host, String ipSetName, String ip) {
-        String command = String.format(IpSetCommandSegment.ADD_IP_TO_IPSET, ipSetName, ip);
+    public static void addToIpSet(Host host, String ipSetName, IpSet.Member member) {
+        String command = String.format(IpSetCommandSegment.ADD_IP_TO_IPSET, ipSetName, member.getIp());
         SshUtils.exeSshCommand(host, command);
     }
 
-    public static void addBatchToIpSet(Host host, String ipSetName, String ips) {
+    public static void addToIpSetWithProtocol(Host host, String ipSetName, IpSet.Member member) {
+        if (null != member.getPort() && null != member.getProtocol()) {
+            String command = String.format(IpSetCommandSegment.ADD_IP_TO_IPSET_WITH_PROTOCAL, ipSetName, member.getIp(), member.getProtocol(), member.getPort());
+            SshUtils.exeSshCommand(host, command);
+        }
+    }
+
+    public static void addBatchToIpSet(Host host, String ipSetName, IpSet.Member member) {
         IpSet ipSet = listIpSet(host, ipSetName);
         List<String> oldIps = ipSet.getMembers().stream().map(IpSet.Member::getIp).collect(Collectors.toList());
         logger.info(String.format("1. Already exists ip = %s", oldIps));
-        List<String> needAddIps = Lists.newArrayList(ips.split(",", -1));
+        List<String> needAddIps = Lists.newArrayList(member.getIp().split(",", -1));
         logger.info(String.format("2. Need add ip = %s", needAddIps));
         List<String> diffIps = ipSet.getMembers().stream().map(IpSet.Member::getIp).collect(Collectors.toList());
         diffIps.retainAll(needAddIps);
@@ -60,8 +82,34 @@ public class IpSetOps {
         }
     }
 
-    public static void deleteFromIpSet(Host host, String ipSetName, String ip) {
-        String command = String.format(IpSetCommandSegment.DELETE_IP_FROM_IPSET, ipSetName, ip);
+    public static void deleteFromIpSetWithProtocol(Host host, String ipSetName, IpSet.Member member) {
+        String command = String.format(IpSetCommandSegment.DELETE_IP_FROM_IPSET_WITH_PROTOCAL, ipSetName, member.getIp(), member.getProtocol(), member.getPort());
+        SshUtils.exeSshCommand(host, command);
+    }
+
+    public static void deleteBatchFromIpSet(Host host, String ipSetName, IpSet.Member member) {
+        IpSet ipSet = listIpSet(host, ipSetName);
+        List<String> oldIps = ipSet.getMembers().stream().map(IpSet.Member::getIp).collect(Collectors.toList());
+        List<String> notExist = Lists.newArrayList(member.getIp().split(",", -1));
+        notExist.removeAll(oldIps);
+        if (CollectionUtils.isNotEmpty(notExist)) {
+            logger.warn(String.format("IP = %s not exits", notExist));
+        }
+        List<String> needAddIps = Lists.newArrayList(member.getIp().split(",", -1));
+        needAddIps.retainAll(oldIps);
+        StringBuilder batchCommand = new StringBuilder();
+        needAddIps.forEach(ip -> {
+            String command = String.format(IpSetCommandSegment.DELETE_IP_FROM_IPSET, ipSetName, ip);
+            batchCommand.append(command).append(" && ");
+        });
+        if (batchCommand.length() > 0) {
+            batchCommand.delete(batchCommand.length() - 4, batchCommand.length());
+            SshUtils.exeSshCommand(host, batchCommand.toString());
+        }
+    }
+
+    public static void deleteFromIpSet(Host host, String ipSetName, IpSet.Member member) {
+        String command = String.format(IpSetCommandSegment.DELETE_IP_FROM_IPSET, ipSetName, member.getIp());
         SshUtils.exeSshCommand(host, command);
     }
 
