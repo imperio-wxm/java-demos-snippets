@@ -1,3 +1,14 @@
+*.class
+
+*.jar
+
+*.iml
+
+.idea
+
+*/*.iml
+
+*.log
 
 dom4j-xml/target/
 
