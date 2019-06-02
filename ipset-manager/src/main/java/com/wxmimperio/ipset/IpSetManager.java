@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
@@ -32,28 +33,19 @@ public class IpSetManager {
         String ipSetNameProtocol = "test_ipset_Protocol";
 
         // create ipset
-        // IpSetOps.createIpSet(host,"test_ipset");
+        //IpSetOps.createIpSet(host, "test_ipset_Protocol", true);
 
         // add ip to ipset
-        //IpSetOps.addToIpSet(host, ipSetName, "127.0.0.2");
-
-        // add ip batch
-        // IpSetOps.addBatchToIpSet(host, ipSetName, "127.0.3.0,127.0.2.1,127.0.3.3,127.0.3.4");
+        //IpSetOps.addToIpSet(host, ipSetName, new IpSet.Member("127.0.0.2"));
 
         // delete ip
-        //IpSetOps.deleteFromIpSet(host, ipSetName, "127.0.3.0");
+        //IpSetOps.deleteFromIpSet(host, ipSetName, new IpSet.Member("127.0.3.0"));
 
         // check ip exists
-        //System.out.println(IpSetOps.checkIpExist(host, ipSetName,"127.0.3.0"));
+        //System.out.println(IpSetOps.checkIpExist(host, ipSetName,new IpSet.Member("127.0.3.0")));
 
         // delte ip batch
-        // IpSetOps.deleteBatchFromIpSet(host, ipSetNameProtocol, new IpSet.Member("111.0.0.1"));
-
-        // createIpSetWithProtocol
-        // IpSetOps.createIpSetWithProtocol(host, ipSetNameProtocol);
-
-        // addToIpSetWithProtocol
-        //IpSetOps.addToIpSetWithProtocol(host, ipSetNameProtocol, new IpSet.Member("111.0.0.1", Protocol.TCP, 5240));
+        //IpSetOps.batchDeleteFromIpSet(host, ipSetNameProtocol, Collections.singletonList(new IpSet.Member("111.0.0.1")));
 
         //
         /*List<Future> futures = Lists.newArrayList();
@@ -75,17 +67,16 @@ public class IpSetManager {
         });*/
 
 
-        // deleteFromIpSetWithProtocol
-        //IpSetOps.deleteFromIpSetWithProtocol(host, ipSetNameProtocol, new IpSet.Member("111.0.0.1", Protocol.TCP, 5240));
-
         // addBatchToIpSetWithProtocol
         List<IpSet.Member> memberList = Lists.newArrayList();
         for (int i = 0; i < 10; i++) {
             memberList.add(new IpSet.Member("127.0.1." + i, Protocol.TCP, i));
         }
-        IpSetOps.batchAddToIpSet(host, ipSetNameProtocol, memberList);
+        //IpSetOps.batchAddToIpSet(host, ipSetNameProtocol, memberList);
 
-        //IpSetOps.addToIpSet(host, ipSetNameProtocol, new IpSet.Member("127.0.1.10", Protocol.TCP, 10));
+        IpSetOps.addToIpSet(host, ipSetNameProtocol, new IpSet.Member("192.168.1.112", Protocol.TCP, 6240));
+
+        //IpSetOps.deleteFromIpSet(host, ipSetName, new IpSet.Member("192.168.1.111"));
 
         // list ipset
         IpSet ipSet = IpSetOps.listIpSet(host, ipSetNameProtocol);
