@@ -38,7 +38,7 @@ public class SshUtils {
      * @throws IOException
      * @throws JSchException
      */
-    public static String execCommandByJSch(Host host, String command) throws IOException, JSchException, SshException {
+    private static String execCommandByJSch(Host host, String command) throws IOException, JSchException, SshException {
         String result = "";
         Optional<Session> session = Optional.empty();
         Optional<ChannelExec> channelExec = Optional.empty();
@@ -65,6 +65,19 @@ public class SshUtils {
         } finally {
             session.ifPresent(Session::disconnect);
             channelExec.ifPresent(ChannelExec::disconnect);
+        }
+        return result;
+    }
+
+    public static String exeSshCommand(Host host, String command) {
+        String result = "";
+        if (StringUtils.isNotEmpty(command)) {
+            try {
+                result = execCommandByJSch(host, command);
+                logger.info(String.format("Command = %s, exe success.", command));
+            } catch (IOException | JSchException | SshException e) {
+                logger.error("Exe command error.", e);
+            }
         }
         return result;
     }

@@ -27,11 +27,16 @@ public class IpSetManager {
         //IpSetOps.addToIpSet(host, ipSetName, "127.0.0.2");
 
         // add ip batch
-        IpSetOps.addBatchToIpSet(host, ipSetName, "127.0.3.0,127.0.2.1,127.0.3.3,127.0.3.4");
+        // IpSetOps.addBatchToIpSet(host, ipSetName, "127.0.3.0,127.0.2.1,127.0.3.3,127.0.3.4");
+
+        // delete ip
+        //IpSetOps.deleteFromIpSet(host, ipSetName, "127.0.3.0");
+
+        // check ip exists
+        System.out.println(IpSetOps.checkIpExist(host, ipSetName,"127.0.3.0"));
 
         // list ipset
         IpSet ipSet = IpSetOps.listIpSet(host, ipSetName);
-        System.out.println(ipSet);
         System.out.println(ipSet.getMembers());
     }
 }

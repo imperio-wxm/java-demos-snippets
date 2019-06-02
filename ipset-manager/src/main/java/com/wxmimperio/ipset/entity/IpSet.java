@@ -13,7 +13,7 @@ public class IpSet {
     private String hearer;
     private Long sizeInMemory;
     private String references;
-    private List<String> members;
+    private List<Member> members;
 
     public IpSet(String info) {
         make(info);
@@ -45,7 +45,7 @@ public class IpSet {
                 int start = infoList.indexOf("Members:") + 1;
                 for (; start < infoList.size(); start++) {
                     if (StringUtils.isNotEmpty(infoList.get(start))) {
-                        members.add(infoList.get(start).trim());
+                        members.add(new Member(infoList.get(start).trim()));
                     }
                 }
             }
@@ -100,11 +100,11 @@ public class IpSet {
         this.references = references;
     }
 
-    public List<String> getMembers() {
+    public List<Member> getMembers() {
         return members;
     }
 
-    public void setMembers(List<String> members) {
+    public void setMembers(List<Member> members) {
         this.members = members;
     }
 
@@ -119,5 +119,54 @@ public class IpSet {
                 ", references='" + references + '\'' +
                 ", members=" + members +
                 '}';
+    }
+
+    public static class Member {
+        private String ip;
+        private Protocol protocol;
+        private Integer port;
+
+        public Member(String ip) {
+            this.ip = ip;
+        }
+
+        public Member(String ip, Protocol protocol, Integer port) {
+            this.ip = ip;
+            this.protocol = protocol;
+            this.port = port;
+        }
+
+        public String getIp() {
+            return ip;
+        }
+
+        public void setIp(String ip) {
+            this.ip = ip;
+        }
+
+        public Protocol getProtocol() {
+            return protocol;
+        }
+
+        public void setProtocol(Protocol protocol) {
+            this.protocol = protocol;
+        }
+
+        public Integer getPort() {
+            return port;
+        }
+
+        public void setPort(Integer port) {
+            this.port = port;
+        }
+
+        @Override
+        public String toString() {
+            return "Member{" +
+                    "ip='" + ip + '\'' +
+                    ", protocol=" + protocol +
+                    ", port=" + port +
+                    '}';
+        }
     }
 }
