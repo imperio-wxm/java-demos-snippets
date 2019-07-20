@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: shell-scheduler
+
+server:
+  port: 8082
+
