@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: echarts-java
+  thymeleaf:
+    prefix: classpath:/templates/
+    encoding: UTF-8
+    cache: false
+    mode: LEGACYHTML5
+  mvc:
+    static-path-pattern: /**
+
+server:
+  port: 8083
+
