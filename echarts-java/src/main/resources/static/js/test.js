@@ -1,39 +1,61 @@
-var myChart = echarts.init(document.getElementById('main'));
-
-// 指定图表的配置项和数据
-var option = {
-    title: {
-        text: 'ECharts 入门示例'
-    },
-    tooltip: {},
-    legend: {
-        data: ['销量']
-    },
-    xAxis: {
-        data: ["衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子"]
-    },
-    yAxis: {},
-    series: [{
-        name: '销量',
-        type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
-    }]
-};
-
 axios.get('/getData')
     .then(function (response) {
-        var array = response.data;
-        for (var index in array) {
-            console.log(index, array[index]);
+        var str = "";
+        for (var i = 0; i < response.data.length; i++) {
+            str += "<div id=" + i + " style='width: 1300px; height:400px;'>" + i + "</div>";
         }
-        option.series[0].data = response.data;
-        console.log(option.series[0].data);
-        console.log(response);
+        document.body.innerHTML = str;
+
+        for (var j = 0; j < response.data.length; j++) {
+            (function () {
+                var myChart = echarts.init(document.getElementById(j));
+                // 指定图表的配置项和数据
+                var option = {
+                    title: {
+                        text: 'ECharts 入门示例'
+                    },
+                    tooltip: {
+                        trigger: 'axis',
+                        formatter: function (params) {
+                            console.log(params);
+                            var text = "<strong>Time: " + params[0].name + "</strong><br/>";
+                            for (var i = 0; i < params.length; i++) {
+                                text += params[i].seriesName + ": " + params[i].value + " ms";
+                                text += "<br/>";
+                            }
+                            var diff = params[1].value - params[0].value;
+                            text += "<span style='color: lightpink'> 差值： " + diff + " ms</span>"
+                            return text;
+                        },
+                        axisPointer: {
+                            animation: false
+                        }
+                    },
+                    legend: {
+                        data: ['销量']
+                    },
+                    xAxis: {
+                        data: []
+                    },
+                    yAxis: {},
+                    series: []
+                };
+                option.title.text = response.data[j][0].name;
+                option.xAxis.data = response.data[j][0].attr;
+                for (var k = 0; k < response.data[j].length; k++) {
+                    var item = {
+                        name: response.data[j][k].name,
+                        type: 'line',
+                        data: response.data[j][k].data,
+                        showSymbol: false,
+                        hoverAnimation: false
+                    };
+                    option.series.push(item);
+                }
+                myChart.setOption(option);
+            })(j);
+        }
     })
     .catch(function (error) {
         console.log(error);
-    })
-    .then(function (value) {
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
     });

@@ -8,6 +8,16 @@ spring:
     mode: LEGACYHTML5
   mvc:
     static-path-pattern: /**
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rtc1?autoReconnect=true&useSSL=false
+    username: root
+    password: password
+  second-datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rtc2?autoReconnect=true&useSSL=false
+    username: root
+    password: password
 
 server:
   port: 8083

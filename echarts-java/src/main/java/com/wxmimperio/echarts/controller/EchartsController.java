@@ -1,6 +1,9 @@
 package com.wxmimperio.echarts.controller;
 
+import com.wxmimperio.echarts.entity.Data;
 import com.wxmimperio.echarts.entity.User;
+import com.wxmimperio.echarts.service.DataService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +15,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class EchartsController {
+
+    private DataService dataService;
+
+    @Autowired
+    public EchartsController(DataService dataService) {
+        this.dataService = dataService;
+    }
 
     @RequestMapping(value = "show", method = RequestMethod.GET)
     public String show(Model model) {
@@ -30,14 +39,26 @@ public class EchartsController {
 
     @ResponseBody
     @RequestMapping(value = "getData", method = RequestMethod.GET)
-    public List<Integer> getData() {
-        List<Integer> data = new ArrayList<>();
-        data.add(1);
-        data.add(2);
-        data.add(3);
-        data.add(4);
-        data.add(5);
-        data.add(6);
-        return data;
+    public List<List<Data>> getData() {
+        dataService.get();
+        List<List<Data>> result = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            List<Data> data = new ArrayList<>();
+            for (int j = 0; j < 2; j++) {
+                List<String> attr = new ArrayList<>();
+                List<String> realData = new ArrayList<>();
+                for (int k = 0; k < 1440; k++) {
+                    attr.add("wxm" + k);
+                    if (j == 0) {
+                        realData.add(String.valueOf(k));
+                    } else {
+                        realData.add(String.valueOf(k * 2));
+                    }
+                }
+                data.add(new Data("table_" + j, attr, realData));
+            }
+            result.add(data);
+        }
+        return result;
     }
 }
