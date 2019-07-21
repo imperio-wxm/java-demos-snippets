@@ -2,29 +2,32 @@ axios.get('/getData')
     .then(function (response) {
         var str = "";
         for (var i = 0; i < response.data.length; i++) {
-            str += "<div id=" + i + " style='width: 1300px; height:400px;'>" + i + "</div>";
+            str += "<div id=" + i + " style='width: 1340px; height:400px;'>" + i + "</div>";
+            str += "<hr style='width: 100%;color: black;size:50px'/>";
         }
         document.body.innerHTML = str;
 
         for (var j = 0; j < response.data.length; j++) {
             (function () {
                 var myChart = echarts.init(document.getElementById(j));
-                // 指定图表的配置项和数据
                 var option = {
                     title: {
-                        text: 'ECharts 入门示例'
+                        text: ''
                     },
                     tooltip: {
                         trigger: 'axis',
                         formatter: function (params) {
-                            console.log(params);
                             var text = "<strong>Time: " + params[0].name + "</strong><br/>";
-                            for (var i = 0; i < params.length; i++) {
-                                text += params[i].seriesName + ": " + params[i].value + " ms";
-                                text += "<br/>";
+                            if (params.length > 1) {
+                                for (var i = 0; i < params.length; i++) {
+                                    text += params[i].seriesName + ": " + params[i].value + " ms";
+                                    text += "<br/>";
+                                }
+                                var diff = params[1].value - params[0].value;
+                                text += "<span style='color: lightpink'> 差值： " + diff + " ms</span>";
+                            } else {
+                                text += params[0].seriesName + ": " + params[0].value + " ms";
                             }
-                            var diff = params[1].value - params[0].value;
-                            text += "<span style='color: lightpink'> 差值： " + diff + " ms</span>"
                             return text;
                         },
                         axisPointer: {
@@ -32,7 +35,7 @@ axios.get('/getData')
                         }
                     },
                     legend: {
-                        data: ['销量']
+                        data: []
                     },
                     xAxis: {
                         data: []
@@ -51,6 +54,7 @@ axios.get('/getData')
                         hoverAnimation: false
                     };
                     option.series.push(item);
+                    option.legend.data.push(response.data[j][k].name);
                 }
                 myChart.setOption(option);
             })(j);

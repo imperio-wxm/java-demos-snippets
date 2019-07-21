@@ -11,22 +11,22 @@ import java.util.Map;
 @Service
 public class DataService {
 
-    private JdbcTemplate jdbcTemplate;
-    private JdbcTemplate secondJdbcTemplate;
+    private JdbcTemplate prodJdbc;
+    private JdbcTemplate testJdbc;
 
     @Autowired
     public DataService(JdbcTemplate jdbcTemplate, @Qualifier("secondJdbcTemplate") JdbcTemplate secondJdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.secondJdbcTemplate = secondJdbcTemplate;
+        this.prodJdbc = jdbcTemplate;
+        this.testJdbc = secondJdbcTemplate;
     }
 
     public void get() {
-        List<Map<String, Object>> result = jdbcTemplate.queryForList("select * from real_job_list");
+        List<Map<String, Object>> result = prodJdbc.queryForList("select * from real_job_list");
         result.forEach(list -> {
             System.out.println(list);
         });
 
-        List<Map<String, Object>> result2 = secondJdbcTemplate.queryForList("select * from real_job_list");
+        List<Map<String, Object>> result2 = testJdbc.queryForList("select * from real_job_list");
         result2.forEach(list -> {
             System.out.println(list);
         });

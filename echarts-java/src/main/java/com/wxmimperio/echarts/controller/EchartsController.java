@@ -42,7 +42,7 @@ public class EchartsController {
     public List<List<Data>> getData() {
         dataService.get();
         List<List<Data>> result = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
             List<Data> data = new ArrayList<>();
             for (int j = 0; j < 2; j++) {
                 List<String> attr = new ArrayList<>();
