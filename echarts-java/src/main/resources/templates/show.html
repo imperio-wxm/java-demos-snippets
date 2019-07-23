@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>Insert title here</title>
     <script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
+<select id="type">
+    <option value="newLogin">新增</option>
+    <option value="login">活跃</option>
+    <option value="remain">留存</option>
+    <option value="olnum">在线</option>
+    <option value="deposit">充值</option>
+    <option value="other">其他</option>
+</select>
+<select id="partDate">
+    <option value="2019-07-20">2019-07-20</option>
+    <option value="2019-07-21">2019-07-21</option>
+    <option value="2019-07-22">2019-07-22</option>
+    <option value="2019-07-23">2019-07-23</option>
+    <option value="2019-07-24">2019-07-24</option>
+    <option value="2019-07-25">2019-07-25</option>
+    <option value="2019-07-26">2019-07-26</option>
+</select>
+<input type="submit" value="查询" onclick="getData('/getData')"/>
+<br/>
+<br/>
 <div id="main" style="width: 600px; height:400px;"></div>
-<script type="text/javascript" th:src="@{js/test.js}"></script>
+<script type="text/javascript" th:src="@{js/show.js}"></script>
 </body>
 </html>
