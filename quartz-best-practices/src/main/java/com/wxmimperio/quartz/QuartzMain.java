@@ -3,6 +3,7 @@ package com.wxmimperio.quartz;
 
 import com.wxmimperio.quartz.bean.MyCronJob;
 import com.wxmimperio.quartz.utils.QuartzUtils;
+import org.quartz.JobDataMap;
 import org.quartz.SchedulerException;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -24,8 +25,10 @@ public class QuartzMain implements ApplicationRunner {
         String jobGroupName = "wxm_group";
         String triggerGroupName = "wxm_trigger";
         String cronTab = "*/2 * * * * ?";
-        MyCronJob myCronJob = new MyCronJob(jobName, jobGroupName, triggerGroupName, cronTab, null);
-        QuartzUtils.addJobByCronTrigger(MyCronJob.class, myCronJob);
+        JobDataMap jobDataMap = new JobDataMap();
+        jobDataMap.put("test", 1);
+        MyCronJob myCronJob = new MyCronJob(jobName, jobGroupName, triggerGroupName, cronTab, jobDataMap);
+        QuartzUtils.addAndUpdateJobByCronTrigger(MyCronJob.class, myCronJob);
         QuartzUtils.startScheduler();
     }
 }

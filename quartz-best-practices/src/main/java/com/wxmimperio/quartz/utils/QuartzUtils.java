@@ -1,6 +1,7 @@
 package com.wxmimperio.quartz.utils;
 
 import com.wxmimperio.quartz.bean.BaseCronJob;
+import com.wxmimperio.quartz.bean.MyCronJob;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;
@@ -103,7 +104,7 @@ public class QuartzUtils {
         return null != getScheduler().getTrigger(getTriggerKey(jobName, triggerGroupName));
     }
 
-    public static void addJobByCronTrigger(Class<? extends Job> cls, BaseCronJob baseCronJob) throws SchedulerException {
+    public static void addAndUpdateJobByCronTrigger(Class<? extends Job> cls, BaseCronJob baseCronJob) throws SchedulerException {
         baseCronJob.validation();
         setJobDetailAndCronTriggerInScheduler(
                 baseCronJob.getJobName(),
@@ -157,4 +158,10 @@ public class QuartzUtils {
     }
 
 
+    public static JobDetail pauseJobNoMakeUp(String jobName, String triggerGroupName) throws SchedulerException {
+        TriggerKey triggerKey = getTriggerKey(jobName, triggerGroupName);
+        JobDetail jobDetail = getScheduler().getJobDetail(getScheduler().getTrigger(triggerKey).getJobKey());
+        unscheduleJob(jobName, triggerGroupName);
+        return jobDetail;
+    }
 }
