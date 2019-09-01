@@ -1,6 +1,7 @@
 package com.wxmimperio.spring.kafka.config;
 
 import com.google.common.collect.Maps;
+import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.ByteArrayDeserializer;
@@ -71,5 +72,12 @@ public class KafkaTemplateConfig {
         ConcurrentKafkaListenerContainerFactory<Integer, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
         return factory;
+    }
+
+    @Bean
+    public KafkaAdmin admin() {
+        Map<String, Object> configs = Maps.newHashMap();
+        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+        return new KafkaAdmin(configs);
     }
 }
