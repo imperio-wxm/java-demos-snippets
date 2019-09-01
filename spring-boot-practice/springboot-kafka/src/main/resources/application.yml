@@ -7,3 +7,6 @@ spring:
     producer:
       acks: 1
       retries: 3
+    consumer:
+      auto-offset-reset: latest
+      group-id: test_wxm

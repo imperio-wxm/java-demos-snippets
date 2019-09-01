@@ -5,9 +5,7 @@ import com.wxmimperio.spring.kafka.bean.KafkaMessage;
 import com.wxmimperio.spring.kafka.service.ConsumerService;
 import com.wxmimperio.spring.kafka.service.ProducerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
