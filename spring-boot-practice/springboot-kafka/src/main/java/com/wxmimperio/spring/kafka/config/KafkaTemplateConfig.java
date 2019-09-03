@@ -53,24 +53,29 @@ public class KafkaTemplateConfig {
     }
 
     @Bean
-    public ProducerFactory<Integer, String> producerFactory() {
-        return new DefaultKafkaProducerFactory<>(producerConfigs());
+    public ProducerFactory<String, String> producerFactory() {
+        DefaultKafkaProducerFactory<String, String> producerFactory = new DefaultKafkaProducerFactory<>(producerConfigs());
+        // 设置producer事务提交ID前缀
+        producerFactory.setTransactionIdPrefix("transactionId");
+        return producerFactory;
     }
 
     @Bean
-    public ConsumerFactory<Integer, String> consumerFactory() {
+    public ConsumerFactory<String, String> consumerFactory() {
         return new DefaultKafkaConsumerFactory<>(consumerConfigs());
     }
 
     @Bean
-    public KafkaTemplate<Integer, String> kafkaTemplate() {
+    public KafkaTemplate<String, String> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<Integer, String> kafkaListenerContainerFactory() {
-        ConcurrentKafkaListenerContainerFactory<Integer, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory());
+        // 设置多线程消费
+        factory.setConcurrency(3);
         return factory;
     }
 
