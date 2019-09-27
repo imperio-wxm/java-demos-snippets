@@ -1,0 +1,12 @@
+server:
+  port: 18000
+
+spring:
+  kafka:
+    bootstrap-servers: 192.168.1.110:9092
+    producer:
+      acks: 1
+      retries: 3
+    consumer:
+      auto-offset-reset: latest
+      group-id: test_wxm
