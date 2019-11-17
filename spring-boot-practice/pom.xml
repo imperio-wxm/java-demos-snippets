@@ -16,6 +16,10 @@
         <module>springboot-hikaricp</module>
         <module>simple-main</module>
         <module>springboot-cassandra</module>
+        <module>springboot-oracle</module>
+        <module>springboot-guava-cache</module>
+        <module>springboot-rest-template</module>
+        <module>springboot-aop</module>
     </modules>
 
     <name>spring-boot-practice</name>

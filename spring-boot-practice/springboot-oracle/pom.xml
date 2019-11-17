@@ -31,9 +31,9 @@
 
 
         <dependency>
-            <groupId>snda</groupId>
-            <artifactId>ojdbc</artifactId>
-            <version>14</version>
+            <groupId>com.oracle.jdbc</groupId>
+            <artifactId>ojdbc8</artifactId>
+            <version>12.2.0.1</version>
         </dependency>
 
         <dependency>
