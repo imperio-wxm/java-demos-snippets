@@ -1,5 +1,6 @@
 package com.wxmimperio.spring;
 
+import com.wxmimperio.spring.service.CalcutateExeTimeService;
 import com.wxmimperio.spring.service.SpringAopService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,5 +26,8 @@ public class ApplicationAop {
         applicationContext = SpringApplication.run(ApplicationAop.class, args);
         SpringAopService springAopService = applicationContext.getBean(SpringAopService.class);
         springAopService.aopTransfer("test");
+
+        CalcutateExeTimeService calcutateExeTimeService = applicationContext.getBean(CalcutateExeTimeService.class);
+        calcutateExeTimeService.exeTask("2000");
     }
 }
