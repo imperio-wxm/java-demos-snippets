@@ -4,6 +4,7 @@ import com.wxmimperio.spring.autoconfigure.service.AutoConfigureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,8 @@ public class AutoConfigureTest {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(AutoConfigureTest.class);
+        ConfigurableApplicationContext context = SpringApplication.run(AutoConfigureTest.class);
+        MapAutoConfig mapAutoConfig = context.getBean(MapAutoConfig.class);
+        System.out.println(mapAutoConfig.getRoutesPathPicker());
     }
 }

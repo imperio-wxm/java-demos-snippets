@@ -3,3 +3,11 @@ auto:
     wxm
   passWord:
     123456
+
+zuul:
+  semaphore:
+    max-semaphores: 2000
+  ignoredServices: '*'
+  routes:
+    route-engine: /tasks/**
+    rtc-schema-service: /schema-service/**
