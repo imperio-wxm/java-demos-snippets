@@ -25,7 +25,7 @@ public class OracleService {
      */
     private static final List<String> FILTER = Lists.newArrayList("SYS_EXPORT_SCHEMA_01", "SYS_EXPORT_SCHEMA_02",
             "SYS_EXPORT_SCHEMA_03", "SYS_EXPORT_SCHEMA_04", "SYS_EXPORT_SCHEMA_05", "SYS_EXPORT_SCHEMA_06",
-            "SYS_EXPORT_SCHEMA_08", "SYS_EXPORT_SCHEMA_07", "SYS_EXPORT_SCHEMA_09", "SYS_EXPORT_SCHEMA_10",
+            "SYS_EXPORT_SCHEMA_08", "SYS_EXPORT_SCHEMA_07", "SYS_EXPORT_SCHEMA_09", "SYS_EXPORT_SCHEMA_10", "SYS_EXPORT_SCHEMA_11", "SYS_EXPORT_SCHEMA_12", "SYS_EXPORT_SCHEMA_13",
             "T1", "SYS_TEMP_FBT", "V_MOBILE_APP_DEPOSIT_CHANNEL", "V_PT_ACTIVITY_HOURLY_REPORT");
 
     private static final List<DataType> FILTER_DATA_TYPE = Lists.newArrayList(DataType.CHAR, DataType.CLOB, DataType.NVARCHAR2, DataType.NCHAR);
@@ -43,7 +43,7 @@ public class OracleService {
             String sql = "select t1.TABLE_NAME,t2.TABLE_TYPE,T2.COMMENTS from \n" +
                     "(select table_name TABLE_NAME from user_tables where TABLE_NAME NOT LIKE '%$%'\n" +
                     "union all\n" +
-                    "select view_name from user_views) t1 left join user_tab_comments t2 on t1.TABLE_NAME = t2.TABLE_NAME";
+                    "select view_name from user_views) t1 left join user_tab_comments t2 on t1.TABLE_NAME = t2.TABLE_NAME where rownum <= 100";
 
             ResultSet resultSet = statement.executeQuery(sql);
 
