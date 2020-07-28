@@ -14,14 +14,14 @@ public class MyDate implements Serializable {
     @Excel(name = "TableName", needMerge = true)
     private String tableName;
     @ExcelCollection(name = "")
-    private List<Data> data;
+    private List<Model> data;
 
 
-    public List<Data> getData() {
+    public List<Model> getData() {
         return data;
     }
 
-    public void setData(List<Data> data) {
+    public void setData(List<Model> data) {
         this.data = data;
     }
 

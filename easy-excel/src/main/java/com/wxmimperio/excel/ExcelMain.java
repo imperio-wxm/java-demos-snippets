@@ -28,10 +28,17 @@ public class ExcelMain {
         myDate.setDbName("wxm_db");
         myDate.setTableName("wxm_table01");
 
-        Data data = new Data();
-        data.setColName(Lists.newArrayList("col01","col02"));
-        data.setColValue(Lists.newArrayList("123","456"));
-        myDate.setData(Lists.newArrayList(data));
+        List<Model> models = Lists.newArrayList();
+        for(int i = 0; i <10;i++) {
+            Model model = new Model();
+            model.setC1("col_" + i);
+            model.setC2("col_" + i);
+            model.setCost(1000 * i);
+            model.setPre(0.1F * i);
+            models.add(model);
+        }
+
+        myDate.setData(models);
 
         myDates.add(myDate);
         return myDates;

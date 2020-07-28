@@ -7,23 +7,9 @@ import java.util.List;
 
 public class Data implements Serializable {
     @Excel(name = "ColName")
-    private List<String> colName;
+    private List<Model> colName;
     @Excel(name = "ColValue")
-    private List<String> colValue;
+    private List<Model> colValue;
 
-    public List<String> getColName() {
-        return colName;
-    }
 
-    public void setColName(List<String> colName) {
-        this.colName = colName;
-    }
-
-    public List<String> getColValue() {
-        return colValue;
-    }
-
-    public void setColValue(List<String> colValue) {
-        this.colValue = colValue;
-    }
 }
