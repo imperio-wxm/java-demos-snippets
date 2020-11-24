@@ -16,6 +16,23 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created with IntelliJ IDEA.
+ * <p>
+ * ======== Configuration example =========
+ * log4j.appender.file=xxx.xxx.RateLimitRollingFileAppender
+ * log4j.appender.file.file=filePath
+ * # log 编码
+ * log4j.appender.file.Encoding=UTF-8
+ * # 开启追加
+ * log4j.appender.file.append=true
+ * # 最多保存log个数
+ * log4j.appender.file.MaxBackupIndex=5
+ * # 日志滚动大小
+ * log4j.appender.file.MaxFileSize=10KB
+ * # 日志限速大小（不配此参数，默认1000/s；配置 -1 关闭限速）
+ * log4j.appender.file.LogLimitPerSecond=5000
+ * log4j.appender.file.layout=org.apache.log4j.PatternLayout
+ * log4j.appender.file.layout.ConversionPattern=%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %-60c %x - %m%n
+ * =========================================
  *
  * @author weiximing
  * @version 1.0.0
