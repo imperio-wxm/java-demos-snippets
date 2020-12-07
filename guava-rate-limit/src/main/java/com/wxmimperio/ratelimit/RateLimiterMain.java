@@ -2,6 +2,7 @@ package com.wxmimperio.ratelimit;
 
 import com.google.common.util.concurrent.RateLimiter;
 
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,6 +17,8 @@ import java.util.concurrent.TimeUnit;
 public class RateLimiterMain {
 
     public static void main(String[] args) throws Exception {
+        String[] ret = null;
+        System.out.println(Arrays.asList(null == ret ? new String[]{} : ret));
         double qps = 2.0D;
         RateLimiter rateLimiter = RateLimiter.create(qps);
 
