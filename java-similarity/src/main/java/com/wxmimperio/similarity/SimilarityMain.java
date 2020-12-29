@@ -1,9 +1,23 @@
 package com.wxmimperio.similarity;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import info.debatty.java.stringsimilarity.Cosine;
 import info.debatty.java.stringsimilarity.NormalizedLevenshtein;
+import info.debatty.java.stringsimilarity.QGram;
+import info.debatty.java.stringsimilarity.RatcliffObershelp;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,5 +48,62 @@ public class SimilarityMain {
         System.out.println(l.distance("My string", "My $tring"));
         System.out.println(l.distance("My string", "My $tring"));
         System.out.println(l.distance("My string", "My $tring"));
+
+        Cosine cosine = new Cosine(2);
+
+
+        List<String> list = Lists.newArrayList();
+        for (int i = 0; i < 50; i++) {
+            list.add(str1.substring(0, 480) + UUID.randomUUID().toString() + UUID.randomUUID().toString() + UUID.randomUUID().toString() + UUID.randomUUID().toString());
+        }
+        long start = System.currentTimeMillis();
+
+        List<String> ll = similarityFilter(cosine, list, 0.95);
+        System.out.println(ll.size());
+        System.out.println("cost = " + (System.currentTimeMillis() - start));
+        ll.forEach(k -> {
+            System.out.println(k);
+        });
+    }
+
+    private static <T> Predicate<T> distinctByKey(Function<? super T, Object> keyExtractor) {
+        Set<Object> seen = ConcurrentHashMap.newKeySet();
+        return t -> seen.add(keyExtractor.apply(t));
+    }
+
+    private static List<String> similarityFilter(NormalizedLevenshtein levenshtein, List<String> list) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = list.size() - 1; j > i; j--) {
+                if (list.size() == 1) {
+                    break;
+                }
+                if (isSimilarity(levenshtein, list.get(i), list.get(j), 0.95)) {
+                    list.remove(j);
+                }
+            }
+        }
+        return list;
+    }
+
+    private static List<String> similarityFilter(Cosine cosine, List<String> list, double standard) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = list.size() - 1; j > i; j--) {
+                if (list.size() == 1) {
+                    break;
+                }
+                if (isSimilarity(cosine, list.get(i), list.get(j), standard)) {
+                    list.remove(j);
+                }
+            }
+        }
+        return list;
+    }
+
+    private static boolean isSimilarity(NormalizedLevenshtein normalizedLevenshtein, String str1, String str2, double standard) {
+        return normalizedLevenshtein.similarity(str1, str2) > standard;
+    }
+
+    private static boolean isSimilarity(Cosine cosine, String str1, String str2, double standard) {
+        return cosine.similarity(cosine.getProfile(str1), cosine.getProfile(str2)) > standard;
     }
 }
