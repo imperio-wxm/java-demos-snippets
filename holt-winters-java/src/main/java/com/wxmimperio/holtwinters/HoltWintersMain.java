@@ -51,7 +51,7 @@ public class HoltWintersMain {
         // System.out.println(Arrays.toString(holtWintersModel.doPredict(Arrays.asList(dd), 3)));
 
         Map<String, Double> data = inputData();
-        System.out.println(Arrays.toString(holtWintersModel.doPredict(data.values(), 288)));
+        //System.out.println(Arrays.toString(holtWintersModel.doPredict(data.values(), 288)));
 
 /*        double[] ss = HoltWintersJava.forecast(data.values().toArray(new Double[]{}), 0.6, 0.2, 0, 288, 288, false);
         System.out.println(Arrays.toString(ss));*/
@@ -60,7 +60,7 @@ public class HoltWintersMain {
     public static Map<String, Double> inputData() throws Exception {
         Map<String, Double> result = new TreeMap<>();
         List<Double> point = new ArrayList<>();
-        String fileName = "/Users/weiximing/code/github/java-demos-snippets/holt-winters-java/src/main/resources/test.csv";
+        String fileName = "/Users/weiximing/code/github/java-demos-snippets/holt-winters-java/src/main/resources/test_02.csv";
         String line = null;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8))) {
             while ((line = reader.readLine()) != null) {

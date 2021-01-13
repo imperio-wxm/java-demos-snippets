@@ -193,12 +193,12 @@ public class HoltWintersWeka2 {
 
     public static void training(HoltWintersWeka2 holtWintersWeka) throws Exception {
         long startTs = System.currentTimeMillis();
-        float defaultStep = 0.001F;
+        float defaultStep = 0.01F;
         float alpha = 0.0F;
         float gamma = 0.0F;
         float bestAlpha = 0.0F;
         float bestGamma = 0.0F;
-        int defaultMax = 1000;
+        int defaultMax = 100;
         double minSe = Integer.MAX_VALUE;
         for (int alphaIdx = 1; alphaIdx <= defaultMax; alphaIdx++) {
             alpha = defaultStep * alphaIdx;
