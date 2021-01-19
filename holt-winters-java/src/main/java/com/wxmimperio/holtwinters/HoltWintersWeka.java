@@ -29,7 +29,7 @@ import java.util.function.Function;
  */
 public class HoltWintersWeka {
     private Instances trainingDataSet;
-    //private final Attribute attrTime = new Attribute("time", true);
+    private final Attribute attrTime = new Attribute("time", true);
     private final Attribute attrVal = new Attribute("value");
 
     public HoltWintersWeka() {
@@ -52,7 +52,7 @@ public class HoltWintersWeka {
 
     public void prepareAttributes() {
         ArrayList<Attribute> attributes = new ArrayList<>();
-        //attributes.add(attrTime);
+        attributes.add(attrTime);
         attributes.add(attrVal);
         trainingDataSet = new Instances("timeseries", attributes, 0);
         trainingDataSet.setClass(attrVal);

@@ -14,7 +14,10 @@ import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -30,7 +33,7 @@ import java.util.stream.Collectors;
  */
 public class HoltWintersWeka2 {
     private Instances trainingDataSet;
-    //private final Attribute attrTime = new Attribute("time", true);
+    private final Attribute attrTime = new Attribute("time", true);
     private final Attribute attrVal = new Attribute("value");
     private static final List<OriginData> originData = new ArrayList<>();
     private static final SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -51,12 +54,16 @@ public class HoltWintersWeka2 {
         //set Season Cycle
         holtWinters.setSeasonCycleLength(cycleLength);
         holtWinters.buildClassifier(trainingDataSet);
+        holtWinters.setBatchSize("228");
+        holtWinters.setDebug(true);
+        holtWinters.setNumDecimalPlaces(4);
+        holtWinters.setDoNotCheckCapabilities(true);
         return holtWinters;
     }
 
     public void prepareAttributes() {
         ArrayList<Attribute> attributes = new ArrayList<>();
-        //attributes.add(attrTime);
+        attributes.add(attrTime);
         attributes.add(attrVal);
         trainingDataSet = new Instances("timeseries", attributes, 0);
         trainingDataSet.setClass(attrVal);
@@ -68,10 +75,17 @@ public class HoltWintersWeka2 {
         //Optional<Double> min = data.stream().min(Comparator.comparing(Function.identity()));
         //max.ifPresent(data::remove);
         //min.ifPresent(data::remove);
-        originData.forEach(originData -> {
+        originData.addAll(originData);
+        originData.addAll(originData);
+        originData.addAll(originData);
+        originData.addAll(originData);
+        originData.addAll(originData);
+        originData.addAll(originData);
+        originData.subList(0, 576).forEach(originData -> {
             Instance instance = new DenseInstance(2);
             instance.setDataset(trainingDataSet);
             instance.setValue(attrVal, originData.getValue());
+            instance.setValue(attrTime, originData.getTime());
             trainingDataSet.add(instance);
         });
     }
@@ -106,7 +120,7 @@ public class HoltWintersWeka2 {
                 originData.add(new OriginData(timeKey, sum));
             }
         }
-        System.out.println(point);
+        //System.out.println(point);
         return originData;
     }
 
@@ -135,9 +149,9 @@ public class HoltWintersWeka2 {
             if (originDataMap.containsKey(timeKey)) {
                 mdiff += (Math.pow(rs - originDataMap.get(timeKey).get(0).getValue(), 2));
                 realForCastNum++;
-            } else {
+            } /*else {
                 System.out.println(timeKey);
-            }
+            }*/
         }
         return Math.sqrt(mdiff / realForCastNum);
     }
@@ -161,8 +175,8 @@ public class HoltWintersWeka2 {
 
     private static long genTime(int index, int stepMin) throws Exception {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(dateTimeFormat.parse(dateFormat.format(new Date()) + " 00:00"));
-        calendar.add(Calendar.DAY_OF_YEAR, -2);
+        calendar.setTime(dateTimeFormat.parse( "2021-01-12 00:00"));
+        //calendar.add(Calendar.DAY_OF_YEAR, -2);
         calendar.add(Calendar.MINUTE, index * stepMin);
         return calendar.getTime().getTime();
     }
@@ -180,6 +194,17 @@ public class HoltWintersWeka2 {
     }
 
     public static void main(String[] args) throws Exception {
+
+ /*       System.out.println(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli());
+
+        long endTime = LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+        long startTime = endTime - 60 * 1000 * 60 * 24 * 7;
+
+        System.out.println(new Timestamp(endTime));
+        System.out.println(new Timestamp(startTime));*/
+
+
+        //  select * from app_metrics_dist where application_id = 'application_1608016618144_12113' and metrics_name = 'avg_cpu_load' order by start_time;
         HoltWintersWeka2 holtWintersWeka = new HoltWintersWeka2();
         holtWintersWeka.prepareTrainingData();
 
