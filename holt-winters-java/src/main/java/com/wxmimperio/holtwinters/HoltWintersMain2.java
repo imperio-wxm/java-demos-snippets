@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.wxmimperio.holtwinters.elasticsearch.HoltWintersModel;
-import weka.classifiers.timeseries.HoltWinters;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -13,7 +12,6 @@ import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -25,7 +23,7 @@ import java.util.stream.Collectors;
  * @description This is the description of HoltWintersMain.java
  * @createTime 2021-01-11 21:07:00
  */
-public class HoltWintersMain {
+public class HoltWintersMain2 {
     private static final List<HoltWintersWeka2.OriginData> originData = new ArrayList<>();
     private static final SimpleDateFormat dateTimeFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -56,7 +54,7 @@ public class HoltWintersMain {
         // 训练结束，训练时长:244秒,最优参数[Alpha=0.049999997,Gamma=0.07,Beta=0.95],RMSE=0.1290282700613994
         float beta = 0.2F;
         HoltWintersModel holtWintersModel =
-                new HoltWintersModel(0.01, 0.001, 0.84, 288, HoltWintersModel.SeasonalityType.MULTIPLICATIVE, false);
+                new HoltWintersModel(0.01, 0, 0.84999996, 288, HoltWintersModel.SeasonalityType.MULTIPLICATIVE, false);
         //=System.out.println(Arrays.toString(holtWintersModel.doPredict(Arrays.asList(dd), 3)));
 
         inputData();
@@ -119,6 +117,7 @@ public class HoltWintersMain {
         float defaultStep = 0.01F;
         float alpha = 0.0F;
         float gamma = 0.0F;
+        float beta = 0.0F;
         float bestAlpha = 0.0F;
         float bestGamma = 0.0F;
         float bestBeta = 0.0F;
@@ -136,16 +135,21 @@ public class HoltWintersMain {
             for (int gammaIdx = 1; gammaIdx <= defaultMax; gammaIdx++) {
                 gamma = defaultStep * gammaIdx;
 
-                //System.out.println("alpha = " + alpha + " gamma = " + gamma + " beta = " + beta);
-                HoltWintersModel holtWintersModel =
-                        new HoltWintersModel(alpha, 0.001, gamma, 288, HoltWintersModel.SeasonalityType.MULTIPLICATIVE, false);
+                for (int betaIdx = 1; betaIdx <= defaultMax; betaIdx++) {
+                    beta = defaultStep * betaIdx;
 
-                double[] result = holtWintersModel.doPredict(value, 288);
-                double rmse = doTraining(appInfoMap, result);
-                if (rmse < minSe) {
-                    minSe = rmse;
-                    bestAlpha = alpha;
-                    bestGamma = gamma;
+                    //System.out.println("alpha = " + alpha + " gamma = " + gamma + " beta = " + beta);
+                    HoltWintersModel holtWintersModel =
+                            new HoltWintersModel(alpha, beta, gamma, 288, HoltWintersModel.SeasonalityType.MULTIPLICATIVE, false);
+
+                    double[] result = holtWintersModel.doPredict(value, 288);
+                    double rmse = doTraining(appInfoMap, result);
+                    if (rmse < minSe) {
+                        minSe = rmse;
+                        bestAlpha = alpha;
+                        bestGamma = gamma;
+                        bestBeta = beta;
+                    }
                 }
             }
         }

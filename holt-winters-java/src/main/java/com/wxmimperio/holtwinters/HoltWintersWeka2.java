@@ -49,6 +49,7 @@ public class HoltWintersWeka2 {
         holtWinters.setExcludeTrendCorrection(true);
         //set Alpha param
         holtWinters.setValueSmoothingFactor(alpha);
+        //holtWinters.setTrendSmoothingFactor();
         //set Gamma param
         holtWinters.setSeasonalSmoothingFactor(gamma);
         //set Season Cycle
@@ -75,13 +76,7 @@ public class HoltWintersWeka2 {
         //Optional<Double> min = data.stream().min(Comparator.comparing(Function.identity()));
         //max.ifPresent(data::remove);
         //min.ifPresent(data::remove);
-        originData.addAll(originData);
-        originData.addAll(originData);
-        originData.addAll(originData);
-        originData.addAll(originData);
-        originData.addAll(originData);
-        originData.addAll(originData);
-        originData.subList(0, 576).forEach(originData -> {
+        originData.forEach(originData -> {
             Instance instance = new DenseInstance(2);
             instance.setDataset(trainingDataSet);
             instance.setValue(attrVal, originData.getValue());
@@ -96,7 +91,7 @@ public class HoltWintersWeka2 {
 
     public static List<OriginData> inputData() throws Exception {
         List<Double> point = new ArrayList<>();
-        String fileName = "/Users/weiximing/code/github/java-demos-snippets/holt-winters-java/src/main/resources/test.csv";
+        String fileName = "E:\\code\\java-demos-snippets\\holt-winters-java\\src\\main\\resources\\14_19.csv";
         String line = null;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8))) {
             while ((line = reader.readLine()) != null) {
@@ -175,7 +170,7 @@ public class HoltWintersWeka2 {
 
     private static long genTime(int index, int stepMin) throws Exception {
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(dateTimeFormat.parse( "2021-01-12 00:00"));
+        calendar.setTime(dateTimeFormat.parse( "2021-01-18 00:00"));
         //calendar.add(Calendar.DAY_OF_YEAR, -2);
         calendar.add(Calendar.MINUTE, index * stepMin);
         return calendar.getTime().getTime();
@@ -210,8 +205,9 @@ public class HoltWintersWeka2 {
 
         System.out.println(holtWintersWeka.getTrainingDataSet().size());
 
-        List<Double> bestResult = holtWintersWeka.forecast(0.01, 0.81, 288, 288);
-        System.out.println(bestResult);
+        // 训练结束，训练时长:326秒,最优参数[Alpha=0.01,Gamma=0.65999997],RMSE=5.347468280774453
+        List<Double> bestResult = holtWintersWeka.forecast(0.01, 0.65999997, 288, 288);
+        System.out.println("bestResult = " + bestResult);
 
         training(holtWintersWeka);
     }
