@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -41,5 +42,11 @@ public class RedisController {
     @GetMapping("redisListSize/{keyName}")
     public Long redisListSize(@PathVariable("keyName") String keyName) {
         return redisTemplate.opsForList().size(keyName);
+    }
+
+    @PutMapping("redisListRemoveAll/{keyName}")
+    public void redisListRemoveAll(@PathVariable("keyName") String keyName) {
+        redisTemplate.opsForList().trim(keyName, 1, 0);
+        //redisTemplate.opsForList().remove(keyName, -1, null);
     }
 }
