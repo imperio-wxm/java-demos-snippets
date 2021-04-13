@@ -53,7 +53,7 @@ public class Grubbs {
                     break;
                 }
             }
-            if (Gn < calcG(alpha, dataArrayList.size()))
+/*            if (Gn < calcG(alpha, dataArrayList.size()))
                 break;
             if (G1 > calcG(alpha, dataArrayList.size())) {
                 dataArrayList.remove(0);
@@ -62,7 +62,7 @@ public class Grubbs {
                 }
             } else if (Gn > calcG(alpha, dataArrayList.size())) {
                 dataArrayList.remove(dataArrayList.size() - 1);
-            }
+            }*/
         }
 
         return dataArrayList;
