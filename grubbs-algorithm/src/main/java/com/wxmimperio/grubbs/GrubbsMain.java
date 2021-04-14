@@ -5,6 +5,7 @@ import com.wxmimperio.grubbs.tools.Grubbs;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,8 +25,15 @@ public class GrubbsMain {
         for (double s : ans)
             System.out.println(s);*/
 
+        List<String> testList = new ArrayList<>();
 
-        CCAritheticCore arithmetic = new CCAritheticCore();
+        testList = testList.stream().limit(10).collect(Collectors.toList());
+
+
+        System.out.println(testList);
+
+
+        /*CCAritheticCore arithmetic = new CCAritheticCore();
 
         List<Double> list = genDataValue();
 
@@ -44,12 +52,12 @@ public class GrubbsMain {
                 doubles = arithmetic.fusionToList(2, list);
             }
             if (size >= 11) {
-                doubles = arithmetic.fusionToList(3, list);
+                doubles = arithmetic.fusionToList(10, list);
             }
         }
         for (double value : doubles) {
             System.out.println(value);
-        }
+        }*/
     }
 
     private static List<Double> genDataValue() {

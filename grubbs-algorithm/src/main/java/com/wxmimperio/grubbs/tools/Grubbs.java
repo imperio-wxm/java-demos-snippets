@@ -537,7 +537,7 @@ public class Grubbs {
         return out;
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ArrayList<Double> list = new ArrayList<>();
         ArrayList<Double> original = new ArrayList<>();
         String fileName = "E:\\huawei\\flavor2.txt";
@@ -589,5 +589,5 @@ public class Grubbs {
         System.out.println(ans.length);
         for (double s : ans)
             System.out.println(s);
-    }
+    }*/
 }
