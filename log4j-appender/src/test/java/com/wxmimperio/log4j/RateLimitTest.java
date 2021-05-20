@@ -4,6 +4,9 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 /**
  * Created with IntelliJ IDEA.
  *
@@ -21,5 +24,12 @@ public class RateLimitTest {
         for (int i = 0; i < 50000; i++) {
             LOG.info("test = " + i + "在发的所发生的繁盛发生是否阿斯顿发阿萨德发送法师打发是");
         }
+    }
+
+    @Test
+    public void test01() {
+        Object o = LocalDate.now();
+        Date date = Date.valueOf((LocalDate) o);
+        System.out.println(date);
     }
 }
