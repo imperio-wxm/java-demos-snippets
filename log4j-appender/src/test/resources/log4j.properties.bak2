@@ -1,0 +1,30 @@
+log4j.rootLogger = info,stdout,INFO,ERROR
+
+## Console output...
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%t %d{ABSOLUTE} %5p %c{1}:%L - %m%n
+
+
+### 输出INFO 级别以上的日志到
+log4j.appender.INFO =com.wxmimperio.log4j.RateLimitRollingFileAppender
+log4j.appender.INFO.File = ./logs/info.log
+log4j.appender.INFO.Encoding=UTF-8
+log4j.appender.INFO.Append = true
+log4j.appender.INFO.MaxBackupIndex=5
+log4j.appender.INFO.MaxFileSize=10KB
+log4j.appender.INFO.LogLimitPerSecond=10
+log4j.appender.INFO.Threshold = INFO
+log4j.appender.INFO.datePattern = '_'yyyy-MM-dd
+log4j.appender.INFO.layout = org.apache.log4j.PatternLayout
+log4j.appender.INFO.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n
+
+### 输出ERROR 级别以上的日志到
+log4j.appender.ERROR =com.wxmimperio.log4j.RateLimitRollingFileAppender
+log4j.appender.ERROR.File = ./logs/error.log
+log4j.appender.ERROR.Append = true
+log4j.appender.ERROR.Threshold = ERROR
+log4j.appender.ERROR.datePattern = '_'yyyy-MM-dd
+log4j.appender.ERROR.layout = org.apache.log4j.PatternLayout
+log4j.appender.ERROR.layout.ConversionPattern = %-d{yyyy-MM-dd HH:mm:ss}  [ %t:%r ] - [ %p ]  %m%n

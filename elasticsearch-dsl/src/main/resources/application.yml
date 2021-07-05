@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: DSL
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+
+
+server:
+  port: 8093 #${random.int[10000,19999]}
+  shutdown: graceful
+
+elasticsearch:
+  connector:
+    #url: 127.0.0.1:9300
+    #cluster-name: elasticsearch
+    transport-sniff: true
+    ping-timeout: 10s
+    nodes-sampler-interval: 10s
+    tcp-timeout: 60s
