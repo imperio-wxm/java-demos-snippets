@@ -12,7 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hadoop.version>2.6.0-cdh5.11.1</hadoop.version>
+        <hadoop.version>3.2.3</hadoop.version>
     </properties>
 
     <build>
