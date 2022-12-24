@@ -65,7 +65,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <hadoop.version>2.6.0-cdh5.11.1</hadoop.version>
+        <hadoop.version>2.7.0</hadoop.version>
         <!--<hadoop.version>2.0.0-cdh4.7.0</hadoop.version>-->
         <maven.test.skip>true</maven.test.skip>
         <!-- <hadoop.version>2.6.0-cdh5.4.0</hadoop.version> -->
